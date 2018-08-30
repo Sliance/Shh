@@ -1,0 +1,173 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?wozaib');
+  src:  url('fonts/icomoon.eot?wozaib#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?wozaib') format('truetype'),
+    url('fonts/icomoon.woff?wozaib') format('woff'),
+    url('fonts/icomoon.svg?wozaib#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-wallt:before {
+  content: "\e900";
+}
+.icon-edit:before {
+  content: "\e901";
+}
+.icon-play:before {
+  content: "\e902";
+}
+.icon-plays:before {
+  content: "\e903";
+}
+.icon-left:before {
+  content: "\e904";
+}
+.icon-more:before {
+  content: "\e905";
+  color: #f44e4e;
+}
+.icon-service:before {
+  content: "\e906";
+}
+.icon-dian:before {
+  content: "\e907";
+}
+.icon-shop:before {
+  content: "\e908";
+  color: #696969;
+}
+.icon-delete:before {
+  content: "\e909";
+}
+.icon-message:before {
+  content: "\e90a";
+}
+.icon-huo:before {
+  content: "\e90b";
+  color: #d81e06;
+}
+.icon-money:before {
+  content: "\e90c";
+}
+.icon-right:before {
+  content: "\e90d";
+}
+.icon-jinpai:before {
+  content: "\e90e";
+}
+.icon-ting:before {
+  content: "\e90f";
+}
+.icon-course:before {
+  content: "\e910";
+}
+.icon-down:before {
+  content: "\e911";
+}
+.icon-up:before {
+  content: "\e912";
+}
+.icon-history:before {
+  content: "\e913";
+}
+.icon-san:before {
+  content: "\e914";
+}
+.icon-big_message:before {
+  content: "\e915";
+}
+.icon-rili:before {
+  content: "\e916";
+}
+.icon-hezuo:before {
+  content: "\e917";
+}
+.icon-top:before {
+  content: "\e918";
+}
+.icon-setting:before {
+  content: "\e919";
+}
+.icon-home:before {
+  content: "\e91a";
+  color: #d81e06;
+}
+.icon-quan:before {
+  content: "\e91b";
+}
+.icon-search:before {
+  content: "\e91c";
+}
+.icon-suo:before {
+  content: "\e91d";
+}
+.icon-toutiao:before {
+  content: "\e91e";
+}
+.icon-team:before {
+  content: "\e91f";
+}
+.icon-weixin:before {
+  content: "\e8f0";
+}
+.icon-ren:before {
+  content: "\e921";
+}
+.icon-wify:before {
+  content: "\e922";
+}
+.icon-yaoqinghaoyou:before {
+  content: "\e923";
+  color: #666;
+}
+.icon-like:before {
+  content: "\e924";
+}
+.icon-xiao_down:before {
+  content: "\e925";
+}
+.icon-bottom:before {
+  content: "\e926";
+}
+.icon-download:before {
+  content: "\e927";
+}
+.icon-xin:before {
+  content: "\e928";
+}
+.icon-like_selected:before {
+  content: "\e929";
+}
+.icon-zhang:before {
+  content: "\e92a";
+}
+.icon-yan:before {
+  content: "\e92b";
+}
+.icon-zan:before {
+  content: "\e92c";
+}
+.icon-share:before {
+  content: "\e92d";
+}
+.icon-vip:before {
+  content: "\e92e";
+  color: #666;
+}
