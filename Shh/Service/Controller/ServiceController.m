@@ -43,6 +43,7 @@
     if (!_navView) {
         _navView = [[NavigationView alloc]init];
         _navView.frame = CGRectMake(0, 0, SCREENWIDTH, [self navHeightWithHeight]);
+        [_navView setLeftWidth:15];
     }
     return _navView;
 }

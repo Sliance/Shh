@@ -31,6 +31,7 @@
     if (self) {
         [self addSubview:self.headImage];
         [self addSubview:self.nameLabel];
+        self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
@@ -48,7 +49,7 @@
     }
     [self.headImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self);
-        make.top.equalTo(self);
+        make.top.equalTo(self).offset(10);
         make.width.mas_equalTo(self.imageWidth);
         make.height.mas_equalTo(imageHeight);
     }];

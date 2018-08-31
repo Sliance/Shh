@@ -30,16 +30,21 @@
 -(void)setcornerLayout{
     [self addSubview:self.headiamge];
    
-    [self.headiamge mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(15);
-        make.top.equalTo(self).offset(5);
-        make.height.mas_equalTo(90);
-        make.width.mas_equalTo(125);
-        
-    }];
+    
     
 }
 
-
-
+-(void)setImageWidth:(NSInteger)imageWidth{
+    _imageWidth = imageWidth;
+}
+-(void)setImageHeight:(NSInteger)imageHeight{
+    _imageHeight = imageHeight;
+    [self.headiamge mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self).offset(15);
+        make.top.equalTo(self).offset(5);
+        make.height.mas_equalTo(self.imageHeight);
+        make.width.mas_equalTo(self.imageWidth);
+        
+    }];
+}
 @end

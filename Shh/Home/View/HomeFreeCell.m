@@ -79,6 +79,7 @@
     [self addSubview:self.huoLabel];
     [self addSubview:self.countLabel];
     [self addSubview:self.priceLabel];
+    self.backgroundColor = [UIColor whiteColor];
     [self.headiamge mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(15);
         make.top.equalTo(self).offset(5);

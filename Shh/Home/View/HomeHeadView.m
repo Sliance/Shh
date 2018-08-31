@@ -70,7 +70,7 @@
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc]init];
         _titleLabel.textAlignment = NSTextAlignmentLeft;
-        _titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:18];
+        _titleLabel.font = [UIFont boldSystemFontOfSize:18];
         _titleLabel.textColor = DSColorFromHex(0x474747);
         _titleLabel.text = @"限时免费";
     }

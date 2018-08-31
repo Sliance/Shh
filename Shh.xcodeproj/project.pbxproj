@@ -27,6 +27,12 @@
 		8849B84E213542BF00CAE299 /* BaseCourseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8849B84D213542BF00CAE299 /* BaseCourseController.m */; };
 		8849B8512135452C00CAE299 /* MenuInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8849B84F2135452B00CAE299 /* MenuInfo.m */; };
 		8849B854213551DF00CAE299 /* HomeFreeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8849B853213551DF00CAE299 /* HomeFreeHeadView.m */; };
+		885034672138D157000BDD3A /* PromoteServiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 885034662138D157000BDD3A /* PromoteServiceView.m */; };
+		8850346B213924D2000BDD3A /* DryHeadlinesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8850346A213924D2000BDD3A /* DryHeadlinesController.m */; };
+		8850346E213924EF000BDD3A /* BaseDryHeadlinesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8850346D213924EF000BDD3A /* BaseDryHeadlinesController.m */; };
+		885034722139403D000BDD3A /* DrySmallImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 885034712139403D000BDD3A /* DrySmallImageCell.m */; };
+		8850347521394068000BDD3A /* DryBigImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8850347421394068000BDD3A /* DryBigImageCell.m */; };
+		8850347821394081000BDD3A /* DryNoImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8850347721394081000BDD3A /* DryNoImageCell.m */; };
 		886B978421363AFF0074322D /* QualityServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 886B978321363AFF0074322D /* QualityServiceCell.m */; };
 		886B978721363B280074322D /* TrainingServicesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 886B978621363B280074322D /* TrainingServicesCell.m */; };
 		886B978A21363B960074322D /* ToJoinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 886B978921363B960074322D /* ToJoinCell.m */; };
@@ -175,6 +181,18 @@
 		8849B8502135452C00CAE299 /* MenuInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuInfo.h; sourceTree = "<group>"; };
 		8849B852213551DF00CAE299 /* HomeFreeHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeFreeHeadView.h; sourceTree = "<group>"; };
 		8849B853213551DF00CAE299 /* HomeFreeHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeFreeHeadView.m; sourceTree = "<group>"; };
+		885034652138D157000BDD3A /* PromoteServiceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PromoteServiceView.h; sourceTree = "<group>"; };
+		885034662138D157000BDD3A /* PromoteServiceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PromoteServiceView.m; sourceTree = "<group>"; };
+		88503469213924D2000BDD3A /* DryHeadlinesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DryHeadlinesController.h; sourceTree = "<group>"; };
+		8850346A213924D2000BDD3A /* DryHeadlinesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DryHeadlinesController.m; sourceTree = "<group>"; };
+		8850346C213924EF000BDD3A /* BaseDryHeadlinesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseDryHeadlinesController.h; sourceTree = "<group>"; };
+		8850346D213924EF000BDD3A /* BaseDryHeadlinesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseDryHeadlinesController.m; sourceTree = "<group>"; };
+		885034702139403D000BDD3A /* DrySmallImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrySmallImageCell.h; sourceTree = "<group>"; };
+		885034712139403D000BDD3A /* DrySmallImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrySmallImageCell.m; sourceTree = "<group>"; };
+		8850347321394068000BDD3A /* DryBigImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DryBigImageCell.h; sourceTree = "<group>"; };
+		8850347421394068000BDD3A /* DryBigImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DryBigImageCell.m; sourceTree = "<group>"; };
+		8850347621394081000BDD3A /* DryNoImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DryNoImageCell.h; sourceTree = "<group>"; };
+		8850347721394081000BDD3A /* DryNoImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DryNoImageCell.m; sourceTree = "<group>"; };
 		886B978221363AFF0074322D /* QualityServiceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QualityServiceCell.h; sourceTree = "<group>"; };
 		886B978321363AFF0074322D /* QualityServiceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QualityServiceCell.m; sourceTree = "<group>"; };
 		886B978521363B280074322D /* TrainingServicesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrainingServicesCell.h; sourceTree = "<group>"; };
@@ -445,6 +463,30 @@
 				88483F5F2137E7EC004CA3FA /* MoreSortCollectionCell.m */,
 			);
 			path = Sort;
+			sourceTree = "<group>";
+		};
+		8850346821392487000BDD3A /* 干货头条 */ = {
+			isa = PBXGroup;
+			children = (
+				88503469213924D2000BDD3A /* DryHeadlinesController.h */,
+				8850346A213924D2000BDD3A /* DryHeadlinesController.m */,
+				8850346C213924EF000BDD3A /* BaseDryHeadlinesController.h */,
+				8850346D213924EF000BDD3A /* BaseDryHeadlinesController.m */,
+			);
+			path = "干货头条";
+			sourceTree = "<group>";
+		};
+		8850346F21393FFF000BDD3A /* 干货头条 */ = {
+			isa = PBXGroup;
+			children = (
+				885034702139403D000BDD3A /* DrySmallImageCell.h */,
+				885034712139403D000BDD3A /* DrySmallImageCell.m */,
+				8850347321394068000BDD3A /* DryBigImageCell.h */,
+				8850347421394068000BDD3A /* DryBigImageCell.m */,
+				8850347621394081000BDD3A /* DryNoImageCell.h */,
+				8850347721394081000BDD3A /* DryNoImageCell.m */,
+			);
+			path = "干货头条";
 			sourceTree = "<group>";
 		};
 		886B978121363AD30074322D /* View */ = {
@@ -737,6 +779,7 @@
 		886DB951212E840D00CF8C64 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8850346F21393FFF000BDD3A /* 干货头条 */,
 				88483F512137D4D6004CA3FA /* Sort */,
 				886DB979212EC2A800CF8C64 /* ZSCycleScrollView */,
 				886DB96D212EC1D900CF8C64 /* MineTypeBtn.h */,
@@ -745,6 +788,8 @@
 				8824EAEA213001EF000CBA7E /* HomeHeadView.m */,
 				8849B852213551DF00CAE299 /* HomeFreeHeadView.h */,
 				8849B853213551DF00CAE299 /* HomeFreeHeadView.m */,
+				885034652138D157000BDD3A /* PromoteServiceView.h */,
+				885034662138D157000BDD3A /* PromoteServiceView.m */,
 				887E03AD212FB1190013472F /* HomeFreeCell.h */,
 				887E03AE212FB1190013472F /* HomeFreeCell.m */,
 				887E03B0212FB1580013472F /* HomeNowCell.h */,
@@ -762,6 +807,7 @@
 		886DB955212E84BA00CF8C64 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8850346821392487000BDD3A /* 干货头条 */,
 				886DB960212E858A00CF8C64 /* HomeController.h */,
 				886DB961212E858A00CF8C64 /* HomeController.m */,
 				88483F4E2137D471004CA3FA /* SortViewController.h */,
@@ -1058,6 +1104,7 @@
 			files = (
 				8849B84B2135205100CAE299 /* UILabel+String.m in Sources */,
 				886B97942136726A0074322D /* MineFootView.m in Sources */,
+				8850346E213924EF000BDD3A /* BaseDryHeadlinesController.m in Sources */,
 				887E03B5212FB1B50013472F /* HomeGivingCell.m in Sources */,
 				886B98332136B7FD0074322D /* UIViewController+Loading.m in Sources */,
 				886B978D213647430074322D /* ServiceHeadView.m in Sources */,
@@ -1084,6 +1131,7 @@
 				886B97F02136B7BE0074322D /* UserCacheBean.m in Sources */,
 				886B982E2136B7FD0074322D /* UIImage+RoundedCorner.m in Sources */,
 				886B978721363B280074322D /* TrainingServicesCell.m in Sources */,
+				885034722139403D000BDD3A /* DrySmallImageCell.m in Sources */,
 				88483F562137D4F0004CA3FA /* SortLeftScrollow.m in Sources */,
 				886B98302136B7FD0074322D /* UIView+CTExtensions.m in Sources */,
 				886DB98A212EC2D700CF8C64 /* UIView+Frame.m in Sources */,
@@ -1113,6 +1161,7 @@
 				886B97EC2136B7BE0074322D /* CLNetworkingManager.m in Sources */,
 				886B98242136B7FD0074322D /* CreatQRCodeAndBarCodeFromLeon.m in Sources */,
 				886DB990212EC2D700CF8C64 /* ZSCycleScrollView.m in Sources */,
+				885034672138D157000BDD3A /* PromoteServiceView.m in Sources */,
 				886B982D2136B7FD0074322D /* UIImage+Resize.m in Sources */,
 				88483F5A2137DC9F004CA3FA /* BaseViewController.m in Sources */,
 				8824EAE8212FDB6B000CBA7E /* VTMenuBar.m in Sources */,
@@ -1143,9 +1192,12 @@
 				88483F4D2137C63B004CA3FA /* QualityCollectionCell.m in Sources */,
 				886DB94F212E83C200CF8C64 /* ShhTabBarController.m in Sources */,
 				886B97F22136B7BE0074322D /* ZSRequestCenter.m in Sources */,
+				8850347821394081000BDD3A /* DryNoImageCell.m in Sources */,
 				886B97EF2136B7BE0074322D /* UserBaseInfoModel.m in Sources */,
 				886DB98D212EC2D700CF8C64 /* ZSPageControl.m in Sources */,
+				8850347521394068000BDD3A /* DryBigImageCell.m in Sources */,
 				886B97F72136B7BE0074322D /* DSBaseModel.m in Sources */,
+				8850346B213924D2000BDD3A /* DryHeadlinesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

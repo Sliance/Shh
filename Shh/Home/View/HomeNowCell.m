@@ -42,6 +42,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setcornerLayout];
+        self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }

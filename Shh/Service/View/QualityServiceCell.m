@@ -26,6 +26,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self addSubview:self.collectionView];
+       
     }
     return self;
 }
@@ -75,7 +76,8 @@
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     QualityCollectionCell *collectcell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QualityCollectionCell" forIndexPath:indexPath];
-    
+    [collectcell setImageWidth:125];
+    [collectcell setImageHeight:90];
     return collectcell;
 }
 

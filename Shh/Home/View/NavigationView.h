@@ -11,4 +11,8 @@
 @interface NavigationView : BaseView
 @property(nonatomic,strong)UIButton *searchBtn;
 @property(nonatomic,strong)UIButton *historyBtn;
+@property(nonatomic,strong)UIButton *leftBtn;
+@property(nonatomic,assign)NSInteger leftWidth;
+@property(nonatomic,copy)void (^leftBlock)();
+
 @end

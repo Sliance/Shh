@@ -16,6 +16,8 @@
 #import "NavigationView.h"
 #import "SortViewController.h"
 #import "MoreSortViewController.h"
+#import "PromoteServiceView.h"
+#import "DryHeadlinesController.h"
 
 @interface HomeController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -43,6 +45,7 @@ static NSString *likecellIds = @"HomeLikeCell";
         [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableView"];
         [_collectionView
          registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footreusableView"];
+        
     }
     return _collectionView;
 }
@@ -50,6 +53,7 @@ static NSString *likecellIds = @"HomeLikeCell";
     if (!_navView) {
         _navView = [[NavigationView alloc]init];
         _navView.frame = CGRectMake(0, 0, SCREENWIDTH, [self navHeightWithHeight]);
+        [_navView setLeftWidth:15];
     }
     return _navView;
 }
@@ -63,7 +67,7 @@ static NSString *likecellIds = @"HomeLikeCell";
     }
     [self.view addSubview:self.navView];
     [self.view addSubview:self.collectionView];
-    
+    self.view.backgroundColor = DSColorFromHex(0xF0F0F0);
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -107,7 +111,7 @@ static NSString *likecellIds = @"HomeLikeCell";
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
     
-    return 10;
+    return 0;
 }
 //设置每个item的尺寸
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -115,9 +119,9 @@ static NSString *likecellIds = @"HomeLikeCell";
     if(indexPath.section ==3){
         return CGSizeMake(SCREENWIDTH, 318);
     }else if (indexPath.section ==4){
-         return CGSizeMake(SCREENWIDTH/3, 171);
+         return CGSizeMake(SCREENWIDTH/3, 176);
     }else if (indexPath.section ==5){
-         return CGSizeMake(SCREENWIDTH/2, 144);
+         return CGSizeMake(SCREENWIDTH/2, 160);
     }
     return CGSizeMake(SCREENWIDTH, 115);
     
@@ -127,11 +131,18 @@ static NSString *likecellIds = @"HomeLikeCell";
     
     if(section ==0){
         return CGSizeMake(SCREENWIDTH, 270);
+    }else if (section ==5){
+        return CGSizeMake(SCREENWIDTH, 305);
     }
     return CGSizeMake(SCREENWIDTH, 55);
     
 }
-
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
+    if (section ==5) {
+        return CGSizeMake(SCREENWIDTH, 50);
+    }
+    return CGSizeMake(SCREENWIDTH, 0);
+}
 //通过设置SupplementaryViewOfKind 来设置头部或者底部的view，其中 ReuseIdentifier 的值必须和 注册是填写的一致，本例都为 “reusableView”
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
@@ -161,8 +172,15 @@ static NSString *likecellIds = @"HomeLikeCell";
                 MoreSortViewController *moreVC = [[MoreSortViewController alloc]init];
                 moreVC.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:moreVC animated:YES];
+            }else if (index ==0){
+                DryHeadlinesController *dryVC = [[DryHeadlinesController alloc]init];
+                dryVC.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:dryVC animated:YES];
             }
         }];
+    }else if (indexPath.section ==5){
+        PromoteServiceView *promoteView = [[PromoteServiceView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 305)];
+        [headerView addSubview:promoteView];
     }else{
         HomeFreeHeadView *freeview = [[HomeFreeHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 55)];
         [headerView addSubview:freeview];

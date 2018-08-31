@@ -1,43 +1,29 @@
 //
-//  CourseController.m
+//  DryHeadlinesController.m
 //  Shh
 //
-//  Created by 燕来秋mac9 on 2018/8/23.
+//  Created by 燕来秋mac9 on 2018/8/31.
 //  Copyright © 2018年 zhangshu. All rights reserved.
 //
 
-#import "CourseController.h"
+#import "DryHeadlinesController.h"
 #import "MenuInfo.h"
-
-#import "BaseCourseController.h"
+#import "BaseDryHeadlinesController.h"
 #import "NavigationView.h"
-#import "ZSCycleScrollView.h"
-@interface CourseController ()<ZSCycleScrollViewDelegate>
+@interface DryHeadlinesController ()
 @property (nonatomic, strong)  NSMutableArray *menuList;
 @property (nonatomic, assign)  BOOL autoSwitch;
 @property (nonatomic, strong)NavigationView *navView;
-@property(nonatomic,strong)ZSCycleScrollView *cycleView;
 @end
 
-@implementation CourseController
+@implementation DryHeadlinesController
 -(NavigationView *)navView{
     if (!_navView) {
         _navView = [[NavigationView alloc]init];
         _navView.frame = CGRectMake(0, 0, SCREENWIDTH, [self navHeightWithHeight]);
-        [_navView setLeftWidth:15];
+        [_navView setLeftWidth:45];
     }
     return _navView;
-}
--(ZSCycleScrollView *)cycleView{
-    if (!_cycleView) {
-        _cycleView = [[ZSCycleScrollView alloc] initWithFrame:CGRectMake(0, [self navHeightWithHeight], SCREENWIDTH, 125)];
-        _cycleView.delegate = self;
-        _cycleView.autoScrollTimeInterval = 3.0;
-        _cycleView.dotColor = [UIColor whiteColor];
-        NSArray *images = [[NSArray alloc] initWithObjects:[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],nil];
-        _cycleView.localImageGroups = images;
-    }
-    return _cycleView;
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -57,13 +43,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.navView];
-    [self.view addSubview:self.cycleView];
     _menuList = [NSMutableArray array];
     self.magicView.itemScale = 1;
     self.magicView.headerHeight = 40;
-    self.magicView.navigationHeight = [self navHeightWithHeight]+150;
+    self.magicView.navigationHeight = [self navHeightWithHeight]+20;
     self.magicView.againstStatusBar = YES;
-    self.magicView.navigationInset = UIEdgeInsetsMake(120+[self navHeightWithHeight]-15, 0, 0, 0);
+    self.magicView.navigationInset = UIEdgeInsetsMake([self navHeightWithHeight]-15, 20, 0, 0);
     self.magicView.headerView.backgroundColor = [UIColor whiteColor];
     self.magicView.navigationColor = [UIColor whiteColor];
     self.magicView.layoutStyle = VTLayoutStyleDefault;
@@ -79,7 +64,10 @@
     [self generateTestData];
     [self.magicView reloadMenuTitles];
     [self.magicView reloadDataToPage:0];
-   
+    __weak typeof(self)weakself = self;
+    [self.navView setLeftBlock:^{
+        [weakself.navigationController popViewControllerAnimated:YES];
+    }];
     
 }
 -(void)setSelectedIndex:(NSInteger)selectedIndex{
@@ -129,18 +117,18 @@
         [menuItem setTitleColor:DSColorFromHex(0xE70019) forState:UIControlStateSelected];
         menuItem.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:15.f];
     }
-//     默认会自动完成赋值
-        MenuInfo *menuInfo = _menuList[itemIndex];
-        [menuItem setTitle:menuInfo.title forState:UIControlStateNormal];
+    //     默认会自动完成赋值
+    MenuInfo *menuInfo = _menuList[itemIndex];
+    [menuItem setTitle:menuInfo.title forState:UIControlStateNormal];
     return menuItem;
 }
 
 - (UIViewController *)magicView:(VTMagicView *)magicView viewControllerAtPage:(NSUInteger)pageIndex {
     
     static NSString *gridId = @"identifier";
-    BaseCourseController *viewController = [magicView dequeueReusablePageWithIdentifier:gridId];
+    BaseDryHeadlinesController *viewController = [magicView dequeueReusablePageWithIdentifier:gridId];
     if (!viewController) {
-        viewController = [[BaseCourseController alloc] init];
+        viewController = [[BaseDryHeadlinesController alloc] init];
         
     }
     viewController.selectedIndex = pageIndex;
@@ -152,7 +140,7 @@
     _selectedIndex = pageIndex;
     
     [viewController setSelectedIndex:pageIndex];
-//    [viewController setModel:model];
+    //    [viewController setModel:model];
 }
 
 - (void)magicView:(VTMagicView *)magicView viewDidDisappear:(__kindof UIViewController *)viewController atPage:(NSUInteger)pageIndex {
@@ -175,7 +163,7 @@
     NSMutableArray *menuList = [[NSMutableArray alloc] initWithCapacity:24];
     [menuList addObject:[MenuInfo menuInfoWithTitl:title]];
     [menuList removeAllObjects];
-    NSArray *_dataArr = @[@"分类",@"微课堂",@"会员大课",@"大咖分享",@"倍增学院"];
+    NSArray *_dataArr = @[@"      干货      ",@"     头条     ",@"    大咖说    "];
     for (int index = 0; index < _dataArr.count; index++) {
         NSString *str = _dataArr[index];
         MenuInfo *menu = [MenuInfo menuInfoWithTitl:str];
@@ -191,8 +179,8 @@
     rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, -10, 0);
     
     UIButton *btn =  [[UIButton alloc] initWithFrame:CGRectMake(0,0, 50, 40)];
-//    self.magicView.rightNavigatoinItem = btn;
-//    [self.magicView.navigationView addSubview:rightButton];
+    //    self.magicView.rightNavigatoinItem = btn;
+    //    [self.magicView.navigationView addSubview:rightButton];
     
 }
 
@@ -208,6 +196,7 @@
     
     
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
