@@ -33,6 +33,7 @@
         [self addSubview:btn];
     }
     [self addSubview:self.bgView];
+    [self addSubview:self.cycleView];
     [self.bgView addSubview:self.titleLabel];
     [self.bgView addSubview:self.rightLabel];
     [self.bgView addSubview:self.allBtn];
@@ -94,6 +95,17 @@
         
     }
     return _allBtn;
+}
+-(ZSCycleScrollView *)cycleView{
+    if (!_cycleView) {
+        _cycleView = [[ZSCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 125)];
+        _cycleView.delegate = self;
+        _cycleView.autoScrollTimeInterval = 3.0;
+        _cycleView.dotColor = [UIColor whiteColor];
+        NSArray *images = [[NSArray alloc] initWithObjects:[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],nil];
+        _cycleView.localImageGroups = images;
+    }
+    return _cycleView;
 }
 -(void)pressBtn:(MineTypeBtn*)sender{
     self.selectedBlock(sender.tag);

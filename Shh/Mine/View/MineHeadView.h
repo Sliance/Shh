@@ -18,5 +18,6 @@
 @property(nonatomic,strong)UILabel *hYDate;
 @property(nonatomic,strong)UILabel *nameLabel;
 @property(nonatomic,strong)UIButton *editBtn;
-
+@property(nonatomic,strong)UIButton *messageBtn;
+@property(nonatomic,strong)UIButton *serviceBtn;
 @end

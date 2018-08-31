@@ -16,6 +16,13 @@
 		8824EAE7212FDB6B000CBA7E /* VTMagicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8824EADF212FDB6B000CBA7E /* VTMagicView.m */; };
 		8824EAE8212FDB6B000CBA7E /* VTMenuBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8824EAE1212FDB6B000CBA7E /* VTMenuBar.m */; };
 		8824EAEB213001EF000CBA7E /* HomeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8824EAEA213001EF000CBA7E /* HomeHeadView.m */; };
+		88483F4D2137C63B004CA3FA /* QualityCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88483F4C2137C63B004CA3FA /* QualityCollectionCell.m */; };
+		88483F502137D472004CA3FA /* SortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88483F4F2137D472004CA3FA /* SortViewController.m */; };
+		88483F562137D4F0004CA3FA /* SortLeftScrollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 88483F532137D4EF004CA3FA /* SortLeftScrollow.m */; };
+		88483F572137D4F0004CA3FA /* SortBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 88483F552137D4F0004CA3FA /* SortBtn.m */; };
+		88483F5A2137DC9F004CA3FA /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88483F592137DC9F004CA3FA /* BaseViewController.m */; };
+		88483F5D2137E5C7004CA3FA /* MoreSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88483F5C2137E5C7004CA3FA /* MoreSortViewController.m */; };
+		88483F602137E7EC004CA3FA /* MoreSortCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88483F5F2137E7EC004CA3FA /* MoreSortCollectionCell.m */; };
 		8849B84B2135205100CAE299 /* UILabel+String.m in Sources */ = {isa = PBXBuildFile; fileRef = 8849B84A2135205100CAE299 /* UILabel+String.m */; };
 		8849B84E213542BF00CAE299 /* BaseCourseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8849B84D213542BF00CAE299 /* BaseCourseController.m */; };
 		8849B8512135452C00CAE299 /* MenuInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8849B84F2135452B00CAE299 /* MenuInfo.m */; };
@@ -76,7 +83,6 @@
 		886DB93B212E80AB00CF8C64 /* ShhUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 886DB93A212E80AB00CF8C64 /* ShhUITests.m */; };
 		886DB94F212E83C200CF8C64 /* ShhTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886DB94E212E83C200CF8C64 /* ShhTabBarController.m */; };
 		886DB954212E847B00CF8C64 /* PsfTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 886DB953212E847B00CF8C64 /* PsfTabBarItem.m */; };
-		886DB95F212E857400CF8C64 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886DB95D212E857400CF8C64 /* BaseViewController.m */; };
 		886DB962212E858A00CF8C64 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886DB961212E858A00CF8C64 /* HomeController.m */; };
 		886DB965212E859900CF8C64 /* CourseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886DB964212E859900CF8C64 /* CourseController.m */; };
 		886DB968212E85A900CF8C64 /* ServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886DB967212E85A900CF8C64 /* ServiceController.m */; };
@@ -147,6 +153,20 @@
 		8824EAE1212FDB6B000CBA7E /* VTMenuBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VTMenuBar.m; sourceTree = "<group>"; };
 		8824EAE9213001EF000CBA7E /* HomeHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeHeadView.h; sourceTree = "<group>"; };
 		8824EAEA213001EF000CBA7E /* HomeHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeHeadView.m; sourceTree = "<group>"; };
+		88483F4B2137C63B004CA3FA /* QualityCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QualityCollectionCell.h; sourceTree = "<group>"; };
+		88483F4C2137C63B004CA3FA /* QualityCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QualityCollectionCell.m; sourceTree = "<group>"; };
+		88483F4E2137D471004CA3FA /* SortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortViewController.h; sourceTree = "<group>"; };
+		88483F4F2137D472004CA3FA /* SortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortViewController.m; sourceTree = "<group>"; };
+		88483F522137D4EF004CA3FA /* SortBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortBtn.h; sourceTree = "<group>"; };
+		88483F532137D4EF004CA3FA /* SortLeftScrollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortLeftScrollow.m; sourceTree = "<group>"; };
+		88483F542137D4EF004CA3FA /* SortLeftScrollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortLeftScrollow.h; sourceTree = "<group>"; };
+		88483F552137D4F0004CA3FA /* SortBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortBtn.m; sourceTree = "<group>"; };
+		88483F582137DC9F004CA3FA /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		88483F592137DC9F004CA3FA /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		88483F5B2137E5C7004CA3FA /* MoreSortViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreSortViewController.h; sourceTree = "<group>"; };
+		88483F5C2137E5C7004CA3FA /* MoreSortViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreSortViewController.m; sourceTree = "<group>"; };
+		88483F5E2137E7EC004CA3FA /* MoreSortCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreSortCollectionCell.h; sourceTree = "<group>"; };
+		88483F5F2137E7EC004CA3FA /* MoreSortCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreSortCollectionCell.m; sourceTree = "<group>"; };
 		8849B8492135205100CAE299 /* UILabel+String.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+String.h"; sourceTree = "<group>"; };
 		8849B84A2135205100CAE299 /* UILabel+String.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+String.m"; sourceTree = "<group>"; };
 		8849B84C213542BF00CAE299 /* BaseCourseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseCourseController.h; sourceTree = "<group>"; };
@@ -270,8 +290,6 @@
 		886DB94E212E83C200CF8C64 /* ShhTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShhTabBarController.m; sourceTree = "<group>"; };
 		886DB952212E847B00CF8C64 /* PsfTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PsfTabBarItem.h; sourceTree = "<group>"; };
 		886DB953212E847B00CF8C64 /* PsfTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PsfTabBarItem.m; sourceTree = "<group>"; };
-		886DB95D212E857400CF8C64 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		886DB95E212E857400CF8C64 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		886DB960212E858A00CF8C64 /* HomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
 		886DB961212E858A00CF8C64 /* HomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
 		886DB963212E859900CF8C64 /* CourseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseController.h; sourceTree = "<group>"; };
@@ -416,11 +434,26 @@
 			path = icomoon;
 			sourceTree = "<group>";
 		};
+		88483F512137D4D6004CA3FA /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+				88483F522137D4EF004CA3FA /* SortBtn.h */,
+				88483F552137D4F0004CA3FA /* SortBtn.m */,
+				88483F542137D4EF004CA3FA /* SortLeftScrollow.h */,
+				88483F532137D4EF004CA3FA /* SortLeftScrollow.m */,
+				88483F5E2137E7EC004CA3FA /* MoreSortCollectionCell.h */,
+				88483F5F2137E7EC004CA3FA /* MoreSortCollectionCell.m */,
+			);
+			path = Sort;
+			sourceTree = "<group>";
+		};
 		886B978121363AD30074322D /* View */ = {
 			isa = PBXGroup;
 			children = (
 				886B978221363AFF0074322D /* QualityServiceCell.h */,
 				886B978321363AFF0074322D /* QualityServiceCell.m */,
+				88483F4B2137C63B004CA3FA /* QualityCollectionCell.h */,
+				88483F4C2137C63B004CA3FA /* QualityCollectionCell.m */,
 				886B978521363B280074322D /* TrainingServicesCell.h */,
 				886B978621363B280074322D /* TrainingServicesCell.m */,
 				886B978821363B960074322D /* ToJoinCell.h */,
@@ -704,6 +737,7 @@
 		886DB951212E840D00CF8C64 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				88483F512137D4D6004CA3FA /* Sort */,
 				886DB979212EC2A800CF8C64 /* ZSCycleScrollView */,
 				886DB96D212EC1D900CF8C64 /* MineTypeBtn.h */,
 				886DB96C212EC1D900CF8C64 /* MineTypeBtn.m */,
@@ -730,6 +764,10 @@
 			children = (
 				886DB960212E858A00CF8C64 /* HomeController.h */,
 				886DB961212E858A00CF8C64 /* HomeController.m */,
+				88483F4E2137D471004CA3FA /* SortViewController.h */,
+				88483F4F2137D472004CA3FA /* SortViewController.m */,
+				88483F5B2137E5C7004CA3FA /* MoreSortViewController.h */,
+				88483F5C2137E5C7004CA3FA /* MoreSortViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -800,10 +838,10 @@
 		886DB975212EC23F00CF8C64 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				88483F582137DC9F004CA3FA /* BaseViewController.h */,
+				88483F592137DC9F004CA3FA /* BaseViewController.m */,
 				886DB94D212E83C200CF8C64 /* ShhTabBarController.h */,
 				886DB94E212E83C200CF8C64 /* ShhTabBarController.m */,
-				886DB95E212E857400CF8C64 /* BaseViewController.h */,
-				886DB95D212E857400CF8C64 /* BaseViewController.m */,
 				886DB971212EC23900CF8C64 /* BaseTableViewCell.h */,
 				886DB970212EC23900CF8C64 /* BaseTableViewCell.m */,
 				886DB96F212EC23900CF8C64 /* BaseView.h */,
@@ -1040,15 +1078,18 @@
 				886B978A21363B960074322D /* ToJoinCell.m in Sources */,
 				8824EAE7212FDB6B000CBA7E /* VTMagicView.m in Sources */,
 				886DB962212E858A00CF8C64 /* HomeController.m in Sources */,
+				88483F602137E7EC004CA3FA /* MoreSortCollectionCell.m in Sources */,
 				886B98362136BB910074322D /* NSString+MD5Addition.m in Sources */,
 				886B97EE2136B7BE0074322D /* NSString+CLTools.m in Sources */,
 				886B97F02136B7BE0074322D /* UserCacheBean.m in Sources */,
 				886B982E2136B7FD0074322D /* UIImage+RoundedCorner.m in Sources */,
 				886B978721363B280074322D /* TrainingServicesCell.m in Sources */,
+				88483F562137D4F0004CA3FA /* SortLeftScrollow.m in Sources */,
 				886B98302136B7FD0074322D /* UIView+CTExtensions.m in Sources */,
 				886DB98A212EC2D700CF8C64 /* UIView+Frame.m in Sources */,
 				886DB98F212EC2D700CF8C64 /* ZSScrollViewCell.m in Sources */,
 				886B97DF2136B7BE0074322D /* NSArray+TYAFNetworking.m in Sources */,
+				88483F572137D4F0004CA3FA /* SortBtn.m in Sources */,
 				886DB96E212EC1D900CF8C64 /* MineTypeBtn.m in Sources */,
 				886DB98E212EC2D700CF8C64 /* ZSAnimatedDotView.m in Sources */,
 				886DB98B212EC2D700CF8C64 /* ZSDotView.m in Sources */,
@@ -1062,6 +1103,7 @@
 				886B982C2136B7FD0074322D /* UIImage+Alpha.m in Sources */,
 				886DB965212E859900CF8C64 /* CourseController.m in Sources */,
 				886B978421363AFF0074322D /* QualityServiceCell.m in Sources */,
+				88483F502137D472004CA3FA /* SortViewController.m in Sources */,
 				886DB974212EC23900CF8C64 /* BaseView.m in Sources */,
 				8824EAEB213001EF000CBA7E /* HomeHeadView.m in Sources */,
 				8824EAE4212FDB6B000CBA7E /* UIViewController+VTMagic.m in Sources */,
@@ -1070,14 +1112,15 @@
 				887E03AF212FB1190013472F /* HomeFreeCell.m in Sources */,
 				886B97EC2136B7BE0074322D /* CLNetworkingManager.m in Sources */,
 				886B98242136B7FD0074322D /* CreatQRCodeAndBarCodeFromLeon.m in Sources */,
-				886DB95F212E857400CF8C64 /* BaseViewController.m in Sources */,
 				886DB990212EC2D700CF8C64 /* ZSCycleScrollView.m in Sources */,
 				886B982D2136B7FD0074322D /* UIImage+Resize.m in Sources */,
+				88483F5A2137DC9F004CA3FA /* BaseViewController.m in Sources */,
 				8824EAE8212FDB6B000CBA7E /* VTMenuBar.m in Sources */,
 				886B9797213698E50074322D /* NavigationView.m in Sources */,
 				886B97F42136B7BE0074322D /* ZSSignatureGenerator.m in Sources */,
 				886DB91B212E80A600CF8C64 /* ViewController.m in Sources */,
 				886DB926212E80AB00CF8C64 /* main.m in Sources */,
+				88483F5D2137E5C7004CA3FA /* MoreSortViewController.m in Sources */,
 				886B97DE2136B7BE0074322D /* FunctionMethodsUtil.m in Sources */,
 				886B98262136B7FD0074322D /* NSObject+AddKeyValueToObject.m in Sources */,
 				886DB98C212EC2D700CF8C64 /* ZSAbstractDotView.m in Sources */,
@@ -1097,6 +1140,7 @@
 				886B98252136B7FD0074322D /* NSDate+Add.m in Sources */,
 				886B97FA2136B7BE0074322D /* NSString+Hash.m in Sources */,
 				886B982A2136B7FD0074322D /* UIDevice+IdentifierAddition.m in Sources */,
+				88483F4D2137C63B004CA3FA /* QualityCollectionCell.m in Sources */,
 				886DB94F212E83C200CF8C64 /* ShhTabBarController.m in Sources */,
 				886B97F22136B7BE0074322D /* ZSRequestCenter.m in Sources */,
 				886B97EF2136B7BE0074322D /* UserBaseInfoModel.m in Sources */,

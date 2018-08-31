@@ -31,6 +31,9 @@
     [self.hYView addSubview:self.hYDate];
     [self.bgView addSubview:self.nameLabel];
     [self.bgView addSubview:self.editBtn];
+    [self.bgImage addSubview:self.messageBtn];
+    [self.bgImage addSubview:self.serviceBtn];
+    
     NSArray *imageArr= @[@"\U0000e916",@"\U0000e913",@"\U0000e927"];
     NSArray *dataArr = @[@"签到",@"历史",@"下载"];
     for (int i = 0; i<3; i++) {
@@ -46,7 +49,7 @@
         [self.bgView addSubview:btn];
     }
     self.nameLabel.frame = CGRectMake(SCREENWIDTH/2-15-[self.nameLabel.text widthForFont:[UIFont systemFontOfSize:16]]/2, 46, [self.nameLabel.text widthForFont:[UIFont systemFontOfSize:16]], 15);
-    self.editBtn.frame = CGRectMake(self.nameLabel.ctRight, 46, 15, 15);
+    self.editBtn.frame = CGRectMake(self.nameLabel.ctRight+5, 46, 15, 15);
 }
 -(UIImageView *)bgImage{
     if (!_bgImage) {
@@ -128,6 +131,26 @@
         [_editBtn setTitleColor:DSColorFromHex(0xB4B4B4) forState:UIControlStateNormal];
     }
     return _editBtn;
+}
+-(UIButton *)messageBtn{
+    if (!_messageBtn) {
+        _messageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_messageBtn setTitle:@"\U0000e928" forState:UIControlStateNormal];
+        _messageBtn.titleLabel.font = [UIFont fontWithName:@"icomoon"size:26];
+        [_messageBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _messageBtn.frame = CGRectMake(17, 36, 24, 21);
+    }
+    return _messageBtn;
+}
+-(UIButton *)serviceBtn{
+    if (!_serviceBtn) {
+        _serviceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_serviceBtn setTitle:@"\U0000e90f" forState:UIControlStateNormal];
+        _serviceBtn.titleLabel.font = [UIFont fontWithName:@"icomoon"size:27];
+        [_serviceBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _serviceBtn.frame = CGRectMake(SCREENWIDTH-23-15, 36, 23, 23);
+    }
+    return _serviceBtn;
 }
 -(UILabel *)nameLabel{
     if (!_nameLabel) {

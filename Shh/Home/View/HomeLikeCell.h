@@ -14,4 +14,5 @@
 ///物品名
 @property(nonatomic,strong)UILabel *nameLabel;
 @property(nonatomic,assign)NSInteger imageHeight;
+@property(nonatomic,assign)NSInteger imageWidth;
 @end

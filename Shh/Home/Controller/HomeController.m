@@ -14,6 +14,8 @@
 #import "HomeLikeCell.h"
 #import "HomeFreeHeadView.h"
 #import "NavigationView.h"
+#import "SortViewController.h"
+#import "MoreSortViewController.h"
 
 @interface HomeController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -67,8 +69,8 @@ static NSString *likecellIds = @"HomeLikeCell";
     [super viewWillAppear:animated];
      [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
@@ -154,6 +156,13 @@ static NSString *likecellIds = @"HomeLikeCell";
         HomeHeadView* validView = [[HomeHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 270)];
         
         [headerView addSubview:validView];
+        [validView setSelectedBlock:^(NSInteger index) {
+            if (index ==4) {
+                MoreSortViewController *moreVC = [[MoreSortViewController alloc]init];
+                moreVC.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:moreVC animated:YES];
+            }
+        }];
     }else{
         HomeFreeHeadView *freeview = [[HomeFreeHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 55)];
         [headerView addSubview:freeview];
@@ -214,13 +223,17 @@ static NSString *likecellIds = @"HomeLikeCell";
             break;
             case 4:
         {
+            [likecell setImageWidth:110];
             [likecell setImageHeight:110];
+            
             return likecell;
         }
             break;
             case 5:
         {
-            [likecell setImageHeight:165];
+            [likecell setImageWidth:165];
+            [likecell setImageHeight:110];
+            likecell.nameLabel.text = @"加入思和会";
             return likecell;
         }
             break;
@@ -233,7 +246,9 @@ static NSString *likecellIds = @"HomeLikeCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    SortViewController *sortVC = [[SortViewController alloc]init];
+    sortVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:sortVC animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -12,4 +12,5 @@
 @property(nonatomic,strong)UIImageView *headiamge;
 @property(nonatomic,strong)UILabel *titleLabel;
 @property(nonatomic,strong)UILabel *detailLabel;
+
 @end

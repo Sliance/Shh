@@ -8,6 +8,7 @@
 
 #import "BaseTableViewCell.h"
 ///精品服务
-@interface QualityServiceCell : BaseTableViewCell
-
+@interface QualityServiceCell : BaseTableViewCell<UICollectionViewDelegate,UICollectionViewDataSource>
+@property(nonatomic,strong)UICollectionView *collectionView;
+@property(nonatomic,strong)NSMutableArray *dataArr;
 @end

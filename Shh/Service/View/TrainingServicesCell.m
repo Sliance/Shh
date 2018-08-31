@@ -76,7 +76,7 @@
     }];
     [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.headiamge.mas_right).offset(15);
-        make.top.equalTo(self.titleLabel.mas_bottom).offset(15);
+        make.top.equalTo(self.titleLabel.mas_bottom).offset(8);
         make.right.equalTo(self).offset(-15);
     }];
 }

@@ -22,7 +22,7 @@
 -(UIScrollView *)bgscrollow{
     if (!_bgscrollow) {
         _bgscrollow = [[UIScrollView alloc]init];
-        _bgscrollow.frame = CGRectMake(0, -20, SCREENWIDTH, SCREENHEIGHT);
+        _bgscrollow.frame = CGRectMake(0,44-[self navHeightWithHeight], SCREENWIDTH, SCREENHEIGHT);
         _bgscrollow.delegate = self;
         _bgscrollow.contentSize = CGSizeMake(SCREENWIDTH, SCREENHEIGHT+100);
         _bgscrollow.backgroundColor = DSColorFromHex(0xFAFAFA);
@@ -52,8 +52,8 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 - (void)didReceiveMemoryWarning {

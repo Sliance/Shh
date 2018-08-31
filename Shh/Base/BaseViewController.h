@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ZSConfig.h"
 #import "AppDelegate.h"
-//#import "NavgationView.h"
-//#import "UIViewController+Loading.h"
+
+#import "UIViewController+Loading.h"
 
 typedef void (^LoginComplited) ();
 typedef void(^refreshListBlock)();

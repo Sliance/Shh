@@ -25,7 +25,7 @@
     [self.headView addSubview:self.hYimage];
     [self.headView addSubview:self.hYtitle];
     
-    NSArray *imageArr= @[@"\U0000e908",@"\U0000e90c",@"\U0000e92a",@"\U0000e928",@"\U0000e922",@"\U0000e919",@"\U0000e917",@"\U0000e900",@"\U0000e907",];
+    NSArray *imageArr= @[@"\U0000e908",@"\U0000e90c",@"\U0000e92a",@"\U0000e924",@"\U0000e922",@"\U0000e919",@"\U0000e917",@"\U0000e900",@"\U0000e907",];
     NSArray *dataArr = @[@"我的购买",@"我的积分",@"我的勋章",@"我的收藏",@"我的关注",@"设置",@"入驻思和会",@"帮助中心",@""];
     for (int i = 0; i<9; i++) {
         MineTypeBtn *btn = [[MineTypeBtn alloc]initWithFrame:CGRectMake(i%3*(SCREENWIDTH/3-10), 60+i/3*85, SCREENWIDTH/3-10, 85)];

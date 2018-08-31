@@ -18,6 +18,7 @@
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,strong)ServiceHeadView *headview;
 @property (nonatomic, strong)NavigationView *navView;
+
 @end
 
 @implementation ServiceController
@@ -30,6 +31,7 @@
     }
     return _tableview;
 }
+
 -(ServiceHeadView *)headview{
     if (!_headview) {
         _headview = [[ServiceHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 275)];
@@ -54,6 +56,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableview];
+    
     self.tableview.tableHeaderView = self.headview;
     [self.view addSubview:self.navView];
 }
@@ -61,8 +64,8 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

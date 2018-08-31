@@ -11,10 +11,12 @@
 
 #import "BaseCourseController.h"
 #import "NavigationView.h"
-@interface CourseController ()
+#import "ZSCycleScrollView.h"
+@interface CourseController ()<ZSCycleScrollViewDelegate>
 @property (nonatomic, strong)  NSMutableArray *menuList;
 @property (nonatomic, assign)  BOOL autoSwitch;
 @property (nonatomic, strong)NavigationView *navView;
+@property(nonatomic,strong)ZSCycleScrollView *cycleView;
 @end
 
 @implementation CourseController
@@ -25,12 +27,23 @@
     }
     return _navView;
 }
+-(ZSCycleScrollView *)cycleView{
+    if (!_cycleView) {
+        _cycleView = [[ZSCycleScrollView alloc] initWithFrame:CGRectMake(0, [self navHeightWithHeight], SCREENWIDTH, 125)];
+        _cycleView.delegate = self;
+        _cycleView.autoScrollTimeInterval = 3.0;
+        _cycleView.dotColor = [UIColor whiteColor];
+        NSArray *images = [[NSArray alloc] initWithObjects:[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],nil];
+        _cycleView.localImageGroups = images;
+    }
+    return _cycleView;
+}
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
@@ -42,12 +55,14 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view addSubview:self.navView];
+    [self.view addSubview:self.cycleView];
     _menuList = [NSMutableArray array];
     self.magicView.itemScale = 1;
     self.magicView.headerHeight = 40;
-    self.magicView.navigationHeight = [self navHeightWithHeight]+120;
+    self.magicView.navigationHeight = [self navHeightWithHeight]+150;
     self.magicView.againstStatusBar = YES;
-    self.magicView.navigationInset = UIEdgeInsetsMake(120+[self navHeightWithHeight]-40, 0, 0, 0);
+    self.magicView.navigationInset = UIEdgeInsetsMake(120+[self navHeightWithHeight]-15, 0, 0, 0);
     self.magicView.headerView.backgroundColor = [UIColor whiteColor];
     self.magicView.navigationColor = [UIColor whiteColor];
     self.magicView.layoutStyle = VTLayoutStyleDefault;
@@ -64,7 +79,7 @@
     [self.magicView reloadMenuTitles];
     [self.magicView reloadDataToPage:0];
    
-    [self.view addSubview:self.navView];
+    
 }
 -(void)setSelectedIndex:(NSInteger)selectedIndex{
     _selectedIndex = selectedIndex;

@@ -8,8 +8,9 @@
 
 #import "BaseView.h"
 #import "MineTypeBtn.h"
+#import "ZSCycleScrollView.h"
 
-@interface HomeHeadView : BaseView
+@interface HomeHeadView : BaseView<ZSCycleScrollViewDelegate>
 
 @property(nonatomic,copy)void (^selectedBlock)(NSInteger);
 
@@ -17,4 +18,8 @@
 @property(nonatomic,strong)UILabel *titleLabel;
 @property(nonatomic,strong)UILabel *rightLabel;
 @property(nonatomic,strong)UIButton *allBtn;
+
+@property(nonatomic,strong)ZSCycleScrollView *cycleView;
+
+
 @end
