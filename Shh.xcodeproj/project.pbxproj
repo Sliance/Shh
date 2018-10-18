@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		70A261FE6E2EB350FDA3792C /* libPods-Shh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E5225F8F403A3F9F20919F7 /* libPods-Shh.a */; };
+		8819859C2178A126003C962D /* HomeServiceApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 8819859B2178A126003C962D /* HomeServiceApi.m */; };
+		8819859F2178A184003C962D /* BaseModelReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 8819859E2178A184003C962D /* BaseModelReq.m */; };
 		8824EAE2212FDB6B000CBA7E /* UIColor+VTMagic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8824EAD1212FDB6B000CBA7E /* UIColor+VTMagic.m */; };
 		8824EAE3212FDB6B000CBA7E /* UIScrollView+VTMagic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8824EAD3212FDB6B000CBA7E /* UIScrollView+VTMagic.m */; };
 		8824EAE4212FDB6B000CBA7E /* UIViewController+VTMagic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8824EAD5212FDB6B000CBA7E /* UIViewController+VTMagic.m */; };
@@ -139,6 +141,10 @@
 /* Begin PBXFileReference section */
 		1E5225F8F403A3F9F20919F7 /* libPods-Shh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Shh.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68ED97FB65E9D22CAFD448FE /* Pods-Shh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shh.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shh/Pods-Shh.debug.xcconfig"; sourceTree = "<group>"; };
+		8819859A2178A126003C962D /* HomeServiceApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeServiceApi.h; sourceTree = "<group>"; };
+		8819859B2178A126003C962D /* HomeServiceApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeServiceApi.m; sourceTree = "<group>"; };
+		8819859D2178A184003C962D /* BaseModelReq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModelReq.h; sourceTree = "<group>"; };
+		8819859E2178A184003C962D /* BaseModelReq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModelReq.m; sourceTree = "<group>"; };
 		8824EAD0212FDB6B000CBA7E /* UIColor+VTMagic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+VTMagic.h"; sourceTree = "<group>"; };
 		8824EAD1212FDB6B000CBA7E /* UIColor+VTMagic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+VTMagic.m"; sourceTree = "<group>"; };
 		8824EAD2212FDB6B000CBA7E /* UIScrollView+VTMagic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+VTMagic.h"; sourceTree = "<group>"; };
@@ -547,8 +553,12 @@
 		886B97A22136B7BE0074322D /* ApiService */ = {
 			isa = PBXGroup;
 			children = (
+				8819859D2178A184003C962D /* BaseModelReq.h */,
+				8819859E2178A184003C962D /* BaseModelReq.m */,
 				886B97A52136B7BE0074322D /* BaseApi.h */,
 				886B97A62136B7BE0074322D /* BaseApi.m */,
+				8819859A2178A126003C962D /* HomeServiceApi.h */,
+				8819859B2178A126003C962D /* HomeServiceApi.m */,
 			);
 			path = ApiService;
 			sourceTree = "<group>";
@@ -1131,6 +1141,7 @@
 				886B97F02136B7BE0074322D /* UserCacheBean.m in Sources */,
 				886B982E2136B7FD0074322D /* UIImage+RoundedCorner.m in Sources */,
 				886B978721363B280074322D /* TrainingServicesCell.m in Sources */,
+				8819859F2178A184003C962D /* BaseModelReq.m in Sources */,
 				885034722139403D000BDD3A /* DrySmallImageCell.m in Sources */,
 				88483F562137D4F0004CA3FA /* SortLeftScrollow.m in Sources */,
 				886B98302136B7FD0074322D /* UIView+CTExtensions.m in Sources */,
@@ -1191,6 +1202,7 @@
 				886B982A2136B7FD0074322D /* UIDevice+IdentifierAddition.m in Sources */,
 				88483F4D2137C63B004CA3FA /* QualityCollectionCell.m in Sources */,
 				886DB94F212E83C200CF8C64 /* ShhTabBarController.m in Sources */,
+				8819859C2178A126003C962D /* HomeServiceApi.m in Sources */,
 				886B97F22136B7BE0074322D /* ZSRequestCenter.m in Sources */,
 				8850347821394081000BDD3A /* DryNoImageCell.m in Sources */,
 				886B97EF2136B7BE0074322D /* UserBaseInfoModel.m in Sources */,
