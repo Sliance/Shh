@@ -10,6 +10,9 @@
 #import "BaseApi.h"
 #import "BannersReq.h"
 #import "FreeListReq.h"
+#import "BannerRes.h"
+#import "FreeListRes.h"
+
 @interface HomeServiceApi : BaseApi
 + (instancetype)share;
 ///banner获取
