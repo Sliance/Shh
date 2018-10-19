@@ -10,6 +10,9 @@
 #import "ZSAPIProxy.h"
 #import "UserCacheBean.h"
 #import "ZSConfig.h"
+
+///获取显示免费课程列表
+#define banner_list          @"/sihehui/banner/desktop/v1/list"
 ///获取显示免费课程列表
 #define free_course_list          @"/sihehui/course/desktop/v1/limit/free/list"
 ///获取热门课程列表

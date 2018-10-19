@@ -119,6 +119,10 @@
 		887E03B2212FB1580013472F /* HomeNowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 887E03B1212FB1580013472F /* HomeNowCell.m */; };
 		887E03B5212FB1B50013472F /* HomeGivingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 887E03B4212FB1B50013472F /* HomeGivingCell.m */; };
 		887E03B8212FB2AB0013472F /* HomeLikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 887E03B7212FB2AB0013472F /* HomeLikeCell.m */; };
+		895DBF70217980C200E65B16 /* BannersReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF6F217980C200E65B16 /* BannersReq.m */; };
+		895DBF7C21798CBD00E65B16 /* FreeListReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7B21798CBD00E65B16 /* FreeListReq.m */; };
+		895DBF7F21798E3500E65B16 /* BannerRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7E21798E3500E65B16 /* BannerRes.m */; };
+		895DBF8221798EFC00E65B16 /* FreeListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF8121798EFC00E65B16 /* FreeListRes.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -362,6 +366,14 @@
 		887E03B4212FB1B50013472F /* HomeGivingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeGivingCell.m; sourceTree = "<group>"; };
 		887E03B6212FB2AB0013472F /* HomeLikeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeLikeCell.h; sourceTree = "<group>"; };
 		887E03B7212FB2AB0013472F /* HomeLikeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeLikeCell.m; sourceTree = "<group>"; };
+		895DBF6E217980C200E65B16 /* BannersReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannersReq.h; sourceTree = "<group>"; };
+		895DBF6F217980C200E65B16 /* BannersReq.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannersReq.m; sourceTree = "<group>"; };
+		895DBF7A21798CBD00E65B16 /* FreeListReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeListReq.h; sourceTree = "<group>"; };
+		895DBF7B21798CBD00E65B16 /* FreeListReq.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreeListReq.m; sourceTree = "<group>"; };
+		895DBF7D21798E3500E65B16 /* BannerRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerRes.h; sourceTree = "<group>"; };
+		895DBF7E21798E3500E65B16 /* BannerRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerRes.m; sourceTree = "<group>"; };
+		895DBF8021798EFC00E65B16 /* FreeListRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeListRes.h; sourceTree = "<group>"; };
+		895DBF8121798EFC00E65B16 /* FreeListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreeListRes.m; sourceTree = "<group>"; };
 		CC622AFA70744F55DF7FAFC7 /* Pods-Shh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shh.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shh/Pods-Shh.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -526,6 +538,7 @@
 		886B97982136B7BE0074322D /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				895DBF6A21797F5900E65B16 /* Model */,
 				886B97992136B7BE0074322D /* AFCategary */,
 				886B97A22136B7BE0074322D /* ApiService */,
 				886B97B52136B7BE0074322D /* CLNetworking */,
@@ -933,6 +946,21 @@
 			path = ZSCycleScrollView;
 			sourceTree = "<group>";
 		};
+		895DBF6A21797F5900E65B16 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				895DBF6E217980C200E65B16 /* BannersReq.h */,
+				895DBF6F217980C200E65B16 /* BannersReq.m */,
+				895DBF7A21798CBD00E65B16 /* FreeListReq.h */,
+				895DBF7B21798CBD00E65B16 /* FreeListReq.m */,
+				895DBF7D21798E3500E65B16 /* BannerRes.h */,
+				895DBF7E21798E3500E65B16 /* BannerRes.m */,
+				895DBF8021798EFC00E65B16 /* FreeListRes.h */,
+				895DBF8121798EFC00E65B16 /* FreeListRes.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1152,6 +1180,7 @@
 				886DB96E212EC1D900CF8C64 /* MineTypeBtn.m in Sources */,
 				886DB98E212EC2D700CF8C64 /* ZSAnimatedDotView.m in Sources */,
 				886DB98B212EC2D700CF8C64 /* ZSDotView.m in Sources */,
+				895DBF70217980C200E65B16 /* BannersReq.m in Sources */,
 				886B98312136B7FD0074322D /* UIViewController+Loading.m in Sources */,
 				886B97F12136B7BE0074322D /* ZSAPIProxy.m in Sources */,
 				886B97FB2136B7BE0074322D /* NSString+MoneyStyle.m in Sources */,
@@ -1160,6 +1189,7 @@
 				887E03B2212FB1580013472F /* HomeNowCell.m in Sources */,
 				886DB968212E85A900CF8C64 /* ServiceController.m in Sources */,
 				886B982C2136B7FD0074322D /* UIImage+Alpha.m in Sources */,
+				895DBF7F21798E3500E65B16 /* BannerRes.m in Sources */,
 				886DB965212E859900CF8C64 /* CourseController.m in Sources */,
 				886B978421363AFF0074322D /* QualityServiceCell.m in Sources */,
 				88483F502137D472004CA3FA /* SortViewController.m in Sources */,
@@ -1196,6 +1226,7 @@
 				886DB918212E80A600CF8C64 /* AppDelegate.m in Sources */,
 				886DB96B212E85B700CF8C64 /* MineController.m in Sources */,
 				8824EAE6212FDB6B000CBA7E /* VTMagicController.m in Sources */,
+				895DBF8221798EFC00E65B16 /* FreeListRes.m in Sources */,
 				886B98292136B7FD0074322D /* UDIDWrapper.m in Sources */,
 				886B98252136B7FD0074322D /* NSDate+Add.m in Sources */,
 				886B97FA2136B7BE0074322D /* NSString+Hash.m in Sources */,
@@ -1205,6 +1236,7 @@
 				8819859C2178A126003C962D /* HomeServiceApi.m in Sources */,
 				886B97F22136B7BE0074322D /* ZSRequestCenter.m in Sources */,
 				8850347821394081000BDD3A /* DryNoImageCell.m in Sources */,
+				895DBF7C21798CBD00E65B16 /* FreeListReq.m in Sources */,
 				886B97EF2136B7BE0074322D /* UserBaseInfoModel.m in Sources */,
 				886DB98D212EC2D700CF8C64 /* ZSPageControl.m in Sources */,
 				8850347521394068000BDD3A /* DryBigImageCell.m in Sources */,

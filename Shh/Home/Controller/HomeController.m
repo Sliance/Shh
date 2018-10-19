@@ -18,6 +18,7 @@
 #import "MoreSortViewController.h"
 #import "PromoteServiceView.h"
 #import "DryHeadlinesController.h"
+#import "HomeServiceApi.h"
 
 @interface HomeController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -68,6 +69,7 @@ static NSString *likecellIds = @"HomeLikeCell";
     [self.view addSubview:self.navView];
     [self.view addSubview:self.collectionView];
     self.view.backgroundColor = DSColorFromHex(0xF0F0F0);
+    [self getBannerList:@"wxIndex"];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -83,6 +85,36 @@ static NSString *likecellIds = @"HomeLikeCell";
        
     }
     return self;
+}
+
+-(void)getBannerList:(NSString*)type{
+    BannersReq *req = [[BannersReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.appOrPc = @"APP";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.bannerLocation = type;
+    req.platform = @"ios";
+    req.pageIndex = 1;
+    req.pageSize = @"10";
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share]getBannerWithParam:req response:^(id response) {
+        [weakself getFreeList];
+    }];
+}
+-(void)getFreeList{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.pageIndex = 1;
+    req.pageSize = @"3";
+    req.columnId = @"";
+    req.courseCategoryId = @"";
+    [[HomeServiceApi share]getFreeListWithParam:req response:^(id response) {
+        
+    }];
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 6;

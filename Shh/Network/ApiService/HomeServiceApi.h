@@ -6,12 +6,15 @@
 //  Copyright © 2018年 zhangshu. All rights reserved.
 //
 
-#import "BaseApi.h"
-#import "BaseModelReq.h"
 
+#import "BaseApi.h"
+#import "BannersReq.h"
+#import "FreeListReq.h"
 @interface HomeServiceApi : BaseApi
 + (instancetype)share;
-///发送验证码
--(void)sendVerCodeWithParam:(BaseModelReq *) req response:(responseModel) responseModel;
+///banner获取
+-(void)getBannerWithParam:(BannersReq *) req response:(responseModel) responseModel;
+///免费课程
+-(void)getFreeListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 
 @end

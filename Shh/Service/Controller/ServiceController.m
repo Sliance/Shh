@@ -13,6 +13,7 @@
 #import "HomeFreeHeadView.h"
 #import "ServiceHeadView.h"
 #import "NavigationView.h"
+#import "HomeServiceApi.h"
 
 @interface ServiceController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableview;
@@ -60,6 +61,7 @@
     
     self.tableview.tableHeaderView = self.headview;
     [self.view addSubview:self.navView];
+    [self getBannerList:@"wxService"];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -69,6 +71,22 @@
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
+-(void)getBannerList:(NSString*)type{
+    BannersReq *req = [[BannersReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.appOrPc = @"APP";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.bannerLocation = type;
+    req.platform = @"ios";
+    req.pageIndex = 1;
+    req.pageSize = @"10";
+    
+    [[HomeServiceApi share]getBannerWithParam:req response:^(id response) {
+        
+    }];
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 4;
 }
