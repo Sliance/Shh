@@ -119,6 +119,7 @@
 		887E03B2212FB1580013472F /* HomeNowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 887E03B1212FB1580013472F /* HomeNowCell.m */; };
 		887E03B5212FB1B50013472F /* HomeGivingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 887E03B4212FB1B50013472F /* HomeGivingCell.m */; };
 		887E03B8212FB2AB0013472F /* HomeLikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 887E03B7212FB2AB0013472F /* HomeLikeCell.m */; };
+		8901A29A217DDF1B00587310 /* TodayListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8901A299217DDF1B00587310 /* TodayListRes.m */; };
 		895DBF70217980C200E65B16 /* BannersReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF6F217980C200E65B16 /* BannersReq.m */; };
 		895DBF7C21798CBD00E65B16 /* FreeListReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7B21798CBD00E65B16 /* FreeListReq.m */; };
 		895DBF7F21798E3500E65B16 /* BannerRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7E21798E3500E65B16 /* BannerRes.m */; };
@@ -366,6 +367,8 @@
 		887E03B4212FB1B50013472F /* HomeGivingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeGivingCell.m; sourceTree = "<group>"; };
 		887E03B6212FB2AB0013472F /* HomeLikeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeLikeCell.h; sourceTree = "<group>"; };
 		887E03B7212FB2AB0013472F /* HomeLikeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeLikeCell.m; sourceTree = "<group>"; };
+		8901A298217DDF1B00587310 /* TodayListRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayListRes.h; sourceTree = "<group>"; };
+		8901A299217DDF1B00587310 /* TodayListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayListRes.m; sourceTree = "<group>"; };
 		895DBF6E217980C200E65B16 /* BannersReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannersReq.h; sourceTree = "<group>"; };
 		895DBF6F217980C200E65B16 /* BannersReq.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannersReq.m; sourceTree = "<group>"; };
 		895DBF7A21798CBD00E65B16 /* FreeListReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeListReq.h; sourceTree = "<group>"; };
@@ -957,6 +960,8 @@
 				895DBF7E21798E3500E65B16 /* BannerRes.m */,
 				895DBF8021798EFC00E65B16 /* FreeListRes.h */,
 				895DBF8121798EFC00E65B16 /* FreeListRes.m */,
+				8901A298217DDF1B00587310 /* TodayListRes.h */,
+				8901A299217DDF1B00587310 /* TodayListRes.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1187,6 +1192,7 @@
 				8824EAE3212FDB6B000CBA7E /* UIScrollView+VTMagic.m in Sources */,
 				886B98282136B7FD0074322D /* NSString+RTStyle.m in Sources */,
 				887E03B2212FB1580013472F /* HomeNowCell.m in Sources */,
+				8901A29A217DDF1B00587310 /* TodayListRes.m in Sources */,
 				886DB968212E85A900CF8C64 /* ServiceController.m in Sources */,
 				886B982C2136B7FD0074322D /* UIImage+Alpha.m in Sources */,
 				895DBF7F21798E3500E65B16 /* BannerRes.m in Sources */,

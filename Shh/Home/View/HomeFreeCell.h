@@ -7,6 +7,8 @@
 //
 
 #import "BaseCollectionViewCell.h"
+#import "FreeListRes.h"
+
 ///限时免费
 @interface HomeFreeCell : BaseCollectionViewCell
 @property(nonatomic,strong)UIImageView *headiamge;
@@ -15,5 +17,7 @@
 @property(nonatomic,strong)UILabel *huoLabel;
 @property(nonatomic,strong)UILabel *countLabel;
 @property(nonatomic,strong)UILabel *priceLabel;
+
+@property(nonatomic,strong)FreeListRes *model;
 
 @end

@@ -10,7 +10,8 @@
 #define ZSConfig_h
 #define APPNAME @"Shh"
 #define SUPPLIERAPIKEY @"ShhAppApiKey"
-#define DPHOST @"http://192.168.1.179:8088"// 测试环境
+//#define DPHOST @"http://192.168.1.179:8088"// 测试环境
+#define DPHOST @"http://47.101.159.106:8088"// 测试环境
 #define IMAGEHOST  @"https://xcxmmeida.lxnong.com/"//图片地址
 /**屏幕尺寸*/
 #define SCREENWIDTH [[UIScreen mainScreen] bounds].size.width
@@ -25,6 +26,6 @@
 #import "UIView+CTExtensions.h"
 #import <YYKit.h>
 #import <MJExtension.h>
-
-
+#import <SDImageCache.h>
+#import <UIImageView+WebCache.h>
 #endif /* ZSConfig_h */

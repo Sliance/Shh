@@ -70,7 +70,14 @@
     }];
 }
 
-
+-(void)setModel:(TodayListRes *)model{
+    _model = model;
+    self.titleLabel.text = model.articleGuide;
+    NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,model.articleAppCoverImagePath];
+    [self.headiamge sd_setImageWithURL:[NSURL URLWithString:url]];
+    self.detailLabel.text = model.articleIntroduction;
+    
+}
 
 
 @end

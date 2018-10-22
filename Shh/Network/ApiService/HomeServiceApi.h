@@ -12,6 +12,7 @@
 #import "FreeListReq.h"
 #import "BannerRes.h"
 #import "FreeListRes.h"
+#import "TodayListRes.h"
 
 @interface HomeServiceApi : BaseApi
 + (instancetype)share;
@@ -19,5 +20,18 @@
 -(void)getBannerWithParam:(BannersReq *) req response:(responseModel) responseModel;
 ///免费课程
 -(void)getFreeListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///今日干活（1045266497792114689）、精品微课（1045258743325130753）
+-(void)getTodayListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///精品微课（1045258743325130753）
+-(void)getFineClassWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///推介服务
+-(void)getRecommendListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///猜你喜欢
+-(void)getGuessListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///首页底部展示
+-(void)gethHomeBottomWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+
+
+
 
 @end

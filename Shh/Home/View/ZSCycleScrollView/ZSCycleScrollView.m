@@ -11,7 +11,7 @@
 #import "NSData+ZSCache.h"
 #import "ZSScrollViewCell.h"
 #import "ZSPageControl.h"
-
+#import "ZSConfig.h"
 #define kCycleScrollCell @"tracyCell"
 
 @interface ZSCycleScrollView ()<UIScrollViewDelegate>
@@ -268,8 +268,8 @@
  *  分别加载每一张图片，并保存在缓存当中，以便下一次的从缓存读取
  */
 - (void)loadImageAndReplaceItemAtIndex:(NSInteger)index{
-    NSURL *url = [self.imageUrlGroups[index] isKindOfClass:[NSURL class]] ? self.imageUrlGroups[index]:[NSURL URLWithString:self.imageUrlGroups[index]];
-    
+//    NSURL *url = [self.imageUrlGroups[index] isKindOfClass:[NSURL class]] ? self.imageUrlGroups[index]:[NSURL URLWithString:self.imageUrlGroups[index]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",DPHOST,self.imageUrlGroups[index]]];
     // 如果有缓存，直接加载缓存
     NSData *data = [NSData getDataCacheWithIdentifier:url.absoluteString];
     if (data) {
@@ -277,30 +277,34 @@
         [self setUpScrollViewContent];
     } else {
         // 网络加载图片并缓存图片
-        [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url]
-                                           queue:[[NSOperationQueue alloc] init]
-                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError){
-                                   if (!connectionError) {
-                                       
-                                       UIImage *image = [UIImage imageWithData:data];
-                                       if (!image) return; // 防止错误数据导致崩溃
-                                       [self.imagesGroup setObject:image atIndexedSubscript:index];
-                                       dispatch_async(dispatch_get_main_queue(), ^{
-                                           [self setUpScrollViewContent];
-                                       });
-                                       [data savaDataCacheWithIdentifier:url.absoluteString];
-                                   } else { // 加载数据失败
-                                       static int repeat = 0;
-                                       dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                           if (repeat > 10) return;
-                                           [self loadImageAndReplaceItemAtIndex:index];
-                                           repeat++;
-                                       });
-                                       
-                                   }
-                               }
-         
-         ];
+        NSURLSession *session = [NSURLSession sharedSession];
+        
+        __block  NSString *result = @"";
+        NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:[NSURLRequest requestWithURL:url] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            
+            if (!error) {
+                
+                UIImage *image = [UIImage imageWithData:data];
+                if (!image) return; // 防止错误数据导致崩溃
+                [self.imagesGroup setObject:image atIndexedSubscript:index];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self setUpScrollViewContent];
+                });
+                [data savaDataCacheWithIdentifier:url.absoluteString];
+            } else { // 加载数据失败
+                static int repeat = 0;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    if (repeat > 10) return;
+                    [self loadImageAndReplaceItemAtIndex:index];
+                    repeat++;
+                });
+                
+            }
+            
+        }];
+        
+        
+        [dataTask resume];
     }
 }
 

@@ -22,7 +22,7 @@
     NSArray *imageArr= @[@"\U0000e91e",@"\U0000e91f",@"\U0000e90e",@"\U0000e8f0",@"\U0000e905"];
     NSArray *dataArr = @[@"干货头条",@"团队打造",@"金牌店长",@"微信营销",@"更多分类"];
     for (int i = 0; i<5; i++) {
-        MineTypeBtn *btn = [[MineTypeBtn alloc]initWithFrame:CGRectMake(i*SCREENWIDTH/5, 125, SCREENWIDTH/5, 88)];
+        MineTypeBtn *btn = [[MineTypeBtn alloc]initWithFrame:CGRectMake(i*SCREENWIDTH/5, 169, SCREENWIDTH/5, 88)];
         btn.imageLabel.text = imageArr[i];
         btn.typeLabel.text = dataArr[i];
         btn.tag = i;
@@ -98,16 +98,17 @@
 }
 -(ZSCycleScrollView *)cycleView{
     if (!_cycleView) {
-        _cycleView = [[ZSCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 125)];
+        _cycleView = [[ZSCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 169)];
         _cycleView.delegate = self;
         _cycleView.autoScrollTimeInterval = 3.0;
         _cycleView.dotColor = [UIColor whiteColor];
-        NSArray *images = [[NSArray alloc] initWithObjects:[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],nil];
-        _cycleView.localImageGroups = images;
+//        NSArray *images = [[NSArray alloc] initWithObjects:[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],nil];
+//        _cycleView.localImageGroups = images;
     }
     return _cycleView;
 }
 -(void)pressBtn:(MineTypeBtn*)sender{
     self.selectedBlock(sender.tag);
 }
+
 @end

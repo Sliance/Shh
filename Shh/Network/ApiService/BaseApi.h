@@ -25,8 +25,8 @@
 #define single_course          @"/sihehui/course/desktop/v1/find"
 ///获取会员的课程列表
 #define mine_course_list          @"/sihehui/course/desktop/v1/home/list"
-///获取会员的课程列表
-#define course_list          @"/sihehui/course/desktop/v1/list"
+///获取会员的课程列表/精品微课
+#define fine_course_list          @"/sihehui/course/desktop/v1/list"
 
 ///更多分类页面接口
 #define more_sort_list         @"/sihehui/course/category/desktop/v1/list"
@@ -46,6 +46,14 @@
 ///修改订单
 #define change_order          @"/sihehui/order/admin/v1/update"
 
+///今日干活
+#define Today_list          @"/sihehui/article/desktop/v1/list"
+///推介服务
+#define recommend_list          @"/sihehui/siheservice/desktop/v1/list/recommend"
+///猜你喜欢
+#define guess_list          @"/sihehui/member/click/desktop/v1/guess/list"
+///底部展示
+#define home_bottom_url         @"/sihehui/siheservice/desktop/v1/app/home/list"
 
 
 

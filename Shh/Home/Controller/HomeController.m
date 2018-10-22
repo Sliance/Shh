@@ -24,6 +24,14 @@
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property (nonatomic, strong)HomeHeadView *headView;
 @property (nonatomic, strong)NavigationView *navView;
+@property (nonatomic, strong)NSMutableArray *bannerArr;
+@property (nonatomic, strong)NSMutableArray *freeListArr;
+@property (nonatomic, strong)NSMutableArray *todayListArr;
+@property (nonatomic, strong)NSMutableArray *fineClassArr;
+@property (nonatomic, strong)NSMutableArray *bigClassArr;
+@property (nonatomic, strong)NSMutableArray *recommendListArr;
+@property (nonatomic, strong)NSMutableArray *guessListArr;
+@property (nonatomic, strong)NSMutableArray *homeBottomArr;
 @end
 static NSString *freecellIds = @"HomeFreeCell";
 static NSString *nowcellIds = @"HomeNowCell";
@@ -69,6 +77,14 @@ static NSString *likecellIds = @"HomeLikeCell";
     [self.view addSubview:self.navView];
     [self.view addSubview:self.collectionView];
     self.view.backgroundColor = DSColorFromHex(0xF0F0F0);
+    self.bannerArr = [NSMutableArray array];
+    self.freeListArr = [NSMutableArray array];
+    self.todayListArr = [NSMutableArray array];
+    self.fineClassArr = [NSMutableArray array];
+    self.bigClassArr = [NSMutableArray array];
+    self.recommendListArr = [NSMutableArray array];
+    self.guessListArr = [NSMutableArray array];
+    self.homeBottomArr = [NSMutableArray array];
     [self getBannerList:@"wxIndex"];
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -99,6 +115,11 @@ static NSString *likecellIds = @"HomeLikeCell";
     req.pageSize = @"10";
     __weak typeof(self)weakself = self;
     [[HomeServiceApi share]getBannerWithParam:req response:^(id response) {
+        if (response) {
+            [weakself.bannerArr removeAllObjects];
+            [weakself.bannerArr addObjectsFromArray: response];
+            [weakself.collectionView reloadData];
+        }
         [weakself getFreeList];
     }];
 }
@@ -112,7 +133,133 @@ static NSString *likecellIds = @"HomeLikeCell";
     req.pageSize = @"3";
     req.columnId = @"";
     req.courseCategoryId = @"";
+    __weak typeof(self)weakself = self;
     [[HomeServiceApi share]getFreeListWithParam:req response:^(id response) {
+        if (response) {
+            [weakself.freeListArr removeAllObjects];
+            [weakself.freeListArr addObjectsFromArray:response];
+           [weakself.collectionView reloadData];
+        }
+        [weakself getTodayList];
+        
+    }];
+}
+-(void)getTodayList{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.pageIndex = 1;
+    req.pageSize = @"3";
+    req.columnId = @"1045266497792114689";
+//    req.courseCategoryId = @"";
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share]getTodayListWithParam:req response:^(id response) {
+        if (response) {
+            [weakself.todayListArr removeAllObjects];
+            [weakself.todayListArr addObjectsFromArray:response];
+            [weakself.collectionView reloadData];
+        }
+        [weakself getFineClass];
+        
+    }];
+}
+-(void)getFineClass{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.pageIndex = 1;
+    req.pageSize = @"3";
+    req.columnId = @"1045258743325130753";
+    req.courseCategoryId = @"";
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share]getFineClassWithParam:req response:^(id response) {
+        if (response) {
+            [weakself.fineClassArr removeAllObjects];
+            [weakself.fineClassArr addObjectsFromArray:response];
+            [weakself.collectionView reloadData];
+        }
+        [weakself getBigClass];
+    }];
+}
+-(void)getBigClass{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.pageIndex = 1;
+    req.pageSize = @"3";
+    req.columnId = @"1043064749014945793";
+    req.courseCategoryId = @"";
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share]getFineClassWithParam:req response:^(id response) {
+        if (response) {
+            [weakself.bigClassArr removeAllObjects];
+            [weakself.bigClassArr addObjectsFromArray:response];
+            [weakself.collectionView reloadData];
+        }
+        [weakself getRecommendList];
+    }];
+}
+-(void)getRecommendList{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.pageIndex = 1;
+    req.pageSize = @"3";
+    
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share]getRecommendListWithParam:req response:^(id response) {
+        if (response) {
+            [weakself.recommendListArr removeAllObjects];
+            [weakself.recommendListArr addObjectsFromArray:response];
+            [weakself.collectionView reloadData];
+        }
+        [weakself getGuessList];
+    }];
+}
+-(void)getGuessList{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.pageIndex = 1;
+    req.pageSize = @"3";
+    
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share]getGuessListWithParam:req response:^(id response) {
+        if (response) {
+            [weakself.guessListArr removeAllObjects];
+            [weakself.guessListArr addObjectsFromArray:response];
+            [weakself.collectionView reloadData];
+        }
+        [weakself getHomeBottom];
+    }];
+}
+-(void)getHomeBottom{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.pageIndex = 1;
+    req.pageSize = @"3";
+    req.columnId = @"1043064749014945793";
+    req.courseCategoryId = @"";
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share]gethHomeBottomWithParam:req response:^(id response) {
+        if (response) {
+            [weakself.homeBottomArr removeAllObjects];
+            [weakself.homeBottomArr addObjectsFromArray:response];
+            [weakself.collectionView reloadData];
+        }
         
     }];
 }
@@ -120,9 +267,20 @@ static NSString *likecellIds = @"HomeLikeCell";
     return 6;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (section ==4) {
-        return 6;
+    if (section ==0) {
+        return self.freeListArr.count;
+    }else if (section ==1){
+        return self.todayListArr.count;
+    }else if (section ==2){
+        return self.fineClassArr.count;
+    }else if (section ==3){
+        return self.bigClassArr.count;
+    }else if (section ==4){
+        return self.guessListArr.count;
+    }else if (section ==5){
+        return self.homeBottomArr.count;
     }
+    
     return 3;
 }
 //设置每个item的UIEdgeInsets
@@ -162,7 +320,7 @@ static NSString *likecellIds = @"HomeLikeCell";
     
     
     if(section ==0){
-        return CGSizeMake(SCREENWIDTH, 270);
+        return CGSizeMake(SCREENWIDTH, 314);
     }else if (section ==5){
         return CGSizeMake(SCREENWIDTH, 305);
     }
@@ -196,8 +354,14 @@ static NSString *likecellIds = @"HomeLikeCell";
     
     
     if(indexPath.section ==0){
-        HomeHeadView* validView = [[HomeHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 270)];
-        
+        HomeHeadView* validView = [[HomeHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 314)];
+        NSMutableArray *arr  = [NSMutableArray array];
+        for (BannerRes *model in self.bannerArr) {
+            if (model.bannerImagePath) {
+                [arr addObject:model.bannerImagePath];
+            }
+        }
+        [validView.cycleView setImageUrlGroups:arr];
         [headerView addSubview:validView];
         [validView setSelectedBlock:^(NSInteger index) {
             if (index ==4) {
@@ -253,16 +417,22 @@ static NSString *likecellIds = @"HomeLikeCell";
     switch (indexPath.section) {
             case 0:
             {
+                FreeListRes *model = self.freeListArr[indexPath.row];
+                [freecell setModel:model];
                return freecell;
             }
             break;
             case 1:
         {
+            TodayListRes *model = self.todayListArr[indexPath.row];
+            [nowcell setModel:model];
             return nowcell;
         }
             break;
             case 2:
         {
+            FreeListRes *model = self.fineClassArr[indexPath.row];
+            [freecell setModel:model];
             return freecell;
         }
             break;

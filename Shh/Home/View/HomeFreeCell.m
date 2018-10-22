@@ -22,7 +22,7 @@
         _titleLabel.textAlignment = NSTextAlignmentLeft;
         _titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:16];
         _titleLabel.textColor = DSColorFromHex(0x474747);
-        _titleLabel.text = @"倍增的6大路径";
+        
     }
     return _titleLabel;
 }
@@ -32,7 +32,7 @@
         _detailLabel.textAlignment = NSTextAlignmentLeft;
         _detailLabel.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:14];
         _detailLabel.textColor = DSColorFromHex(0x777777);
-        _detailLabel.text = @"揭秘千万大商的业绩增长引擎";
+        
     }
     return _detailLabel;
 }
@@ -113,4 +113,21 @@
     }];
     
 }
+
+-(void)setModel:(FreeListRes *)model{
+    _model = model;
+    self.titleLabel.text = model.courseTitle;
+    NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,model.courseAppCoverImagePath];
+    [self.headiamge sd_setImageWithURL:[NSURL URLWithString:url]];
+    self.detailLabel.text = model.courseIntroduction;
+    self.countLabel.text = model.courseTrueClickCount;
+    if (model.coursePrice.length>0) {
+         self.priceLabel.text = [NSString stringWithFormat:@"￥%@",model.coursePrice];
+    }
+}
+
+
+
+
+
 @end
