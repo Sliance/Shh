@@ -136,7 +136,7 @@
             NSDictionary *dicResponse = (NSDictionary *) response.content;
             if ([dicResponse[@"code"] integerValue] == 200) {
                 if (responseModel) {
-                    NSArray *result = [FreeListRes mj_objectArrayWithKeyValuesArray:dicResponse[@"data"][@"list"]];
+                    NSArray *result = [RecommendListRes mj_objectArrayWithKeyValuesArray:dicResponse[@"data"][@"list"]];
                     responseModel(result);
                 }
             }else {
@@ -162,7 +162,7 @@
             NSDictionary *dicResponse = (NSDictionary *) response.content;
             if ([dicResponse[@"code"] integerValue] == 200) {
                 if (responseModel) {
-                    NSArray *result = [FreeListRes mj_objectArrayWithKeyValuesArray:dicResponse[@"data"][@"list"]];
+                    NSArray *result = [GuessListRes mj_objectArrayWithKeyValuesArray:dicResponse[@"data"][@"list"]];
                     responseModel(result);
                 }
             }else {
@@ -188,7 +188,7 @@
             NSDictionary *dicResponse = (NSDictionary *) response.content;
             if ([dicResponse[@"code"] integerValue] == 200) {
                 if (responseModel) {
-                    NSArray *result = [FreeListRes mj_objectArrayWithKeyValuesArray:dicResponse[@"data"][@"list"]];
+                    NSArray *result = [RecommendListRes mj_objectArrayWithKeyValuesArray:dicResponse[@"data"][@"list"]];
                     responseModel(result);
                 }
             }else {

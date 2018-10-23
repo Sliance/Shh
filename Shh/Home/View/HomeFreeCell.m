@@ -83,18 +83,19 @@
     [self.headiamge mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(15);
         make.top.equalTo(self).offset(5);
-        make.height.width.mas_equalTo(90);
+        make.height.mas_equalTo(90);
+        make.width.mas_equalTo(140);
         
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.headiamge.mas_right).offset(15);
         make.top.equalTo(self).offset(5);
-        
+        make.right.equalTo(self).offset(-15);
     }];
     [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.headiamge.mas_right).offset(15);
         make.top.equalTo(self.titleLabel.mas_bottom).offset(8);
-        
+         make.right.equalTo(self).offset(-15);
     }];
     [self.huoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.headiamge.mas_right).offset(15);

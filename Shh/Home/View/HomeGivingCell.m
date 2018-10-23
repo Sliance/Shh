@@ -153,4 +153,18 @@
     }];
     
 }
+
+
+-(void)setModel:(FreeListRes *)model{
+    _model = model;
+    self.titleLabel.text = model.courseTitle;
+    NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,model.courseAppCoverImagePath];
+    [self.headiamge sd_setImageWithURL:[NSURL URLWithString:url]];
+    self.detailLabel.text = model.courseIntroduction;
+    self.shareLabel.text = model.courseTrueClickCount;
+    self.likeLabel.text = model.courseVirtualClickCount;
+    if (model.coursePrice.length>0) {
+        self.priceLabel.text = [NSString stringWithFormat:@"￥%@",model.coursePrice];
+    }
+}
 @end

@@ -40,13 +40,13 @@
 }
 -(void)setImageHeight:(NSInteger )imageHeight{
     _imageHeight = imageHeight;
-    if(imageHeight ==110){
-        _nameLabel.numberOfLines = 2;
-        _nameLabel.text = @"培养“搞定关键” 任务的销售能力";
-    }else{
-        _nameLabel.numberOfLines = 1;
-        _nameLabel.text = @"加入思和会";
-    }
+//    if(imageHeight ==110){
+//        _nameLabel.numberOfLines = 2;
+//        _nameLabel.text = @"培养“搞定关键” 任务的销售能力";
+//    }else{
+//        _nameLabel.numberOfLines = 1;
+//        _nameLabel.text = @"加入思和会";
+//    }
     [self.headImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self);
         make.top.equalTo(self).offset(10);
@@ -60,4 +60,20 @@
         
     }];
 }
+
+-(void)setModel:(GuessListRes *)model{
+    _model = model;
+    NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,model.imagePath];
+    [self.headImage sd_setImageWithURL:[NSURL URLWithString:url]];
+    self.nameLabel.text = model.title;
+}
+
+-(void)setBottomModel:(RecommendListRes *)bottomModel{
+    _bottomModel = bottomModel;
+    NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,bottomModel.siheserviceAppImagePath];
+    [self.headImage sd_setImageWithURL:[NSURL URLWithString:url]];
+    self.nameLabel.text = bottomModel.siheserviceTitle;
+}
+
+
 @end

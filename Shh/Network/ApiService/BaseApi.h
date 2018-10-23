@@ -22,7 +22,9 @@
 ///搜索课程
 #define search_course          @"/sihehui/course/desktop/v1/search"
 ///获取单条课程
-#define single_course          @"/sihehui/course/desktop/v1/find"
+#define single_course           @"/sihehui/course/desktop/v1/find"
+///获取单条课程目录
+#define single_course_directory   @"/sihehui/course/list/desktop/v1/find"
 ///获取会员的课程列表
 #define mine_course_list          @"/sihehui/course/desktop/v1/home/list"
 ///获取会员的课程列表/精品微课

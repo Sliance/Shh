@@ -35,7 +35,7 @@
 
 -(ServiceHeadView *)headview{
     if (!_headview) {
-        _headview = [[ServiceHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 275)];
+        _headview = [[ServiceHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 235)];
         
     }
     return _headview;
@@ -61,11 +61,12 @@
     
     self.tableview.tableHeaderView = self.headview;
     [self.view addSubview:self.navView];
-    [self getBannerList:@"wxService"];
+   
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+     [self getBannerList:@"wxService"];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -81,9 +82,17 @@
     req.platform = @"ios";
     req.pageIndex = 1;
     req.pageSize = @"10";
-    
+    __weak typeof(self)weakself = self;
     [[HomeServiceApi share]getBannerWithParam:req response:^(id response) {
-        
+        if (response) {
+            NSMutableArray *arr  = [NSMutableArray array];
+            for (BannerRes *model in response) {
+                if (model.bannerImagePath) {
+                    [arr addObject:model.bannerImagePath];
+                }
+            }
+            [weakself.headview.cycleView setImageUrlGroups:arr];
+        }
     }];
 }
 

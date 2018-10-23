@@ -13,22 +13,30 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        [self addSubview:self.topView];
+        [self addSubview:self.cycleView];
         [self addSubview:self.memberBtn];
-        [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.cycleView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.equalTo(self);
-            make.height.mas_equalTo(210);
+            make.height.mas_equalTo(170);
         }];
         [self.memberBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self).offset(15);
             make.right.equalTo(self).offset(-15);
-            make.top.equalTo(self.topView.mas_bottom).offset(15);
+            make.top.equalTo(self.cycleView.mas_bottom).offset(15);
             make.height.mas_equalTo(40);
         }];
     }
     return self;
 }
-
+-(ZSCycleScrollView *)cycleView{
+    if (!_cycleView) {
+        _cycleView = [[ZSCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 170)];
+        _cycleView.delegate = self;
+        _cycleView.autoScrollTimeInterval = 3.0;
+        _cycleView.dotColor = [UIColor whiteColor];
+    }
+    return _cycleView;
+}
 -(UIView *)topView{
     if (!_topView) {
         _topView = [[UIView alloc]init];

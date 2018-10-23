@@ -231,7 +231,7 @@ static NSString *likecellIds = @"HomeLikeCell";
     req.timestamp = @"0";
     req.platform = @"ios";
     req.pageIndex = 1;
-    req.pageSize = @"3";
+    req.pageSize = @"4";
     
     __weak typeof(self)weakself = self;
     [[HomeServiceApi share]getGuessListWithParam:req response:^(id response) {
@@ -250,7 +250,7 @@ static NSString *likecellIds = @"HomeLikeCell";
     req.timestamp = @"0";
     req.platform = @"ios";
     req.pageIndex = 1;
-    req.pageSize = @"3";
+    req.pageSize = @"4";
     req.columnId = @"1043064749014945793";
     req.courseCategoryId = @"";
     __weak typeof(self)weakself = self;
@@ -309,7 +309,7 @@ static NSString *likecellIds = @"HomeLikeCell";
     if(indexPath.section ==3){
         return CGSizeMake(SCREENWIDTH, 318);
     }else if (indexPath.section ==4){
-         return CGSizeMake(SCREENWIDTH/3, 176);
+         return CGSizeMake(SCREENWIDTH/2, 176);
     }else if (indexPath.section ==5){
          return CGSizeMake(SCREENWIDTH/2, 160);
     }
@@ -438,22 +438,26 @@ static NSString *likecellIds = @"HomeLikeCell";
             break;
             case 3:
         {
+            FreeListRes *model = self.bigClassArr[indexPath.row];
+            [givecell setModel:model];
             return givecell;
         }
             break;
             case 4:
         {
-            [likecell setImageWidth:110];
+            [likecell setImageWidth:SCREENWIDTH/2-45/2];
             [likecell setImageHeight:110];
-            
+            GuessListRes *model = self.guessListArr[indexPath.row];
+            [likecell setModel:model];
             return likecell;
         }
             break;
             case 5:
         {
-            [likecell setImageWidth:165];
+            [likecell setImageWidth:SCREENWIDTH/2-45/2];
             [likecell setImageHeight:110];
-            likecell.nameLabel.text = @"加入思和会";
+            RecommendListRes *model = self.homeBottomArr[indexPath.row];
+            [likecell setBottomModel:model];
             return likecell;
         }
             break;

@@ -7,9 +7,10 @@
 //
 
 #import "BaseView.h"
+#import "ZSCycleScrollView.h"
 
-@interface ServiceHeadView : BaseView
+@interface ServiceHeadView : BaseView<ZSCycleScrollViewDelegate>
 @property(nonatomic,strong)UIView *topView;
 @property(nonatomic,strong)UIButton *memberBtn;
-
+@property(nonatomic,strong)ZSCycleScrollView *cycleView;
 @end

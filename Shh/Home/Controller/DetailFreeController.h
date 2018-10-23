@@ -1,5 +1,5 @@
 //
-//  CourseController.h
+//  DetailFreeController.h
 //  Shh
 //
 //  Created by dnaer7 on 2018/10/23.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CourseController : BaseViewController
+@interface DetailFreeController : BaseViewController
 
 @end
 

@@ -1,18 +1,18 @@
 //
-//  CourseController.m
+//  DetailFreeController.m
 //  Shh
 //
 //  Created by dnaer7 on 2018/10/23.
 //  Copyright © 2018 zhangshu. All rights reserved.
 //
 
-#import "CourseController.h"
+#import "DetailFreeController.h"
 
-@interface CourseController ()
+@interface DetailFreeController ()
 
 @end
 
-@implementation CourseController
+@implementation DetailFreeController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

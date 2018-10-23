@@ -15,7 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *columnId;
 ///课程分类编号
 @property(nonatomic,copy)NSString *courseCategoryId;
-
+///课程目录编号
+@property(nonatomic,copy)NSString *courseListId;
 @end
 
 NS_ASSUME_NONNULL_END

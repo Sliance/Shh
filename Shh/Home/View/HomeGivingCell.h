@@ -8,7 +8,7 @@
 
 #import "BaseCollectionViewCell.h"
 #import "UILabel+String.h"
-
+#import "FreeListRes.h"
 ///会员大课
 @interface HomeGivingCell : BaseCollectionViewCell
 @property(nonatomic,strong)UIImageView *headiamge;
@@ -19,5 +19,7 @@
 @property(nonatomic,strong)UIButton *likeBtn;
 @property(nonatomic,strong)UILabel *shareLabel;
 @property(nonatomic,strong)UILabel *likeLabel;
+@property(nonatomic,strong)FreeListRes *model;
+
 
 @end

@@ -92,7 +92,6 @@
 		886DB94F212E83C200CF8C64 /* ShhTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886DB94E212E83C200CF8C64 /* ShhTabBarController.m */; };
 		886DB954212E847B00CF8C64 /* PsfTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 886DB953212E847B00CF8C64 /* PsfTabBarItem.m */; };
 		886DB962212E858A00CF8C64 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886DB961212E858A00CF8C64 /* HomeController.m */; };
-		886DB965212E859900CF8C64 /* CourseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886DB964212E859900CF8C64 /* CourseController.m */; };
 		886DB968212E85A900CF8C64 /* ServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886DB967212E85A900CF8C64 /* ServiceController.m */; };
 		886DB96B212E85B700CF8C64 /* MineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886DB96A212E85B700CF8C64 /* MineController.m */; };
 		886DB96E212EC1D900CF8C64 /* MineTypeBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 886DB96C212EC1D900CF8C64 /* MineTypeBtn.m */; };
@@ -120,10 +119,15 @@
 		887E03B5212FB1B50013472F /* HomeGivingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 887E03B4212FB1B50013472F /* HomeGivingCell.m */; };
 		887E03B8212FB2AB0013472F /* HomeLikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 887E03B7212FB2AB0013472F /* HomeLikeCell.m */; };
 		8901A29A217DDF1B00587310 /* TodayListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8901A299217DDF1B00587310 /* TodayListRes.m */; };
+		890D559C217EAE09009B33B2 /* RecommendListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D559B217EAE09009B33B2 /* RecommendListRes.m */; };
+		890D559F217EAE21009B33B2 /* GuessListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D559E217EAE21009B33B2 /* GuessListRes.m */; };
+		890D55A9217F0404009B33B2 /* DetailFreeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D55A8217F0404009B33B2 /* DetailFreeController.m */; };
 		895DBF70217980C200E65B16 /* BannersReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF6F217980C200E65B16 /* BannersReq.m */; };
 		895DBF7C21798CBD00E65B16 /* FreeListReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7B21798CBD00E65B16 /* FreeListReq.m */; };
 		895DBF7F21798E3500E65B16 /* BannerRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7E21798E3500E65B16 /* BannerRes.m */; };
 		895DBF8221798EFC00E65B16 /* FreeListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF8121798EFC00E65B16 /* FreeListRes.m */; };
+		89856B47217F1A2100688DF7 /* CourseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89856B46217F1A2100688DF7 /* CourseController.m */; };
+		89856B4A217F1AE400688DF7 /* CourseHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89856B49217F1AE400688DF7 /* CourseHeadView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -321,8 +325,6 @@
 		886DB953212E847B00CF8C64 /* PsfTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PsfTabBarItem.m; sourceTree = "<group>"; };
 		886DB960212E858A00CF8C64 /* HomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
 		886DB961212E858A00CF8C64 /* HomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
-		886DB963212E859900CF8C64 /* CourseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseController.h; sourceTree = "<group>"; };
-		886DB964212E859900CF8C64 /* CourseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseController.m; sourceTree = "<group>"; };
 		886DB966212E85A900CF8C64 /* ServiceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceController.h; sourceTree = "<group>"; };
 		886DB967212E85A900CF8C64 /* ServiceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceController.m; sourceTree = "<group>"; };
 		886DB969212E85B700CF8C64 /* MineController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineController.h; sourceTree = "<group>"; };
@@ -369,6 +371,12 @@
 		887E03B7212FB2AB0013472F /* HomeLikeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeLikeCell.m; sourceTree = "<group>"; };
 		8901A298217DDF1B00587310 /* TodayListRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayListRes.h; sourceTree = "<group>"; };
 		8901A299217DDF1B00587310 /* TodayListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayListRes.m; sourceTree = "<group>"; };
+		890D559A217EAE09009B33B2 /* RecommendListRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendListRes.h; sourceTree = "<group>"; };
+		890D559B217EAE09009B33B2 /* RecommendListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendListRes.m; sourceTree = "<group>"; };
+		890D559D217EAE21009B33B2 /* GuessListRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuessListRes.h; sourceTree = "<group>"; };
+		890D559E217EAE21009B33B2 /* GuessListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessListRes.m; sourceTree = "<group>"; };
+		890D55A7217F0404009B33B2 /* DetailFreeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailFreeController.h; sourceTree = "<group>"; };
+		890D55A8217F0404009B33B2 /* DetailFreeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailFreeController.m; sourceTree = "<group>"; };
 		895DBF6E217980C200E65B16 /* BannersReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannersReq.h; sourceTree = "<group>"; };
 		895DBF6F217980C200E65B16 /* BannersReq.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannersReq.m; sourceTree = "<group>"; };
 		895DBF7A21798CBD00E65B16 /* FreeListReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeListReq.h; sourceTree = "<group>"; };
@@ -377,6 +385,10 @@
 		895DBF7E21798E3500E65B16 /* BannerRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerRes.m; sourceTree = "<group>"; };
 		895DBF8021798EFC00E65B16 /* FreeListRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeListRes.h; sourceTree = "<group>"; };
 		895DBF8121798EFC00E65B16 /* FreeListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreeListRes.m; sourceTree = "<group>"; };
+		89856B45217F1A2100688DF7 /* CourseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseController.h; sourceTree = "<group>"; };
+		89856B46217F1A2100688DF7 /* CourseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseController.m; sourceTree = "<group>"; };
+		89856B48217F1AE400688DF7 /* CourseHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseHeadView.h; sourceTree = "<group>"; };
+		89856B49217F1AE400688DF7 /* CourseHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseHeadView.m; sourceTree = "<group>"; };
 		CC622AFA70744F55DF7FAFC7 /* Pods-Shh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shh.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shh/Pods-Shh.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -486,7 +498,7 @@
 			path = Sort;
 			sourceTree = "<group>";
 		};
-		8850346821392487000BDD3A /* 干货头条 */ = {
+		8850346821392487000BDD3A /* dry */ = {
 			isa = PBXGroup;
 			children = (
 				88503469213924D2000BDD3A /* DryHeadlinesController.h */,
@@ -494,7 +506,7 @@
 				8850346C213924EF000BDD3A /* BaseDryHeadlinesController.h */,
 				8850346D213924EF000BDD3A /* BaseDryHeadlinesController.m */,
 			);
-			path = "干货头条";
+			path = dry;
 			sourceTree = "<group>";
 		};
 		8850346F21393FFF000BDD3A /* 干货头条 */ = {
@@ -795,7 +807,6 @@
 		886DB950212E83FC00CF8C64 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				886DB956212E84D900CF8C64 /* Model */,
 				886DB955212E84BA00CF8C64 /* Controller */,
 				886DB951212E840D00CF8C64 /* View */,
 			);
@@ -833,22 +844,17 @@
 		886DB955212E84BA00CF8C64 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8850346821392487000BDD3A /* 干货头条 */,
+				8850346821392487000BDD3A /* dry */,
 				886DB960212E858A00CF8C64 /* HomeController.h */,
 				886DB961212E858A00CF8C64 /* HomeController.m */,
 				88483F4E2137D471004CA3FA /* SortViewController.h */,
 				88483F4F2137D472004CA3FA /* SortViewController.m */,
 				88483F5B2137E5C7004CA3FA /* MoreSortViewController.h */,
 				88483F5C2137E5C7004CA3FA /* MoreSortViewController.m */,
+				890D55A7217F0404009B33B2 /* DetailFreeController.h */,
+				890D55A8217F0404009B33B2 /* DetailFreeController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		886DB956212E84D900CF8C64 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		886DB957212E84EB00CF8C64 /* Course */ = {
@@ -856,6 +862,8 @@
 			children = (
 				8824EACF212FDB6B000CBA7E /* VTMagic */,
 				886DB95C212E851500CF8C64 /* Controller */,
+				89856B48217F1AE400688DF7 /* CourseHeadView.h */,
+				89856B49217F1AE400688DF7 /* CourseHeadView.m */,
 			);
 			path = Course;
 			sourceTree = "<group>";
@@ -899,10 +907,10 @@
 		886DB95C212E851500CF8C64 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				886DB963212E859900CF8C64 /* CourseController.h */,
-				886DB964212E859900CF8C64 /* CourseController.m */,
 				8849B84C213542BF00CAE299 /* BaseCourseController.h */,
 				8849B84D213542BF00CAE299 /* BaseCourseController.m */,
+				89856B45217F1A2100688DF7 /* CourseController.h */,
+				89856B46217F1A2100688DF7 /* CourseController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -962,6 +970,10 @@
 				895DBF8121798EFC00E65B16 /* FreeListRes.m */,
 				8901A298217DDF1B00587310 /* TodayListRes.h */,
 				8901A299217DDF1B00587310 /* TodayListRes.m */,
+				890D559A217EAE09009B33B2 /* RecommendListRes.h */,
+				890D559B217EAE09009B33B2 /* RecommendListRes.m */,
+				890D559D217EAE21009B33B2 /* GuessListRes.h */,
+				890D559E217EAE21009B33B2 /* GuessListRes.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1147,12 +1159,14 @@
 			files = (
 				8849B84B2135205100CAE299 /* UILabel+String.m in Sources */,
 				886B97942136726A0074322D /* MineFootView.m in Sources */,
+				890D559F217EAE21009B33B2 /* GuessListRes.m in Sources */,
 				8850346E213924EF000BDD3A /* BaseDryHeadlinesController.m in Sources */,
 				887E03B5212FB1B50013472F /* HomeGivingCell.m in Sources */,
 				886B98332136B7FD0074322D /* UIViewController+Loading.m in Sources */,
 				886B978D213647430074322D /* ServiceHeadView.m in Sources */,
 				886B97F82136B7BE0074322D /* FilePathManager.m in Sources */,
 				887E03B8212FB2AB0013472F /* HomeLikeCell.m in Sources */,
+				89856B4A217F1AE400688DF7 /* CourseHeadView.m in Sources */,
 				886B982F2136B7FD0074322D /* UIImage+RTStyle.m in Sources */,
 				886DB991212EC2D700CF8C64 /* NSData+ZSCache.m in Sources */,
 				886B97E02136B7BE0074322D /* NSDictionary+TYAFNetworking.m in Sources */,
@@ -1176,6 +1190,7 @@
 				886B978721363B280074322D /* TrainingServicesCell.m in Sources */,
 				8819859F2178A184003C962D /* BaseModelReq.m in Sources */,
 				885034722139403D000BDD3A /* DrySmallImageCell.m in Sources */,
+				890D55A9217F0404009B33B2 /* DetailFreeController.m in Sources */,
 				88483F562137D4F0004CA3FA /* SortLeftScrollow.m in Sources */,
 				886B98302136B7FD0074322D /* UIView+CTExtensions.m in Sources */,
 				886DB98A212EC2D700CF8C64 /* UIView+Frame.m in Sources */,
@@ -1196,8 +1211,8 @@
 				886DB968212E85A900CF8C64 /* ServiceController.m in Sources */,
 				886B982C2136B7FD0074322D /* UIImage+Alpha.m in Sources */,
 				895DBF7F21798E3500E65B16 /* BannerRes.m in Sources */,
-				886DB965212E859900CF8C64 /* CourseController.m in Sources */,
 				886B978421363AFF0074322D /* QualityServiceCell.m in Sources */,
+				890D559C217EAE09009B33B2 /* RecommendListRes.m in Sources */,
 				88483F502137D472004CA3FA /* SortViewController.m in Sources */,
 				886DB974212EC23900CF8C64 /* BaseView.m in Sources */,
 				8824EAEB213001EF000CBA7E /* HomeHeadView.m in Sources */,
@@ -1239,6 +1254,7 @@
 				886B982A2136B7FD0074322D /* UIDevice+IdentifierAddition.m in Sources */,
 				88483F4D2137C63B004CA3FA /* QualityCollectionCell.m in Sources */,
 				886DB94F212E83C200CF8C64 /* ShhTabBarController.m in Sources */,
+				89856B47217F1A2100688DF7 /* CourseController.m in Sources */,
 				8819859C2178A126003C962D /* HomeServiceApi.m in Sources */,
 				886B97F22136B7BE0074322D /* ZSRequestCenter.m in Sources */,
 				8850347821394081000BDD3A /* DryNoImageCell.m in Sources */,
@@ -1418,7 +1434,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9EYJ35Z5DB;
+				DEVELOPMENT_TEAM = PXN5TJUMU3;
 				INFOPLIST_FILE = Shh/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1436,7 +1452,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9EYJ35Z5DB;
+				DEVELOPMENT_TEAM = PXN5TJUMU3;
 				INFOPLIST_FILE = Shh/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
