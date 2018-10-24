@@ -376,6 +376,7 @@ static NSString *likecellIds = @"HomeLikeCell";
         }];
     }else if (indexPath.section ==5){
         PromoteServiceView *promoteView = [[PromoteServiceView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 305)];
+        [promoteView setDataArr:self.recommendListArr];
         [headerView addSubview:promoteView];
     }else{
         HomeFreeHeadView *freeview = [[HomeFreeHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 55)];

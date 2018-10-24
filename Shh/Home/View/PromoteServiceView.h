@@ -17,4 +17,7 @@
 @property(nonatomic,strong)NSMutableArray *dataArr;
 @property(nonatomic,strong)UILabel *nameLabel;
 @property(nonatomic,strong)UILabel *detailLabel;
+@property(nonatomic,assign)CGFloat offer;
+
+
 @end

@@ -2,18 +2,26 @@
 //  DryHeadlinesController.m
 //  Shh
 //
-//  Created by 燕来秋mac9 on 2018/8/31.
-//  Copyright © 2018年 zhangshu. All rights reserved.
+//  Created by dnaer7 on 2018/10/24.
+//  Copyright © 2018 zhangshu. All rights reserved.
 //
 
 #import "DryHeadlinesController.h"
-#import "MenuInfo.h"
-#import "BaseDryHeadlinesController.h"
 #import "NavigationView.h"
-@interface DryHeadlinesController ()
-@property (nonatomic, strong)  NSMutableArray *menuList;
-@property (nonatomic, assign)  BOOL autoSwitch;
+#import "DryNoImageCell.h"
+#import "DryBigImageCell.h"
+#import "DrySmallImageCell.h"
+#import "ZSSortSelectorView.h"
+#import "CourseServiceApi.h"
+#import "HomeServiceApi.h"
+
+@interface DryHeadlinesController ()<UITableViewDelegate,UITableViewDataSource,ZSSortSelectorViewDelegate>
+@property(nonatomic,strong)UITableView *tableview;
 @property (nonatomic, strong)NavigationView *navView;
+@property(nonatomic,strong)ZSSortSelectorView *selectorView;
+@property (nonatomic, strong)NSMutableArray *sortArr;
+@property (nonatomic, strong)NSMutableArray *articleArr;
+
 @end
 
 @implementation DryHeadlinesController
@@ -24,6 +32,23 @@
         [_navView setLeftWidth:45];
     }
     return _navView;
+}
+-(ZSSortSelectorView *)selectorView{
+    if (!_selectorView) {
+        _selectorView = [[ZSSortSelectorView alloc]initWithFrame:CGRectMake(0, [self navHeightWithHeight], SCREENWIDTH, 40)];
+        _selectorView.delegate = self;
+        
+    }
+    return _selectorView;
+}
+-(UITableView *)tableview{
+    if (!_tableview) {
+        _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0,[self navHeightWithHeight]+40, SCREENWIDTH, SCREENHEIGHT-[self navHeightWithHeight]) style:UITableViewStylePlain];
+        _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableview.delegate = self;
+        _tableview.dataSource = self;
+    }
+    return _tableview;
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -43,163 +68,111 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.navView];
-    _menuList = [NSMutableArray array];
-    self.magicView.itemScale = 1;
-    self.magicView.headerHeight = 40;
-    self.magicView.navigationHeight = [self navHeightWithHeight]+20;
-    self.magicView.againstStatusBar = YES;
-    self.magicView.navigationInset = UIEdgeInsetsMake([self navHeightWithHeight]-15, 20, 0, 0);
-    self.magicView.headerView.backgroundColor = [UIColor whiteColor];
-    self.magicView.navigationColor = [UIColor whiteColor];
-    self.magicView.layoutStyle = VTLayoutStyleDefault;
-    self.magicView.sliderColor = DSColorFromHex(0xE70019);
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.edgesForExtendedLayout = UIRectEdgeAll;
-    [self integrateComponents];
-    [self configSeparatorView];
-    
-    [self addNotification];
-    
-    [self.magicView reloadData];
-    [self generateTestData];
-    [self.magicView reloadMenuTitles];
-    [self.magicView reloadDataToPage:0];
+    [self.view addSubview:self.selectorView];
+    [self.view addSubview:self.tableview];
+    self.sortArr = [NSMutableArray array];
+    self.articleArr = [NSMutableArray array];
     __weak typeof(self)weakself = self;
     [self.navView setLeftBlock:^{
         [weakself.navigationController popViewControllerAnimated:YES];
     }];
+    [self getCourseSort];
+}
+-(void)getCourseSort{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.articleOrCourseType = @"article";
+    req.pageIndex = 1;
+    req.pageSize = @"10";
+    __weak typeof(self)weakself = self;
+    [[CourseServiceApi share]courseSortDirectoryWithParam:req response:^(id response) {
+        if (response) {
+            [weakself.sortArr removeAllObjects];
+            [weakself.sortArr addObjectsFromArray:response];
+            
+            CourseSortRes *first = [response firstObject];
+            NSMutableArray *arr = [NSMutableArray array];
+            for (CourseSortRes *model in response) {
+                if (model.columnName) {
+                    [arr addObject:model.columnName];
+                }
+            }
+            [weakself.selectorView setDataArr:arr];
+            [weakself getArticleList:first.columnId];
+            [weakself.tableview reloadData];
+        }
+    }];
+    
     
 }
--(void)setSelectedIndex:(NSInteger)selectedIndex{
-    _selectedIndex = selectedIndex;
-    [self.magicView reloadDataToPage:selectedIndex];
-}
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+-(void)getArticleList:(NSString*)colmunid{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.columnId = colmunid;
+    req.courseCategoryId = @"";
+    req.pageIndex = 1;
+    req.pageSize = @"10";
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share]getTodayListWithParam:req response:^(id response) {
+        if (response) {
+            [weakself.articleArr removeAllObjects];
+            [weakself.articleArr addObjectsFromArray:response];
+            [weakself.tableview reloadData];
+        }
+       
+    }];
     
-    if (_autoSwitch) {
-        [self.magicView switchToPage:0 animated:YES];
-        _autoSwitch = NO;
+    
+}
+-(void)chooseButtonType:(NSInteger)type{
+    CourseSortRes *model = self.sortArr[type];
+    [self getArticleList:model.columnId];
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    TodayListRes *model = self.articleArr[indexPath.row];
+    if ([model.articleImagePosition isEqualToString:@"cover"]) {
+        return 370;
+    }else if ([model.articleImagePosition isEqualToString:@"right"]){
+        return 183;
     }
+    return 0;
 }
-#pragma mark - NSNotification
-- (void)addNotification {
-    [self removeNotification];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(statusBarOrientationChange:)
-                                                 name:UIApplicationDidChangeStatusBarOrientationNotification
-                                               object:nil];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return self.articleArr.count;
 }
-
-- (void)removeNotification {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.01;
 }
 
-- (void)statusBarOrientationChange:(NSNotification *)notification {
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:YES];
-}
-
-#pragma mark - VTMagicViewDataSource
-- (NSArray<NSString *> *)menuTitlesForMagicView:(VTMagicView *)magicView {
-    NSMutableArray *titleList = [NSMutableArray array];
-    for (MenuInfo *menu in _menuList) {
-        [titleList addObject:menu.title];
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    TodayListRes *model = self.articleArr[indexPath.row];
+    if ([model.articleImagePosition isEqualToString:@"cover"]) {
+        static NSString *identify = @"DryBigImageCell";
+        DryBigImageCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+        if (!cell) {
+            cell = [[DryBigImageCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+        }
+        [cell setModel:model];
+        return cell;
     }
-    return titleList;
-}
-
-- (UIButton *)magicView:(VTMagicView *)magicView menuItemAtIndex:(NSUInteger)itemIndex {
-    static NSString *itemIdentifier = @"itemIdentifier";
-    UIButton *menuItem = [magicView dequeueReusableItemWithIdentifier:itemIdentifier];
-    if (!menuItem) {
-        menuItem = [UIButton buttonWithType:UIButtonTypeCustom];
-        [menuItem setTitleColor:RGBCOLOR(69, 69, 69) forState:UIControlStateNormal];
-        [menuItem setTitleColor:DSColorFromHex(0xE70019) forState:UIControlStateSelected];
-        menuItem.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:15.f];
+    static NSString *identify = @"DrySmallImageCell";
+    DrySmallImageCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    if (!cell) {
+        cell = [[DrySmallImageCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
-    //     默认会自动完成赋值
-    MenuInfo *menuInfo = _menuList[itemIndex];
-    [menuItem setTitle:menuInfo.title forState:UIControlStateNormal];
-    return menuItem;
-}
-
-- (UIViewController *)magicView:(VTMagicView *)magicView viewControllerAtPage:(NSUInteger)pageIndex {
+    [cell setModel:model];
     
-    static NSString *gridId = @"identifier";
-    BaseDryHeadlinesController *viewController = [magicView dequeueReusablePageWithIdentifier:gridId];
-    if (!viewController) {
-        viewController = [[BaseDryHeadlinesController alloc] init];
-        
-    }
-    viewController.selectedIndex = pageIndex;
-    return viewController;
-}
-
-#pragma mark - VTMagicViewDelegate
-- (void)magicView:(VTMagicView *)magicView viewDidAppear:(__kindof UIViewController *)viewController atPage:(NSUInteger)pageIndex {
-    _selectedIndex = pageIndex;
-    
-    [viewController setSelectedIndex:pageIndex];
-    //    [viewController setModel:model];
-}
-
-- (void)magicView:(VTMagicView *)magicView viewDidDisappear:(__kindof UIViewController *)viewController atPage:(NSUInteger)pageIndex {
-    //    NSLog(@"index:%ld viewDidDisappear:%@", (long)pageIndex, viewController.view);
-}
-
-- (void)magicView:(VTMagicView *)magicView didSelectItemAtIndex:(NSUInteger)itemIndex {
-    //    NSLog(@"didSelectItemAtIndex:%ld", (long)itemIndex);
-}
-
-#pragma mark - actions
-- (void)subscribeAction {
-    
-    
-}
-
-#pragma mark - functional methods
-- (void)generateTestData {
-    NSString *title = @"推荐";
-    NSMutableArray *menuList = [[NSMutableArray alloc] initWithCapacity:24];
-    [menuList addObject:[MenuInfo menuInfoWithTitl:title]];
-    [menuList removeAllObjects];
-    NSArray *_dataArr = @[@"      干货      ",@"     头条     ",@"    大咖说    "];
-    for (int index = 0; index < _dataArr.count; index++) {
-        NSString *str = _dataArr[index];
-        MenuInfo *menu = [MenuInfo menuInfoWithTitl:str];
-        [menuList addObject:menu];
-    }
-    _menuList = menuList;
-}
-
-- (void)integrateComponents {
-    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREENWIDTH-50, [self navHeightWithHeight]+40, 50, 40)];
-    [rightButton addTarget:self action:@selector(subscribeAction) forControlEvents:UIControlEventTouchUpInside];
-    [rightButton setImage:[UIImage imageNamed:@"down_icon"] forState:UIControlStateNormal];
-    rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, -10, 0);
-    
-    UIButton *btn =  [[UIButton alloc] initWithFrame:CGRectMake(0,0, 50, 40)];
-    //    self.magicView.rightNavigatoinItem = btn;
-    //    [self.magicView.navigationView addSubview:rightButton];
-    
-}
-
-- (void)configSeparatorView {
-    //    UIImageView *separatorView = [[UIImageView alloc] init];
-    //    [self.magicView setSeparatorView:separatorView];
-    self.magicView.separatorHeight = 2.f;
-    self.magicView.separatorColor = DSColorFromHex(0xE70019);
-    self.magicView.navigationView.layer.shadowColor = [UIColor whiteColor].CGColor;
-    self.magicView.navigationView.layer.shadowOffset = CGSizeMake(0, 0.5);
-    self.magicView.navigationView.layer.shadowOpacity = 0.8;
-    self.magicView.navigationView.clipsToBounds = NO;
-    
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return cell;
 }
 
 /*

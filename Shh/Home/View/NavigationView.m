@@ -17,11 +17,17 @@
         [self addSubview:self.leftBtn];
         [self addSubview:self.searchBtn];
         [self addSubview:self.historyBtn];
+        [self addSubview:self.lineLabel];
         [self.leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self).offset(10);
             make.bottom.equalTo(self).offset(-8);
             make.width.mas_equalTo(30);
             make.height.mas_equalTo(30);
+        }];
+        [self.lineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.equalTo(self);
+            make.bottom.equalTo(self);
+            make.height.mas_equalTo(0.5);
         }];
     }
     return self;
@@ -81,6 +87,13 @@
         [_leftBtn addTarget:self action:@selector(pressLeft) forControlEvents:UIControlEventTouchUpInside];
     }
     return _leftBtn;
+}
+-(UILabel *)lineLabel{
+    if (!_lineLabel) {
+        _lineLabel = [[UILabel alloc]init];
+        _lineLabel.backgroundColor = DSColorFromHex(0xE6E6E6);
+    }
+    return _lineLabel;
 }
 -(void)pressLeft{
     self.leftBlock();

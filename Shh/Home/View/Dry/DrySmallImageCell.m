@@ -8,6 +8,8 @@
 
 #import "DrySmallImageCell.h"
 #import "UILabel+String.h"
+#import "NSDate+Add.h"
+
 @implementation DrySmallImageCell
 
 - (void)awakeFromNib {
@@ -193,5 +195,18 @@
         make.width.height.mas_equalTo(14);
     }];
     
+}
+
+
+- (void)setModel:(TodayListRes *)model{
+    _model = model;
+    
+    NSString*url = [NSString stringWithFormat:@"%@%@",DPHOST,model.articleAppCoverImagePath];
+    [self.headiamge sd_setImageWithURL:[NSURL URLWithString:url]];
+    self.titleLabel.text = model.articleTitle;
+    self.detailLabel.text = model.articleIntroduction;
+    self.priceLabel.text = [NSDate cStringFromTimestamp:model.systemCreateTime Formatter:@"MM-dd HH:mm"];
+    self.shareLabel.text = model.virtualReadCount;
+    self.likeLabel.text = model.virtualLikeCount;
 }
 @end

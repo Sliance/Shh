@@ -47,11 +47,16 @@
     [self addSubview:self.lineLabel];
 //    [self addSubview:self.leftBtn];
 //    [self addSubview:self.rightBtn];
+    [self.lineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self);
+        make.bottom.equalTo(self);
+        make.height.mas_equalTo(0.5);
+    }];
     
 }
 -(UILabel *)lineLabel{
     if (!_lineLabel) {
-        _lineLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, _height, SCREENWIDTH, 0.5)];
+        _lineLabel = [[UILabel alloc]init];
         _lineLabel.backgroundColor = DSColorFromHex(0xE6E6E6);
     }
     return _lineLabel;

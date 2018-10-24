@@ -7,6 +7,7 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "TodayListRes.h"
 
 @interface DryBigImageCell : BaseTableViewCell
 @property(nonatomic,strong)UIImageView *iconiamge;
@@ -19,4 +20,5 @@
 @property(nonatomic,strong)UIButton *likeBtn;
 @property(nonatomic,strong)UILabel *shareLabel;
 @property(nonatomic,strong)UILabel *likeLabel;
+@property(nonatomic,strong)TodayListRes *model;
 @end

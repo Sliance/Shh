@@ -30,8 +30,6 @@
 		8849B8512135452C00CAE299 /* MenuInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8849B84F2135452B00CAE299 /* MenuInfo.m */; };
 		8849B854213551DF00CAE299 /* HomeFreeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8849B853213551DF00CAE299 /* HomeFreeHeadView.m */; };
 		885034672138D157000BDD3A /* PromoteServiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 885034662138D157000BDD3A /* PromoteServiceView.m */; };
-		8850346B213924D2000BDD3A /* DryHeadlinesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8850346A213924D2000BDD3A /* DryHeadlinesController.m */; };
-		8850346E213924EF000BDD3A /* BaseDryHeadlinesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8850346D213924EF000BDD3A /* BaseDryHeadlinesController.m */; };
 		885034722139403D000BDD3A /* DrySmallImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 885034712139403D000BDD3A /* DrySmallImageCell.m */; };
 		8850347521394068000BDD3A /* DryBigImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8850347421394068000BDD3A /* DryBigImageCell.m */; };
 		8850347821394081000BDD3A /* DryNoImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8850347721394081000BDD3A /* DryNoImageCell.m */; };
@@ -134,6 +132,7 @@
 		89DBCB8B2180034700E66B85 /* CourseSortRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB8A2180034700E66B85 /* CourseSortRes.m */; };
 		89DBCB8E21804AD900E66B85 /* ServiceApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB8D21804AD900E66B85 /* ServiceApi.m */; };
 		89DBCB9221804B9600E66B85 /* ServiceListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB9121804B9600E66B85 /* ServiceListRes.m */; };
+		89DBCB9521805DC300E66B85 /* DryHeadlinesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB9421805DC300E66B85 /* DryHeadlinesController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,10 +203,6 @@
 		8849B853213551DF00CAE299 /* HomeFreeHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeFreeHeadView.m; sourceTree = "<group>"; };
 		885034652138D157000BDD3A /* PromoteServiceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PromoteServiceView.h; sourceTree = "<group>"; };
 		885034662138D157000BDD3A /* PromoteServiceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PromoteServiceView.m; sourceTree = "<group>"; };
-		88503469213924D2000BDD3A /* DryHeadlinesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DryHeadlinesController.h; sourceTree = "<group>"; };
-		8850346A213924D2000BDD3A /* DryHeadlinesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DryHeadlinesController.m; sourceTree = "<group>"; };
-		8850346C213924EF000BDD3A /* BaseDryHeadlinesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseDryHeadlinesController.h; sourceTree = "<group>"; };
-		8850346D213924EF000BDD3A /* BaseDryHeadlinesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseDryHeadlinesController.m; sourceTree = "<group>"; };
 		885034702139403D000BDD3A /* DrySmallImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DrySmallImageCell.h; sourceTree = "<group>"; };
 		885034712139403D000BDD3A /* DrySmallImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrySmallImageCell.m; sourceTree = "<group>"; };
 		8850347321394068000BDD3A /* DryBigImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DryBigImageCell.h; sourceTree = "<group>"; };
@@ -407,6 +402,8 @@
 		89DBCB8D21804AD900E66B85 /* ServiceApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceApi.m; sourceTree = "<group>"; };
 		89DBCB9021804B9600E66B85 /* ServiceListRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceListRes.h; sourceTree = "<group>"; };
 		89DBCB9121804B9600E66B85 /* ServiceListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceListRes.m; sourceTree = "<group>"; };
+		89DBCB9321805DC300E66B85 /* DryHeadlinesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DryHeadlinesController.h; sourceTree = "<group>"; };
+		89DBCB9421805DC300E66B85 /* DryHeadlinesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DryHeadlinesController.m; sourceTree = "<group>"; };
 		CC622AFA70744F55DF7FAFC7 /* Pods-Shh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shh.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shh/Pods-Shh.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -519,10 +516,8 @@
 		8850346821392487000BDD3A /* dry */ = {
 			isa = PBXGroup;
 			children = (
-				88503469213924D2000BDD3A /* DryHeadlinesController.h */,
-				8850346A213924D2000BDD3A /* DryHeadlinesController.m */,
-				8850346C213924EF000BDD3A /* BaseDryHeadlinesController.h */,
-				8850346D213924EF000BDD3A /* BaseDryHeadlinesController.m */,
+				89DBCB9321805DC300E66B85 /* DryHeadlinesController.h */,
+				89DBCB9421805DC300E66B85 /* DryHeadlinesController.m */,
 			);
 			path = dry;
 			sourceTree = "<group>";
@@ -1215,7 +1210,6 @@
 				886B97942136726A0074322D /* MineFootView.m in Sources */,
 				89DBCB8B2180034700E66B85 /* CourseSortRes.m in Sources */,
 				890D559F217EAE21009B33B2 /* GuessListRes.m in Sources */,
-				8850346E213924EF000BDD3A /* BaseDryHeadlinesController.m in Sources */,
 				887E03B5212FB1B50013472F /* HomeGivingCell.m in Sources */,
 				886B98332136B7FD0074322D /* UIViewController+Loading.m in Sources */,
 				886B978D213647430074322D /* ServiceHeadView.m in Sources */,
@@ -1264,6 +1258,7 @@
 				8824EAE3212FDB6B000CBA7E /* UIScrollView+VTMagic.m in Sources */,
 				886B98282136B7FD0074322D /* NSString+RTStyle.m in Sources */,
 				887E03B2212FB1580013472F /* HomeNowCell.m in Sources */,
+				89DBCB9521805DC300E66B85 /* DryHeadlinesController.m in Sources */,
 				8901A29A217DDF1B00587310 /* TodayListRes.m in Sources */,
 				886DB968212E85A900CF8C64 /* ServiceController.m in Sources */,
 				886B982C2136B7FD0074322D /* UIImage+Alpha.m in Sources */,
@@ -1323,7 +1318,6 @@
 				886DB98D212EC2D700CF8C64 /* ZSPageControl.m in Sources */,
 				8850347521394068000BDD3A /* DryBigImageCell.m in Sources */,
 				886B97F72136B7BE0074322D /* DSBaseModel.m in Sources */,
-				8850346B213924D2000BDD3A /* DryHeadlinesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,12 +2,16 @@
 //  DryHeadlinesController.h
 //  Shh
 //
-//  Created by 燕来秋mac9 on 2018/8/31.
-//  Copyright © 2018年 zhangshu. All rights reserved.
+//  Created by dnaer7 on 2018/10/24.
+//  Copyright © 2018 zhangshu. All rights reserved.
 //
 
-#import "VTMagicController.h"
+#import "BaseViewController.h"
 
-@interface DryHeadlinesController : VTMagicController
-@property(nonatomic,assign)NSInteger selectedIndex;
+NS_ASSUME_NONNULL_BEGIN
+
+@interface DryHeadlinesController : BaseViewController
+
 @end
+
+NS_ASSUME_NONNULL_END

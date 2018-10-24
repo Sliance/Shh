@@ -13,6 +13,7 @@
 @property(nonatomic,strong)UIButton *historyBtn;
 @property(nonatomic,strong)UIButton *leftBtn;
 @property(nonatomic,assign)NSInteger leftWidth;
+@property(nonatomic,strong)UILabel *lineLabel;
 @property(nonatomic,copy)void (^leftBlock)();
 
 @end

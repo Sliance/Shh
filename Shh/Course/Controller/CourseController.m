@@ -140,7 +140,6 @@ static NSString *givecellIds = @"HomeGivingCell";
         [weakself.collectionView reloadData];
     }];
     
-    
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;

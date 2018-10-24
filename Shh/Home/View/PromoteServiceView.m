@@ -25,8 +25,7 @@
     [self addSubview:self.bgView];
     [self.bgView addSubview:self.titleLabel];
     [self.bgView addSubview:self.rightLabel];
-    [self.bgView addSubview:self.nameLabel];
-    [self.bgView addSubview:self.detailLabel];
+    
     [self.bgView addSubview:self.allBtn];
     [self.bgView addSubview:self.collectionView];
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -51,16 +50,7 @@
         make.width.mas_equalTo(40);
         make.height.mas_equalTo(50);
     }];
-    [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.bgView).offset(15);
-        make.top.equalTo(self.collectionView.mas_bottom);
-        make.height.mas_equalTo(50);
-    }];
-    [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.bgView).offset(-15);
-        make.top.equalTo(self.collectionView.mas_bottom);
-        make.height.mas_equalTo(50);
-    }];
+    
 }
 -(UIView *)bgView{
     if(!_bgView){
@@ -88,26 +78,7 @@
     }
     return _rightLabel;
 }
--(UILabel *)nameLabel{
-    if (!_nameLabel) {
-        _nameLabel = [[UILabel alloc]init];
-        _nameLabel.textAlignment = NSTextAlignmentLeft;
-        _nameLabel.font = [UIFont systemFontOfSize:16];
-        _nameLabel.textColor = DSColorFromHex(0x474747);
-        _nameLabel.text = @"全案营销";
-    }
-    return _nameLabel;
-}
--(UILabel *)detailLabel{
-    if (!_detailLabel) {
-        _detailLabel = [[UILabel alloc]init];
-        _detailLabel.textAlignment = NSTextAlignmentRight;
-        _detailLabel.font = [UIFont systemFontOfSize:12];
-        _detailLabel.textColor = DSColorFromHex(0xB4B4B4);
-        _detailLabel.text = @"思和会";
-    }
-    return _detailLabel;
-}
+
 -(UIButton *)allBtn{
     if (!_allBtn) {
         _allBtn.backgroundColor = [UIColor redColor];
@@ -124,7 +95,7 @@
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         layout.minimumLineSpacing = 2;
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 60, SCREENWIDTH, 175) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 60, SCREENWIDTH, 235) collectionViewLayout:layout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.showsVerticalScrollIndicator = NO;
@@ -136,8 +107,8 @@
         [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableView"];
         [_collectionView
          registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footreusableView"];
-        _collectionView.contentOffset = CGPointMake(10+350-(SCREENWIDTH-350)/2, 0);
-        
+//        _collectionView.contentOffset = CGPointMake(10+350-(SCREENWIDTH-350)/2, 0);
+        _collectionView.decelerationRate = 10;
         
     }
     return _collectionView;
@@ -146,7 +117,7 @@
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 5;
+    return self.dataArr.count;
 }
 //设置每个item的UIEdgeInsets
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -163,17 +134,91 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return CGSizeMake(350, 175);
+    return CGSizeMake(350, 235);
     
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     QualityCollectionCell *collectcell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QualityCollectionCell" forIndexPath:indexPath];
     [collectcell setImageWidth:340];
     [collectcell setImageHeight:175];
+    RecommendListRes *model = self.dataArr[indexPath.row];
+    [collectcell setRecomendModel:model];
     return collectcell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
 }
+-(void)setDataArr:(NSMutableArray *)dataArr{
+    _dataArr = dataArr;
+    [self.collectionView reloadData];
+}
+-(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+    
+    self.offer = scrollView.contentOffset.x;
+    
+    NSLog(@"end========%f",self.offer);
+    
+}
+
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+    
+    if (fabs(scrollView.contentOffset.x -self.offer) > 10) {
+        
+        if (scrollView.contentOffset.x > self.offer) {
+            
+            int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 60)+1;
+            
+            NSIndexPath * index =  [NSIndexPath indexPathForRow:i inSection:0];
+            
+            [_collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+            
+        }else{
+            
+            int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 60)+1;
+            
+            NSIndexPath * index =  [NSIndexPath indexPathForRow:i-1 inSection:0];
+            
+            [_collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+            
+        }
+        
+    }
+    
+}
+
+
+
+
+
+//用户拖拽是调用
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+    
+    if (fabs(scrollView.contentOffset.x -self.offer) > 20) {
+        
+        if (scrollView.contentOffset.x > self.offer) {
+            
+            int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 30)+1;
+            
+            NSIndexPath * index =  [NSIndexPath indexPathForRow:i inSection:0];
+            
+            [_collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+            
+        }else{
+            
+            int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 30)+1;
+            
+            NSIndexPath * index =  [NSIndexPath indexPathForRow:i-1 inSection:0];
+            
+            [_collectionView scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+            
+        }
+        
+    }
+    
+}
+
+
 @end
