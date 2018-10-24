@@ -107,8 +107,9 @@
         [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableView"];
         [_collectionView
          registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footreusableView"];
-//        _collectionView.contentOffset = CGPointMake(10+350-(SCREENWIDTH-350)/2, 0);
-        _collectionView.decelerationRate = 10;
+        _collectionView.contentOffset = CGPointMake(10+350-(SCREENWIDTH-350)/2, 0);
+        _collectionView.decelerationRate = UIScrollViewDecelerationRateNormal;
+        _collectionView.bounces = NO;
         
     }
     return _collectionView;
@@ -134,7 +135,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return CGSizeMake(350, 235);
+    return CGSizeMake(SCREENWIDTH-30, 235);
     
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -164,7 +165,8 @@
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
     
-    if (fabs(scrollView.contentOffset.x -self.offer) > 10) {
+    if (scrollView.contentOffset.x < (self.dataArr.count-1)
+        *SCREENWIDTH) {
         
         if (scrollView.contentOffset.x > self.offer) {
             
@@ -195,10 +197,11 @@
 //用户拖拽是调用
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
-    
-    if (fabs(scrollView.contentOffset.x -self.offer) > 20) {
+    NSLog(@"###%f",scrollView.contentOffset.x);
+    if (scrollView.contentOffset.x < (self.dataArr.count-1)
+             *SCREENWIDTH) {
         
-        if (scrollView.contentOffset.x > self.offer) {
+        if (scrollView.contentOffset.x < self.offer) {
             
             int i = scrollView.contentOffset.x/([UIScreen mainScreen].bounds.size.width - 30)+1;
             

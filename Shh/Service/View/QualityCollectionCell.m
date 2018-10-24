@@ -41,7 +41,7 @@
 -(void)setImageHeight:(NSInteger)imageHeight{
     _imageHeight = imageHeight;
     [self.headiamge mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(15);
+        make.left.equalTo(self).offset(15/2);
         make.top.equalTo(self).offset(5);
         make.height.mas_equalTo(self.imageHeight);
         make.width.mas_equalTo(self.imageWidth);
