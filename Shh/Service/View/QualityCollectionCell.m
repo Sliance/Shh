@@ -47,4 +47,11 @@
         
     }];
 }
+-(void)setModel:(ServiceListRes *)model{
+    _model = model;
+    NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,model.siheserviceAppImagePath];
+    [self.headiamge sd_setImageWithURL:[NSURL URLWithString:url]];
+}
+
+
 @end

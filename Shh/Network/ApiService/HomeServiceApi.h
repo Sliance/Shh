@@ -32,11 +32,6 @@
 -(void)getGuessListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///首页底部展示
 -(void)gethHomeBottomWithParam:(FreeListReq *) req response:(responseModel) responseModel;
-///获取单条课程
--(void)getSingleCourseWithParam:(FreeListReq *) req response:(responseModel) responseModel;
-///获取单条课程目录
--(void)singleCourseDirectoryWithParam:(FreeListReq *) req response:(responseModel) responseModel;
-
 
 
 @end

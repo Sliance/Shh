@@ -7,10 +7,13 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "ServiceListRes.h"
+
 ///培训服务
 @interface TrainingServicesCell : BaseTableViewCell
 @property(nonatomic,strong)UIImageView *headiamge;
 @property(nonatomic,strong)UILabel *titleLabel;
 @property(nonatomic,strong)UILabel *detailLabel;
+@property(nonatomic,strong)ServiceListRes *model;
 
 @end

@@ -14,12 +14,16 @@
 #import "ServiceHeadView.h"
 #import "NavigationView.h"
 #import "HomeServiceApi.h"
+#import "ServiceApi.h"
 
 @interface ServiceController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,strong)ServiceHeadView *headview;
 @property (nonatomic, strong)NavigationView *navView;
-
+@property(nonatomic,strong)NSMutableArray *goodArr;
+@property(nonatomic,strong)NSMutableArray *trainArr;
+@property(nonatomic,strong)NSMutableArray *activityArr;
+@property(nonatomic,strong)NSMutableArray *joinArr;
 @end
 
 @implementation ServiceController
@@ -61,7 +65,10 @@
     
     self.tableview.tableHeaderView = self.headview;
     [self.view addSubview:self.navView];
-   
+     self.goodArr = [NSMutableArray array];
+     self.trainArr = [NSMutableArray array];
+     self.activityArr = [NSMutableArray array];
+     self.joinArr = [NSMutableArray array];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -93,9 +100,53 @@
             }
             [weakself.headview.cycleView setImageUrlGroups:arr];
         }
+        [weakself getService:0];
     }];
 }
-
+-(void)getService:(NSInteger)index{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    if (index==0) {
+        req.columnId = @"1045875275674472450";
+    }else if (index ==1){
+        req.columnId = @"1045942000354193409";
+    }else if (index ==2){
+        req.columnId = @"1045942106063237121";
+    }else if (index ==3){
+        req.columnId = @"1045942150409613313";
+    }
+    req.pageIndex = 1;
+    req.pageSize = @"10";
+    __weak typeof(self)weakself = self;
+    [[ServiceApi share]getServiceListWithParam:req response:^(id response) {
+        if (response) {
+            if (index ==0) {
+                [weakself.goodArr removeAllObjects];
+                [weakself.goodArr addObjectsFromArray:response];
+            }else if (index ==1) {
+                [weakself.trainArr removeAllObjects];
+                [weakself.trainArr addObjectsFromArray:response];
+            }else if (index ==2) {
+                [weakself.activityArr removeAllObjects];
+                [weakself.activityArr addObjectsFromArray:response];
+            }else if (index ==3) {
+                [weakself.joinArr removeAllObjects];
+                [weakself.joinArr addObjectsFromArray:response];
+            }
+            [weakself.tableview reloadData];
+        }
+        if (index ==0) {
+            [weakself getService:1];
+        }else if (index ==1) {
+            [weakself getService:2];
+        }else if (index ==2) {
+            [weakself getService:3];
+        }
+    }];
+}
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 4;
 }
@@ -109,7 +160,10 @@
     if (section ==0||section ==2) {
         return 1;
     }
-    return 3;
+    if (section ==1) {
+        return self.trainArr.count;
+    }
+    return self.joinArr.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 55;
@@ -134,6 +188,8 @@
         if (!cell) {
             cell = [[TrainingServicesCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
         }
+        ServiceListRes *model =self.trainArr[indexPath.row];
+        [cell setModel:model];
         return cell;
     }else if (indexPath.section ==3){
         static NSString *identify = @"ToJoinCell";
@@ -141,12 +197,19 @@
         if (!cell) {
             cell = [[ToJoinCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
         }
+        ServiceListRes *model =self.joinArr[indexPath.row];
+        [cell setModel:model];
         return cell;
     }
     static NSString *identify = @"QualityServiceCell";
     QualityServiceCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
     if (!cell) {
         cell = [[QualityServiceCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+    }
+    if (indexPath.section ==0) {
+        [cell setDataArr:self.goodArr];
+    }else if (indexPath.section ==2){
+        [cell setDataArr:self.activityArr];
     }
     return cell;
 }

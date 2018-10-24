@@ -56,8 +56,10 @@
 #define guess_list          @"/sihehui/member/click/desktop/v1/guess/list"
 ///底部展示
 #define home_bottom_url         @"/sihehui/siheservice/desktop/v1/app/home/list"
-
-
+//课程分类
+#define course_sort_url         @"/sihehui/column/desktop/v1/list"
+//服务模块（精品服务、培训服务、活动执行、招商加盟）
+#define service_list_url         @"/sihehui/siheservice/desktop/v1/list"
 
 
 typedef void(^responseModel)(id response);

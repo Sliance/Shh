@@ -7,9 +7,12 @@
 //
 
 #import "BaseCollectionViewCell.h"
-
+#import "ServiceListRes.h"
 @interface QualityCollectionCell : BaseCollectionViewCell
 @property(nonatomic,strong)UIImageView *headiamge;
 @property(nonatomic,assign)NSInteger imageHeight;
 @property(nonatomic,assign)NSInteger imageWidth;
+
+@property(nonatomic,strong)ServiceListRes *model;
+
 @end

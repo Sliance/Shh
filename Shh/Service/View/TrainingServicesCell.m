@@ -80,4 +80,14 @@
         make.right.equalTo(self).offset(-15);
     }];
 }
+-(void)setModel:(ServiceListRes *)model{
+    _model = model;
+    self.titleLabel.text = model.siheserviceTitle;
+    self.detailLabel.text = model.siheserviceDesc;
+    NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,model.siheserviceAppImagePath];
+    [self.headiamge sd_setImageWithURL:[NSURL URLWithString:url]];
+}
+
+
+
 @end

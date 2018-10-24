@@ -52,7 +52,7 @@
     if (!_searchBtn) {
         _searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_searchBtn setImage:[UIImage imageNamed:@"search_home"] forState:UIControlStateNormal];
-        [_searchBtn setTitle:@"搜索课程" forState:UIControlStateNormal];
+        [_searchBtn setTitle:@"A6倍增系统" forState:UIControlStateNormal];
         _searchBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         [_searchBtn setTitleColor:DSColorFromHex(0x959595) forState:UIControlStateNormal];
         _searchBtn.frame = CGRectMake(15, 5, SCREENWIDTH-60, 36);

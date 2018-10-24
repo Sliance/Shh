@@ -16,10 +16,26 @@
         _cycleView.delegate = self;
         _cycleView.autoScrollTimeInterval = 3.0;
         _cycleView.dotColor = [UIColor whiteColor];
-        //        NSArray *images = [[NSArray alloc] initWithObjects:[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],[UIImage imageNamed:@"bg_mine"],nil];
-        //        _cycleView.localImageGroups = images;
     }
     return _cycleView;
 }
-
+-(ZSSortSelectorView *)selectorView{
+    if (!_selectorView) {
+        _selectorView = [[ZSSortSelectorView alloc]initWithFrame:CGRectMake(0,  169, SCREENWIDTH, 40)];
+        _selectorView.delegate = self;
+        
+    }
+    return _selectorView;
+}
+-(instancetype)init{
+    self = [super init];
+    if (self) {
+        [self addSubview:self.cycleView];
+        [self addSubview:self.selectorView];
+    }
+    return self;
+}
+-(void)chooseButtonType:(NSInteger)type{
+    self.selectedBlock(type);
+}
 @end

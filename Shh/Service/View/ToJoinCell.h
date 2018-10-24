@@ -7,7 +7,10 @@
 //
 
 #import "BaseTableViewCell.h"
+#import "ServiceListRes.h"
 ///招商加盟
 @interface ToJoinCell : BaseTableViewCell
 @property(nonatomic,strong)UIImageView *headiamge;
+@property(nonatomic,strong)ServiceListRes *model;
+
 @end
