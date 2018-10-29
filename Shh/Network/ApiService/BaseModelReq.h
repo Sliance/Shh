@@ -22,5 +22,6 @@
 ///每页个数
 @property(nonatomic,copy)NSString *pageSize;
 @property(nonatomic,copy)NSString *version;
+@property(nonatomic,copy)NSString *cityName;
 
 @end

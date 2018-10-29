@@ -124,6 +124,7 @@
 		895DBF7C21798CBD00E65B16 /* FreeListReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7B21798CBD00E65B16 /* FreeListReq.m */; };
 		895DBF7F21798E3500E65B16 /* BannerRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7E21798E3500E65B16 /* BannerRes.m */; };
 		895DBF8221798EFC00E65B16 /* FreeListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF8121798EFC00E65B16 /* FreeListRes.m */; };
+		8961E9E921871CBB00B914FD /* MoreSortRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8961E9E821871CBB00B914FD /* MoreSortRes.m */; };
 		89856B47217F1A2100688DF7 /* CourseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89856B46217F1A2100688DF7 /* CourseController.m */; };
 		89856B4A217F1AE400688DF7 /* CourseHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89856B49217F1AE400688DF7 /* CourseHeadView.m */; };
 		89DBCB83217FFE1400E66B85 /* ZSScrollButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB80217FFE1400E66B85 /* ZSScrollButton.m */; };
@@ -386,6 +387,8 @@
 		895DBF7E21798E3500E65B16 /* BannerRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerRes.m; sourceTree = "<group>"; };
 		895DBF8021798EFC00E65B16 /* FreeListRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeListRes.h; sourceTree = "<group>"; };
 		895DBF8121798EFC00E65B16 /* FreeListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreeListRes.m; sourceTree = "<group>"; };
+		8961E9E721871CBB00B914FD /* MoreSortRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreSortRes.h; sourceTree = "<group>"; };
+		8961E9E821871CBB00B914FD /* MoreSortRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreSortRes.m; sourceTree = "<group>"; };
 		89856B45217F1A2100688DF7 /* CourseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseController.h; sourceTree = "<group>"; };
 		89856B46217F1A2100688DF7 /* CourseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseController.m; sourceTree = "<group>"; };
 		89856B48217F1AE400688DF7 /* CourseHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseHeadView.h; sourceTree = "<group>"; };
@@ -1014,6 +1017,8 @@
 			children = (
 				89DBCB892180034700E66B85 /* CourseSortRes.h */,
 				89DBCB8A2180034700E66B85 /* CourseSortRes.m */,
+				8961E9E721871CBB00B914FD /* MoreSortRes.h */,
+				8961E9E821871CBB00B914FD /* MoreSortRes.m */,
 			);
 			path = Course;
 			sourceTree = "<group>";
@@ -1256,6 +1261,7 @@
 				886B97F12136B7BE0074322D /* ZSAPIProxy.m in Sources */,
 				886B97FB2136B7BE0074322D /* NSString+MoneyStyle.m in Sources */,
 				8824EAE3212FDB6B000CBA7E /* UIScrollView+VTMagic.m in Sources */,
+				8961E9E921871CBB00B914FD /* MoreSortRes.m in Sources */,
 				886B98282136B7FD0074322D /* NSString+RTStyle.m in Sources */,
 				887E03B2212FB1580013472F /* HomeNowCell.m in Sources */,
 				89DBCB9521805DC300E66B85 /* DryHeadlinesController.m in Sources */,

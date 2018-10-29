@@ -372,6 +372,10 @@ static NSString *likecellIds = @"HomeLikeCell";
                 DryHeadlinesController *dryVC = [[DryHeadlinesController alloc]init];
                 dryVC.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:dryVC animated:YES];
+            }else{
+                SortViewController *sortVC = [[SortViewController alloc]init];
+                sortVC.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:sortVC animated:YES];
             }
         }];
     }else if (indexPath.section ==5){

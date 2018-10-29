@@ -15,6 +15,7 @@
 #import "TodayListRes.h"
 #import "RecommendListRes.h"
 #import "GuessListRes.h"
+#import "MoreSortRes.h"
 
 @interface HomeServiceApi : BaseApi
 + (instancetype)share;
@@ -32,6 +33,7 @@
 -(void)getGuessListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///首页底部展示
 -(void)gethHomeBottomWithParam:(FreeListReq *) req response:(responseModel) responseModel;
-
+///获取更多分类
+-(void)getMoreSortWithParam:(BaseModelReq *) req response:(responseModel) responseModel;
 
 @end

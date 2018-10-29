@@ -10,6 +10,7 @@
 #import "SortLeftScrollow.h"
 
 #import "HomeLikeCell.h"
+#import "HomeServiceApi.h"
 
 @interface SortViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,SortLeftScrollowDelegate>
 
@@ -57,8 +58,8 @@ static NSString *cellId = @"HomeLikeCell";
     _dataArr = [NSMutableArray array];
     _detailDataArr = [NSMutableArray array];
   
-    _dataArr = [NSMutableArray arrayWithObjects:@"行业趋势",@"团队打造",@"店面整改",@"导购训练",@"引流集客",@"促销推广",@"售后服务",@"金牌店长",@"微信营销",@"节点活动",@"其他",nil];
-    [self.sortLeftView setDataArr:_dataArr];
+    
+   
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
 
     layout.headerReferenceSize = CGSizeMake(SCREENWIDTH, 15);
@@ -73,7 +74,24 @@ static NSString *cellId = @"HomeLikeCell";
      [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableView"];
     [self.collectionView
      registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footreusableView"];
+    [self getSortList];
     
+}
+-(void)getSortList{
+    BaseModelReq *req = [[BaseModelReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = @"";
+    req.timestamp = @"0";
+    req.platform = @"wechat";
+    req.cityName = @"上海市";
+    req.version = @"1.0.0";
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share] getMoreSortWithParam:req response:^(id response) {
+        if (response) {
+            [weakself.dataArr  removeAllObjects];
+            [weakself.sortLeftView setDataArr:weakself.dataArr];
+        }
+    }];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
