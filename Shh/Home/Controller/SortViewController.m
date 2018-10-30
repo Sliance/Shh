@@ -18,6 +18,7 @@
 @property (nonatomic, strong)UICollectionView *collectionView;
 
 @property(nonatomic,strong)NSMutableArray *dataArr;
+@property(nonatomic,strong)NSMutableArray *courseArr;
 @property(nonatomic,strong)NSMutableArray *detailDataArr;
 @property(nonatomic,assign)NSInteger headIndex;
 @end
@@ -74,6 +75,8 @@ static NSString *cellId = @"HomeLikeCell";
      [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableView"];
     [self.collectionView
      registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footreusableView"];
+    self.courseArr = [NSMutableArray array];
+    
     [self getSortList];
     
 }
@@ -89,11 +92,36 @@ static NSString *cellId = @"HomeLikeCell";
     [[HomeServiceApi share] getMoreSortWithParam:req response:^(id response) {
         if (response) {
             [weakself.dataArr  removeAllObjects];
-            [weakself.sortLeftView setDataArr:weakself.dataArr];
+            NSMutableArray *arr = [NSMutableArray array];
+            for (MoreSortRes *model in weakself.dataArr) {
+                if (model.courseCategoryName) {
+                    [arr addObject:model.courseCategoryName];
+                }
+            }
+            [weakself.sortLeftView setDataArr:arr];
         }
     }];
 }
-
+-(void)getCourseList:(NSString*)colmunid{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.columnId = colmunid;
+    req.courseCategoryId = @"";
+    req.pageIndex = 1;
+    req.pageSize = @"10";
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share]getFineClassWithParam:req response:^(id response) {
+        if (response) {
+            [weakself.courseArr removeAllObjects];
+            [weakself.courseArr addObjectsFromArray:response];
+        }
+        [weakself.collectionView reloadData];
+    }];
+    
+}
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 16;
 }
