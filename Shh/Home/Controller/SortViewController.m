@@ -92,8 +92,9 @@ static NSString *cellId = @"HomeLikeCell";
     [[HomeServiceApi share] getMoreSortWithParam:req response:^(id response) {
         if (response) {
             [weakself.dataArr  removeAllObjects];
+            [weakself.dataArr addObject:response];
             NSMutableArray *arr = [NSMutableArray array];
-            for (MoreSortRes *model in weakself.dataArr) {
+            for (MoreSortRes *model in response) {
                 if (model.courseCategoryName) {
                     [arr addObject:model.courseCategoryName];
                 }
