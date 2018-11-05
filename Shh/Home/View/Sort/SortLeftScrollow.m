@@ -31,19 +31,33 @@
     }
     return _bgScrollow;
 }
+-(void)setCurrentTitle:(NSString *)currentTitle{
+    _currentTitle = currentTitle;
+}
 -(void)setDataArr:(NSMutableArray *)dataArr{
     _dataArr = dataArr;
     for (int i = 0; i < dataArr.count; i++) {
        SortBtn* btn = [[SortBtn alloc]initWithFrame:CGRectMake( 0, 54*i, 80, 54)];
-        if (i ==0) {
-            btn.selectedLabel.hidden = NO;
-            btn.backgroundColor = DSColorFromHex(0xFAFAFA);
-            btn.sortLabel.textColor = DSColorFromHex(0xE70019);
-            _tmpBtn = btn;
+        
+        if (_currentTitle.length>0) {
+            if ([dataArr[i] isEqualToString:_currentTitle]) {
+                btn.selectedLabel.hidden = NO;
+                btn.backgroundColor = DSColorFromHex(0xFAFAFA);
+                btn.sortLabel.textColor = DSColorFromHex(0xE70019);
+                _tmpBtn = btn;
+            }
+            
         }else{
+            if (btn ==0) {
+                btn.selectedLabel.hidden = NO;
+                btn.backgroundColor = DSColorFromHex(0xFAFAFA);
+                btn.sortLabel.textColor = DSColorFromHex(0xE70019);
+                _tmpBtn = btn;
+            }else{
             btn.sortLabel.textColor = DSColorFromHex(0x464646);
             btn.backgroundColor = DSColorFromHex(0xFAFAFA);
             btn.selectedLabel.hidden = YES;
+            }
             
         }
         [btn addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchUpInside];

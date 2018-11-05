@@ -77,8 +77,12 @@ static NSString *cellId = @"HomeLikeCell";
      registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footreusableView"];
     self.courseArr = [NSMutableArray array];
     
-    [self getSortList];
+   
     
+}
+-(void)setCurrentTitle:(NSString *)currentTitle{
+    _currentTitle = currentTitle;
+     [self getSortList];
 }
 -(void)getSortList{
     BaseModelReq *req = [[BaseModelReq alloc]init];
@@ -92,13 +96,17 @@ static NSString *cellId = @"HomeLikeCell";
     [[HomeServiceApi share] getMoreSortWithParam:req response:^(id response) {
         if (response) {
             [weakself.dataArr  removeAllObjects];
-            [weakself.dataArr addObject:response];
+            [weakself.dataArr addObjectsFromArray:response];
             NSMutableArray *arr = [NSMutableArray array];
             for (MoreSortRes *model in response) {
                 if (model.courseCategoryName) {
                     [arr addObject:model.courseCategoryName];
                 }
+                if ([model.courseCategoryName isEqualToString:weakself.currentTitle]) {
+                    [weakself getCourseList:model.courseCategoryId];
+                }
             }
+            [weakself.sortLeftView setCurrentTitle:weakself.currentTitle];
             [weakself.sortLeftView setDataArr:arr];
         }
     }];
@@ -109,10 +117,10 @@ static NSString *cellId = @"HomeLikeCell";
     req.token = [UserCacheBean share].userInfo.token;
     req.timestamp = @"0";
     req.platform = @"ios";
-    req.columnId = colmunid;
-    req.courseCategoryId = @"";
+    req.columnId = @"";
+    req.courseCategoryId = colmunid;
     req.pageIndex = 1;
-    req.pageSize = @"10";
+    req.pageSize = @"1000";
     __weak typeof(self)weakself = self;
     [[HomeServiceApi share]getFineClassWithParam:req response:^(id response) {
         if (response) {
@@ -124,7 +132,7 @@ static NSString *cellId = @"HomeLikeCell";
     
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 16;
+    return self.courseArr.count;
 }
 //设置每个item的UIEdgeInsets
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -167,7 +175,9 @@ static NSString *cellId = @"HomeLikeCell";
     HomeLikeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
     [cell setImageWidth:125];
     [cell setImageHeight:71];
-    
+    FreeListRes *model = self.courseArr[indexPath.row];
+    [cell setFreeModel:model];
+    cell.nameLabel.numberOfLines = 2;
     return cell;
 }
 
@@ -179,6 +189,8 @@ static NSString *cellId = @"HomeLikeCell";
 -(void)selectedSortIndex:(NSInteger)index{
     
     _headIndex = index;
+    MoreSortRes *model= self.dataArr[index];
+    [self getCourseList:model.courseCategoryId];
 }
 
 - (void)didReceiveMemoryWarning {

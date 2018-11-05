@@ -374,6 +374,13 @@ static NSString *likecellIds = @"HomeLikeCell";
                 [self.navigationController pushViewController:dryVC animated:YES];
             }else{
                 SortViewController *sortVC = [[SortViewController alloc]init];
+                if (index ==1) {
+                    [sortVC setCurrentTitle:@"团队打造"];
+                }else if (index ==2){
+                     [sortVC setCurrentTitle:@"金牌店长"];
+                }else if (index ==3){
+                    [sortVC setCurrentTitle:@"微信营销"];
+                }
                 sortVC.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:sortVC animated:YES];
             }

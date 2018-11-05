@@ -20,5 +20,6 @@
 @property(nonatomic,strong)NSMutableArray *dataArr;
 @property(nonatomic,assign)id<SortLeftScrollowDelegate>delegate;
 @property(nonatomic,strong)SortBtn *tmpBtn;
+@property(nonatomic,strong)NSString*currentTitle;
 
 @end

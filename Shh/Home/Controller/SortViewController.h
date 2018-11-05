@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface SortViewController : BaseViewController
+@property(nonatomic,strong)NSString *currentTitle;
 
 @end

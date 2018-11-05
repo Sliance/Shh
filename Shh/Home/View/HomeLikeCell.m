@@ -74,6 +74,11 @@
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:url]];
     self.nameLabel.text = bottomModel.siheserviceTitle;
 }
-
+-(void)setFreeModel:(FreeListRes *)freeModel{
+    _freeModel = freeModel;
+    NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,freeModel.courseAppCoverImagePath];
+    [self.headImage sd_setImageWithURL:[NSURL URLWithString:url]];
+    self.nameLabel.text = freeModel.courseTitle;
+}
 
 @end
