@@ -86,7 +86,7 @@
         [_allBtn setTitle:@"全部" forState:UIControlStateNormal];
         [_allBtn setTitleColor:DSColorFromHex(0x787878) forState:UIControlStateNormal];
         _allBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        
+        [_allBtn addTarget:self action:@selector(pressAll:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _allBtn;
 }
@@ -223,5 +223,7 @@
     
 }
 
-
+-(void)pressAll:(UIButton*)sender{
+    self.allBlock();
+}
 @end

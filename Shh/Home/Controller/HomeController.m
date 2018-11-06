@@ -20,6 +20,12 @@
 #import "DryHeadlinesController.h"
 #import "HomeServiceApi.h"
 #import "AllFreeListController.h"
+#import "ArticleListController.h"
+#import "CourseListController.h"
+#import "AllBigClassController.h"
+#import "AllRecommentController.h"
+#import "DetailCourseController.h"
+#import "DetailArticleController.h"
 
 @interface HomeController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -222,16 +228,17 @@ static NSString *likecellIds = @"HomeLikeCell";
             [weakself.recommendListArr addObjectsFromArray:response];
             [weakself.collectionView reloadData];
         }
-        [weakself getGuessList];
+       
+        [weakself getHomeBottom];
     }];
 }
--(void)getGuessList{
+-(void)getGuessList:(int)index{
     FreeListReq *req = [[FreeListReq alloc]init];
     req.appId = @"1041622992853962754";
     req.token = [UserCacheBean share].userInfo.token;
     req.timestamp = @"0";
     req.platform = @"ios";
-    req.pageIndex = 1;
+    req.pageIndex = index;
     req.pageSize = @"4";
     
     __weak typeof(self)weakself = self;
@@ -241,7 +248,7 @@ static NSString *likecellIds = @"HomeLikeCell";
             [weakself.guessListArr addObjectsFromArray:response];
             [weakself.collectionView reloadData];
         }
-        [weakself getHomeBottom];
+        
     }];
 }
 -(void)getHomeBottom{
@@ -261,6 +268,7 @@ static NSString *likecellIds = @"HomeLikeCell";
             [weakself.homeBottomArr addObjectsFromArray:response];
             [weakself.collectionView reloadData];
         }
+         [weakself getGuessList:1];
         
     }];
 }
@@ -386,32 +394,77 @@ static NSString *likecellIds = @"HomeLikeCell";
                 [self.navigationController pushViewController:sortVC animated:YES];
             }
         }];
+        [validView setAllBlock:^{
+            AllFreeListController *freeVC = [[AllFreeListController alloc]init];
+            freeVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:freeVC animated:YES];
+        }];
     }else if (indexPath.section ==5){
         PromoteServiceView *promoteView = [[PromoteServiceView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 305)];
         [promoteView setDataArr:self.recommendListArr];
         [headerView addSubview:promoteView];
+        [promoteView setAllBlock:^{
+            AllRecommentController *recommentVC = [[AllRecommentController alloc]init];
+            recommentVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:recommentVC animated:YES];
+        }];
     }else{
         HomeFreeHeadView *freeview = [[HomeFreeHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 55)];
         [headerView addSubview:freeview];
         switch (indexPath.section) {
                 case 1:
             {
-                freeview.titleLabel.text = @"今日干货";
+                
+                [freeview setTitle:@"今日干货"];
+                [freeview setAllBlock:^{
+                    ArticleListController *articleVC = [[ArticleListController alloc]init];
+                    articleVC.hidesBottomBarWhenPushed = YES;
+                    CourseSortRes *model = [[CourseSortRes alloc]init];
+                    model.columnId = @"1045266497792114689";
+                    model.columnName = @"今日干货";
+                    [articleVC setModel:model];
+                    [self.navigationController pushViewController:articleVC animated:YES];
+                }];
             }
                 break;
                 case 2:
             {
-                freeview.titleLabel.text = @"精品微课";
+                
+                 [freeview setTitle:@"精品微课"];
+                [freeview setAllBlock:^{
+                    CourseListController *courseVC = [[CourseListController alloc]init];
+                    courseVC.hidesBottomBarWhenPushed = YES;
+                    CourseSortRes *model = [[CourseSortRes alloc]init];
+                    model.columnId = @"1045258743325130753";
+                    model.columnName = @"精品微课";
+                    [courseVC setModel:model];
+                    [self.navigationController pushViewController:courseVC animated:YES];
+                }];
             }
                 break;
                 case 3:
             {
-                freeview.titleLabel.text = @"会员大课";
+                
+                [freeview setTitle:@"会员大课"];
+                [freeview setAllBlock:^{
+                    AllBigClassController *courseVC = [[AllBigClassController alloc]init];
+                    courseVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:courseVC animated:YES];
+                }];
             }
                 break;
                 case 4:
             {
-                freeview.titleLabel.text = @"猜你喜欢";
+                
+                freeview.rightLabel.text = @"\U0000e91b";
+                [freeview.allBtn setTitle:@"换一换" forState:UIControlStateNormal];
+                [freeview setTitle:@"猜你喜欢"];
+                
+                __weak typeof(self)weakself = self;
+                [freeview setAllBlock:^{
+                    int x = arc4random() % 25;
+                     [weakself getGuessList:x];
+                }];
             }
                 break;
             default:
@@ -483,9 +536,14 @@ static NSString *likecellIds = @"HomeLikeCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    SortViewController *sortVC = [[SortViewController alloc]init];
-    sortVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:sortVC animated:YES];
+    if (indexPath.section ==0) {
+        DetailCourseController *courseVC = [[DetailCourseController alloc]init];
+        courseVC.hidesBottomBarWhenPushed = YES;
+        FreeListRes *model = self.freeListArr[indexPath.row];
+        [courseVC setModel:model];
+        [self.navigationController pushViewController:courseVC animated:YES];
+    }
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -1,0 +1,96 @@
+//
+//  AllTrainingController.m
+//  Shh
+//
+//  Created by dnaer7 on 2018/11/6.
+//  Copyright © 2018 zhangshu. All rights reserved.
+//
+
+#import "AllTrainingController.h"
+#import "TrainingServicesCell.h"
+#import "ServiceApi.h"
+@interface AllTrainingController ()<UITableViewDelegate,UITableViewDataSource>
+@property(nonatomic,strong)UITableView *tableview;
+@property(nonatomic,strong)NSMutableArray *dataArr;
+
+@end
+
+@implementation AllTrainingController
+-(UITableView *)tableview{
+    if (!_tableview) {
+        _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, [self navHeightWithHeight], SCREENWIDTH, SCREENHEIGHT-[self tabBarHeight]) style:UITableViewStylePlain];
+        _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableview.delegate = self;
+        _tableview.dataSource = self;
+    }
+    return _tableview;
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    _dataArr = [NSMutableArray array];
+    [self.view addSubview:self.tableview];
+    [self getService:1];
+}
+
+-(void)getService:(NSInteger)index{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    if (index==0) {
+        req.columnId = @"1045875275674472450";
+    }else if (index ==1){
+        req.columnId = @"1045942000354193409";
+    }else if (index ==2){
+        req.columnId = @"1045942106063237121";
+    }else if (index ==3){
+        req.columnId = @"1045942150409613313";
+    }
+    req.pageIndex = 1;
+    req.pageSize = @"100";
+    __weak typeof(self)weakself = self;
+    [[ServiceApi share]getServiceListWithParam:req response:^(id response) {
+        if (response) {
+            
+                [weakself.dataArr removeAllObjects];
+                [weakself.dataArr addObjectsFromArray:response];
+            
+            [weakself.tableview reloadData];
+        }
+        
+    }];
+}
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        self.view.backgroundColor = [UIColor whiteColor];
+        self.title = @"培训服务";
+    }
+    return self;
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 115;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return self.dataArr.count;
+}
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+        static NSString *identify = @"TrainingServicesCell";
+        TrainingServicesCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+        if (!cell) {
+            cell = [[TrainingServicesCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+        }
+        ServiceListRes *model =self.dataArr[indexPath.row];
+        [cell setModel:model];
+        return cell;
+    
+}
+@end

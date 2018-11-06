@@ -63,7 +63,7 @@
     [self addSubview:self.detailLabel];
     [self.headiamge mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(15);
-        make.top.equalTo(self).offset(5);
+        make.top.equalTo(self).offset(10);
         make.height.mas_equalTo(90);
         make.width.mas_equalTo(125);
         
@@ -71,7 +71,7 @@
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.headiamge.mas_right).offset(15);
         make.right.equalTo(self).offset(-15);
-        make.top.equalTo(self).offset(5);
+        make.top.equalTo(self).offset(10);
         
     }];
     [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {

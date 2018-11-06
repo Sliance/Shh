@@ -23,6 +23,7 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
         [self setcornerLayout];
     }
     return self;
@@ -42,7 +43,7 @@
     _imageHeight = imageHeight;
     [self.headiamge mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(15/2);
-        make.top.equalTo(self).offset(5);
+        make.top.equalTo(self).offset(10);
         make.height.mas_equalTo(self.imageHeight);
         make.width.mas_equalTo(self.imageWidth);
         

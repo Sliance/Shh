@@ -16,6 +16,8 @@
 #import "RecommendListRes.h"
 #import "GuessListRes.h"
 #import "MoreSortRes.h"
+#import "CommentListRes.h"
+#import "SingleCourseDrectoryRes.h"
 
 @interface HomeServiceApi : BaseApi
 + (instancetype)share;
@@ -35,5 +37,10 @@
 -(void)gethHomeBottomWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///获取更多分类
 -(void)getMoreSortWithParam:(BaseModelReq *) req response:(responseModel) responseModel;
-
+///获取单条课程
+-(void)getsingleWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///获取评论列表
+-(void)getCommentListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///获取单条课程目录
+-(void)SingleCourseDirectoryWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 @end

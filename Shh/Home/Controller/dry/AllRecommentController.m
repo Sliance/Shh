@@ -1,21 +1,22 @@
 //
-//  AllFreeListController.m
+//  AllRecommentController.m
 //  Shh
 //
-//  Created by dnaer7 on 2018/11/5.
+//  Created by dnaer7 on 2018/11/6.
 //  Copyright © 2018 zhangshu. All rights reserved.
 //
 
-#import "AllFreeListController.h"
-#import "HomeFreeCell.h"
+#import "AllRecommentController.h"
+#import "QualityCollectionCell.h"
 #import "HomeServiceApi.h"
-@interface AllFreeListController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface AllRecommentController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property(nonatomic,strong)NSMutableArray *dataArr;
 
 @end
-static NSString *freecellIds = @"HomeFreeCell";
-@implementation AllFreeListController
+static NSString *freecellIds = @"QualityCollectionCell";
+@implementation AllRecommentController
+
 
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
@@ -25,7 +26,7 @@ static NSString *freecellIds = @"HomeFreeCell";
         _collectionView.dataSource = self;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
-        [_collectionView registerClass:[HomeFreeCell class] forCellWithReuseIdentifier:freecellIds];
+        [_collectionView registerClass:[QualityCollectionCell class] forCellWithReuseIdentifier:freecellIds];
         
         _collectionView.backgroundColor = DSColorFromHex(0xFAFAFA);
         
@@ -39,10 +40,10 @@ static NSString *freecellIds = @"HomeFreeCell";
     [super viewDidLoad];
     _dataArr = [NSMutableArray array];
     [self.view addSubview:self.collectionView];
-    [self getFreeList];
+    [self getRecommendList];
 }
 
--(void)getFreeList{
+-(void)getRecommendList{
     FreeListReq *req = [[FreeListReq alloc]init];
     req.appId = @"1041622992853962754";
     req.token = [UserCacheBean share].userInfo.token;
@@ -50,23 +51,22 @@ static NSString *freecellIds = @"HomeFreeCell";
     req.platform = @"ios";
     req.pageIndex = 1;
     req.pageSize = @"100";
-    req.columnId = @"";
-    req.courseCategoryId = @"";
+    
     __weak typeof(self)weakself = self;
-    [[HomeServiceApi share]getFreeListWithParam:req response:^(id response) {
+    [[HomeServiceApi share]getRecommendListWithParam:req response:^(id response) {
         if (response) {
             [weakself.dataArr removeAllObjects];
             [weakself.dataArr addObjectsFromArray:response];
             [weakself.collectionView reloadData];
         }
         
-        
+       
     }];
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.view.backgroundColor = [UIColor whiteColor];
-        self.title = @"限时免费";
+        self.title = @"会员大课";
     }
     return self;
 }
@@ -94,13 +94,13 @@ static NSString *freecellIds = @"HomeFreeCell";
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
     
-    return 5;
+    return 1;
 }
 //设置每个item的尺寸
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return CGSizeMake(SCREENWIDTH, 115);
+    return CGSizeMake(SCREENWIDTH, 235);
     
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
@@ -113,24 +113,16 @@ static NSString *freecellIds = @"HomeFreeCell";
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    HomeFreeCell *freecell = [collectionView dequeueReusableCellWithReuseIdentifier:freecellIds forIndexPath:indexPath];
-    FreeListRes *model = self.dataArr[indexPath.row];
-    [freecell setModel:model];
-    return freecell;
+    QualityCollectionCell *collectcell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QualityCollectionCell" forIndexPath:indexPath];
+    [collectcell setImageWidth:SCREENWIDTH-15];
+    [collectcell setImageHeight:175];
+    RecommendListRes *model = self.dataArr[indexPath.row];
+    [collectcell setRecomendModel:model];
+    return collectcell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

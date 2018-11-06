@@ -13,38 +13,37 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        [self setCortentLayout];
+
+        [self addSubview:self.bgView];
+        [self.bgView addSubview:self.titleLabel];
+        [self.bgView addSubview:self.rightLabel];
+        [self.bgView addSubview:self.allBtn];
+        self.bgView.frame = CGRectMake(0, 0, SCREENWIDTH, 50);
+        self.titleLabel.frame = CGRectMake(15, 0, SCREENWIDTH-15, 50);
         self.backgroundColor = DSColorFromHex(0xF5F5F5);
     }
     return self;
 }
 -(void)setCortentLayout{
     
-    [self addSubview:self.bgView];
-    [self.bgView addSubview:self.titleLabel];
-    [self.bgView addSubview:self.rightLabel];
-    [self.bgView addSubview:self.allBtn];
-    [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self);
-        make.bottom.equalTo(self);
-        make.height.mas_equalTo(50);
-    }];
-    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.bgView).offset(15);
-        make.centerY.equalTo(self.bgView);
-    }];
-    [self.rightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.bgView).offset(-15);
-        make.centerY.equalTo(self.bgView);
-        make.width.mas_equalTo(8);
-        make.height.mas_equalTo(12);
-    }];
-    [self.allBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.rightLabel.mas_left);
-        make.top.equalTo(self.bgView);
-        make.width.mas_equalTo(40);
-        make.height.mas_equalTo(50);
-    }];
+    self.allBtn.frame = CGRectMake(SCREENWIDTH-65, 0, 40, 50);
+    self.rightLabel.frame = CGRectMake(SCREENWIDTH-23, 0, 12, 50);
+    
+}
+-(void)likeLayout{
+    self.allBtn.frame = CGRectMake(SCREENWIDTH-55, 0, 50, 50);
+    self.rightLabel.frame = CGRectMake(SCREENWIDTH-72, 0, 12, 50);
+   
+}
+-(void)setTitle:(NSString *)title{
+    self.titleLabel.text = title;
+    if ([title isEqualToString:@"猜你喜欢"]) {
+        [self likeLayout];
+    }else{
+         [self setCortentLayout];
+    }
+    
+    
 }
 -(UIView *)bgView{
     if(!_bgView){
@@ -69,6 +68,7 @@
         _rightLabel.font = [UIFont fontWithName:@"icomoon"size:12];
         _rightLabel.text = @"\U0000e90d";
         _rightLabel.textColor = DSColorFromHex(0x787878);
+        
     }
     return _rightLabel;
 }
@@ -79,8 +79,12 @@
         [_allBtn setTitle:@"全部" forState:UIControlStateNormal];
         [_allBtn setTitleColor:DSColorFromHex(0x787878) forState:UIControlStateNormal];
         _allBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_allBtn addTarget:self action:@selector(pressAll:) forControlEvents:UIControlEventTouchUpInside];
         
     }
     return _allBtn;
+}
+-(void)pressAll:(UIButton*)sender{
+    self.allBlock();
 }
 @end

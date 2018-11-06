@@ -117,6 +117,13 @@
 		887E03B5212FB1B50013472F /* HomeGivingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 887E03B4212FB1B50013472F /* HomeGivingCell.m */; };
 		887E03B8212FB2AB0013472F /* HomeLikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 887E03B7212FB2AB0013472F /* HomeLikeCell.m */; };
 		8901A29A217DDF1B00587310 /* TodayListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8901A299217DDF1B00587310 /* TodayListRes.m */; };
+		89085E892191743900259A68 /* AllRecommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085E882191743900259A68 /* AllRecommentController.m */; };
+		89085E8D21917DCD00259A68 /* AllTrainingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085E8C21917DCD00259A68 /* AllTrainingController.m */; };
+		89085E9021917E4F00259A68 /* AllServiceListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085E8F21917E4F00259A68 /* AllServiceListController.m */; };
+		89085E9321918E0F00259A68 /* CommentListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085E9221918E0F00259A68 /* CommentListRes.m */; };
+		89085E9621918FC000259A68 /* SingleCourseDrectoryRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085E9521918FC000259A68 /* SingleCourseDrectoryRes.m */; };
+		89085E992191914800259A68 /* DetailCourseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085E982191914800259A68 /* DetailCourseController.m */; };
+		89085E9C2191915B00259A68 /* DetailArticleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085E9B2191915B00259A68 /* DetailArticleController.m */; };
 		890D559C217EAE09009B33B2 /* RecommendListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D559B217EAE09009B33B2 /* RecommendListRes.m */; };
 		890D559F217EAE21009B33B2 /* GuessListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D559E217EAE21009B33B2 /* GuessListRes.m */; };
 		890D55A9217F0404009B33B2 /* DetailFreeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D55A8217F0404009B33B2 /* DetailFreeController.m */; };
@@ -127,6 +134,7 @@
 		8961E9E921871CBB00B914FD /* MoreSortRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8961E9E821871CBB00B914FD /* MoreSortRes.m */; };
 		89856B47217F1A2100688DF7 /* CourseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89856B46217F1A2100688DF7 /* CourseController.m */; };
 		89856B4A217F1AE400688DF7 /* CourseHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89856B49217F1AE400688DF7 /* CourseHeadView.m */; };
+		89CAFFC3219164D100E4B7AE /* AllBigClassController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CAFFC2219164D100E4B7AE /* AllBigClassController.m */; };
 		89DBCB83217FFE1400E66B85 /* ZSScrollButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB80217FFE1400E66B85 /* ZSScrollButton.m */; };
 		89DBCB84217FFE1400E66B85 /* ZSSortSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB81217FFE1400E66B85 /* ZSSortSelectorView.m */; };
 		89DBCB87218002C800E66B85 /* CourseServiceApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB86218002C800E66B85 /* CourseServiceApi.m */; };
@@ -376,6 +384,20 @@
 		887E03B7212FB2AB0013472F /* HomeLikeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeLikeCell.m; sourceTree = "<group>"; };
 		8901A298217DDF1B00587310 /* TodayListRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayListRes.h; sourceTree = "<group>"; };
 		8901A299217DDF1B00587310 /* TodayListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayListRes.m; sourceTree = "<group>"; };
+		89085E872191743900259A68 /* AllRecommentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllRecommentController.h; sourceTree = "<group>"; };
+		89085E882191743900259A68 /* AllRecommentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllRecommentController.m; sourceTree = "<group>"; };
+		89085E8B21917DCD00259A68 /* AllTrainingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllTrainingController.h; sourceTree = "<group>"; };
+		89085E8C21917DCD00259A68 /* AllTrainingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllTrainingController.m; sourceTree = "<group>"; };
+		89085E8E21917E4F00259A68 /* AllServiceListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllServiceListController.h; sourceTree = "<group>"; };
+		89085E8F21917E4F00259A68 /* AllServiceListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllServiceListController.m; sourceTree = "<group>"; };
+		89085E9121918E0F00259A68 /* CommentListRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentListRes.h; sourceTree = "<group>"; };
+		89085E9221918E0F00259A68 /* CommentListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentListRes.m; sourceTree = "<group>"; };
+		89085E9421918FC000259A68 /* SingleCourseDrectoryRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingleCourseDrectoryRes.h; sourceTree = "<group>"; };
+		89085E9521918FC000259A68 /* SingleCourseDrectoryRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SingleCourseDrectoryRes.m; sourceTree = "<group>"; };
+		89085E972191914800259A68 /* DetailCourseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailCourseController.h; sourceTree = "<group>"; };
+		89085E982191914800259A68 /* DetailCourseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailCourseController.m; sourceTree = "<group>"; };
+		89085E9A2191915B00259A68 /* DetailArticleController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailArticleController.h; sourceTree = "<group>"; };
+		89085E9B2191915B00259A68 /* DetailArticleController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailArticleController.m; sourceTree = "<group>"; };
 		890D559A217EAE09009B33B2 /* RecommendListRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendListRes.h; sourceTree = "<group>"; };
 		890D559B217EAE09009B33B2 /* RecommendListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendListRes.m; sourceTree = "<group>"; };
 		890D559D217EAE21009B33B2 /* GuessListRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuessListRes.h; sourceTree = "<group>"; };
@@ -396,6 +418,8 @@
 		89856B46217F1A2100688DF7 /* CourseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseController.m; sourceTree = "<group>"; };
 		89856B48217F1AE400688DF7 /* CourseHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseHeadView.h; sourceTree = "<group>"; };
 		89856B49217F1AE400688DF7 /* CourseHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseHeadView.m; sourceTree = "<group>"; };
+		89CAFFC1219164D100E4B7AE /* AllBigClassController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllBigClassController.h; sourceTree = "<group>"; };
+		89CAFFC2219164D100E4B7AE /* AllBigClassController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllBigClassController.m; sourceTree = "<group>"; };
 		89DBCB7F217FFE1400E66B85 /* ZSSortSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSSortSelectorView.h; sourceTree = "<group>"; };
 		89DBCB80217FFE1400E66B85 /* ZSScrollButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSScrollButton.m; sourceTree = "<group>"; };
 		89DBCB81217FFE1400E66B85 /* ZSSortSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSSortSelectorView.m; sourceTree = "<group>"; };
@@ -536,6 +560,14 @@
 				89F1ADF9219050BC009A872A /* CourseListController.m */,
 				89F1ADFB2190609E009A872A /* AllFreeListController.h */,
 				89F1ADFC2190609E009A872A /* AllFreeListController.m */,
+				89CAFFC1219164D100E4B7AE /* AllBigClassController.h */,
+				89CAFFC2219164D100E4B7AE /* AllBigClassController.m */,
+				89085E872191743900259A68 /* AllRecommentController.h */,
+				89085E882191743900259A68 /* AllRecommentController.m */,
+				89085E972191914800259A68 /* DetailCourseController.h */,
+				89085E982191914800259A68 /* DetailCourseController.m */,
+				89085E9A2191915B00259A68 /* DetailArticleController.h */,
+				89085E9B2191915B00259A68 /* DetailArticleController.m */,
 			);
 			path = dry;
 			sourceTree = "<group>";
@@ -934,6 +966,7 @@
 		886DB95B212E850D00CF8C64 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				89085E8A21917DA700259A68 /* All */,
 				886DB966212E85A900CF8C64 /* ServiceController.h */,
 				886DB967212E85A900CF8C64 /* ServiceController.m */,
 			);
@@ -993,6 +1026,17 @@
 			path = ZSCycleScrollView;
 			sourceTree = "<group>";
 		};
+		89085E8A21917DA700259A68 /* All */ = {
+			isa = PBXGroup;
+			children = (
+				89085E8B21917DCD00259A68 /* AllTrainingController.h */,
+				89085E8C21917DCD00259A68 /* AllTrainingController.m */,
+				89085E8E21917E4F00259A68 /* AllServiceListController.h */,
+				89085E8F21917E4F00259A68 /* AllServiceListController.m */,
+			);
+			path = All;
+			sourceTree = "<group>";
+		};
 		895DBF6A21797F5900E65B16 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1012,6 +1056,10 @@
 				890D559B217EAE09009B33B2 /* RecommendListRes.m */,
 				890D559D217EAE21009B33B2 /* GuessListRes.h */,
 				890D559E217EAE21009B33B2 /* GuessListRes.m */,
+				89085E9121918E0F00259A68 /* CommentListRes.h */,
+				89085E9221918E0F00259A68 /* CommentListRes.m */,
+				89085E9421918FC000259A68 /* SingleCourseDrectoryRes.h */,
+				89085E9521918FC000259A68 /* SingleCourseDrectoryRes.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1228,6 +1276,7 @@
 			files = (
 				8849B84B2135205100CAE299 /* UILabel+String.m in Sources */,
 				886B97942136726A0074322D /* MineFootView.m in Sources */,
+				89085E9321918E0F00259A68 /* CommentListRes.m in Sources */,
 				89DBCB8B2180034700E66B85 /* CourseSortRes.m in Sources */,
 				890D559F217EAE21009B33B2 /* GuessListRes.m in Sources */,
 				887E03B5212FB1B50013472F /* HomeGivingCell.m in Sources */,
@@ -1270,9 +1319,11 @@
 				88483F572137D4F0004CA3FA /* SortBtn.m in Sources */,
 				886DB96E212EC1D900CF8C64 /* MineTypeBtn.m in Sources */,
 				886DB98E212EC2D700CF8C64 /* ZSAnimatedDotView.m in Sources */,
+				89085E9621918FC000259A68 /* SingleCourseDrectoryRes.m in Sources */,
 				886DB98B212EC2D700CF8C64 /* ZSDotView.m in Sources */,
 				895DBF70217980C200E65B16 /* BannersReq.m in Sources */,
 				886B98312136B7FD0074322D /* UIViewController+Loading.m in Sources */,
+				89085E8D21917DCD00259A68 /* AllTrainingController.m in Sources */,
 				89DBCB87218002C800E66B85 /* CourseServiceApi.m in Sources */,
 				886B97F12136B7BE0074322D /* ZSAPIProxy.m in Sources */,
 				886B97FB2136B7BE0074322D /* NSString+MoneyStyle.m in Sources */,
@@ -1293,6 +1344,7 @@
 				8824EAEB213001EF000CBA7E /* HomeHeadView.m in Sources */,
 				89DBCB83217FFE1400E66B85 /* ZSScrollButton.m in Sources */,
 				8824EAE4212FDB6B000CBA7E /* UIViewController+VTMagic.m in Sources */,
+				89085E992191914800259A68 /* DetailCourseController.m in Sources */,
 				8824EAE2212FDB6B000CBA7E /* UIColor+VTMagic.m in Sources */,
 				8849B8512135452C00CAE299 /* MenuInfo.m in Sources */,
 				887E03AF212FB1190013472F /* HomeFreeCell.m in Sources */,
@@ -1305,6 +1357,8 @@
 				89DBCB84217FFE1400E66B85 /* ZSSortSelectorView.m in Sources */,
 				89F1ADFD2190609E009A872A /* AllFreeListController.m in Sources */,
 				8824EAE8212FDB6B000CBA7E /* VTMenuBar.m in Sources */,
+				89085E9C2191915B00259A68 /* DetailArticleController.m in Sources */,
+				89CAFFC3219164D100E4B7AE /* AllBigClassController.m in Sources */,
 				886B9797213698E50074322D /* NavigationView.m in Sources */,
 				886B97F42136B7BE0074322D /* ZSSignatureGenerator.m in Sources */,
 				886DB91B212E80A600CF8C64 /* ViewController.m in Sources */,
@@ -1341,7 +1395,9 @@
 				886B97EF2136B7BE0074322D /* UserBaseInfoModel.m in Sources */,
 				886DB98D212EC2D700CF8C64 /* ZSPageControl.m in Sources */,
 				8850347521394068000BDD3A /* DryBigImageCell.m in Sources */,
+				89085E892191743900259A68 /* AllRecommentController.m in Sources */,
 				886B97F72136B7BE0074322D /* DSBaseModel.m in Sources */,
+				89085E9021917E4F00259A68 /* AllServiceListController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

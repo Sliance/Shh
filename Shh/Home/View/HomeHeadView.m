@@ -49,7 +49,7 @@
     [self.rightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.bgView).offset(-15);
         make.centerY.equalTo(self.bgView);
-        make.width.mas_equalTo(8);
+        make.width.mas_equalTo(12);
         make.height.mas_equalTo(12);
     }];
     [self.allBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -92,7 +92,7 @@
         [_allBtn setTitle:@"全部" forState:UIControlStateNormal];
         [_allBtn setTitleColor:DSColorFromHex(0x787878) forState:UIControlStateNormal];
         _allBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [_allBtn addTarget:self action:@selector(<#selector#>) forControlEvents:<#(UIControlEvents)#>]
+        [_allBtn addTarget:self action:@selector(pressAll:) forControlEvents:UIControlEventTouchUpInside];
         
     }
     return _allBtn;
@@ -111,5 +111,7 @@
 -(void)pressBtn:(MineTypeBtn*)sender{
     self.selectedBlock(sender.tag);
 }
--(void)pressArr:(UIButton*)
+-(void)pressAll:(UIButton*)sender{
+    self.allBlock();
+}
 @end

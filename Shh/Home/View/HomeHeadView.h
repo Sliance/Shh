@@ -21,5 +21,5 @@
 
 @property(nonatomic,strong)ZSCycleScrollView *cycleView;
 
-
+@property(nonatomic,copy)void (^allBlock)(void);
 @end

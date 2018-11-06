@@ -13,4 +13,7 @@
 @property(nonatomic,strong)UILabel *titleLabel;
 @property(nonatomic,strong)UILabel *rightLabel;
 @property(nonatomic,strong)UIButton *allBtn;
+@property(nonatomic,copy)void (^allBlock)(void);
+@property(nonatomic,strong)NSString *title;
+
 @end

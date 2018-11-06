@@ -15,6 +15,8 @@
 #import "NavigationView.h"
 #import "HomeServiceApi.h"
 #import "ServiceApi.h"
+#import "AllTrainingController.h"
+#import "AllServiceListController.h"
 
 @interface ServiceController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableview;
@@ -171,13 +173,42 @@
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     HomeFreeHeadView *freeview = [[HomeFreeHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 55)];
     if (section ==0) {
-        freeview.titleLabel.text = @"精品服务";
+        
+        [freeview setTitle:@"精品服务"];
+        [freeview setAllBlock:^{
+            AllServiceListController *allService = [[AllServiceListController alloc]init];
+            allService.hidesBottomBarWhenPushed = YES;
+            [allService setIndex:0];
+            [allService setTitles:@"精品服务"];
+            [self.navigationController pushViewController:allService animated:YES];
+        }];
     }else if (section ==1){
-        freeview.titleLabel.text = @"培训服务";
-    }else if (section ==1){
-        freeview.titleLabel.text = @"活动执行";
-    }else if (section ==1){
-        freeview.titleLabel.text = @"招商加盟";
+         [freeview setTitle:@"培训服务"];
+        [freeview setAllBlock:^{
+            AllTrainingController *trainVC = [[AllTrainingController alloc]init];
+            trainVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:trainVC animated:YES];
+        }];
+    }else if (section ==2){
+        
+         [freeview setTitle:@"活动执行"];
+        [freeview setAllBlock:^{
+            AllServiceListController *allService = [[AllServiceListController alloc]init];
+            allService.hidesBottomBarWhenPushed = YES;
+            [allService setIndex:2];
+            [allService setTitles:@"活动执行"];
+            [self.navigationController pushViewController:allService animated:YES];
+        }];
+    }else if (section ==3){
+        
+         [freeview setTitle:@"招商加盟"];
+        [freeview setAllBlock:^{
+            AllServiceListController *allService = [[AllServiceListController alloc]init];
+            allService.hidesBottomBarWhenPushed = YES;
+            [allService setIndex:3];
+            [allService setTitles:@"招商加盟"];
+            [self.navigationController pushViewController:allService animated:YES];
+        }];
     }
     return freeview;
 }
