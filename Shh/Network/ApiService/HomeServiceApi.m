@@ -242,7 +242,7 @@
             NSDictionary *dicResponse = (NSDictionary *) response.content;
             if ([dicResponse[@"code"] integerValue] == 200) {
                 if (responseModel) {
-                    
+                   DetailCourseRes *model = [DetailCourseRes mj_objectWithKeyValues:dicResponse[@"data"]];
                     responseModel(dicResponse[@"data"]);
                 }
             }else {

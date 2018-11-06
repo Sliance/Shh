@@ -18,6 +18,7 @@
 #import "MoreSortRes.h"
 #import "CommentListRes.h"
 #import "SingleCourseDrectoryRes.h"
+#import "DetailCourseRes.h"
 
 @interface HomeServiceApi : BaseApi
 + (instancetype)share;

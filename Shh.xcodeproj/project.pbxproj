@@ -124,6 +124,10 @@
 		89085E9621918FC000259A68 /* SingleCourseDrectoryRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085E9521918FC000259A68 /* SingleCourseDrectoryRes.m */; };
 		89085E992191914800259A68 /* DetailCourseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085E982191914800259A68 /* DetailCourseController.m */; };
 		89085E9C2191915B00259A68 /* DetailArticleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085E9B2191915B00259A68 /* DetailArticleController.m */; };
+		89085E9F2191B04400259A68 /* DetailCourseRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085E9E2191B04400259A68 /* DetailCourseRes.m */; };
+		89085EA22191B18D00259A68 /* CourseListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085EA12191B18D00259A68 /* CourseListModel.m */; };
+		89085EA52191B1A200259A68 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085EA42191B1A200259A68 /* CourseModel.m */; };
+		89085EA82191B1D700259A68 /* CourseMemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085EA72191B1D700259A68 /* CourseMemberModel.m */; };
 		890D559C217EAE09009B33B2 /* RecommendListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D559B217EAE09009B33B2 /* RecommendListRes.m */; };
 		890D559F217EAE21009B33B2 /* GuessListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D559E217EAE21009B33B2 /* GuessListRes.m */; };
 		890D55A9217F0404009B33B2 /* DetailFreeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D55A8217F0404009B33B2 /* DetailFreeController.m */; };
@@ -398,6 +402,14 @@
 		89085E982191914800259A68 /* DetailCourseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailCourseController.m; sourceTree = "<group>"; };
 		89085E9A2191915B00259A68 /* DetailArticleController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailArticleController.h; sourceTree = "<group>"; };
 		89085E9B2191915B00259A68 /* DetailArticleController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailArticleController.m; sourceTree = "<group>"; };
+		89085E9D2191B04400259A68 /* DetailCourseRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailCourseRes.h; sourceTree = "<group>"; };
+		89085E9E2191B04400259A68 /* DetailCourseRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailCourseRes.m; sourceTree = "<group>"; };
+		89085EA02191B18D00259A68 /* CourseListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseListModel.h; sourceTree = "<group>"; };
+		89085EA12191B18D00259A68 /* CourseListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseListModel.m; sourceTree = "<group>"; };
+		89085EA32191B1A200259A68 /* CourseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseModel.h; sourceTree = "<group>"; };
+		89085EA42191B1A200259A68 /* CourseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseModel.m; sourceTree = "<group>"; };
+		89085EA62191B1D700259A68 /* CourseMemberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseMemberModel.h; sourceTree = "<group>"; };
+		89085EA72191B1D700259A68 /* CourseMemberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseMemberModel.m; sourceTree = "<group>"; };
 		890D559A217EAE09009B33B2 /* RecommendListRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendListRes.h; sourceTree = "<group>"; };
 		890D559B217EAE09009B33B2 /* RecommendListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendListRes.m; sourceTree = "<group>"; };
 		890D559D217EAE21009B33B2 /* GuessListRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuessListRes.h; sourceTree = "<group>"; };
@@ -1060,6 +1072,14 @@
 				89085E9221918E0F00259A68 /* CommentListRes.m */,
 				89085E9421918FC000259A68 /* SingleCourseDrectoryRes.h */,
 				89085E9521918FC000259A68 /* SingleCourseDrectoryRes.m */,
+				89085E9D2191B04400259A68 /* DetailCourseRes.h */,
+				89085E9E2191B04400259A68 /* DetailCourseRes.m */,
+				89085EA02191B18D00259A68 /* CourseListModel.h */,
+				89085EA12191B18D00259A68 /* CourseListModel.m */,
+				89085EA32191B1A200259A68 /* CourseModel.h */,
+				89085EA42191B1A200259A68 /* CourseModel.m */,
+				89085EA62191B1D700259A68 /* CourseMemberModel.h */,
+				89085EA72191B1D700259A68 /* CourseMemberModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1318,6 +1338,7 @@
 				886B97DF2136B7BE0074322D /* NSArray+TYAFNetworking.m in Sources */,
 				88483F572137D4F0004CA3FA /* SortBtn.m in Sources */,
 				886DB96E212EC1D900CF8C64 /* MineTypeBtn.m in Sources */,
+				89085EA52191B1A200259A68 /* CourseModel.m in Sources */,
 				886DB98E212EC2D700CF8C64 /* ZSAnimatedDotView.m in Sources */,
 				89085E9621918FC000259A68 /* SingleCourseDrectoryRes.m in Sources */,
 				886DB98B212EC2D700CF8C64 /* ZSDotView.m in Sources */,
@@ -1357,6 +1378,7 @@
 				89DBCB84217FFE1400E66B85 /* ZSSortSelectorView.m in Sources */,
 				89F1ADFD2190609E009A872A /* AllFreeListController.m in Sources */,
 				8824EAE8212FDB6B000CBA7E /* VTMenuBar.m in Sources */,
+				89085E9F2191B04400259A68 /* DetailCourseRes.m in Sources */,
 				89085E9C2191915B00259A68 /* DetailArticleController.m in Sources */,
 				89CAFFC3219164D100E4B7AE /* AllBigClassController.m in Sources */,
 				886B9797213698E50074322D /* NavigationView.m in Sources */,
@@ -1376,7 +1398,9 @@
 				886B97E32136B7BE0074322D /* BaseApi.m in Sources */,
 				886B97F92136B7BE0074322D /* ImageUtils.m in Sources */,
 				886B97F32136B7BE0074322D /* ZSRequestGenerator.m in Sources */,
+				89085EA82191B1D700259A68 /* CourseMemberModel.m in Sources */,
 				8824EAE5212FDB6B000CBA7E /* VTContentView.m in Sources */,
+				89085EA22191B18D00259A68 /* CourseListModel.m in Sources */,
 				886DB918212E80A600CF8C64 /* AppDelegate.m in Sources */,
 				886DB96B212E85B700CF8C64 /* MineController.m in Sources */,
 				8824EAE6212FDB6B000CBA7E /* VTMagicController.m in Sources */,
