@@ -215,6 +215,7 @@ static NSString *givecellIds = @"HomeGivingCell";
         if (index ==0) {
             SortViewController *sortVC = [[SortViewController alloc]init];
             sortVC.hidesBottomBarWhenPushed = YES;
+            [sortVC setCurrentTitle:@""];
             [weakself.navigationController pushViewController:sortVC animated:YES];
         }else{
             CourseSortRes *model = weakself.sortArr[index-1];

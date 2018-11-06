@@ -57,6 +57,7 @@ static NSString *cellId = @"HomeLikeCell";
   
    [self.view addSubview:self.sortLeftView];
     _dataArr = [NSMutableArray array];
+    self.courseArr = [NSMutableArray array];
     _detailDataArr = [NSMutableArray array];
   
     
@@ -75,7 +76,7 @@ static NSString *cellId = @"HomeLikeCell";
      [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableView"];
     [self.collectionView
      registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footreusableView"];
-    self.courseArr = [NSMutableArray array];
+    
     
    
     
@@ -95,10 +96,11 @@ static NSString *cellId = @"HomeLikeCell";
     __weak typeof(self)weakself = self;
     [[HomeServiceApi share] getMoreSortWithParam:req response:^(id response) {
         if (response) {
+          NSArray *result =   [MoreSortRes mj_objectArrayWithKeyValuesArray:response[@"courseCategoryList"]];
             [weakself.dataArr  removeAllObjects];
-            [weakself.dataArr addObjectsFromArray:response];
+            [weakself.dataArr addObjectsFromArray:result];
             NSMutableArray *arr = [NSMutableArray array];
-            for (MoreSortRes *model in response) {
+            for (MoreSortRes *model in result) {
                 if (model.courseCategoryName) {
                     [arr addObject:model.courseCategoryName];
                 }
@@ -106,7 +108,13 @@ static NSString *cellId = @"HomeLikeCell";
                     [weakself getCourseList:model.courseCategoryId];
                 }
             }
-            [weakself.sortLeftView setCurrentTitle:weakself.currentTitle];
+            MoreSortRes *firstmodel = [weakself.dataArr firstObject];
+            if (weakself.currentTitle.length>0) {
+                 [weakself.sortLeftView setCurrentTitle:weakself.currentTitle];
+            }else{
+                 [weakself getCourseList:firstmodel.courseCategoryId];
+            }
+            
             [weakself.sortLeftView setDataArr:arr];
         }
     }];

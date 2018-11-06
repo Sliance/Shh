@@ -215,8 +215,8 @@
             NSDictionary *dicResponse = (NSDictionary *) response.content;
             if ([dicResponse[@"code"] integerValue] == 200) {
                 if (responseModel) {
-                    NSArray *result = [MoreSortRes mj_objectArrayWithKeyValuesArray:dicResponse[@"data"][@"courseCategoryList"]];
-                    responseModel(result);
+                   
+                    responseModel(dicResponse[@"data"]);
                 }
             }else {
                 if (responseModel) {

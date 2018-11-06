@@ -19,6 +19,7 @@
 #import "PromoteServiceView.h"
 #import "DryHeadlinesController.h"
 #import "HomeServiceApi.h"
+#import "AllFreeListController.h"
 
 @interface HomeController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;

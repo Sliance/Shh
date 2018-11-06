@@ -92,6 +92,7 @@
         [_allBtn setTitle:@"全部" forState:UIControlStateNormal];
         [_allBtn setTitleColor:DSColorFromHex(0x787878) forState:UIControlStateNormal];
         _allBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_allBtn addTarget:self action:@selector(<#selector#>) forControlEvents:<#(UIControlEvents)#>]
         
     }
     return _allBtn;
@@ -110,5 +111,5 @@
 -(void)pressBtn:(MineTypeBtn*)sender{
     self.selectedBlock(sender.tag);
 }
-
+-(void)pressArr:(UIButton*)
 @end

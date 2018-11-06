@@ -48,7 +48,7 @@
             }
             
         }else{
-            if (btn ==0) {
+            if (i ==0) {
                 btn.selectedLabel.hidden = NO;
                 btn.backgroundColor = DSColorFromHex(0xFAFAFA);
                 btn.sortLabel.textColor = DSColorFromHex(0xE70019);

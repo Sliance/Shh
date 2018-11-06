@@ -134,6 +134,9 @@
 		89DBCB8E21804AD900E66B85 /* ServiceApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB8D21804AD900E66B85 /* ServiceApi.m */; };
 		89DBCB9221804B9600E66B85 /* ServiceListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB9121804B9600E66B85 /* ServiceListRes.m */; };
 		89DBCB9521805DC300E66B85 /* DryHeadlinesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB9421805DC300E66B85 /* DryHeadlinesController.m */; };
+		89F1ADF7219050A9009A872A /* ArticleListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F1ADF6219050A9009A872A /* ArticleListController.m */; };
+		89F1ADFA219050BC009A872A /* CourseListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F1ADF9219050BC009A872A /* CourseListController.m */; };
+		89F1ADFD2190609E009A872A /* AllFreeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F1ADFC2190609E009A872A /* AllFreeListController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -407,6 +410,12 @@
 		89DBCB9121804B9600E66B85 /* ServiceListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceListRes.m; sourceTree = "<group>"; };
 		89DBCB9321805DC300E66B85 /* DryHeadlinesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DryHeadlinesController.h; sourceTree = "<group>"; };
 		89DBCB9421805DC300E66B85 /* DryHeadlinesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DryHeadlinesController.m; sourceTree = "<group>"; };
+		89F1ADF5219050A9009A872A /* ArticleListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleListController.h; sourceTree = "<group>"; };
+		89F1ADF6219050A9009A872A /* ArticleListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleListController.m; sourceTree = "<group>"; };
+		89F1ADF8219050BC009A872A /* CourseListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseListController.h; sourceTree = "<group>"; };
+		89F1ADF9219050BC009A872A /* CourseListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseListController.m; sourceTree = "<group>"; };
+		89F1ADFB2190609E009A872A /* AllFreeListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllFreeListController.h; sourceTree = "<group>"; };
+		89F1ADFC2190609E009A872A /* AllFreeListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllFreeListController.m; sourceTree = "<group>"; };
 		CC622AFA70744F55DF7FAFC7 /* Pods-Shh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shh.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shh/Pods-Shh.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -521,6 +530,12 @@
 			children = (
 				89DBCB9321805DC300E66B85 /* DryHeadlinesController.h */,
 				89DBCB9421805DC300E66B85 /* DryHeadlinesController.m */,
+				89F1ADF5219050A9009A872A /* ArticleListController.h */,
+				89F1ADF6219050A9009A872A /* ArticleListController.m */,
+				89F1ADF8219050BC009A872A /* CourseListController.h */,
+				89F1ADF9219050BC009A872A /* CourseListController.m */,
+				89F1ADFB2190609E009A872A /* AllFreeListController.h */,
+				89F1ADFC2190609E009A872A /* AllFreeListController.m */,
 			);
 			path = dry;
 			sourceTree = "<group>";
@@ -1239,6 +1254,7 @@
 				88483F602137E7EC004CA3FA /* MoreSortCollectionCell.m in Sources */,
 				886B98362136BB910074322D /* NSString+MD5Addition.m in Sources */,
 				886B97EE2136B7BE0074322D /* NSString+CLTools.m in Sources */,
+				89F1ADF7219050A9009A872A /* ArticleListController.m in Sources */,
 				886B97F02136B7BE0074322D /* UserCacheBean.m in Sources */,
 				886B982E2136B7FD0074322D /* UIImage+RoundedCorner.m in Sources */,
 				886B978721363B280074322D /* TrainingServicesCell.m in Sources */,
@@ -1264,6 +1280,7 @@
 				8961E9E921871CBB00B914FD /* MoreSortRes.m in Sources */,
 				886B98282136B7FD0074322D /* NSString+RTStyle.m in Sources */,
 				887E03B2212FB1580013472F /* HomeNowCell.m in Sources */,
+				89F1ADFA219050BC009A872A /* CourseListController.m in Sources */,
 				89DBCB9521805DC300E66B85 /* DryHeadlinesController.m in Sources */,
 				8901A29A217DDF1B00587310 /* TodayListRes.m in Sources */,
 				886DB968212E85A900CF8C64 /* ServiceController.m in Sources */,
@@ -1286,6 +1303,7 @@
 				886B982D2136B7FD0074322D /* UIImage+Resize.m in Sources */,
 				88483F5A2137DC9F004CA3FA /* BaseViewController.m in Sources */,
 				89DBCB84217FFE1400E66B85 /* ZSSortSelectorView.m in Sources */,
+				89F1ADFD2190609E009A872A /* AllFreeListController.m in Sources */,
 				8824EAE8212FDB6B000CBA7E /* VTMenuBar.m in Sources */,
 				886B9797213698E50074322D /* NavigationView.m in Sources */,
 				886B97F42136B7BE0074322D /* ZSSignatureGenerator.m in Sources */,

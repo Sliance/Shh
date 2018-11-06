@@ -8,9 +8,16 @@
 
 #import "MoreSortViewController.h"
 #import "MoreSortCollectionCell.h"
+#import "HomeServiceApi.h"
+#import "CourseSortRes.h"
+#import "SortViewController.h"
+#import "ArticleListController.h"
+#import "CourseListController.h"
 
 @interface MoreSortViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
+@property(nonatomic,strong)NSMutableArray *dataArr;
+@property(nonatomic,strong)NSMutableArray *courseArr;
 
 
 @end
@@ -43,17 +50,46 @@ static NSString *morecellIds = @"MoreSortCollectionCell";
         self.navigationController.navigationBar.translucent = NO;
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    
+    _dataArr = [NSMutableArray array];
+    self.courseArr = [NSMutableArray array];
     [self.view addSubview:self.collectionView];
+    [self getSortList];
+}
+-(void)getSortList{
+    BaseModelReq *req = [[BaseModelReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = @"";
+    req.timestamp = @"0";
+    req.platform = @"wechat";
+    req.cityName = @"上海市";
+    req.version = @"1.0.0";
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share] getMoreSortWithParam:req response:^(id response) {
+        if (response) {
+            NSArray *result =   [MoreSortRes mj_objectArrayWithKeyValuesArray:response[@"courseCategoryList"]];
+            NSArray *result1 =   [CourseSortRes mj_objectArrayWithKeyValuesArray:response[@"columnList"]];
+            [weakself.dataArr  removeAllObjects];
+            [weakself.dataArr addObjectsFromArray:result];
+            [weakself.courseArr  removeAllObjects];
+            for (CourseSortRes *model in result1) {
+                if (([model.articleOrCourseType isEqualToString:@"article"]||[model.articleOrCourseType isEqualToString:@"course"])&&![model.columnName isEqualToString:@"思和快讯"]) {
+                    [weakself.courseArr addObject:model];
+                }
+            }
+        
+            
+        }
+        [weakself.collectionView reloadData];
+    }];
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 2;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (section ==0) {
-        return 11;
+        return self.dataArr.count;
     }
-    return 7;
+    return self.courseArr.count;
 }
 //设置每个item的UIEdgeInsets
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
@@ -114,7 +150,7 @@ static NSString *morecellIds = @"MoreSortCollectionCell";
     label.font = [UIFont boldSystemFontOfSize:18];;
     [headerView addSubview:label];
     if (indexPath.section ==0) {
-        label.text = @"限时免费";
+        label.text = @"课程分类";
     }else if (indexPath.section ==1){
         label.text = @"栏目分类";
     }
@@ -123,11 +159,35 @@ static NSString *morecellIds = @"MoreSortCollectionCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MoreSortCollectionCell *freecell = [collectionView dequeueReusableCellWithReuseIdentifier:morecellIds forIndexPath:indexPath];
-    
+    if (indexPath.section ==0) {
+        MoreSortRes *model = self.dataArr[indexPath.row];
+        freecell.titleLabel.text = model.courseCategoryName;
+    }else if (indexPath.section ==1){
+        CourseSortRes *model = self.courseArr[indexPath.row];
+        freecell.titleLabel.text = model.columnName;
+    }
     return freecell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section ==0) {
+        SortViewController *sortVC = [[SortViewController alloc]init];
+        MoreSortRes *model = self.dataArr[indexPath.row];
+        [sortVC setCurrentTitle:model.courseCategoryName];
+        sortVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:sortVC animated:YES];
+    }else if (indexPath.section ==1){
+        CourseSortRes *model = self.courseArr[indexPath.row];
+        if ([model.articleOrCourseType isEqualToString:@"article"]) {
+            ArticleListController *articleVC = [[ArticleListController alloc]init];
+            [articleVC setModel:model];
+            [self.navigationController pushViewController:articleVC animated:YES];
+        }else if ([model.articleOrCourseType isEqualToString:@"course"]){
+            CourseListController *courseVC = [[CourseListController alloc]init];
+            [courseVC setModel:model];
+            [self.navigationController pushViewController:courseVC animated:YES];
+        }
+    }
    
 }
 - (void)didReceiveMemoryWarning {
