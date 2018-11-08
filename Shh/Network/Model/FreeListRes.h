@@ -52,6 +52,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *courseTrueLikeCount;
 ///
 @property(nonatomic,strong)NSArray *courseBannerList;
+///视频还是音频
+@property(nonatomic,copy)NSString *courseVideoOrAudio;
 
 @end
 

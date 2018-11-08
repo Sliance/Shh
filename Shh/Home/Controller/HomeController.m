@@ -26,6 +26,7 @@
 #import "AllRecommentController.h"
 #import "DetailCourseController.h"
 #import "DetailArticleController.h"
+#import "DetailAudioController.h"
 
 @interface HomeController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -536,10 +537,32 @@ static NSString *likecellIds = @"HomeLikeCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section ==0) {
-        DetailCourseController *courseVC = [[DetailCourseController alloc]init];
+    if (indexPath.section ==0||indexPath.section ==2||indexPath.section ==3) {
+        FreeListRes *model;
+        if (indexPath.section ==0) {
+            model= self.freeListArr[indexPath.row];
+        }else if (indexPath.section ==2){
+            model= self.fineClassArr[indexPath.row];
+        }else if (indexPath.section ==3){
+            model= self.bigClassArr[indexPath.row];
+        }
+        
+        if ([model.courseVideoOrAudio isEqualToString:@"video"]) {
+            DetailCourseController *courseVC = [[DetailCourseController alloc]init];
+            courseVC.hidesBottomBarWhenPushed = YES;
+            [courseVC setModel:model];
+            [self.navigationController pushViewController:courseVC animated:YES];
+        }else{
+            DetailAudioController *courseVC = [[DetailAudioController alloc]init];
+            courseVC.hidesBottomBarWhenPushed = YES;
+            [courseVC setModel:model];
+            [self.navigationController pushViewController:courseVC animated:YES];
+        }
+        
+    }else if (indexPath.section==1){
+        TodayListRes *model = self.todayListArr[indexPath.row];
+        DetailArticleController *courseVC = [[DetailArticleController alloc]init];
         courseVC.hidesBottomBarWhenPushed = YES;
-        FreeListRes *model = self.freeListArr[indexPath.row];
         [courseVC setModel:model];
         [self.navigationController pushViewController:courseVC animated:YES];
     }

@@ -28,5 +28,7 @@
 #import <MJExtension.h>
 #import <SDImageCache.h>
 #import <UIImageView+WebCache.h>
+#import "UILabel+String.h"
+#import "NSDate+Add.h"
 
 #endif /* ZSConfig_h */

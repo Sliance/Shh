@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CourseModel.h"
 #import "CourseMemberModel.h"
+#import "CourseListModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -31,6 +32,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong)NSString *courseListTotal;
 ///
 @property(nonatomic,strong)NSString *watchCount;
+
+
+
 
 @end
 

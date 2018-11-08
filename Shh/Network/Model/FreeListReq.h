@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *articleOrCourseType;
 
 @property(nonatomic,copy)NSString *articleOrCourseId;
+@property(nonatomic,copy)NSString *articleId;
 @end
 
 NS_ASSUME_NONNULL_END

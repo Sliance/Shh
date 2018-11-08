@@ -9,5 +9,10 @@
 #import "CommentListRes.h"
 
 @implementation CommentListRes
-
++ (NSDictionary *)mj_objectClassInArray {
+    
+    return @{
+             @"beCommentList":@"BeCommentModel"
+             };
+}
 @end

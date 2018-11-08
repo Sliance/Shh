@@ -16,4 +16,7 @@
  @param lineSpacing 行间距
  */
 -(void)setText:(NSString*)text lineSpacing:(CGFloat)lineSpacing;
+
+///计算label高度
+- (CGFloat)getHeightLineWithString:(NSString *)string withWidth:(CGFloat)width withFont:(UIFont *)font;
 @end

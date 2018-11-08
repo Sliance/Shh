@@ -19,6 +19,7 @@
 #import "CommentListRes.h"
 #import "SingleCourseDrectoryRes.h"
 #import "DetailCourseRes.h"
+#import "DetailArticleRes.h"
 
 @interface HomeServiceApi : BaseApi
 + (instancetype)share;
@@ -44,4 +45,6 @@
 -(void)getCommentListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///获取单条课程目录
 -(void)SingleCourseDirectoryWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///获取单条文章详情
+-(void)getSingleArticleWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 @end

@@ -7,12 +7,12 @@
 //
 
 #import "BaseViewController.h"
-#import "FreeListRes.h"
+#import "TodayListRes.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DetailArticleController : BaseViewController
-@property(nonatomic,strong)FreeListRes *model;
+@property(nonatomic,strong)TodayListRes *model;
 @end
 
 NS_ASSUME_NONNULL_END
