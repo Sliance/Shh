@@ -222,6 +222,31 @@
     }
     [headView setModel:model];
     headView.backgroundColor = [UIColor whiteColor];
+    __weak typeof(headView)wealself = headView;
+    
+    [headView setZanBlock:^(BOOL selected) {
+        if ([UserCacheBean share].userInfo.token.length>0) {
+          wealself.zanBtn.selected = !selected;
+            if (selected ==NO) {
+                
+            }else{
+                
+            }
+        }else{
+            LoginController *loginVC = [[LoginController alloc]init];
+            loginVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:loginVC animated:YES];
+        }
+    }];
+    [headView setCommentBlock:^(BOOL selected) {
+        if ([UserCacheBean share].userInfo.token.length>0) {
+            
+        }else{
+            LoginController *loginVC = [[LoginController alloc]init];
+            loginVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:loginVC animated:YES];
+        }
+    }];
     return headView;
 }
 

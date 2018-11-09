@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UILabel *dateLabel;
 @property (nonatomic, strong) UIView *bgView;
+@property (nonatomic, strong) UIButton *commentBtn;
+
 @property (nonatomic, strong)BeCommentModel *model;
 +(CGFloat)getCellHeight:(BeCommentModel *)model;
 

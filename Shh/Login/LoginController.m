@@ -13,13 +13,20 @@
 @property(nonatomic,strong)UILabel *detailLabel;
 @property(nonatomic,strong)UIButton *loginBtn;
 @property(nonatomic,strong)UIButton *registerBtn;
-
+@property(nonatomic,strong)UIImageView *iconImage;
 @end
 
 @implementation LoginController
+-(UIImageView *)iconImage{
+    if (!_iconImage) {
+        _iconImage = [[UIImageView alloc]init];
+        _iconImage.image = [UIImage imageNamed:@"icon_write"];
+    }
+    return _iconImage;
+}
 -(UILabel *)titleLabel{
     if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 166+[self navHeightWithHeight], SCREENWIDTH, 19)];
+        _titleLabel = [[UILabel alloc]init];
         _titleLabel.text = @"思和会";
         _titleLabel.textColor = [UIColor whiteColor];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -29,7 +36,7 @@
 }
 -(UILabel *)detailLabel{
     if (!_detailLabel) {
-        _detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 195+[self navHeightWithHeight], SCREENWIDTH, 14)];
+        _detailLabel = [[UILabel alloc]init];
         _detailLabel.text = @"中国家居行业第一学习平台";
         _detailLabel.textColor = [UIColor whiteColor];
         _detailLabel.textAlignment = NSTextAlignmentCenter;
@@ -65,10 +72,14 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view addSubview:self.iconImage];
     [self.view addSubview:self.titleLabel];
     [self.view addSubview:self.detailLabel];
     [self.view addSubview:self.loginBtn];
     [self.view addSubview:self.registerBtn];
+    self.iconImage.frame = CGRectMake(SCREENWIDTH/2-56/2, [self navHeightWithHeight]+91, 56, 56);
+    self.titleLabel.frame = CGRectMake(0, self.iconImage.ctBottom+26, SCREENWIDTH, 19);
+    self.detailLabel.frame = CGRectMake(0, self.titleLabel.ctBottom+10, SCREENWIDTH, 14);
     self.loginBtn.frame = CGRectMake(SCREENWIDTH/2-252/2, self.detailLabel.ctBottom+85, 252, 44);
     self.registerBtn.frame = CGRectMake(SCREENWIDTH/2-252/2, self.loginBtn.ctBottom+25, 252, 44);
     

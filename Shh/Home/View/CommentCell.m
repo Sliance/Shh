@@ -55,6 +55,15 @@
     }
     return _bgView;
 }
+-(UIButton *)commentBtn{
+    if (!_commentBtn) {
+        _commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_commentBtn setImage:[UIImage imageNamed:@"comment"] forState:UIControlStateNormal];
+        [_commentBtn setTitleColor:DSColorFromHex(0xB4B4B4) forState:UIControlStateNormal];
+        [_commentBtn addTarget:self action:@selector(pressComment:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _commentBtn;
+}
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -62,6 +71,7 @@
         [self.bgView addSubview:self.nameLabel];
         [self.bgView addSubview:self.contentLabel];
         [self.bgView addSubview:self.dateLabel];
+        [self.bgView addSubview:self.commentBtn];
     }
     return self;
 }
@@ -74,6 +84,7 @@
     self.contentLabel.text = model.commentContent;
     self.contentLabel.frame = CGRectMake(15, self.nameLabel.ctBottom+15, SCREENWIDTH-90-35, [self.contentLabel getHeightLineWithString:model.commentContent withWidth:SCREENWIDTH-125 withFont:[UIFont systemFontOfSize:14]]);
     self.dateLabel.frame = CGRectMake(15, self.contentLabel.ctBottom+15, SCREENWIDTH/2, 14);
+    self.commentBtn.frame = CGRectMake(SCREENWIDTH-90-35, self.contentLabel.ctBottom+15, 20, 20);
     self.dateLabel.text = [NSDate cStringFromTimestamp:model.systemCreateTime Formatter:@"yyyy年MM月dd日"];
     self.bgView.frame = CGRectMake(70, 0, SCREENWIDTH-90, self.contentLabel.frame.size.height+80);
 }
