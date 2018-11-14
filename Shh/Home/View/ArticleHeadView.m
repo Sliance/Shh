@@ -110,7 +110,7 @@ static NSString *nowcellIds = @"HomeNowCell";
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(15,0, SCREENWIDTH-30, SCREENHEIGHT) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(15,SCREENHEIGHT, SCREENWIDTH-30, SCREENHEIGHT) collectionViewLayout:layout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.showsVerticalScrollIndicator = NO;

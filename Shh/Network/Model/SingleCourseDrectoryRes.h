@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @property(nonatomic,strong)NSString *courseMediaPath;
 ///
-@property(nonatomic,strong)NSString *courseMediaDuration;
+@property(nonatomic,assign)NSInteger courseMediaDuration;
 ///
 @property(nonatomic,strong)NSString *courseMediaSize;
 

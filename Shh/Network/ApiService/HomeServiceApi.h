@@ -20,6 +20,7 @@
 #import "SingleCourseDrectoryRes.h"
 #import "DetailCourseRes.h"
 #import "DetailArticleRes.h"
+#import "DetailServiceRes.h"
 
 @interface HomeServiceApi : BaseApi
 + (instancetype)share;
@@ -47,4 +48,8 @@
 -(void)SingleCourseDirectoryWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///获取单条文章详情
 -(void)getSingleArticleWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///获取服务详情
+-(void)getServiceDetailWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+
+
 @end

@@ -336,4 +336,30 @@
         
     }];
 }
+///获取服务详情
+-(void)getServiceDetailWithParam:(FreeListReq *) req response:(responseModel) responseModel{
+    NSDictionary *dic = [req mj_keyValues];
+    
+    [[ZSAPIProxy shareProxy] callPOSTWithUrl:service_detail_url Params:dic isShowLoading:YES successCallBack:^(ZSURLResponse *response) {
+        if ([response.content isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dicResponse = (NSDictionary *) response.content;
+            if ([dicResponse[@"code"] integerValue] == 200) {
+                if (responseModel) {
+                    DetailServiceRes *model = [DetailServiceRes mj_objectWithKeyValues:dicResponse[@"data"]];
+                    responseModel(model);
+                }
+            }else {
+                if (responseModel) {
+                    responseModel(nil);
+                }
+            }
+        } else {
+            if (responseModel) {
+                responseModel(nil);
+            }
+        }
+    } faildCallBack:^(ZSURLResponse *response) {
+        
+    }];
+}
 @end

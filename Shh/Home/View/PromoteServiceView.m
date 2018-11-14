@@ -148,7 +148,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    self.selectedBlock(indexPath.row);
 }
 -(void)setDataArr:(NSMutableArray *)dataArr{
     _dataArr = dataArr;

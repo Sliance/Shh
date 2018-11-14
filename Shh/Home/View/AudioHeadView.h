@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AudioHeadView : BaseView<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface AudioHeadView : BaseView<UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UIImageView *bannerImage;
 @property (nonatomic, strong) UIImageView *headImage;
 @property (nonatomic, strong) UILabel *nameLabel;
@@ -20,12 +20,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *lineLabel;
 @property (nonatomic, strong) UILabel *lineLabel1;
 @property(nonatomic,strong)DetailCourseRes *detailCourse;
-
+@property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UILabel *introductLabel;
 @property (nonatomic, strong) UILabel *recommendLabel;
 @property (nonatomic, strong) UILabel *introducTDecs;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) UITableView *tableview;
 @property(nonatomic,strong)NSMutableArray*dataArr;
 
 @property (nonatomic, strong) UILabel *commentLabel;

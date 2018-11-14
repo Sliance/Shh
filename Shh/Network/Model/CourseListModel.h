@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @property(nonatomic,strong)NSString *courseListIsAllowTry;
 ///
-@property(nonatomic,strong)NSString *courseMediaDuration;
+@property(nonatomic,assign)NSInteger courseMediaDuration;
 ///
 @property(nonatomic,strong)NSString *courseMediaPath;
 ///
@@ -29,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong)NSString *courseTitle;
 ///
 @property(nonatomic,strong)NSString *systemVersion;
+///
+@property(nonatomic,strong)NSString *watch;
 @end
 
 NS_ASSUME_NONNULL_END

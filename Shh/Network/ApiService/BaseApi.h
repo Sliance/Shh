@@ -62,7 +62,8 @@
 #define course_sort_url         @"/sihehui/column/desktop/v1/list"
 //服务模块（精品服务、培训服务、活动执行、招商加盟）
 #define service_list_url         @"/sihehui/siheservice/desktop/v1/list"
-
+///服务详情
+#define service_detail_url      @"/sihehui/siheservice/desktop/v1/find"
 
 typedef void(^responseModel)(id response);
 @interface BaseApi : NSObject

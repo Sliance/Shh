@@ -143,6 +143,10 @@
 		890D559C217EAE09009B33B2 /* RecommendListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D559B217EAE09009B33B2 /* RecommendListRes.m */; };
 		890D559F217EAE21009B33B2 /* GuessListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D559E217EAE21009B33B2 /* GuessListRes.m */; };
 		890D55A9217F0404009B33B2 /* DetailFreeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D55A8217F0404009B33B2 /* DetailFreeController.m */; };
+		891E2544219BD415009A7F72 /* AudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891E2543219BD415009A7F72 /* AudioCell.m */; };
+		891E254A219C2761009A7F72 /* DetailServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 891E2549219C2761009A7F72 /* DetailServiceController.m */; };
+		891E254D219C30CD009A7F72 /* ServiceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 891E254C219C30CD009A7F72 /* ServiceDetailView.m */; };
+		891E2550219C3891009A7F72 /* DetailServiceRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 891E254F219C3891009A7F72 /* DetailServiceRes.m */; };
 		895DBF70217980C200E65B16 /* BannersReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF6F217980C200E65B16 /* BannersReq.m */; };
 		895DBF7C21798CBD00E65B16 /* FreeListReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7B21798CBD00E65B16 /* FreeListReq.m */; };
 		895DBF7F21798E3500E65B16 /* BannerRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7E21798E3500E65B16 /* BannerRes.m */; };
@@ -456,6 +460,14 @@
 		890D559E217EAE21009B33B2 /* GuessListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessListRes.m; sourceTree = "<group>"; };
 		890D55A7217F0404009B33B2 /* DetailFreeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailFreeController.h; sourceTree = "<group>"; };
 		890D55A8217F0404009B33B2 /* DetailFreeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailFreeController.m; sourceTree = "<group>"; };
+		891E2542219BD415009A7F72 /* AudioCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioCell.h; sourceTree = "<group>"; };
+		891E2543219BD415009A7F72 /* AudioCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioCell.m; sourceTree = "<group>"; };
+		891E2548219C2761009A7F72 /* DetailServiceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailServiceController.h; sourceTree = "<group>"; };
+		891E2549219C2761009A7F72 /* DetailServiceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailServiceController.m; sourceTree = "<group>"; };
+		891E254B219C30CD009A7F72 /* ServiceDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServiceDetailView.h; sourceTree = "<group>"; };
+		891E254C219C30CD009A7F72 /* ServiceDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceDetailView.m; sourceTree = "<group>"; };
+		891E254E219C3891009A7F72 /* DetailServiceRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailServiceRes.h; sourceTree = "<group>"; };
+		891E254F219C3891009A7F72 /* DetailServiceRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailServiceRes.m; sourceTree = "<group>"; };
 		895DBF6E217980C200E65B16 /* BannersReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannersReq.h; sourceTree = "<group>"; };
 		895DBF6F217980C200E65B16 /* BannersReq.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannersReq.m; sourceTree = "<group>"; };
 		895DBF7A21798CBD00E65B16 /* FreeListReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeListReq.h; sourceTree = "<group>"; };
@@ -638,6 +650,8 @@
 				89085E9B2191915B00259A68 /* DetailArticleController.m */,
 				89CDE36D2194173B00071267 /* DetailAudioController.h */,
 				89CDE36E2194173B00071267 /* DetailAudioController.m */,
+				891E2548219C2761009A7F72 /* DetailServiceController.h */,
+				891E2549219C2761009A7F72 /* DetailServiceController.m */,
 			);
 			path = dry;
 			sourceTree = "<group>";
@@ -984,10 +998,14 @@
 				89D0DF9E219281350038DBC0 /* AudioHeadView.m */,
 				89CDE37021942C4B00071267 /* ArticleHeadView.h */,
 				89CDE37121942C4B00071267 /* ArticleHeadView.m */,
+				891E254B219C30CD009A7F72 /* ServiceDetailView.h */,
+				891E254C219C30CD009A7F72 /* ServiceDetailView.m */,
 				8905C2B62193027300403EC2 /* CommentHeadCell.h */,
 				8905C2B72193027300403EC2 /* CommentHeadCell.m */,
 				8905C2B92193029D00403EC2 /* CommentCell.h */,
 				8905C2BA2193029D00403EC2 /* CommentCell.m */,
+				891E2542219BD415009A7F72 /* AudioCell.h */,
+				891E2543219BD415009A7F72 /* AudioCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1209,6 +1227,8 @@
 				89CDE3662193E56D00071267 /* BeCommentModel.m */,
 				89CDE3732194327800071267 /* DetailArticleRes.h */,
 				89CDE3742194327800071267 /* DetailArticleRes.m */,
+				891E254E219C3891009A7F72 /* DetailServiceRes.h */,
+				891E254F219C3891009A7F72 /* DetailServiceRes.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1441,11 +1461,13 @@
 				89DBCB8B2180034700E66B85 /* CourseSortRes.m in Sources */,
 				890D559F217EAE21009B33B2 /* GuessListRes.m in Sources */,
 				89CDE3672193E56D00071267 /* BeCommentModel.m in Sources */,
+				891E2550219C3891009A7F72 /* DetailServiceRes.m in Sources */,
 				887E03B5212FB1B50013472F /* HomeGivingCell.m in Sources */,
 				886B98332136B7FD0074322D /* UIViewController+Loading.m in Sources */,
 				886B978D213647430074322D /* ServiceHeadView.m in Sources */,
 				886B97F82136B7BE0074322D /* FilePathManager.m in Sources */,
 				887E03B8212FB2AB0013472F /* HomeLikeCell.m in Sources */,
+				891E254A219C2761009A7F72 /* DetailServiceController.m in Sources */,
 				89856B4A217F1AE400688DF7 /* CourseHeadView.m in Sources */,
 				886B982F2136B7FD0074322D /* UIImage+RTStyle.m in Sources */,
 				886DB991212EC2D700CF8C64 /* NSData+ZSCache.m in Sources */,
@@ -1465,6 +1487,7 @@
 				886DB962212E858A00CF8C64 /* HomeController.m in Sources */,
 				88483F602137E7EC004CA3FA /* MoreSortCollectionCell.m in Sources */,
 				886B98362136BB910074322D /* NSString+MD5Addition.m in Sources */,
+				891E2544219BD415009A7F72 /* AudioCell.m in Sources */,
 				886B97EE2136B7BE0074322D /* NSString+CLTools.m in Sources */,
 				89F1ADF7219050A9009A872A /* ArticleListController.m in Sources */,
 				8905C2AB219282A700403EC2 /* NSString+Time.m in Sources */,
@@ -1528,6 +1551,7 @@
 				89DBCB84217FFE1400E66B85 /* ZSSortSelectorView.m in Sources */,
 				89F1ADFD2190609E009A872A /* AllFreeListController.m in Sources */,
 				8824EAE8212FDB6B000CBA7E /* VTMenuBar.m in Sources */,
+				891E254D219C30CD009A7F72 /* ServiceDetailView.m in Sources */,
 				89085E9F2191B04400259A68 /* DetailCourseRes.m in Sources */,
 				89085E9C2191915B00259A68 /* DetailArticleController.m in Sources */,
 				89CAFFC3219164D100E4B7AE /* AllBigClassController.m in Sources */,

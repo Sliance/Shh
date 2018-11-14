@@ -27,6 +27,7 @@
 #import "DetailCourseController.h"
 #import "DetailArticleController.h"
 #import "DetailAudioController.h"
+#import "DetailServiceController.h"
 
 @interface HomeController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -404,6 +405,14 @@ static NSString *likecellIds = @"HomeLikeCell";
         PromoteServiceView *promoteView = [[PromoteServiceView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 305)];
         [promoteView setDataArr:self.recommendListArr];
         [headerView addSubview:promoteView];
+        __weak typeof(self)weakself = self;
+        [promoteView setSelectedBlock:^(NSInteger index) {
+            DetailServiceController *serviceVC = [[DetailServiceController alloc]init];
+            RecommendListRes *model = weakself.recommendListArr[index];
+            serviceVC.hidesBottomBarWhenPushed = YES;
+            [serviceVC setModel:model];
+            [self.navigationController pushViewController:serviceVC animated:YES];
+        }];
         [promoteView setAllBlock:^{
             AllRecommentController *recommentVC = [[AllRecommentController alloc]init];
             recommentVC.hidesBottomBarWhenPushed = YES;
@@ -565,6 +574,18 @@ static NSString *likecellIds = @"HomeLikeCell";
         courseVC.hidesBottomBarWhenPushed = YES;
         [courseVC setModel:model];
         [self.navigationController pushViewController:courseVC animated:YES];
+    }else if (indexPath.section ==4){
+        DetailAudioController *courseVC = [[DetailAudioController alloc]init];
+        courseVC.hidesBottomBarWhenPushed = YES;
+        FreeListRes *model = [[FreeListRes alloc]init];
+        GuessListRes *guessmodel = self.guessListArr[indexPath.row];
+        model.courseId = guessmodel.id;
+        model.courseCategoryId = @"1044405524206198785";
+        model.columnId = guessmodel.id;
+        [courseVC setModel:model];
+        [self.navigationController pushViewController:courseVC animated:YES];
+    }else if (indexPath.section ==5){
+        
     }
     
 }

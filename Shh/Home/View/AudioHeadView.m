@@ -8,6 +8,8 @@
 
 #import "AudioHeadView.h"
 #import "HomeLikeCell.h"
+#import "AudioCell.h"
+
 @implementation AudioHeadView
 
 -(instancetype)initWithFrame:(CGRect)frame{
@@ -29,10 +31,21 @@
         [self addSubview:self.commentLabel];
         [self addSubview:self.commentBtn];
         [self addSubview:self.bannerImage];
+        [self addSubview:self.contentLabel];
+        [self addSubview:self.tableview];
         [self setLayoutVer];
         
     }
     return self;
+}
+-(UITableView *)tableview{
+    if (!_tableview) {
+        _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, SCREENHEIGHT) style:UITableViewStylePlain];
+        _tableview.delegate = self;
+        _tableview.dataSource = self;
+        _tableview.scrollEnabled = NO;
+    }
+    return _tableview;
 }
 -(UIImageView *)bannerImage{
     if (!_bannerImage) {
@@ -68,7 +81,16 @@
     }
     return _detailLabel;
 }
-
+-(UILabel *)contentLabel{
+    if (!_contentLabel) {
+        _contentLabel = [[UILabel alloc]init];
+        _contentLabel.textColor = DSColorFromHex(0x474747);
+        _contentLabel.font = [UIFont boldSystemFontOfSize:18];
+        _contentLabel.textAlignment = NSTextAlignmentLeft;
+        _contentLabel.text = @"课程内容";
+    }
+    return _contentLabel;
+}
 -(UILabel *)introductLabel{
     if (!_introductLabel) {
         _introductLabel = [[UILabel alloc]init];
@@ -150,6 +172,7 @@
 
 -(void)setDetailCourse:(DetailCourseRes *)detailCourse{
     _detailCourse = detailCourse;
+    [self.tableview reloadData];
     NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,detailCourse.member.memberAvatarPath];
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:url]];
     NSString *bannerurl = [NSString stringWithFormat:@"%@%@",DPHOST,detailCourse.course.courseAppImagePath];
@@ -158,7 +181,10 @@
     self.nameLabel.text = detailCourse.member.memberName;
     self.detailLabel.text = detailCourse.member.memberDesc;
     self.introducTDecs.text = detailCourse.course.courseIntroduction;
+    self.tableview.frame = CGRectMake(0, self.contentLabel.ctBottom+15, SCREENWIDTH, detailCourse.courseList.count*60);
+    self.introductLabel.frame = CGRectMake(14, self.tableview.ctBottom+17, SCREENWIDTH-30, 17);
     self.introducTDecs.frame = CGRectMake(15, self.introductLabel.ctBottom+20, SCREENWIDTH-30, [self.introducTDecs getHeightLineWithString:detailCourse.course.courseIntroduction withWidth:SCREENWIDTH-30 withFont:[UIFont systemFontOfSize:14]]);
+   
     self.recommendLabel.frame = CGRectMake(14, self.introducTDecs.ctBottom+37, SCREENWIDTH-30, 17);
     self.collectionView.frame = CGRectMake(0, self.recommendLabel.ctBottom+20, SCREENWIDTH, 140);
     self.lineLabel1.frame = CGRectMake(0, self.collectionView.ctBottom+1, SCREENWIDTH, 1);
@@ -176,7 +202,7 @@
     self.lineLabel.frame = CGRectMake(0, self.detailLabel.ctBottom+15, SCREENWIDTH, 1);
     
     self.fouceBtn.frame = CGRectMake(SCREENWIDTH-55, self.headImage.ctTop, 40, 20);
-    self.introductLabel.frame = CGRectMake(14, self.lineLabel.ctBottom+17, SCREENWIDTH-30, 17);
+    self.contentLabel.frame = CGRectMake(14, self.lineLabel.ctBottom+17, SCREENWIDTH-30, 17);
     
 }
 -(void)setLayoutLand{
@@ -186,7 +212,7 @@
     self.lineLabel.frame = CGRectMake(0, self.detailLabel.ctBottom+15, SCREENWIDTH, 1);
     
     self.fouceBtn.frame = CGRectMake(SCREENWIDTH-55, self.headImage.ctTop, 40, 20);
-    self.introductLabel.frame = CGRectMake(14, self.lineLabel.ctBottom+17, SCREENWIDTH-30, 17);
+    self.contentLabel.frame = CGRectMake(14, self.lineLabel.ctBottom+17, SCREENWIDTH-30, 17);
 }
 -(void)changeDirection:(NSNotification *)noti{
     NSDictionary *userInfo = [noti userInfo];
@@ -201,7 +227,7 @@
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         layout.minimumLineSpacing = 2;
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 140) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, 140) collectionViewLayout:layout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.showsVerticalScrollIndicator = NO;
@@ -220,6 +246,7 @@
     _dataArr = dataArr;
     [self.collectionView reloadData];
 }
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
 }
@@ -261,6 +288,27 @@
     
     
     self.fouceBlock(sender.selected);
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.detailCourse.courseList.count;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 60;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *identify = @"AudioCell";
+    AudioCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    if (!cell) {
+        cell = [[AudioCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+    }
+    CourseListModel*model = self.detailCourse.courseList[indexPath.row];
+    model.watch = self.detailCourse.watchCount;
+    [cell setModel:model];
+    return cell;
 }
 
 @end
