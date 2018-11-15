@@ -39,7 +39,7 @@
     [self.bgView addSubview:self.allBtn];
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self);
-        make.bottom.equalTo(self);
+        make.top.equalTo(self.cycleView.mas_bottom).offset(91);
         make.height.mas_equalTo(50);
     }];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {

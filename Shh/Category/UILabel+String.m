@@ -24,13 +24,13 @@
     self.attributedText = attributedString;
 }
 #pragma mark - 根据字符串计算label高度
-- (CGFloat)getHeightLineWithString:(NSString *)string withWidth:(CGFloat)width withFont:(UIFont *)font {
+- (CGFloat)getHeightLineWithString:(NSString *)string withWidth:(CGFloat)width withFont:(UIFont *)font lineSpacing:(CGFloat)lineSpacing{
     
     //1.1最大允许绘制的文本范围
     CGSize size = CGSizeMake(width, 2000);
     //1.2配置计算时的行截取方法,和contentLabel对应
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    [style setLineSpacing:10];
+     [style setLineSpacing:lineSpacing];
     //1.3配置计算时的字体的大小
     //1.4配置属性字典
     NSDictionary *dic = @{NSFontAttributeName:font, NSParagraphStyleAttributeName:style};

@@ -10,8 +10,8 @@
 
 @implementation HomeFreeHeadView
 
--(instancetype)initWithFrame:(CGRect)frame{
-    self = [super initWithFrame:frame];
+-(instancetype)init{
+    self = [super init];
     if (self) {
 
         [self addSubview:self.bgView];
@@ -58,7 +58,7 @@
         _titleLabel.textAlignment = NSTextAlignmentLeft;
         _titleLabel.font = [UIFont boldSystemFontOfSize:18];
         _titleLabel.textColor = DSColorFromHex(0x474747);
-        _titleLabel.text = @"限时免费";
+        _titleLabel.text = @"";
     }
     return _titleLabel;
 }

@@ -14,13 +14,17 @@
 @interface DetailServiceController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property (nonatomic, strong)NSMutableArray *dataArr;
+@property(nonatomic,strong)DetailServiceRes *resultModel;
+@property(nonatomic,assign)CGFloat height;
+
 @end
 static NSString *nowcellIds = @"HomeNowCell";
 @implementation DetailServiceController
+
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(15,SCREENHEIGHT, SCREENWIDTH-30, SCREENHEIGHT) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0,0, SCREENWIDTH, SCREENHEIGHT) collectionViewLayout:layout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.showsVerticalScrollIndicator = NO;
@@ -28,7 +32,6 @@ static NSString *nowcellIds = @"HomeNowCell";
         [_collectionView registerClass:[HomeNowCell class] forCellWithReuseIdentifier:nowcellIds];
         
         _collectionView.backgroundColor = DSColorFromHex(0xFAFAFA);
-        _collectionView.scrollEnabled = NO;
         [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableView"];
         [_collectionView
          registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footreusableView"];
@@ -37,13 +40,17 @@ static NSString *nowcellIds = @"HomeNowCell";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataArr = [NSMutableArray array];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.collectionView];
 }
 -(void)setModel:(RecommendListRes *)model{
     _model = model;
+    self.dataArr = [NSMutableArray array];
+     self.height = 10;
+    self.title = @"服务详情";
+    [self getService];
 }
--(void)getSingleArticle{
+-(void)getService{
     FreeListReq *req = [[FreeListReq alloc]init];
     req.appId = @"1041622992853962754";
     req.token = [UserCacheBean share].userInfo.token;
@@ -56,12 +63,11 @@ static NSString *nowcellIds = @"HomeNowCell";
     __weak typeof(self)weakself = self;
     [[HomeServiceApi share]getServiceDetailWithParam:req response:^(id response) {
         if (response) {
-//            weakself.detailCourse = [[DetailArticleRes alloc]init];
-//            weakself.detailCourse = response;
-//
-//            [weakself.headView setModel:weakself.detailCourse];
+           
+            weakself.resultModel = response;
+            [weakself.collectionView reloadData];
         }
-        [weakself getArticleList:weakself.model.columnId];
+        [weakself getArticleList:@"1043064325939695618"];
         
     }];
 }
@@ -122,7 +128,9 @@ static NSString *nowcellIds = @"HomeNowCell";
             [view removeFromSuperview];
         }
     }
-        ServiceDetailView* validView = [[ServiceDetailView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 314)];
+    ServiceDetailView* validView = [[ServiceDetailView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [ServiceDetailView getCellHeight:self.resultModel])];
+    [validView setResultModel:self.resultModel];
+   
     [headerView addSubview:validView];
     return headerView;
     
@@ -145,7 +153,7 @@ static NSString *nowcellIds = @"HomeNowCell";
     
     
     
-    return CGSizeMake(SCREENWIDTH, 0);
+    return CGSizeMake(SCREENWIDTH, [ServiceDetailView getCellHeight:self.resultModel]);
     
 }
 

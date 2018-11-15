@@ -10,6 +10,8 @@
 #import "SingleCourseDrectoryRes.h"
 #import "DetailCourseRes.h"
 #import "YGPlayerView.h"
+#import "FreeListRes.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -38,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIButton *commentBtn;
 @property(nonatomic,copy)void(^heightBlock)(CGFloat);
 @property(nonatomic,copy)void(^fouceBlock)(BOOL);
-
+@property(nonatomic,copy)void(^listBlock)(FreeListRes *);
 @end
 
 NS_ASSUME_NONNULL_END

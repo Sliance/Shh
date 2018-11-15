@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,copy)void(^heightBlock)(CGFloat);
 @property(nonatomic,copy)void(^fouceBlock)(BOOL);
+@property(nonatomic,copy)void(^listBlock)(TodayListRes *);
 @end
 
 NS_ASSUME_NONNULL_END

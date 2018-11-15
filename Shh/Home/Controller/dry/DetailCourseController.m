@@ -61,6 +61,11 @@
             [weakself.navigationController pushViewController:loginVC animated:YES];
         }
     }];
+    [self.headView setListBlock:^(FreeListRes * model) {
+        DetailCourseController *detailVC = [[DetailCourseController alloc]init];
+        [detailVC setModel:model];
+        [weakself.navigationController pushViewController:detailVC animated:YES];
+    }];
     [ZSNotification addChangeDirectionResultNotification:self action:@selector(changeDirection:)];
 }
 -(void)changeDirection:(NSNotification *)noti{

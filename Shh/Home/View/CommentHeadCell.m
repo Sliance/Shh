@@ -99,8 +99,8 @@
     NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,model.memberAvatarPath];
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:url]];
     self.nameLabel.text = model.memberNickname;
-    self.contentLabel.text = model.commentContent;
-    self.contentLabel.frame = CGRectMake(self.headImage.ctRight+15, self.headImage.ctBottom, SCREENWIDTH-90, [self.contentLabel getHeightLineWithString:model.commentContent withWidth:SCREENWIDTH-90 withFont:[UIFont systemFontOfSize:14]]);
+    [self.contentLabel setText:model.commentContent lineSpacing:5];
+    self.contentLabel.frame = CGRectMake(self.headImage.ctRight+15, self.headImage.ctBottom, SCREENWIDTH-90, [self.contentLabel getHeightLineWithString:model.commentContent withWidth:SCREENWIDTH-90 withFont:[UIFont systemFontOfSize:14]lineSpacing:5]);
     self.dateLabel.frame = CGRectMake(self.headImage.ctRight+15, self.contentLabel.ctBottom+15, SCREENWIDTH/2, 14);
     self.zanBtn.frame = CGRectMake(SCREENWIDTH-100, self.contentLabel.ctBottom+10, 60, 20);
     self.commentBtn.frame = CGRectMake(SCREENWIDTH-35, self.contentLabel.ctBottom+12, 20, 20);
@@ -109,7 +109,7 @@
 }
 +(CGFloat)getCellHeight:(CommentListRes *)model{
     UILabel *label = [[UILabel alloc]init];
-    CGFloat contHeight = [label getHeightLineWithString:model.commentContent withWidth:SCREENWIDTH-90 withFont:[UIFont systemFontOfSize:14]];
+    CGFloat contHeight = [label getHeightLineWithString:model.commentContent withWidth:SCREENWIDTH-90 withFont:[UIFont systemFontOfSize:14]lineSpacing:5];
     CGFloat height = contHeight+55+50;
     return height;
 }

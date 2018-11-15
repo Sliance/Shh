@@ -235,7 +235,7 @@ static NSString *nowcellIds = @"HomeNowCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
+    TodayListRes *model = self.dataArr[indexPath.row];
+    self.listBlock(model);
 }
 @end

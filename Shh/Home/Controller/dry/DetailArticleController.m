@@ -68,6 +68,11 @@
             [weakself.navigationController pushViewController:loginVC animated:YES];
         }
     }];
+    [self.headView setListBlock:^(TodayListRes * model) {
+        DetailArticleController *detailVC = [[DetailArticleController alloc]init];
+        [detailVC setModel:model];
+        [weakself.navigationController pushViewController:detailVC animated:YES];
+    }];
 }
 -(void)getArticleList:(NSString*)colmunid{
     FreeListReq *req = [[FreeListReq alloc]init];
@@ -78,7 +83,7 @@
     req.columnId = colmunid;
     req.courseCategoryId = @"";
     req.pageIndex = 1;
-    req.pageSize = @"4";
+    req.pageSize = @"5";
     __weak typeof(self)weakself = self;
     [[HomeServiceApi share]getTodayListWithParam:req response:^(id response) {
         if (response) {

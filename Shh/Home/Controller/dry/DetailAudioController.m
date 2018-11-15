@@ -61,6 +61,11 @@
             [weakself.navigationController pushViewController:loginVC animated:YES];
         }
     }];
+    [self.headView setListBlock:^(FreeListRes * model) {
+        DetailAudioController *detailVC = [[DetailAudioController alloc]init];
+        [detailVC setModel:model];
+        [weakself.navigationController pushViewController:detailVC animated:YES];
+    }];
 }
 -(AudioHeadView *)headView{
     if (!_headView) {

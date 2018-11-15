@@ -7,16 +7,19 @@
 //
 
 #import "BaseView.h"
+#import "DetailServiceRes.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ServiceDetailView : BaseView
-<UIWebViewDelegate>
+@interface ServiceDetailView : BaseView<UIWebViewDelegate>
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) UILabel *recommendLabel;
-@property(nonatomic,copy)void(^heightBlock)(CGFloat);
+@property (nonatomic, strong) UILabel *contentLabel;
+@property (nonatomic, strong) UIImageView *headImage;
+@property(nonatomic,strong)DetailServiceRes *resultModel;
++(CGFloat)getCellHeight:(DetailServiceRes *)model;
 @end
 
 NS_ASSUME_NONNULL_END

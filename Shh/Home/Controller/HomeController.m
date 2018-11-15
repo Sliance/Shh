@@ -331,9 +331,39 @@ static NSString *likecellIds = @"HomeLikeCell";
     
     
     if(section ==0){
-        return CGSizeMake(SCREENWIDTH, 314);
+        if (self.freeListArr.count > 0) {
+            return CGSizeMake(SCREENWIDTH, 314);
+        }else{
+            return CGSizeMake(SCREENWIDTH, 259);
+        }
+        
     }else if (section ==5){
         return CGSizeMake(SCREENWIDTH, 305);
+    }
+    if (section ==1) {
+        if (self.todayListArr.count > 0) {
+            return CGSizeMake(SCREENWIDTH, 55);
+        }else{
+            return CGSizeMake(SCREENWIDTH, 0);
+        }
+    }else if (section ==2){
+        if (self.fineClassArr.count > 0) {
+            return CGSizeMake(SCREENWIDTH, 55);
+        }else{
+            return CGSizeMake(SCREENWIDTH, 0);
+        }
+    }else if (section ==3){
+        if (self.bigClassArr.count > 0) {
+            return CGSizeMake(SCREENWIDTH, 55);
+        }else{
+            return CGSizeMake(SCREENWIDTH, 0);
+        }
+    }else if (section ==4){
+        if (self.guessListArr.count > 0) {
+            return CGSizeMake(SCREENWIDTH, 55);
+        }else{
+            return CGSizeMake(SCREENWIDTH, 0);
+        }
     }
     return CGSizeMake(SCREENWIDTH, 55);
     
@@ -365,12 +395,19 @@ static NSString *likecellIds = @"HomeLikeCell";
     
     
     if(indexPath.section ==0){
-        HomeHeadView* validView = [[HomeHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 314)];
+        HomeHeadView* validView = [[HomeHeadView alloc]init];
         NSMutableArray *arr  = [NSMutableArray array];
         for (BannerRes *model in self.bannerArr) {
             if (model.bannerImagePath) {
                 [arr addObject:model.bannerImagePath];
             }
+        }
+        if (self.freeListArr.count > 0) {
+            validView.frame = CGRectMake(0, 0, SCREENWIDTH, 314);
+            validView.bgView.hidden = NO;
+        }else{
+            validView.bgView.hidden = YES;
+            validView.frame = CGRectMake(0, 0, SCREENWIDTH, 259);
         }
         [validView.cycleView setImageUrlGroups:arr];
         [headerView addSubview:validView];
@@ -419,12 +456,17 @@ static NSString *likecellIds = @"HomeLikeCell";
             [self.navigationController pushViewController:recommentVC animated:YES];
         }];
     }else{
-        HomeFreeHeadView *freeview = [[HomeFreeHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 55)];
-        [headerView addSubview:freeview];
+        HomeFreeHeadView *freeview = [[HomeFreeHeadView alloc]init];
+       
         switch (indexPath.section) {
                 case 1:
             {
-                
+                if (self.todayListArr.count>0) {
+                    freeview.frame = CGRectMake(0, 0, SCREENWIDTH, 55);
+                }else{
+                    freeview.frame = CGRectMake(0, 0, SCREENWIDTH, 0);
+                }
+                 [headerView addSubview:freeview];
                 [freeview setTitle:@"今日干货"];
                 [freeview setAllBlock:^{
                     ArticleListController *articleVC = [[ArticleListController alloc]init];
@@ -439,7 +481,11 @@ static NSString *likecellIds = @"HomeLikeCell";
                 break;
                 case 2:
             {
-                
+                if (self.fineClassArr.count>0) {
+                    freeview.frame = CGRectMake(0, 0, SCREENWIDTH, 55);
+                }else{
+                    freeview.frame = CGRectMake(0, 0, SCREENWIDTH, 0);
+                }
                  [freeview setTitle:@"精品微课"];
                 [freeview setAllBlock:^{
                     CourseListController *courseVC = [[CourseListController alloc]init];
@@ -450,22 +496,32 @@ static NSString *likecellIds = @"HomeLikeCell";
                     [courseVC setModel:model];
                     [self.navigationController pushViewController:courseVC animated:YES];
                 }];
+                 [headerView addSubview:freeview];
             }
                 break;
                 case 3:
             {
-                
+                if (self.bigClassArr.count>0) {
+                    freeview.frame = CGRectMake(0, 0, SCREENWIDTH, 55);
+                }else{
+                    freeview.frame = CGRectMake(0, 0, SCREENWIDTH, 0);
+                }
                 [freeview setTitle:@"会员大课"];
                 [freeview setAllBlock:^{
                     AllBigClassController *courseVC = [[AllBigClassController alloc]init];
                     courseVC.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:courseVC animated:YES];
                 }];
+                 [headerView addSubview:freeview];
             }
                 break;
                 case 4:
             {
-                
+                if (self.guessListArr.count>0) {
+                    freeview.frame = CGRectMake(0, 0, SCREENWIDTH, 55);
+                }else{
+                    freeview.frame = CGRectMake(0, 0, SCREENWIDTH, 0);
+                }
                 freeview.rightLabel.text = @"\U0000e91b";
                 [freeview.allBtn setTitle:@"换一换" forState:UIControlStateNormal];
                 [freeview setTitle:@"猜你喜欢"];
@@ -475,11 +531,14 @@ static NSString *likecellIds = @"HomeLikeCell";
                     int x = arc4random() % 25;
                      [weakself getGuessList:x];
                 }];
+                 [headerView addSubview:freeview];
             }
                 break;
             default:
                 break;
+                
         }
+        
     }
     return headerView;
 }
