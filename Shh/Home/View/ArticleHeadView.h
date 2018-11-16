@@ -25,7 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property (nonatomic, strong)DetailArticleRes *model;
 @property (nonatomic, strong) NSMutableArray *dataArr;
-
+@property (nonatomic, strong) UILabel *contentLabel;
+@property (nonatomic, strong) UIImageView *bgImage;
 @property(nonatomic,copy)void(^heightBlock)(CGFloat);
 @property(nonatomic,copy)void(^fouceBlock)(BOOL);
 @property(nonatomic,copy)void(^listBlock)(TodayListRes *);

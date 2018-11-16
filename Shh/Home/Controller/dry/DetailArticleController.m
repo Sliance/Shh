@@ -14,7 +14,8 @@
 #import "CommentHeadCell.h"
 #import "LoginController.h"
 #import "ArticleHeadView.h"
-
+#import "InputToolbar.h"
+#import "UIView+Extension.h"
 @interface DetailArticleController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)NSMutableArray *articleArr;
 @property(nonatomic,strong)NSMutableArray *commentArr;
@@ -22,7 +23,10 @@
 @property(nonatomic,strong)ArticleHeadView *headView;
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,assign)CGFloat headHeight;
-
+@property(nonatomic,strong)UILabel *footView;
+@property (nonatomic,strong)InputToolbar *inputToolbar;
+@property (nonatomic,assign)CGFloat inputToolbarY;
+@property(nonatomic,strong)CommentReq *commentReq;
 @end
 
 @implementation DetailArticleController
@@ -35,6 +39,17 @@
         _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableview;
+}
+-(UILabel *)footView{
+    if (!_footView) {
+        _footView = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 140)];
+        _footView.text = @"暂无评论！赶紧抢个沙发！";
+        _footView.backgroundColor = [UIColor whiteColor];
+        _footView.textAlignment = NSTextAlignmentCenter;
+        _footView.textColor = DSColorFromHex(0x464646);
+        _footView.font = [UIFont systemFontOfSize:14];
+    }
+    return _footView;
 }
 -(ArticleHeadView *)headView{
     if (!_headView) {
@@ -49,6 +64,7 @@
     self.tableview.tableHeaderView = self.headView;
     self.articleArr = [NSMutableArray array];
     self.commentArr = [NSMutableArray array];
+    self.tableview.tableFooterView = self.footView;
     __weak typeof(self)weakself = self;
     [self.headView setHeightBlock:^(CGFloat height) {
         weakself.headHeight = height;
@@ -73,6 +89,81 @@
         [detailVC setModel:model];
         [weakself.navigationController pushViewController:detailVC animated:YES];
     }];
+    self.inputToolbar = [InputToolbar shareInstance];
+    [self.view addSubview:self.inputToolbar];
+    self.inputToolbar.textViewMaxVisibleLine = 4;
+    self.inputToolbar.width = self.view.width;
+    self.inputToolbar.height = [self navHeightWithHeight];
+    self.inputToolbar.y = SCREENHEIGHT - [self navHeightWithHeight];
+    [self.inputToolbar setMorebuttonViewDelegate:self];
+    
+    self.inputToolbar.sendContent = ^(NSObject *content){
+        
+        if ([UserCacheBean share].userInfo.token.length>0) {
+            [weakself addComment:(NSString*)content];
+        }else{
+            LoginController *loginVC = [[LoginController alloc]init];
+            loginVC.hidesBottomBarWhenPushed = YES;
+            [weakself.navigationController pushViewController:loginVC animated:YES];
+        }
+    };
+    
+    self.inputToolbar.inputToolbarFrameChange = ^(CGFloat height,CGFloat orignY){
+        weakself.inputToolbarY = orignY;
+        if (weakself.tableview.contentSize.height > orignY) {
+            [weakself.tableview setContentOffset:CGPointMake(0, weakself.tableview.contentSize.height - orignY) animated:YES];
+        }
+    };
+    [self.inputToolbar setZanBlock:^(BOOL selected) {
+        if ([UserCacheBean share].userInfo.token.length>0) {
+            if (selected ==NO) {
+                weakself.inputToolbar.emojiButton.selected = YES;
+            }else{
+                weakself.inputToolbar.emojiButton.selected = NO;
+            }
+        }else{
+            LoginController *loginVC = [[LoginController alloc]init];
+            loginVC.hidesBottomBarWhenPushed = YES;
+            [weakself.navigationController pushViewController:loginVC animated:YES];
+        }
+    }];
+    [self.inputToolbar setXinBlock:^(BOOL selected) {
+        if ([UserCacheBean share].userInfo.token.length>0) {
+            if (selected ==NO) {
+                weakself.inputToolbar.moreButton.selected = YES;
+            }else{
+                weakself.inputToolbar.moreButton.selected = NO;
+            }
+        }else{
+            LoginController *loginVC = [[LoginController alloc]init];
+            loginVC.hidesBottomBarWhenPushed = YES;
+            [weakself.navigationController pushViewController:loginVC animated:YES];
+        }
+    }];
+    
+    [self.inputToolbar resetInputToolbar];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pressTap)];
+    [self.tableview addGestureRecognizer:tap];
+    
+}
+-(void)pressTap{
+    [self.view endEditing:YES];
+}
+- (void)dealloc {
+    NSLog(@"dealloc");
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    self.inputToolbar.isBecomeFirstResponder = NO;
+}
+
+
+- (void)inputToolbar:(InputToolbar *)inputToolbar orignY:(CGFloat)orignY
+{
+    _inputToolbarY = orignY;
+}
+-(void)addComment:(NSString*)content{
 }
 -(void)getArticleList:(NSString*)colmunid{
     FreeListReq *req = [[FreeListReq alloc]init];
@@ -89,10 +180,15 @@
         if (response) {
             [weakself.articleArr removeAllObjects];
             [weakself.articleArr addObjectsFromArray:response];
+            for (TodayListRes * model in response) {
+                if ([model.articleId isEqualToString:weakself.model.articleId]) {
+                    [weakself.articleArr removeObject:model];
+                }
+            }
             [weakself.headView setDataArr:weakself.articleArr];
             [weakself.tableview reloadData];
         }
-        
+        [weakself getSingleArticle];
     }];
 }
 -(void)getSingleArticle{
@@ -113,7 +209,7 @@
             
             [weakself.headView setModel:weakself.detailCourse];
         }
-         [weakself getArticleList:weakself.model.columnId];
+        
         
     }];
 }
@@ -132,9 +228,14 @@
         if (response) {
             [weakself.commentArr removeAllObjects];
             [weakself.commentArr addObjectsFromArray:response];
+            if (weakself.commentArr.count ==0) {
+                weakself.footView.text = @"暂无评论！赶紧抢个沙发！";
+            }else{
+                weakself.footView.text = @"";
+            }
             [weakself.tableview reloadData];
         }
-        [weakself getSingleArticle];
+        [weakself getArticleList:weakself.model.columnId];
        
     }];
 }
@@ -157,6 +258,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CommentListRes *model = self.commentArr[indexPath.section];
     BeCommentModel *becommentmodel = model.beCommentList[indexPath.row];
+    
     return [CommentCell getCellHeight:becommentmodel];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -182,6 +284,15 @@
     }
     [headView setModel:model];
     headView.backgroundColor = [UIColor whiteColor];
+    __weak typeof(self)weakself = self;
+    [headView setCommentBlock:^(CommentListRes *model) {
+       weakself.inputToolbar.isBecomeFirstResponder = YES;
+        weakself.commentReq.beCommentId = model.beCommentId;
+        weakself.commentReq.beCommentMemberId = model.beCommentMemberId;
+        weakself.commentReq.beCommentMemberNickname = model.beCommentMemberNickname;
+        weakself.commentReq.commentType = @"comment";
+        weakself.commentReq.articleOrCourseId = weakself.detailCourse.articleId;
+    }];
     return headView;
 }
 
@@ -195,6 +306,18 @@
     CommentListRes *model = self.commentArr[indexPath.section];
     BeCommentModel *becommentmodel = model.beCommentList[indexPath.row];
     [cell setModel:becommentmodel];
+    __weak typeof(self)weakself = self;
+   
+    [cell setSelectedBlock:^(BeCommentModel * model) {
+        weakself.inputToolbar.isBecomeFirstResponder = YES;
+        weakself.commentReq.beCommentId = model.beCommentId;
+        weakself.commentReq.beCommentMemberId = model.beCommentMemberId;
+        weakself.commentReq.beCommentMemberNickname = model.beCommentMemberNickname;
+        weakself.commentReq.commentType = @"comment";
+        weakself.commentReq.articleOrCourseId = weakself.detailCourse.articleId;
+    }];
+    
+    
     return cell;
 }
 /*

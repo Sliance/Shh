@@ -445,15 +445,15 @@ static NSString *likecellIds = @"HomeLikeCell";
         __weak typeof(self)weakself = self;
         [promoteView setSelectedBlock:^(NSInteger index) {
             DetailServiceController *serviceVC = [[DetailServiceController alloc]init];
-            RecommendListRes *model = weakself.recommendListArr[index];
+            ServiceListRes *model = weakself.recommendListArr[index];
             serviceVC.hidesBottomBarWhenPushed = YES;
             [serviceVC setModel:model];
-            [self.navigationController pushViewController:serviceVC animated:YES];
+            [weakself.navigationController pushViewController:serviceVC animated:YES];
         }];
         [promoteView setAllBlock:^{
             AllRecommentController *recommentVC = [[AllRecommentController alloc]init];
             recommentVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:recommentVC animated:YES];
+            [weakself.navigationController pushViewController:recommentVC animated:YES];
         }];
     }else{
         HomeFreeHeadView *freeview = [[HomeFreeHeadView alloc]init];
@@ -591,7 +591,7 @@ static NSString *likecellIds = @"HomeLikeCell";
         {
             [likecell setImageWidth:SCREENWIDTH/2-45/2];
             [likecell setImageHeight:110];
-            RecommendListRes *model = self.homeBottomArr[indexPath.row];
+            ServiceListRes *model = self.homeBottomArr[indexPath.row];
             [likecell setBottomModel:model];
             return likecell;
         }

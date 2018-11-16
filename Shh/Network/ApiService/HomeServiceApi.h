@@ -13,7 +13,7 @@
 #import "BannerRes.h"
 #import "FreeListRes.h"
 #import "TodayListRes.h"
-#import "RecommendListRes.h"
+#import "ServiceListRes.h"
 #import "GuessListRes.h"
 #import "MoreSortRes.h"
 #import "CommentListRes.h"
@@ -21,6 +21,7 @@
 #import "DetailCourseRes.h"
 #import "DetailArticleRes.h"
 #import "DetailServiceRes.h"
+#import "CommentReq.h"
 
 @interface HomeServiceApi : BaseApi
 + (instancetype)share;
@@ -50,6 +51,7 @@
 -(void)getSingleArticleWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///获取服务详情
 -(void)getServiceDetailWithParam:(FreeListReq *) req response:(responseModel) responseModel;
-
+///新增评论
+-(void)addCommentWithParam:(CommentReq *) req response:(responseModel) responseModel;
 
 @end

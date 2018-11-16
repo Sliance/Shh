@@ -142,7 +142,7 @@
     QualityCollectionCell *collectcell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QualityCollectionCell" forIndexPath:indexPath];
     [collectcell setImageWidth:340];
     [collectcell setImageHeight:175];
-    RecommendListRes *model = self.dataArr[indexPath.row];
+    ServiceListRes *model = self.dataArr[indexPath.row];
     [collectcell setRecomendModel:model];
     return collectcell;
 }

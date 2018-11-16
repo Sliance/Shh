@@ -107,6 +107,24 @@ static NSString *nowcellIds = @"HomeNowCell";
     }
     return _webView;
 }
+-(UIImageView *)bgImage{
+    if (!_bgImage) {
+        _bgImage = [[UIImageView alloc]init];
+        
+    }
+    return _bgImage;
+}
+
+-(UILabel *)contentLabel{
+    if (!_contentLabel) {
+        _contentLabel = [[UILabel alloc]init];
+        _contentLabel.textColor = DSColorFromHex(0x464646);
+        _contentLabel.font = [UIFont systemFontOfSize:14];
+        _contentLabel.textAlignment = NSTextAlignmentLeft;
+        _contentLabel.numberOfLines =0;
+    }
+    return _contentLabel;
+}
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
@@ -126,15 +144,14 @@ static NSString *nowcellIds = @"HomeNowCell";
     return _collectionView;
 }
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
-    self.webView.frame = CGRectMake(0, self.headImage.ctBottom+20, SCREENWIDTH, self.webView.scrollView.contentSize.height);
+    self.webView.frame = CGRectMake(0, self.bgImage.ctBottom+20, SCREENWIDTH, self.webView.scrollView.contentSize.height);
     self.recommendLabel.frame = CGRectMake(15, self.webView.ctBottom, SCREENWIDTH-30, 18);
     
-    self.collectionView.frame = CGRectMake(0, self.recommendLabel.ctBottom+10, SCREENWIDTH, 115*self.
-                                           dataArr.count);
+    self.collectionView.frame = CGRectMake(0, self.recommendLabel.ctBottom+10, SCREENWIDTH, 115*self.dataArr.count);
     self.lineLabel.frame = CGRectMake(0, self.collectionView.ctBottom+20, SCREENWIDTH, 1);
     self.commentLabel.frame =  CGRectMake(15, self.collectionView.ctBottom+35, SCREENWIDTH-30, 18);
     
-    self.heightBlock(self.commentLabel.ctBottom);
+    self.heightBlock(self.commentLabel.ctBottom+15);
 }
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -151,13 +168,15 @@ static NSString *nowcellIds = @"HomeNowCell";
         [self addSubview:self.commentLabel];
         [self addSubview:self.lineLabel];
         [self addSubview:self.collectionView];
+        [self addSubview:self.bgImage];
+        [self addSubview:self.contentLabel];
         self.titleLabel.frame = CGRectMake(15, 5, SCREENWIDTH-30, 60);
         self.headImage.frame = CGRectMake(15, self.titleLabel.ctBottom+20, 30, 30);
         self.nameLabel.frame = CGRectMake(self.headImage.ctRight+10, self.headImage.ctTop, SCREENWIDTH/2, 14);
         self.detailLabel.frame = CGRectMake(self.headImage.ctRight+10, self.nameLabel.ctBottom+2, SCREENWIDTH/2, 14);
         self.fouceBtn.frame = CGRectMake(SCREENWIDTH-55, self.headImage.ctTop+5, 40, 20);
         self.fouceLabel.frame = CGRectMake(SCREENWIDTH-155, self.headImage.ctTop, 90, 30);
-        self.webView.frame = CGRectMake(0, self.headImage.ctBottom+20, SCREENWIDTH, 100);
+        
     }
     return self;
 }
@@ -168,7 +187,14 @@ static NSString *nowcellIds = @"HomeNowCell";
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:url]];
     self.nameLabel.text = model.member.memberName;
     self.detailLabel.text = model.member.memberDesc;
+    NSString *url1 = [NSString stringWithFormat:@"%@%@",DPHOST,model.articleAppCoverImagePath];
+    [self.bgImage sd_setImageWithURL:[NSURL URLWithString:url1]];
+    [self.contentLabel setText:model.articleIntroduction lineSpacing:5];
+    self.contentLabel.frame = CGRectMake(15, self.headImage.ctBottom+10, SCREENWIDTH-30, [self.contentLabel getHeightLineWithString:model.articleIntroduction withWidth:SCREENWIDTH-30 withFont:[UIFont systemFontOfSize:16] lineSpacing:5]);
+     self.bgImage.frame = CGRectMake(10, self.contentLabel.ctBottom+10, SCREENWIDTH-20, (SCREENWIDTH-20)*200/345);
+    self.webView.frame = CGRectMake(0, self.bgImage.ctBottom, SCREENWIDTH, 100);
     self.fouceLabel.text = [NSString stringWithFormat:@"%@人已关注",model.beFollowCount];
+   
     NSString *html_str = [NSString stringWithFormat:@"<head><style>img{width:%fpx !important;}</style></head>%@",SCREENWIDTH-15,model.articleText];
     
     [self.webView loadHTMLString:html_str baseURL:nil];

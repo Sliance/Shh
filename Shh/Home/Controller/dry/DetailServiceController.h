@@ -7,13 +7,13 @@
 //
 
 #import "BaseViewController.h"
-#import "RecommendListRes.h"
+#import "ServiceListRes.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DetailServiceController : BaseViewController
 
-@property(nonatomic,strong)RecommendListRes *model;
+@property(nonatomic,strong)ServiceListRes *model;
 @end
 
 NS_ASSUME_NONNULL_END

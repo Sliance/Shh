@@ -12,5 +12,5 @@
 @interface QualityServiceCell : BaseTableViewCell<UICollectionViewDelegate,UICollectionViewDataSource>
 @property(nonatomic,strong)UICollectionView *collectionView;
 @property(nonatomic,strong)NSMutableArray *dataArr;
-
+@property(nonatomic,copy)void(^selectedBlock)(ServiceListRes *);
 @end

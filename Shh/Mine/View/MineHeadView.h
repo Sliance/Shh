@@ -20,4 +20,6 @@
 @property(nonatomic,strong)UIButton *editBtn;
 @property(nonatomic,strong)UIButton *messageBtn;
 @property(nonatomic,strong)UIButton *serviceBtn;
+@property(nonatomic,copy)void (^messageBlock)(void);
+@property(nonatomic,copy)void (^editBlock)(void);
 @end

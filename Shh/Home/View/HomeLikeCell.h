@@ -8,7 +8,7 @@
 
 #import "BaseCollectionViewCell.h"
 #import "GuessListRes.h"
-#import "RecommendListRes.h"
+#import "ServiceListRes.h"
 #import "FreeListRes.h"
 
 @interface HomeLikeCell : BaseCollectionViewCell
@@ -22,6 +22,6 @@
 
 
 @property(nonatomic,strong)GuessListRes *model;
-@property(nonatomic,strong)RecommendListRes *bottomModel;
+@property(nonatomic,strong)ServiceListRes *bottomModel;
 @property(nonatomic,strong)FreeListRes *freeModel;
 @end

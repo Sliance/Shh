@@ -72,10 +72,14 @@
 
 -(void)setModel:(TodayListRes *)model{
     _model = model;
-    self.titleLabel.text = model.articleGuide;
+    self.titleLabel.text = model.articleTitle;
     NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,model.articleAppCoverImagePath];
     [self.headiamge sd_setImageWithURL:[NSURL URLWithString:url]];
-    self.detailLabel.text = model.articleIntroduction;
+    NSString *date = [NSDate cStringFromTimestamp:model.systemCreateTime Formatter:@"MM月dd日"];
+    if (model.articleSource.length==0) {
+        model.articleSource = @"导购训练";
+    }
+    self.detailLabel.text = [NSString stringWithFormat:@"%@  %@",model.articleSource,date];
     
 }
 

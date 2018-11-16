@@ -140,7 +140,6 @@
 		89085EA22191B18D00259A68 /* CourseListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085EA12191B18D00259A68 /* CourseListModel.m */; };
 		89085EA52191B1A200259A68 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085EA42191B1A200259A68 /* CourseModel.m */; };
 		89085EA82191B1D700259A68 /* CourseMemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085EA72191B1D700259A68 /* CourseMemberModel.m */; };
-		890D559C217EAE09009B33B2 /* RecommendListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D559B217EAE09009B33B2 /* RecommendListRes.m */; };
 		890D559F217EAE21009B33B2 /* GuessListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D559E217EAE21009B33B2 /* GuessListRes.m */; };
 		890D55A9217F0404009B33B2 /* DetailFreeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D55A8217F0404009B33B2 /* DetailFreeController.m */; };
 		891E2544219BD415009A7F72 /* AudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891E2543219BD415009A7F72 /* AudioCell.m */; };
@@ -162,6 +161,18 @@
 		89CDE3752194327800071267 /* DetailArticleRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CDE3742194327800071267 /* DetailArticleRes.m */; };
 		89D0DF9F219281350038DBC0 /* AudioHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D0DF9E219281350038DBC0 /* AudioHeadView.m */; };
 		89D0DFA2219281490038DBC0 /* VedioHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D0DFA1219281490038DBC0 /* VedioHeadView.m */; };
+		89D4C9B2219E8D5F00566685 /* InputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C915219E8D5E00566685 /* InputToolbar.m */; };
+		89D4C9B3219E8D5F00566685 /* MoreButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C917219E8D5E00566685 /* MoreButtonView.m */; };
+		89D4C9B4219E8D5F00566685 /* EmojiCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C918219E8D5E00566685 /* EmojiCollectionViewCell.m */; };
+		89D4C9B5219E8D5F00566685 /* UITextView+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C91D219E8D5E00566685 /* UITextView+Category.m */; };
+		89D4C9B6219E8D5F00566685 /* EmojiButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C91F219E8D5E00566685 /* EmojiButtonView.m */; };
+		89D4C9B7219E8D5F00566685 /* CollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C923219E8D5E00566685 /* CollectionViewFlowLayout.m */; };
+		89D4C9B8219E8D5F00566685 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C924219E8D5E00566685 /* UIView+Extension.m */; };
+		89D4C9B9219E8D5F00566685 /* EmotionImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C925219E8D5E00566685 /* EmotionImages.m */; };
+		89D4C9BA219E8D5F00566685 /* IMEmotionEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C927219E8D5E00566685 /* IMEmotionEntity.m */; };
+		89D4C9BB219E8D5F00566685 /* VoiceButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C928219E8D5E00566685 /* VoiceButtonView.m */; };
+		89D4C9BE219E9DDC00566685 /* CommentReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C9BD219E9DDC00566685 /* CommentReq.m */; };
+		89D4C9C8219EDFEC00566685 /* MessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D4C9C7219EDFEC00566685 /* MessageController.m */; };
 		89DBCB83217FFE1400E66B85 /* ZSScrollButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB80217FFE1400E66B85 /* ZSScrollButton.m */; };
 		89DBCB84217FFE1400E66B85 /* ZSSortSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB81217FFE1400E66B85 /* ZSSortSelectorView.m */; };
 		89DBCB87218002C800E66B85 /* CourseServiceApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB86218002C800E66B85 /* CourseServiceApi.m */; };
@@ -454,8 +465,6 @@
 		89085EA42191B1A200259A68 /* CourseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseModel.m; sourceTree = "<group>"; };
 		89085EA62191B1D700259A68 /* CourseMemberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseMemberModel.h; sourceTree = "<group>"; };
 		89085EA72191B1D700259A68 /* CourseMemberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseMemberModel.m; sourceTree = "<group>"; };
-		890D559A217EAE09009B33B2 /* RecommendListRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendListRes.h; sourceTree = "<group>"; };
-		890D559B217EAE09009B33B2 /* RecommendListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendListRes.m; sourceTree = "<group>"; };
 		890D559D217EAE21009B33B2 /* GuessListRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuessListRes.h; sourceTree = "<group>"; };
 		890D559E217EAE21009B33B2 /* GuessListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessListRes.m; sourceTree = "<group>"; };
 		890D55A7217F0404009B33B2 /* DetailFreeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailFreeController.h; sourceTree = "<group>"; };
@@ -498,6 +507,30 @@
 		89D0DF9E219281350038DBC0 /* AudioHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioHeadView.m; sourceTree = "<group>"; };
 		89D0DFA0219281490038DBC0 /* VedioHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VedioHeadView.h; sourceTree = "<group>"; };
 		89D0DFA1219281490038DBC0 /* VedioHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VedioHeadView.m; sourceTree = "<group>"; };
+		89D4C915219E8D5E00566685 /* InputToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputToolbar.m; sourceTree = "<group>"; };
+		89D4C916219E8D5E00566685 /* EmojiButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojiButtonView.h; sourceTree = "<group>"; };
+		89D4C917219E8D5E00566685 /* MoreButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreButtonView.m; sourceTree = "<group>"; };
+		89D4C918219E8D5E00566685 /* EmojiCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojiCollectionViewCell.m; sourceTree = "<group>"; };
+		89D4C919219E8D5E00566685 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		89D4C91A219E8D5E00566685 /* CollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		89D4C91B219E8D5E00566685 /* VoiceButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceButtonView.h; sourceTree = "<group>"; };
+		89D4C91C219E8D5E00566685 /* IMEmotionEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMEmotionEntity.h; sourceTree = "<group>"; };
+		89D4C91D219E8D5E00566685 /* UITextView+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Category.m"; sourceTree = "<group>"; };
+		89D4C91E219E8D5E00566685 /* EmotionImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionImages.h; sourceTree = "<group>"; };
+		89D4C91F219E8D5E00566685 /* EmojiButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojiButtonView.m; sourceTree = "<group>"; };
+		89D4C920219E8D5E00566685 /* InputToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputToolbar.h; sourceTree = "<group>"; };
+		89D4C921219E8D5E00566685 /* EmojiCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojiCollectionViewCell.h; sourceTree = "<group>"; };
+		89D4C922219E8D5E00566685 /* MoreButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreButtonView.h; sourceTree = "<group>"; };
+		89D4C923219E8D5E00566685 /* CollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		89D4C924219E8D5E00566685 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		89D4C925219E8D5E00566685 /* EmotionImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionImages.m; sourceTree = "<group>"; };
+		89D4C926219E8D5E00566685 /* UITextView+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Category.h"; sourceTree = "<group>"; };
+		89D4C927219E8D5E00566685 /* IMEmotionEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMEmotionEntity.m; sourceTree = "<group>"; };
+		89D4C928219E8D5E00566685 /* VoiceButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceButtonView.m; sourceTree = "<group>"; };
+		89D4C9BC219E9DDC00566685 /* CommentReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentReq.h; sourceTree = "<group>"; };
+		89D4C9BD219E9DDC00566685 /* CommentReq.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentReq.m; sourceTree = "<group>"; };
+		89D4C9C6219EDFEC00566685 /* MessageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageController.h; sourceTree = "<group>"; };
+		89D4C9C7219EDFEC00566685 /* MessageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageController.m; sourceTree = "<group>"; };
 		89DBCB7F217FFE1400E66B85 /* ZSSortSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSSortSelectorView.h; sourceTree = "<group>"; };
 		89DBCB80217FFE1400E66B85 /* ZSScrollButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSScrollButton.m; sourceTree = "<group>"; };
 		89DBCB81217FFE1400E66B85 /* ZSSortSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSSortSelectorView.m; sourceTree = "<group>"; };
@@ -596,6 +629,7 @@
 		8824EAEC21300869000CBA7E /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				89D4C888219E8D5E00566685 /* KeyBoard */,
 				8824EAED2130087C000CBA7E /* icomoon */,
 			);
 			path = Tool;
@@ -1060,6 +1094,8 @@
 			children = (
 				886DB969212E85B700CF8C64 /* MineController.h */,
 				886DB96A212E85B700CF8C64 /* MineController.m */,
+				89D4C9C6219EDFEC00566685 /* MessageController.h */,
+				89D4C9C7219EDFEC00566685 /* MessageController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1207,8 +1243,6 @@
 				895DBF8121798EFC00E65B16 /* FreeListRes.m */,
 				8901A298217DDF1B00587310 /* TodayListRes.h */,
 				8901A299217DDF1B00587310 /* TodayListRes.m */,
-				890D559A217EAE09009B33B2 /* RecommendListRes.h */,
-				890D559B217EAE09009B33B2 /* RecommendListRes.m */,
 				890D559D217EAE21009B33B2 /* GuessListRes.h */,
 				890D559E217EAE21009B33B2 /* GuessListRes.m */,
 				89085E9121918E0F00259A68 /* CommentListRes.h */,
@@ -1229,6 +1263,8 @@
 				89CDE3742194327800071267 /* DetailArticleRes.m */,
 				891E254E219C3891009A7F72 /* DetailServiceRes.h */,
 				891E254F219C3891009A7F72 /* DetailServiceRes.m */,
+				89D4C9BC219E9DDC00566685 /* CommentReq.h */,
+				89D4C9BD219E9DDC00566685 /* CommentReq.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1240,6 +1276,41 @@
 				89CDE36B21940D6C00071267 /* LoginController.m */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		89D4C888219E8D5E00566685 /* KeyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				89D4C914219E8D5E00566685 /* Class */,
+			);
+			path = KeyBoard;
+			sourceTree = "<group>";
+		};
+		89D4C914219E8D5E00566685 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				89D4C915219E8D5E00566685 /* InputToolbar.m */,
+				89D4C916219E8D5E00566685 /* EmojiButtonView.h */,
+				89D4C917219E8D5E00566685 /* MoreButtonView.m */,
+				89D4C918219E8D5E00566685 /* EmojiCollectionViewCell.m */,
+				89D4C919219E8D5E00566685 /* UIView+Extension.h */,
+				89D4C91A219E8D5E00566685 /* CollectionViewFlowLayout.h */,
+				89D4C91B219E8D5E00566685 /* VoiceButtonView.h */,
+				89D4C91C219E8D5E00566685 /* IMEmotionEntity.h */,
+				89D4C91D219E8D5E00566685 /* UITextView+Category.m */,
+				89D4C91E219E8D5E00566685 /* EmotionImages.h */,
+				89D4C91F219E8D5E00566685 /* EmojiButtonView.m */,
+				89D4C920219E8D5E00566685 /* InputToolbar.h */,
+				89D4C921219E8D5E00566685 /* EmojiCollectionViewCell.h */,
+				89D4C922219E8D5E00566685 /* MoreButtonView.h */,
+				89D4C923219E8D5E00566685 /* CollectionViewFlowLayout.m */,
+				89D4C924219E8D5E00566685 /* UIView+Extension.m */,
+				89D4C925219E8D5E00566685 /* EmotionImages.m */,
+				89D4C926219E8D5E00566685 /* UITextView+Category.h */,
+				89D4C927219E8D5E00566685 /* IMEmotionEntity.m */,
+				89D4C928219E8D5E00566685 /* VoiceButtonView.m */,
+			);
+			path = Class;
 			sourceTree = "<group>";
 		};
 		89DBCB7E217FFE1400E66B85 /* ZSSortSelectorView */ = {
@@ -1478,6 +1549,7 @@
 				886B97EB2136B7BE0074322D /* CLImageModel.m in Sources */,
 				886B97F62136B7BE0074322D /* DeviceModel.m in Sources */,
 				8849B84E213542BF00CAE299 /* BaseCourseController.m in Sources */,
+				89D4C9B8219E8D5F00566685 /* UIView+Extension.m in Sources */,
 				89D0DFA2219281490038DBC0 /* VedioHeadView.m in Sources */,
 				886B9791213672330074322D /* MineHeadView.m in Sources */,
 				886DB954212E847B00CF8C64 /* PsfTabBarItem.m in Sources */,
@@ -1493,6 +1565,7 @@
 				8905C2AB219282A700403EC2 /* NSString+Time.m in Sources */,
 				886B97F02136B7BE0074322D /* UserCacheBean.m in Sources */,
 				886B982E2136B7FD0074322D /* UIImage+RoundedCorner.m in Sources */,
+				89D4C9B6219E8D5F00566685 /* EmojiButtonView.m in Sources */,
 				886B978721363B280074322D /* TrainingServicesCell.m in Sources */,
 				8819859F2178A184003C962D /* BaseModelReq.m in Sources */,
 				885034722139403D000BDD3A /* DrySmallImageCell.m in Sources */,
@@ -1514,6 +1587,8 @@
 				886DB98B212EC2D700CF8C64 /* ZSDotView.m in Sources */,
 				89CDE37221942C4B00071267 /* ArticleHeadView.m in Sources */,
 				895DBF70217980C200E65B16 /* BannersReq.m in Sources */,
+				89D4C9BA219E8D5F00566685 /* IMEmotionEntity.m in Sources */,
+				89D4C9B2219E8D5F00566685 /* InputToolbar.m in Sources */,
 				886B98312136B7FD0074322D /* UIViewController+Loading.m in Sources */,
 				89085E8D21917DCD00259A68 /* AllTrainingController.m in Sources */,
 				89DBCB87218002C800E66B85 /* CourseServiceApi.m in Sources */,
@@ -1522,6 +1597,7 @@
 				8824EAE3212FDB6B000CBA7E /* UIScrollView+VTMagic.m in Sources */,
 				8961E9E921871CBB00B914FD /* MoreSortRes.m in Sources */,
 				886B98282136B7FD0074322D /* NSString+RTStyle.m in Sources */,
+				89D4C9B7219E8D5F00566685 /* CollectionViewFlowLayout.m in Sources */,
 				887E03B2212FB1580013472F /* HomeNowCell.m in Sources */,
 				89F1ADFA219050BC009A872A /* CourseListController.m in Sources */,
 				89DBCB9521805DC300E66B85 /* DryHeadlinesController.m in Sources */,
@@ -1530,17 +1606,18 @@
 				886B982C2136B7FD0074322D /* UIImage+Alpha.m in Sources */,
 				895DBF7F21798E3500E65B16 /* BannerRes.m in Sources */,
 				886B978421363AFF0074322D /* QualityServiceCell.m in Sources */,
-				890D559C217EAE09009B33B2 /* RecommendListRes.m in Sources */,
 				88483F502137D472004CA3FA /* SortViewController.m in Sources */,
 				886DB974212EC23900CF8C64 /* BaseView.m in Sources */,
 				8824EAEB213001EF000CBA7E /* HomeHeadView.m in Sources */,
 				89DBCB83217FFE1400E66B85 /* ZSScrollButton.m in Sources */,
 				8824EAE4212FDB6B000CBA7E /* UIViewController+VTMagic.m in Sources */,
 				89085E992191914800259A68 /* DetailCourseController.m in Sources */,
+				89D4C9B9219E8D5F00566685 /* EmotionImages.m in Sources */,
 				8824EAE2212FDB6B000CBA7E /* UIColor+VTMagic.m in Sources */,
 				8849B8512135452C00CAE299 /* MenuInfo.m in Sources */,
 				887E03AF212FB1190013472F /* HomeFreeCell.m in Sources */,
 				886B97EC2136B7BE0074322D /* CLNetworkingManager.m in Sources */,
+				89D4C9C8219EDFEC00566685 /* MessageController.m in Sources */,
 				886B98242136B7FD0074322D /* CreatQRCodeAndBarCodeFromLeon.m in Sources */,
 				886DB990212EC2D700CF8C64 /* ZSCycleScrollView.m in Sources */,
 				885034672138D157000BDD3A /* PromoteServiceView.m in Sources */,
@@ -1553,9 +1630,11 @@
 				8824EAE8212FDB6B000CBA7E /* VTMenuBar.m in Sources */,
 				891E254D219C30CD009A7F72 /* ServiceDetailView.m in Sources */,
 				89085E9F2191B04400259A68 /* DetailCourseRes.m in Sources */,
+				89D4C9B5219E8D5F00566685 /* UITextView+Category.m in Sources */,
 				89085E9C2191915B00259A68 /* DetailArticleController.m in Sources */,
 				89CAFFC3219164D100E4B7AE /* AllBigClassController.m in Sources */,
 				886B9797213698E50074322D /* NavigationView.m in Sources */,
+				89D4C9BE219E9DDC00566685 /* CommentReq.m in Sources */,
 				886B97F42136B7BE0074322D /* ZSSignatureGenerator.m in Sources */,
 				886DB91B212E80A600CF8C64 /* ViewController.m in Sources */,
 				886DB926212E80AB00CF8C64 /* main.m in Sources */,
@@ -1565,9 +1644,11 @@
 				89D0DF9F219281350038DBC0 /* AudioHeadView.m in Sources */,
 				886B98262136B7FD0074322D /* NSObject+AddKeyValueToObject.m in Sources */,
 				886DB98C212EC2D700CF8C64 /* ZSAbstractDotView.m in Sources */,
+				89D4C9B4219E8D5F00566685 /* EmojiCollectionViewCell.m in Sources */,
 				89DBCB8E21804AD900E66B85 /* ServiceApi.m in Sources */,
 				887E03AC212FB0D10013472F /* BaseCollectionViewCell.m in Sources */,
 				8905C2B52192B9F300403EC2 /* ZSNotification.m in Sources */,
+				89D4C9BB219E8D5F00566685 /* VoiceButtonView.m in Sources */,
 				89CDE3752194327800071267 /* DetailArticleRes.m in Sources */,
 				886B97ED2136B7BE0074322D /* NSString+Cache.m in Sources */,
 				886B97E12136B7BE0074322D /* NSURLRequest+TYAFNetworking.m in Sources */,
@@ -1576,6 +1657,7 @@
 				886B97E32136B7BE0074322D /* BaseApi.m in Sources */,
 				886B97F92136B7BE0074322D /* ImageUtils.m in Sources */,
 				886B97F32136B7BE0074322D /* ZSRequestGenerator.m in Sources */,
+				89D4C9B3219E8D5F00566685 /* MoreButtonView.m in Sources */,
 				89085EA82191B1D700259A68 /* CourseMemberModel.m in Sources */,
 				8824EAE5212FDB6B000CBA7E /* VTContentView.m in Sources */,
 				89085EA22191B18D00259A68 /* CourseListModel.m in Sources */,

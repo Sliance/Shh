@@ -21,6 +21,7 @@
 @property(nonatomic,strong)VedioHeadView *headView;
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,assign)CGFloat headHeight;
+@property(nonatomic,strong)UILabel *footView;
 
 @end
 
@@ -36,12 +37,24 @@
     }
     return _tableview;
 }
+-(UILabel *)footView{
+    if (!_footView) {
+        _footView = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 140)];
+        _footView.text = @"暂无评论！赶紧抢个沙发！";
+        _footView.backgroundColor = [UIColor whiteColor];
+        _footView.textAlignment = NSTextAlignmentCenter;
+        _footView.textColor = DSColorFromHex(0x464646);
+        _footView.font = [UIFont systemFontOfSize:14];
+    }
+    return _footView;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableview];
     self.tableview.tableHeaderView = self.headView;
     self.courseArr = [NSMutableArray array];
     self.commentArr = [NSMutableArray array];
+     self.tableview.tableFooterView = self.footView;
     __weak typeof(self)weakself = self;
     [self.headView setHeightBlock:^(CGFloat height) {
         weakself.headHeight = height;
@@ -137,12 +150,17 @@
     req.columnId = @"";
     req.courseCategoryId = _model.courseCategoryId;
     req.pageIndex = 1;
-    req.pageSize = @"10";
+    req.pageSize = @"5";
     __weak typeof(self)weakself = self;
     [[HomeServiceApi share]getFineClassWithParam:req response:^(id response) {
         if (response) {
             [weakself.courseArr removeAllObjects];
             [weakself.courseArr addObjectsFromArray:response];
+            for (FreeListRes * model in response) {
+                if ([model.courseId isEqualToString:weakself.model.courseId]) {
+                    [weakself.courseArr removeObject:model];
+                }
+            }
             [weakself.headView setDataArr:weakself.courseArr];
         }
         [weakself getCommentList];
@@ -164,6 +182,12 @@
         if (response) {
             [weakself.commentArr removeAllObjects];
             [weakself.commentArr addObjectsFromArray:response];
+            
+            if (weakself.commentArr.count ==0) {
+                weakself.footView.text = @"暂无评论！赶紧抢个沙发！";
+            }else{
+                weakself.footView.text = @"";
+            }
             [weakself.tableview reloadData];
         }
         [weakself getSingleCourse];
@@ -243,7 +267,7 @@
             [self.navigationController pushViewController:loginVC animated:YES];
         }
     }];
-    [headView setCommentBlock:^(BOOL selected) {
+    [headView setCommentBlock:^(CommentListRes *model) {
         if ([UserCacheBean share].userInfo.token.length>0) {
             
         }else{

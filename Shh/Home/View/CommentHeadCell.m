@@ -117,6 +117,7 @@
     self.zanBlock(sender.selected);
 }
 -(void)pressComment:(UIButton*)sender{
-    self.commentBlock(sender.selected);
+    
+    self.commentBlock(_model);
 }
 @end

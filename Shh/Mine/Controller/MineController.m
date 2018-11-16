@@ -9,6 +9,7 @@
 #import "MineController.h"
 #import "MineHeadView.h"
 #import "MineFootView.h"
+#import "MessageController.h"
 
 @interface MineController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIScrollView *bgscrollow;
@@ -46,6 +47,13 @@
     [self.view addSubview:self.bgscrollow];
     [self.bgscrollow addSubview:self.headView];
     [self.bgscrollow addSubview:self.footView];
+    [self.headView setMessageBlock:^{
+        MessageController *messageVC = [[MessageController alloc]init];
+        [self.navigationController pushViewController:messageVC animated:YES];
+    }];
+    [self.headView setEditBlock:^{
+        
+    }];
     
 }
 -(void)viewWillAppear:(BOOL)animated{

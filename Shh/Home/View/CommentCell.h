@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong)BeCommentModel *model;
 +(CGFloat)getCellHeight:(BeCommentModel *)model;
 
+@property(nonatomic,copy)void (^selectedBlock)(BeCommentModel *);
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END

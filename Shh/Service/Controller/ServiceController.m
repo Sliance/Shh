@@ -17,6 +17,7 @@
 #import "ServiceApi.h"
 #import "AllTrainingController.h"
 #import "AllServiceListController.h"
+#import "DetailServiceController.h"
 
 @interface ServiceController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableview;
@@ -171,10 +172,12 @@
     return 55;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    HomeFreeHeadView *freeview = [[HomeFreeHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 55)];
+    HomeFreeHeadView *freeview = [[HomeFreeHeadView alloc]init];
+    freeview.frame = CGRectMake(0, 0, SCREENWIDTH, 55);
     if (section ==0) {
         
         [freeview setTitle:@"精品服务"];
+
         [freeview setAllBlock:^{
             AllServiceListController *allService = [[AllServiceListController alloc]init];
             allService.hidesBottomBarWhenPushed = YES;
@@ -242,7 +245,29 @@
     }else if (indexPath.section ==2){
         [cell setDataArr:self.activityArr];
     }
+    [cell setSelectedBlock:^(ServiceListRes *model) {
+        DetailServiceController *serviceVC = [[DetailServiceController alloc]init];
+        serviceVC.hidesBottomBarWhenPushed = YES;
+        [serviceVC setModel:model];
+        [self.navigationController pushViewController:serviceVC animated:YES];
+    }];
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section ==1) {
+        DetailServiceController *serviceVC = [[DetailServiceController alloc]init];
+        ServiceListRes *model = self.trainArr[indexPath.row];
+        serviceVC.hidesBottomBarWhenPushed = YES;
+        [serviceVC setModel:model];
+        [self.navigationController pushViewController:serviceVC animated:YES];
+    }else if (indexPath.section ==3){
+        DetailServiceController *serviceVC = [[DetailServiceController alloc]init];
+        ServiceListRes *model = self.joinArr[indexPath.row];
+        serviceVC.hidesBottomBarWhenPushed = YES;
+        [serviceVC setModel:model];
+        [self.navigationController pushViewController:serviceVC animated:YES];
+    }
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

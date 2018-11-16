@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(CGFloat)getCellHeight:(CommentListRes *)model;
 @property(nonatomic,copy)void (^zanBlock)(BOOL);
-@property(nonatomic,copy)void (^commentBlock)(BOOL);
+@property(nonatomic,copy)void (^commentBlock)(CommentListRes *);
 
 @end
 

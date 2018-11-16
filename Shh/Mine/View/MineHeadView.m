@@ -129,6 +129,7 @@
         [_editBtn setTitle:@"\U0000e901" forState:UIControlStateNormal];
         _editBtn.titleLabel.font = [UIFont fontWithName:@"icomoon"size:15];
         [_editBtn setTitleColor:DSColorFromHex(0xB4B4B4) forState:UIControlStateNormal];
+        [_editBtn addTarget:self action:@selector(pressEdit) forControlEvents:UIControlEventTouchUpInside];
     }
     return _editBtn;
 }
@@ -139,6 +140,7 @@
         _messageBtn.titleLabel.font = [UIFont fontWithName:@"icomoon"size:26];
         [_messageBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _messageBtn.frame = CGRectMake(17, 36, 24, 21);
+        [_messageBtn addTarget:self action:@selector(pressMessage) forControlEvents:UIControlEventTouchUpInside];
     }
     return _messageBtn;
 }
@@ -164,5 +166,11 @@
 }
 -(void)pressBtn:(MineTypeBtn*)sender{
     
+}
+-(void)pressMessage{
+    self.messageBlock();
+}
+-(void)pressEdit{
+    self.editBlock();
 }
 @end

@@ -10,6 +10,7 @@
 #import "HomeNowCell.h"
 #import "ServiceDetailView.h"
 #import "HomeServiceApi.h"
+#import "DetailArticleController.h"
 
 @interface DetailServiceController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -43,7 +44,7 @@ static NSString *nowcellIds = @"HomeNowCell";
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.collectionView];
 }
--(void)setModel:(RecommendListRes *)model{
+-(void)setModel:(ServiceListRes *)model{
     _model = model;
     self.dataArr = [NSMutableArray array];
      self.height = 10;
@@ -167,7 +168,10 @@ static NSString *nowcellIds = @"HomeNowCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    DetailArticleController *detailVC = [[DetailArticleController alloc]init];
+    TodayListRes *model = self.dataArr[indexPath.row];
+    [detailVC setModel:model];
+    [self.navigationController pushViewController:detailVC animated:YES];
     
 }
 /*

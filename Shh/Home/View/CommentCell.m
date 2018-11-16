@@ -95,4 +95,8 @@
     CGFloat height = contHeight+80;
     return height;
 }
+-(void)pressComment:(UIButton*)sender{
+    
+    self.selectedBlock(_model);
+}
 @end

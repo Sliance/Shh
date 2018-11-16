@@ -85,7 +85,7 @@
     [self.headiamge sd_setImageWithURL:[NSURL URLWithString:url]];
    
 }
--(void)setRecomendModel:(RecommendListRes *)recomendModel{
+-(void)setRecomendModel:(ServiceListRes *)recomendModel{
     _recomendModel = recomendModel;
     NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,recomendModel.siheserviceAppImagePath];
     [self.headiamge sd_setImageWithURL:[NSURL URLWithString:url]];

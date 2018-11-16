@@ -14,6 +14,7 @@
 #import "ZSSortSelectorView.h"
 #import "CourseServiceApi.h"
 #import "HomeServiceApi.h"
+#import "DetailArticleController.h"
 
 @interface DryHeadlinesController ()<UITableViewDelegate,UITableViewDataSource,ZSSortSelectorViewDelegate>
 @property(nonatomic,strong)UITableView *tableview;
@@ -174,7 +175,12 @@
     
     return cell;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    DetailArticleController *detailVC = [[DetailArticleController alloc]init];
+    TodayListRes *model = self.articleArr[indexPath.row];
+    [detailVC setModel:model];
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
 /*
 #pragma mark - Navigation
 

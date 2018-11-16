@@ -8,7 +8,7 @@
 
 #import "BaseCollectionViewCell.h"
 #import "ServiceListRes.h"
-#import "RecommendListRes.h"
+#import "ServiceListRes.h"
 
 @interface QualityCollectionCell : BaseCollectionViewCell
 @property(nonatomic,strong)UIImageView *headiamge;
@@ -17,6 +17,6 @@
 @property(nonatomic,strong)UILabel *nameLabel;
 @property(nonatomic,strong)UILabel *detailLabel;
 @property(nonatomic,strong)ServiceListRes *model;
-@property(nonatomic,strong)RecommendListRes *recomendModel;
+@property(nonatomic,strong)ServiceListRes *recomendModel;
 
 @end

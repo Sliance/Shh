@@ -13,7 +13,8 @@
 #import "HomeServiceApi.h"
 #import "NavigationView.h"
 #import "SortViewController.h"
-
+#import "DetailCourseController.h"
+#import "DetailAudioController.h"
 @interface CourseController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property (nonatomic, strong)NavigationView *navView;
@@ -235,6 +236,18 @@ static NSString *givecellIds = @"HomeGivingCell";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    FreeListRes *model = self.courseArr[indexPath.row];
+    if ([model.courseVideoOrAudio isEqualToString:@"video"]) {
+        DetailCourseController *courseVC = [[DetailCourseController alloc]init];
+        courseVC.hidesBottomBarWhenPushed = YES;
+        [courseVC setModel:model];
+        [self.navigationController pushViewController:courseVC animated:YES];
+    }else{
+        DetailAudioController *courseVC = [[DetailAudioController alloc]init];
+        courseVC.hidesBottomBarWhenPushed = YES;
+        [courseVC setModel:model];
+        [self.navigationController pushViewController:courseVC animated:YES];
+    }
     
 }
 /*

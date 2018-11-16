@@ -9,6 +9,7 @@
 #import "ArticleListController.h"
 #import "HomeNowCell.h"
 #import "HomeServiceApi.h"
+#import "DetailArticleController.h"
 
 @interface ArticleListController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -128,7 +129,10 @@ static NSString *nowcellIds = @"HomeNowCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    
+    DetailArticleController *detailVC = [[DetailArticleController alloc]init];
+    TodayListRes *model = self.dataArr[indexPath.row];
+    [detailVC setModel:model];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 /*
 #pragma mark - Navigation

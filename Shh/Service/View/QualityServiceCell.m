@@ -84,6 +84,8 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+     ServiceListRes *model = self.dataArr[indexPath.row];
+    self.selectedBlock(model);
     
 }
 -(void)setDataArr:(NSMutableArray *)dataArr{

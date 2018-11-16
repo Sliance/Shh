@@ -10,6 +10,7 @@
 #import "ToJoinCell.h"
 
 #import "ServiceApi.h"
+#import "DetailServiceController.h"
 @interface AllServiceListController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,strong)NSMutableArray *dataArr;
@@ -100,5 +101,10 @@
     return cell;
     
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    DetailServiceController *serviceVC = [[DetailServiceController alloc]init];
+    ServiceListRes *model = self.dataArr[indexPath.row];
+    [serviceVC setModel:model];
+    [self.navigationController pushViewController:serviceVC animated:YES];
+}
 @end

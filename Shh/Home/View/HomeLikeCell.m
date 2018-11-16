@@ -68,7 +68,7 @@
     self.nameLabel.text = model.title;
 }
 
--(void)setBottomModel:(RecommendListRes *)bottomModel{
+-(void)setBottomModel:(ServiceListRes *)bottomModel{
     _bottomModel = bottomModel;
     NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,bottomModel.siheserviceAppImagePath];
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:url]];

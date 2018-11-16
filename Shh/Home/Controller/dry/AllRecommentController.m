@@ -9,6 +9,8 @@
 #import "AllRecommentController.h"
 #import "QualityCollectionCell.h"
 #import "HomeServiceApi.h"
+#import "DetailServiceController.h"
+
 @interface AllRecommentController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property(nonatomic,strong)NSMutableArray *dataArr;
@@ -116,13 +118,16 @@ static NSString *freecellIds = @"QualityCollectionCell";
     QualityCollectionCell *collectcell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QualityCollectionCell" forIndexPath:indexPath];
     [collectcell setImageWidth:SCREENWIDTH-15];
     [collectcell setImageHeight:175];
-    RecommendListRes *model = self.dataArr[indexPath.row];
+    ServiceListRes *model = self.dataArr[indexPath.row];
     [collectcell setRecomendModel:model];
     return collectcell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    DetailServiceController *serviceVC = [[DetailServiceController alloc]init];
+    ServiceListRes *model = self.dataArr[indexPath.row];
+    [serviceVC setModel:model];
+    [self.navigationController pushViewController:serviceVC animated:YES];
 }
 
 @end

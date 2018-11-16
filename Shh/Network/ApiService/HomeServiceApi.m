@@ -78,7 +78,7 @@
 -(void)getTodayListWithParam:(FreeListReq *) req response:(responseModel) responseModel{
     NSDictionary *dic = [req mj_keyValues];
     
-    [[ZSAPIProxy shareProxy] callPOSTWithUrl:Today_list Params:dic isShowLoading:NO successCallBack:^(ZSURLResponse *response) {
+    [[ZSAPIProxy shareProxy] callPOSTWithUrl:Today_list Params:dic isShowLoading:YES successCallBack:^(ZSURLResponse *response) {
         if ([response.content isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dicResponse = (NSDictionary *) response.content;
             if ([dicResponse[@"code"] integerValue] == 200) {
@@ -136,7 +136,7 @@
             NSDictionary *dicResponse = (NSDictionary *) response.content;
             if ([dicResponse[@"code"] integerValue] == 200) {
                 if (responseModel) {
-                    NSArray *result = [RecommendListRes mj_objectArrayWithKeyValuesArray:dicResponse[@"data"][@"list"]];
+                    NSArray *result = [ServiceListRes mj_objectArrayWithKeyValuesArray:dicResponse[@"data"][@"list"]];
                     responseModel(result);
                 }
             }else {
@@ -188,7 +188,7 @@
             NSDictionary *dicResponse = (NSDictionary *) response.content;
             if ([dicResponse[@"code"] integerValue] == 200) {
                 if (responseModel) {
-                    NSArray *result = [RecommendListRes mj_objectArrayWithKeyValuesArray:dicResponse[@"data"][@"list"]];
+                    NSArray *result = [ServiceListRes mj_objectArrayWithKeyValuesArray:dicResponse[@"data"][@"list"]];
                     responseModel(result);
                 }
             }else {
@@ -351,6 +351,32 @@
             }else {
                 if (responseModel) {
                     responseModel(nil);
+                }
+            }
+        } else {
+            if (responseModel) {
+                responseModel(nil);
+            }
+        }
+    } faildCallBack:^(ZSURLResponse *response) {
+        
+    }];
+}
+///新增评论
+-(void)addCommentWithParam:(CommentReq *) req response:(responseModel) responseModel{
+    NSDictionary *dic = [req mj_keyValues];
+    
+    [[ZSAPIProxy shareProxy] callPOSTWithUrl:add_comment_list Params:dic isShowLoading:YES successCallBack:^(ZSURLResponse *response) {
+        if ([response.content isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dicResponse = (NSDictionary *) response.content;
+            if ([dicResponse[@"code"] integerValue] == 200) {
+                if (responseModel) {
+                    
+                    responseModel(dicResponse);
+                }
+            }else {
+                if (responseModel) {
+                    responseModel(dicResponse);
                 }
             }
         } else {
