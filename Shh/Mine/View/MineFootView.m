@@ -89,16 +89,16 @@
 -(UILabel *)hYDate{
     if (!_hYDate) {
         _hYDate = [[UILabel alloc]init];
-        _hYDate.textAlignment = NSTextAlignmentLeft;
+        _hYDate.textAlignment = NSTextAlignmentRight;
         _hYDate.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:12];
         _hYDate.textColor = DSColorFromHex(0x797979);
-        _hYDate.text = @"有机会获得600积分 >";
+        _hYDate.text = @" >";
         _hYDate.numberOfLines = 1;
-        _hYDate.frame = CGRectMake(SCREENWIDTH-30-125-26, 0, 120, 40);
+        _hYDate.frame = CGRectMake(SCREENWIDTH-30-125-30, 0, 120, 40);
     }
     return _hYDate;
 }
 -(void)pressBtn:(MineTypeBtn*)sender{
-    
+    self.selecteBlock(sender.tag);
 }
 @end

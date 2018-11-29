@@ -48,8 +48,9 @@
         [btn addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.bgView addSubview:btn];
     }
-    self.nameLabel.frame = CGRectMake(SCREENWIDTH/2-15-[self.nameLabel.text widthForFont:[UIFont systemFontOfSize:16]]/2, 46, [self.nameLabel.text widthForFont:[UIFont systemFontOfSize:16]], 15);
-    self.editBtn.frame = CGRectMake(self.nameLabel.ctRight+5, 46, 15, 15);
+
+    self.editBtn.frame = CGRectMake(SCREENWIDTH/2-65, 46, 100, 15);
+   
 }
 -(UIImageView *)bgImage{
     if (!_bgImage) {
@@ -72,7 +73,7 @@
 -(UIImageView *)headImage{
     if (!_headImage) {
         _headImage = [[UIImageView alloc]init];
-        _headImage.image = [UIImage imageNamed:@"bg_mine"];
+        _headImage.image = [UIImage imageNamed:@"mine"];
         _headImage.frame = CGRectMake(SCREENWIDTH/2-37, 48, 74, 74);
         [_headImage.layer setCornerRadius:37];
         [_headImage.layer setMasksToBounds:YES];
@@ -114,10 +115,10 @@
 -(UILabel *)hYDate{
     if (!_hYDate) {
         _hYDate = [[UILabel alloc]init];
-        _hYDate.textAlignment = NSTextAlignmentLeft;
+        _hYDate.textAlignment = NSTextAlignmentRight;
         _hYDate.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:12];
         _hYDate.textColor = DSColorFromHex(0x52402C);
-        _hYDate.text = @"2018.07.12到期 >";
+        _hYDate.text = @"加入会员 >";
         _hYDate.numberOfLines = 1;
         _hYDate.frame = CGRectMake(SCREENWIDTH-30-105, 0, 100, 35);
     }
@@ -126,9 +127,9 @@
 -(UIButton *)editBtn{
     if (!_editBtn) {
         _editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_editBtn setTitle:@"\U0000e901" forState:UIControlStateNormal];
-        _editBtn.titleLabel.font = [UIFont fontWithName:@"icomoon"size:15];
-        [_editBtn setTitleColor:DSColorFromHex(0xB4B4B4) forState:UIControlStateNormal];
+        [_editBtn setTitle:@"未登录" forState:UIControlStateNormal];
+        _editBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+        [_editBtn setTitleColor:DSColorFromHex(0x454545) forState:UIControlStateNormal];
         [_editBtn addTarget:self action:@selector(pressEdit) forControlEvents:UIControlEventTouchUpInside];
     }
     return _editBtn;

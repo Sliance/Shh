@@ -146,6 +146,12 @@
 		891E254A219C2761009A7F72 /* DetailServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 891E2549219C2761009A7F72 /* DetailServiceController.m */; };
 		891E254D219C30CD009A7F72 /* ServiceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 891E254C219C30CD009A7F72 /* ServiceDetailView.m */; };
 		891E2550219C3891009A7F72 /* DetailServiceRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 891E254F219C3891009A7F72 /* DetailServiceRes.m */; };
+		8924E36521AE2946003A1152 /* MineServiceApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 8924E36421AE2946003A1152 /* MineServiceApi.m */; };
+		8924E36A21AE29D7003A1152 /* LoginReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 8924E36921AE29D7003A1152 /* LoginReq.m */; };
+		8924E36D21AE3000003A1152 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8924E36C21AE3000003A1152 /* SettingController.m */; };
+		8924E37021AE3018003A1152 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8924E36F21AE3018003A1152 /* SettingCell.m */; };
+		8924E37321AE3A18003A1152 /* RegisterAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8924E37221AE3A18003A1152 /* RegisterAlertView.m */; };
+		8924E37621AE453B003A1152 /* AgreeMentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8924E37521AE453B003A1152 /* AgreeMentController.m */; };
 		895DBF70217980C200E65B16 /* BannersReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF6F217980C200E65B16 /* BannersReq.m */; };
 		895DBF7C21798CBD00E65B16 /* FreeListReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7B21798CBD00E65B16 /* FreeListReq.m */; };
 		895DBF7F21798E3500E65B16 /* BannerRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7E21798E3500E65B16 /* BannerRes.m */; };
@@ -154,6 +160,7 @@
 		89856B47217F1A2100688DF7 /* CourseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89856B46217F1A2100688DF7 /* CourseController.m */; };
 		89856B4A217F1AE400688DF7 /* CourseHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89856B49217F1AE400688DF7 /* CourseHeadView.m */; };
 		89CAFFC3219164D100E4B7AE /* AllBigClassController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CAFFC2219164D100E4B7AE /* AllBigClassController.m */; };
+		89CBE08021AD50B40086633A /* LoginAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CBE07F21AD50B40086633A /* LoginAlertView.m */; };
 		89CDE3672193E56D00071267 /* BeCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CDE3662193E56D00071267 /* BeCommentModel.m */; };
 		89CDE36C21940D6C00071267 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CDE36B21940D6C00071267 /* LoginController.m */; };
 		89CDE36F2194173B00071267 /* DetailAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CDE36E2194173B00071267 /* DetailAudioController.m */; };
@@ -180,6 +187,25 @@
 		89DBCB8E21804AD900E66B85 /* ServiceApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB8D21804AD900E66B85 /* ServiceApi.m */; };
 		89DBCB9221804B9600E66B85 /* ServiceListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB9121804B9600E66B85 /* ServiceListRes.m */; };
 		89DBCB9521805DC300E66B85 /* DryHeadlinesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB9421805DC300E66B85 /* DryHeadlinesController.m */; };
+		89E0C0E821AE672C00D18C44 /* SendCodeAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E0C0E721AE672C00D18C44 /* SendCodeAlertView.m */; };
+		89E0C0EB21AE722A00D18C44 /* UIButton+DNUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E0C0EA21AE722A00D18C44 /* UIButton+DNUtility.m */; };
+		89E0C0EE21AE772900D18C44 /* PersonInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E0C0ED21AE772900D18C44 /* PersonInfoController.m */; };
+		89E0C0F121AE79E400D18C44 /* ForgetAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E0C0F021AE79E400D18C44 /* ForgetAlertView.m */; };
+		89E0C0F421AE838000D18C44 /* ChangePassAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E0C0F321AE838000D18C44 /* ChangePassAlertView.m */; };
+		89E0C0F721AEB8E200D18C44 /* MemberInfoRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E0C0F621AEB8E200D18C44 /* MemberInfoRes.m */; };
+		89F03C4D21AF827900218809 /* HelpCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F03C4C21AF827900218809 /* HelpCenterController.m */; };
+		89F03C5021AF85DC00218809 /* HelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F03C4F21AF85DC00218809 /* HelpCell.m */; };
+		89F03C5321AF921500218809 /* HelpRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F03C5221AF921500218809 /* HelpRes.m */; };
+		89F03C5621AF922F00218809 /* MessageRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F03C5521AF922F00218809 /* MessageRes.m */; };
+		89F03C5921AFC36B00218809 /* EnterShhController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F03C5821AFC36B00218809 /* EnterShhController.m */; };
+		89F03C5C21AFC43500218809 /* EnterShhCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F03C5B21AFC43500218809 /* EnterShhCell.m */; };
+		89F03C5F21AFC8F400218809 /* EnterShhHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F03C5E21AFC8F400218809 /* EnterShhHeadView.m */; };
+		89F03C6221AFC90400218809 /* EnterShhFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F03C6121AFC90400218809 /* EnterShhFootView.m */; };
+		89F03C6521AFE42200218809 /* ApplyForController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F03C6421AFE42200218809 /* ApplyForController.m */; };
+		89F03C6821AFEA8000218809 /* ApplyCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F03C6721AFEA8000218809 /* ApplyCustomCell.m */; };
+		89F03C6B21AFEFFB00218809 /* ApplyImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F03C6A21AFEFFB00218809 /* ApplyImageCell.m */; };
+		89F03C6F21AFF3EE00218809 /* HQPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F03C6E21AFF3EE00218809 /* HQPickerView.m */; };
+		89F03C7521B0035A00218809 /* ApplyForReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F03C7421B0035A00218809 /* ApplyForReq.m */; };
 		89F1ADF7219050A9009A872A /* ArticleListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F1ADF6219050A9009A872A /* ArticleListController.m */; };
 		89F1ADFA219050BC009A872A /* CourseListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F1ADF9219050BC009A872A /* CourseListController.m */; };
 		89F1ADFD2190609E009A872A /* AllFreeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F1ADFC2190609E009A872A /* AllFreeListController.m */; };
@@ -477,6 +503,18 @@
 		891E254C219C30CD009A7F72 /* ServiceDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceDetailView.m; sourceTree = "<group>"; };
 		891E254E219C3891009A7F72 /* DetailServiceRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailServiceRes.h; sourceTree = "<group>"; };
 		891E254F219C3891009A7F72 /* DetailServiceRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailServiceRes.m; sourceTree = "<group>"; };
+		8924E36321AE2946003A1152 /* MineServiceApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineServiceApi.h; sourceTree = "<group>"; };
+		8924E36421AE2946003A1152 /* MineServiceApi.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineServiceApi.m; sourceTree = "<group>"; };
+		8924E36821AE29D7003A1152 /* LoginReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginReq.h; sourceTree = "<group>"; };
+		8924E36921AE29D7003A1152 /* LoginReq.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginReq.m; sourceTree = "<group>"; };
+		8924E36B21AE3000003A1152 /* SettingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingController.h; sourceTree = "<group>"; };
+		8924E36C21AE3000003A1152 /* SettingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingController.m; sourceTree = "<group>"; };
+		8924E36E21AE3018003A1152 /* SettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingCell.h; sourceTree = "<group>"; };
+		8924E36F21AE3018003A1152 /* SettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingCell.m; sourceTree = "<group>"; };
+		8924E37121AE3A18003A1152 /* RegisterAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterAlertView.h; sourceTree = "<group>"; };
+		8924E37221AE3A18003A1152 /* RegisterAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterAlertView.m; sourceTree = "<group>"; };
+		8924E37421AE453B003A1152 /* AgreeMentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AgreeMentController.h; sourceTree = "<group>"; };
+		8924E37521AE453B003A1152 /* AgreeMentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgreeMentController.m; sourceTree = "<group>"; };
 		895DBF6E217980C200E65B16 /* BannersReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannersReq.h; sourceTree = "<group>"; };
 		895DBF6F217980C200E65B16 /* BannersReq.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannersReq.m; sourceTree = "<group>"; };
 		895DBF7A21798CBD00E65B16 /* FreeListReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeListReq.h; sourceTree = "<group>"; };
@@ -493,6 +531,8 @@
 		89856B49217F1AE400688DF7 /* CourseHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseHeadView.m; sourceTree = "<group>"; };
 		89CAFFC1219164D100E4B7AE /* AllBigClassController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllBigClassController.h; sourceTree = "<group>"; };
 		89CAFFC2219164D100E4B7AE /* AllBigClassController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllBigClassController.m; sourceTree = "<group>"; };
+		89CBE07E21AD50B40086633A /* LoginAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginAlertView.h; sourceTree = "<group>"; };
+		89CBE07F21AD50B40086633A /* LoginAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginAlertView.m; sourceTree = "<group>"; };
 		89CDE3652193E56D00071267 /* BeCommentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeCommentModel.h; sourceTree = "<group>"; };
 		89CDE3662193E56D00071267 /* BeCommentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeCommentModel.m; sourceTree = "<group>"; };
 		89CDE36A21940D6C00071267 /* LoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
@@ -545,6 +585,44 @@
 		89DBCB9121804B9600E66B85 /* ServiceListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceListRes.m; sourceTree = "<group>"; };
 		89DBCB9321805DC300E66B85 /* DryHeadlinesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DryHeadlinesController.h; sourceTree = "<group>"; };
 		89DBCB9421805DC300E66B85 /* DryHeadlinesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DryHeadlinesController.m; sourceTree = "<group>"; };
+		89E0C0E621AE672C00D18C44 /* SendCodeAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendCodeAlertView.h; sourceTree = "<group>"; };
+		89E0C0E721AE672C00D18C44 /* SendCodeAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendCodeAlertView.m; sourceTree = "<group>"; };
+		89E0C0E921AE722A00D18C44 /* UIButton+DNUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+DNUtility.h"; sourceTree = "<group>"; };
+		89E0C0EA21AE722A00D18C44 /* UIButton+DNUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+DNUtility.m"; sourceTree = "<group>"; };
+		89E0C0EC21AE772900D18C44 /* PersonInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonInfoController.h; sourceTree = "<group>"; };
+		89E0C0ED21AE772900D18C44 /* PersonInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonInfoController.m; sourceTree = "<group>"; };
+		89E0C0EF21AE79E400D18C44 /* ForgetAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgetAlertView.h; sourceTree = "<group>"; };
+		89E0C0F021AE79E400D18C44 /* ForgetAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetAlertView.m; sourceTree = "<group>"; };
+		89E0C0F221AE838000D18C44 /* ChangePassAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePassAlertView.h; sourceTree = "<group>"; };
+		89E0C0F321AE838000D18C44 /* ChangePassAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePassAlertView.m; sourceTree = "<group>"; };
+		89E0C0F521AEB8E200D18C44 /* MemberInfoRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberInfoRes.h; sourceTree = "<group>"; };
+		89E0C0F621AEB8E200D18C44 /* MemberInfoRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberInfoRes.m; sourceTree = "<group>"; };
+		89F03C4B21AF827900218809 /* HelpCenterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpCenterController.h; sourceTree = "<group>"; };
+		89F03C4C21AF827900218809 /* HelpCenterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpCenterController.m; sourceTree = "<group>"; };
+		89F03C4E21AF85DC00218809 /* HelpCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpCell.h; sourceTree = "<group>"; };
+		89F03C4F21AF85DC00218809 /* HelpCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpCell.m; sourceTree = "<group>"; };
+		89F03C5121AF921500218809 /* HelpRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpRes.h; sourceTree = "<group>"; };
+		89F03C5221AF921500218809 /* HelpRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpRes.m; sourceTree = "<group>"; };
+		89F03C5421AF922F00218809 /* MessageRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageRes.h; sourceTree = "<group>"; };
+		89F03C5521AF922F00218809 /* MessageRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageRes.m; sourceTree = "<group>"; };
+		89F03C5721AFC36B00218809 /* EnterShhController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnterShhController.h; sourceTree = "<group>"; };
+		89F03C5821AFC36B00218809 /* EnterShhController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnterShhController.m; sourceTree = "<group>"; };
+		89F03C5A21AFC43500218809 /* EnterShhCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnterShhCell.h; sourceTree = "<group>"; };
+		89F03C5B21AFC43500218809 /* EnterShhCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnterShhCell.m; sourceTree = "<group>"; };
+		89F03C5D21AFC8F400218809 /* EnterShhHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnterShhHeadView.h; sourceTree = "<group>"; };
+		89F03C5E21AFC8F400218809 /* EnterShhHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnterShhHeadView.m; sourceTree = "<group>"; };
+		89F03C6021AFC90400218809 /* EnterShhFootView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnterShhFootView.h; sourceTree = "<group>"; };
+		89F03C6121AFC90400218809 /* EnterShhFootView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnterShhFootView.m; sourceTree = "<group>"; };
+		89F03C6321AFE42200218809 /* ApplyForController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplyForController.h; sourceTree = "<group>"; };
+		89F03C6421AFE42200218809 /* ApplyForController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplyForController.m; sourceTree = "<group>"; };
+		89F03C6621AFEA8000218809 /* ApplyCustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplyCustomCell.h; sourceTree = "<group>"; };
+		89F03C6721AFEA8000218809 /* ApplyCustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplyCustomCell.m; sourceTree = "<group>"; };
+		89F03C6921AFEFFB00218809 /* ApplyImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplyImageCell.h; sourceTree = "<group>"; };
+		89F03C6A21AFEFFB00218809 /* ApplyImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplyImageCell.m; sourceTree = "<group>"; };
+		89F03C6D21AFF3EE00218809 /* HQPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQPickerView.h; sourceTree = "<group>"; };
+		89F03C6E21AFF3EE00218809 /* HQPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQPickerView.m; sourceTree = "<group>"; };
+		89F03C7321B0035A00218809 /* ApplyForReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplyForReq.h; sourceTree = "<group>"; };
+		89F03C7421B0035A00218809 /* ApplyForReq.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplyForReq.m; sourceTree = "<group>"; };
 		89F1ADF5219050A9009A872A /* ArticleListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleListController.h; sourceTree = "<group>"; };
 		89F1ADF6219050A9009A872A /* ArticleListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleListController.m; sourceTree = "<group>"; };
 		89F1ADF8219050BC009A872A /* CourseListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseListController.h; sourceTree = "<group>"; };
@@ -723,10 +801,25 @@
 		886B978E2136714A0074322D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				89F03C6C21AFF3EE00218809 /* HQPickerView */,
 				886B978F213672330074322D /* MineHeadView.h */,
 				886B9790213672330074322D /* MineHeadView.m */,
 				886B97922136726A0074322D /* MineFootView.h */,
 				886B97932136726A0074322D /* MineFootView.m */,
+				8924E36E21AE3018003A1152 /* SettingCell.h */,
+				8924E36F21AE3018003A1152 /* SettingCell.m */,
+				89F03C4E21AF85DC00218809 /* HelpCell.h */,
+				89F03C4F21AF85DC00218809 /* HelpCell.m */,
+				89F03C5A21AFC43500218809 /* EnterShhCell.h */,
+				89F03C5B21AFC43500218809 /* EnterShhCell.m */,
+				89F03C5D21AFC8F400218809 /* EnterShhHeadView.h */,
+				89F03C5E21AFC8F400218809 /* EnterShhHeadView.m */,
+				89F03C6021AFC90400218809 /* EnterShhFootView.h */,
+				89F03C6121AFC90400218809 /* EnterShhFootView.m */,
+				89F03C6621AFEA8000218809 /* ApplyCustomCell.h */,
+				89F03C6721AFEA8000218809 /* ApplyCustomCell.m */,
+				89F03C6921AFEFFB00218809 /* ApplyImageCell.h */,
+				89F03C6A21AFEFFB00218809 /* ApplyImageCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -772,6 +865,8 @@
 				89DBCB86218002C800E66B85 /* CourseServiceApi.m */,
 				89DBCB8C21804AD900E66B85 /* ServiceApi.h */,
 				89DBCB8D21804AD900E66B85 /* ServiceApi.m */,
+				8924E36321AE2946003A1152 /* MineServiceApi.h */,
+				8924E36421AE2946003A1152 /* MineServiceApi.m */,
 			);
 			path = ApiService;
 			sourceTree = "<group>";
@@ -857,6 +952,8 @@
 				886B98202136B7FD0074322D /* UserDefaultCashe.m */,
 				8849B8492135205100CAE299 /* UILabel+String.h */,
 				8849B84A2135205100CAE299 /* UILabel+String.m */,
+				89E0C0E921AE722A00D18C44 /* UIButton+DNUtility.h */,
+				89E0C0EA21AE722A00D18C44 /* UIButton+DNUtility.m */,
 				886B98212136B7FD0074322D /* ViewController */,
 			);
 			path = Category;
@@ -1096,6 +1193,16 @@
 				886DB96A212E85B700CF8C64 /* MineController.m */,
 				89D4C9C6219EDFEC00566685 /* MessageController.h */,
 				89D4C9C7219EDFEC00566685 /* MessageController.m */,
+				8924E36B21AE3000003A1152 /* SettingController.h */,
+				8924E36C21AE3000003A1152 /* SettingController.m */,
+				89E0C0EC21AE772900D18C44 /* PersonInfoController.h */,
+				89E0C0ED21AE772900D18C44 /* PersonInfoController.m */,
+				89F03C4B21AF827900218809 /* HelpCenterController.h */,
+				89F03C4C21AF827900218809 /* HelpCenterController.m */,
+				89F03C5721AFC36B00218809 /* EnterShhController.h */,
+				89F03C5821AFC36B00218809 /* EnterShhController.m */,
+				89F03C6321AFE42200218809 /* ApplyForController.h */,
+				89F03C6421AFE42200218809 /* ApplyForController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1228,21 +1335,9 @@
 			path = All;
 			sourceTree = "<group>";
 		};
-		895DBF6A21797F5900E65B16 /* Model */ = {
+		8924E36621AE298A003A1152 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				89DBCB8F21804B7700E66B85 /* Service */,
-				89DBCB882180032500E66B85 /* Course */,
-				895DBF6E217980C200E65B16 /* BannersReq.h */,
-				895DBF6F217980C200E65B16 /* BannersReq.m */,
-				895DBF7A21798CBD00E65B16 /* FreeListReq.h */,
-				895DBF7B21798CBD00E65B16 /* FreeListReq.m */,
-				895DBF7D21798E3500E65B16 /* BannerRes.h */,
-				895DBF7E21798E3500E65B16 /* BannerRes.m */,
-				895DBF8021798EFC00E65B16 /* FreeListRes.h */,
-				895DBF8121798EFC00E65B16 /* FreeListRes.m */,
-				8901A298217DDF1B00587310 /* TodayListRes.h */,
-				8901A299217DDF1B00587310 /* TodayListRes.m */,
 				890D559D217EAE21009B33B2 /* GuessListRes.h */,
 				890D559E217EAE21009B33B2 /* GuessListRes.m */,
 				89085E9121918E0F00259A68 /* CommentListRes.h */,
@@ -1265,15 +1360,73 @@
 				891E254F219C3891009A7F72 /* DetailServiceRes.m */,
 				89D4C9BC219E9DDC00566685 /* CommentReq.h */,
 				89D4C9BD219E9DDC00566685 /* CommentReq.m */,
+				895DBF6E217980C200E65B16 /* BannersReq.h */,
+				895DBF6F217980C200E65B16 /* BannersReq.m */,
+				895DBF7A21798CBD00E65B16 /* FreeListReq.h */,
+				895DBF7B21798CBD00E65B16 /* FreeListReq.m */,
+				895DBF7D21798E3500E65B16 /* BannerRes.h */,
+				895DBF7E21798E3500E65B16 /* BannerRes.m */,
+				895DBF8021798EFC00E65B16 /* FreeListRes.h */,
+				895DBF8121798EFC00E65B16 /* FreeListRes.m */,
+				8901A298217DDF1B00587310 /* TodayListRes.h */,
+				8901A299217DDF1B00587310 /* TodayListRes.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		8924E36721AE29BA003A1152 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				8924E36821AE29D7003A1152 /* LoginReq.h */,
+				8924E36921AE29D7003A1152 /* LoginReq.m */,
+				89E0C0F521AEB8E200D18C44 /* MemberInfoRes.h */,
+				89E0C0F621AEB8E200D18C44 /* MemberInfoRes.m */,
+				89F03C5121AF921500218809 /* HelpRes.h */,
+				89F03C5221AF921500218809 /* HelpRes.m */,
+				89F03C5421AF922F00218809 /* MessageRes.h */,
+				89F03C5521AF922F00218809 /* MessageRes.m */,
+				89F03C7321B0035A00218809 /* ApplyForReq.h */,
+				89F03C7421B0035A00218809 /* ApplyForReq.m */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		895DBF6A21797F5900E65B16 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8924E36721AE29BA003A1152 /* Mine */,
+				8924E36621AE298A003A1152 /* Home */,
+				89DBCB8F21804B7700E66B85 /* Service */,
+				89DBCB882180032500E66B85 /* Course */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		89CBE07D21AD50870086633A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				89CBE07E21AD50B40086633A /* LoginAlertView.h */,
+				89CBE07F21AD50B40086633A /* LoginAlertView.m */,
+				8924E37121AE3A18003A1152 /* RegisterAlertView.h */,
+				8924E37221AE3A18003A1152 /* RegisterAlertView.m */,
+				89E0C0E621AE672C00D18C44 /* SendCodeAlertView.h */,
+				89E0C0E721AE672C00D18C44 /* SendCodeAlertView.m */,
+				89E0C0EF21AE79E400D18C44 /* ForgetAlertView.h */,
+				89E0C0F021AE79E400D18C44 /* ForgetAlertView.m */,
+				89E0C0F221AE838000D18C44 /* ChangePassAlertView.h */,
+				89E0C0F321AE838000D18C44 /* ChangePassAlertView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		89CDE36921940D2900071267 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				89CBE07D21AD50870086633A /* View */,
 				89CDE36A21940D6C00071267 /* LoginController.h */,
 				89CDE36B21940D6C00071267 /* LoginController.m */,
+				8924E37421AE453B003A1152 /* AgreeMentController.h */,
+				8924E37521AE453B003A1152 /* AgreeMentController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1342,6 +1495,15 @@
 				89DBCB9121804B9600E66B85 /* ServiceListRes.m */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		89F03C6C21AFF3EE00218809 /* HQPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				89F03C6D21AFF3EE00218809 /* HQPickerView.h */,
+				89F03C6E21AFF3EE00218809 /* HQPickerView.m */,
+			);
+			path = HQPickerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1529,16 +1691,21 @@
 				886B97942136726A0074322D /* MineFootView.m in Sources */,
 				89085E9321918E0F00259A68 /* CommentListRes.m in Sources */,
 				8905C2BB2193029D00403EC2 /* CommentCell.m in Sources */,
+				8924E36D21AE3000003A1152 /* SettingController.m in Sources */,
 				89DBCB8B2180034700E66B85 /* CourseSortRes.m in Sources */,
+				8924E37321AE3A18003A1152 /* RegisterAlertView.m in Sources */,
 				890D559F217EAE21009B33B2 /* GuessListRes.m in Sources */,
 				89CDE3672193E56D00071267 /* BeCommentModel.m in Sources */,
 				891E2550219C3891009A7F72 /* DetailServiceRes.m in Sources */,
 				887E03B5212FB1B50013472F /* HomeGivingCell.m in Sources */,
 				886B98332136B7FD0074322D /* UIViewController+Loading.m in Sources */,
+				89F03C5921AFC36B00218809 /* EnterShhController.m in Sources */,
 				886B978D213647430074322D /* ServiceHeadView.m in Sources */,
 				886B97F82136B7BE0074322D /* FilePathManager.m in Sources */,
 				887E03B8212FB2AB0013472F /* HomeLikeCell.m in Sources */,
 				891E254A219C2761009A7F72 /* DetailServiceController.m in Sources */,
+				89F03C7521B0035A00218809 /* ApplyForReq.m in Sources */,
+				89E0C0F421AE838000D18C44 /* ChangePassAlertView.m in Sources */,
 				89856B4A217F1AE400688DF7 /* CourseHeadView.m in Sources */,
 				886B982F2136B7FD0074322D /* UIImage+RTStyle.m in Sources */,
 				886DB991212EC2D700CF8C64 /* NSData+ZSCache.m in Sources */,
@@ -1559,6 +1726,9 @@
 				886DB962212E858A00CF8C64 /* HomeController.m in Sources */,
 				88483F602137E7EC004CA3FA /* MoreSortCollectionCell.m in Sources */,
 				886B98362136BB910074322D /* NSString+MD5Addition.m in Sources */,
+				89F03C6521AFE42200218809 /* ApplyForController.m in Sources */,
+				89E0C0F121AE79E400D18C44 /* ForgetAlertView.m in Sources */,
+				89F03C5321AF921500218809 /* HelpRes.m in Sources */,
 				891E2544219BD415009A7F72 /* AudioCell.m in Sources */,
 				886B97EE2136B7BE0074322D /* NSString+CLTools.m in Sources */,
 				89F1ADF7219050A9009A872A /* ArticleListController.m in Sources */,
@@ -1579,6 +1749,7 @@
 				886DB98A212EC2D700CF8C64 /* UIView+Frame.m in Sources */,
 				886DB98F212EC2D700CF8C64 /* ZSScrollViewCell.m in Sources */,
 				886B97DF2136B7BE0074322D /* NSArray+TYAFNetworking.m in Sources */,
+				89F03C5C21AFC43500218809 /* EnterShhCell.m in Sources */,
 				88483F572137D4F0004CA3FA /* SortBtn.m in Sources */,
 				886DB96E212EC1D900CF8C64 /* MineTypeBtn.m in Sources */,
 				89085EA52191B1A200259A68 /* CourseModel.m in Sources */,
@@ -1595,23 +1766,30 @@
 				886B97F12136B7BE0074322D /* ZSAPIProxy.m in Sources */,
 				886B97FB2136B7BE0074322D /* NSString+MoneyStyle.m in Sources */,
 				8824EAE3212FDB6B000CBA7E /* UIScrollView+VTMagic.m in Sources */,
+				89F03C6221AFC90400218809 /* EnterShhFootView.m in Sources */,
 				8961E9E921871CBB00B914FD /* MoreSortRes.m in Sources */,
 				886B98282136B7FD0074322D /* NSString+RTStyle.m in Sources */,
 				89D4C9B7219E8D5F00566685 /* CollectionViewFlowLayout.m in Sources */,
 				887E03B2212FB1580013472F /* HomeNowCell.m in Sources */,
 				89F1ADFA219050BC009A872A /* CourseListController.m in Sources */,
 				89DBCB9521805DC300E66B85 /* DryHeadlinesController.m in Sources */,
+				89F03C6821AFEA8000218809 /* ApplyCustomCell.m in Sources */,
 				8901A29A217DDF1B00587310 /* TodayListRes.m in Sources */,
 				886DB968212E85A900CF8C64 /* ServiceController.m in Sources */,
 				886B982C2136B7FD0074322D /* UIImage+Alpha.m in Sources */,
 				895DBF7F21798E3500E65B16 /* BannerRes.m in Sources */,
 				886B978421363AFF0074322D /* QualityServiceCell.m in Sources */,
+				89F03C6B21AFEFFB00218809 /* ApplyImageCell.m in Sources */,
 				88483F502137D472004CA3FA /* SortViewController.m in Sources */,
 				886DB974212EC23900CF8C64 /* BaseView.m in Sources */,
 				8824EAEB213001EF000CBA7E /* HomeHeadView.m in Sources */,
 				89DBCB83217FFE1400E66B85 /* ZSScrollButton.m in Sources */,
 				8824EAE4212FDB6B000CBA7E /* UIViewController+VTMagic.m in Sources */,
+				8924E36A21AE29D7003A1152 /* LoginReq.m in Sources */,
+				89E0C0EE21AE772900D18C44 /* PersonInfoController.m in Sources */,
 				89085E992191914800259A68 /* DetailCourseController.m in Sources */,
+				89CBE08021AD50B40086633A /* LoginAlertView.m in Sources */,
+				8924E37021AE3018003A1152 /* SettingCell.m in Sources */,
 				89D4C9B9219E8D5F00566685 /* EmotionImages.m in Sources */,
 				8824EAE2212FDB6B000CBA7E /* UIColor+VTMagic.m in Sources */,
 				8849B8512135452C00CAE299 /* MenuInfo.m in Sources */,
@@ -1628,6 +1806,7 @@
 				89DBCB84217FFE1400E66B85 /* ZSSortSelectorView.m in Sources */,
 				89F1ADFD2190609E009A872A /* AllFreeListController.m in Sources */,
 				8824EAE8212FDB6B000CBA7E /* VTMenuBar.m in Sources */,
+				89F03C5F21AFC8F400218809 /* EnterShhHeadView.m in Sources */,
 				891E254D219C30CD009A7F72 /* ServiceDetailView.m in Sources */,
 				89085E9F2191B04400259A68 /* DetailCourseRes.m in Sources */,
 				89D4C9B5219E8D5F00566685 /* UITextView+Category.m in Sources */,
@@ -1642,12 +1821,15 @@
 				886B97DE2136B7BE0074322D /* FunctionMethodsUtil.m in Sources */,
 				8905C2A9219282A700403EC2 /* YGBrightnessAndVolumeView.m in Sources */,
 				89D0DF9F219281350038DBC0 /* AudioHeadView.m in Sources */,
+				89E0C0EB21AE722A00D18C44 /* UIButton+DNUtility.m in Sources */,
 				886B98262136B7FD0074322D /* NSObject+AddKeyValueToObject.m in Sources */,
 				886DB98C212EC2D700CF8C64 /* ZSAbstractDotView.m in Sources */,
+				8924E37621AE453B003A1152 /* AgreeMentController.m in Sources */,
 				89D4C9B4219E8D5F00566685 /* EmojiCollectionViewCell.m in Sources */,
 				89DBCB8E21804AD900E66B85 /* ServiceApi.m in Sources */,
 				887E03AC212FB0D10013472F /* BaseCollectionViewCell.m in Sources */,
 				8905C2B52192B9F300403EC2 /* ZSNotification.m in Sources */,
+				89E0C0E821AE672C00D18C44 /* SendCodeAlertView.m in Sources */,
 				89D4C9BB219E8D5F00566685 /* VoiceButtonView.m in Sources */,
 				89CDE3752194327800071267 /* DetailArticleRes.m in Sources */,
 				886B97ED2136B7BE0074322D /* NSString+Cache.m in Sources */,
@@ -1657,10 +1839,13 @@
 				886B97E32136B7BE0074322D /* BaseApi.m in Sources */,
 				886B97F92136B7BE0074322D /* ImageUtils.m in Sources */,
 				886B97F32136B7BE0074322D /* ZSRequestGenerator.m in Sources */,
+				89F03C4D21AF827900218809 /* HelpCenterController.m in Sources */,
 				89D4C9B3219E8D5F00566685 /* MoreButtonView.m in Sources */,
 				89085EA82191B1D700259A68 /* CourseMemberModel.m in Sources */,
 				8824EAE5212FDB6B000CBA7E /* VTContentView.m in Sources */,
 				89085EA22191B18D00259A68 /* CourseListModel.m in Sources */,
+				89F03C5021AF85DC00218809 /* HelpCell.m in Sources */,
+				89F03C5621AF922F00218809 /* MessageRes.m in Sources */,
 				886DB918212E80A600CF8C64 /* AppDelegate.m in Sources */,
 				886DB96B212E85B700CF8C64 /* MineController.m in Sources */,
 				8824EAE6212FDB6B000CBA7E /* VTMagicController.m in Sources */,
@@ -1671,15 +1856,18 @@
 				886B982A2136B7FD0074322D /* UIDevice+IdentifierAddition.m in Sources */,
 				88483F4D2137C63B004CA3FA /* QualityCollectionCell.m in Sources */,
 				886DB94F212E83C200CF8C64 /* ShhTabBarController.m in Sources */,
+				8924E36521AE2946003A1152 /* MineServiceApi.m in Sources */,
 				89856B47217F1A2100688DF7 /* CourseController.m in Sources */,
 				8819859C2178A126003C962D /* HomeServiceApi.m in Sources */,
 				886B97F22136B7BE0074322D /* ZSRequestCenter.m in Sources */,
 				8850347821394081000BDD3A /* DryNoImageCell.m in Sources */,
 				895DBF7C21798CBD00E65B16 /* FreeListReq.m in Sources */,
 				886B97EF2136B7BE0074322D /* UserBaseInfoModel.m in Sources */,
+				89E0C0F721AEB8E200D18C44 /* MemberInfoRes.m in Sources */,
 				886DB98D212EC2D700CF8C64 /* ZSPageControl.m in Sources */,
 				8850347521394068000BDD3A /* DryBigImageCell.m in Sources */,
 				89085E892191743900259A68 /* AllRecommentController.m in Sources */,
+				89F03C6F21AFF3EE00218809 /* HQPickerView.m in Sources */,
 				89CDE36C21940D6C00071267 /* LoginController.m in Sources */,
 				8905C2A7219282A700403EC2 /* YGPlayerView.m in Sources */,
 				886B97F72136B7BE0074322D /* DSBaseModel.m in Sources */,

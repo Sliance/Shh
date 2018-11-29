@@ -10,12 +10,18 @@
 #import "MineHeadView.h"
 #import "MineFootView.h"
 #import "MessageController.h"
+#import "SettingController.h"
+#import "PersonInfoController.h"
+#import "LoginController.h"
+#import "MineServiceApi.h"
+#import "HelpCenterController.h"
+#import "EnterShhController.h"
 
 @interface MineController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIScrollView *bgscrollow;
 @property(nonatomic,strong)MineHeadView *headView;
 @property(nonatomic,strong)MineFootView *footView;
-
+@property(nonatomic,strong)MemberInfoRes *result;
 
 @end
 
@@ -47,36 +53,91 @@
     [self.view addSubview:self.bgscrollow];
     [self.bgscrollow addSubview:self.headView];
     [self.bgscrollow addSubview:self.footView];
+    __weak typeof(self)weakself = self;
     [self.headView setMessageBlock:^{
         MessageController *messageVC = [[MessageController alloc]init];
-        [self.navigationController pushViewController:messageVC animated:YES];
+        [weakself.navigationController pushViewController:messageVC animated:YES];
     }];
     [self.headView setEditBlock:^{
-        
+        if ([UserCacheBean share].userInfo.token.length>0) {
+            PersonInfoController *infoVC = [[PersonInfoController alloc]init];
+            infoVC.hidesBottomBarWhenPushed = YES;
+            [weakself.navigationController pushViewController:infoVC animated:YES];
+        }else{
+            LoginController *loginVC = [[LoginController alloc]init];
+            loginVC.hidesBottomBarWhenPushed = YES;
+            [weakself.navigationController pushViewController:loginVC animated:YES];
+        }
     }];
-    
+    [self.footView setSelecteBlock:^(NSUInteger index) {
+        
+        switch (index) {
+            case 5:
+            {
+                SettingController *setVC = [[SettingController alloc]init];
+                setVC.hidesBottomBarWhenPushed = YES;
+                [weakself.navigationController pushViewController:setVC animated:YES];
+            }
+                break;
+            case 6:
+            {
+                EnterShhController *enterVC = [[EnterShhController alloc]init];
+                enterVC.hidesBottomBarWhenPushed = YES;
+                [weakself.navigationController pushViewController:enterVC animated:YES];
+            }
+                break;
+            case 7:
+            {
+                    HelpCenterController *helpVC = [[HelpCenterController alloc]init];
+                    helpVC.hidesBottomBarWhenPushed = YES;
+                    [weakself.navigationController pushViewController:helpVC animated:YES];
+             }
+                break;
+                
+            default:
+                break;
+        }
+    }];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    if ([UserCacheBean share].userInfo.token.length>0) {
+        [self.headView.editBtn setTitle:[UserCacheBean share].userInfo.memberName forState:UIControlStateNormal];
+        [self.headView.editBtn setImage:[UIImage imageNamed:@"edit_mine"] forState:UIControlStateNormal];
+        [self.headView.editBtn setIconInRightWithSpacing:7];
+        [self requestData];
+    }else{
+        self.headView.frame = CGRectMake(0, 0, SCREENWIDTH, 290);
+        [self.headView.editBtn setTitle:@"未登录" forState:UIControlStateNormal];
+        [self.headView.editBtn setImage:nil forState:UIControlStateNormal];
+        self.headView.editBtn.imageView.width = 0;
+        [self.headView.editBtn setIconInRightWithSpacing:0];
+        
+    }
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+-(void)requestData{
+    LoginReq *req = [[LoginReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.token = [UserCacheBean share].userInfo.token;
+    __weak typeof(self)weakself = self;
+    [[MineServiceApi share]getMenberInfoWithParam:req response:^(id response) {
+        if (response) {
+            weakself.result = response;
+        }
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

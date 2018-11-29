@@ -14,4 +14,7 @@
 @property(nonatomic,strong)UILabel *hYimage;
 @property(nonatomic,strong)UILabel *hYtitle;
 @property(nonatomic,strong)UILabel *hYDate;
+
+@property(nonatomic,copy)void(^selecteBlock)(NSUInteger);
+
 @end

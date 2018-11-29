@@ -27,7 +27,7 @@
 - (CGFloat)getHeightLineWithString:(NSString *)string withWidth:(CGFloat)width withFont:(UIFont *)font lineSpacing:(CGFloat)lineSpacing{
     
     //1.1最大允许绘制的文本范围
-    CGSize size = CGSizeMake(width, 2000);
+    CGSize size = CGSizeMake(width, 200000);
     //1.2配置计算时的行截取方法,和contentLabel对应
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
      [style setLineSpacing:lineSpacing];

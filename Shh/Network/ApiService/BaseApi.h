@@ -65,6 +65,25 @@
 ///服务详情
 #define service_detail_url      @"/sihehui/siheservice/desktop/v1/find"
 
+///登录
+#define login_url  @"/sihehui/member/desktop/v1/login"
+///注册发送验证码
+#define send_code   @"/sihehui/member/desktop/v1/register/sms/send"
+///注册
+#define register_url     @"/sihehui/member/desktop/v1/register/member"
+///忘记密码发送验证码
+#define send_code_forget  @"/sihehui/member/desktop/v1/forget/sms/send"
+///忘记密码
+#define forget_password  @"/sihehui/member/desktop/v1/forget/password"
+///会员信息
+#define mine_info  @"/sihehui/member/desktop/v1/find"
+///消息列表
+#define message_list   @"/sihehui/member/message/desktop/v1/list"
+///帮助列表
+#define help_list   @"/sihehui/help/desktop/v1/list"
+///申请入驻提交审核
+#define apply_for_url @"/sihehui/company/settled/desktop/v1/save"
+
 typedef void(^responseModel)(id response);
 @interface BaseApi : NSObject
 + (void)requestAccountInfoModel:(responseModel ) response;

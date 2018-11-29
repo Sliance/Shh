@@ -13,7 +13,7 @@
 
 
 @property (nonatomic, strong) NSString *token;
-@property (nonatomic, strong) NSString *memberNickName;
+@property (nonatomic, strong) NSString *memberName;
 @property(nonatomic,strong)NSString *memberAvatarPath;
 @property(nonatomic,strong)NSString *memberMobile;
 @property(nonatomic,strong)NSString *openid;

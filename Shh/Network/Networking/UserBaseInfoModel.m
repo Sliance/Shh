@@ -21,7 +21,7 @@
     return @{
             
              @"token"   : @"token",
-             @"memberNickName"    : @"memberNickName",
+             @"memberName"    : @"memberName",
              @"memberAvatarPath" : @"memberAvatarPath"
             , @"memberMobile" : @"memberMobile"
              ,@"openid":@"openid",@"roleId":@"roleId",
@@ -41,7 +41,7 @@
     NSDictionary *dic = @{
 
                           @"token" : self.token == nil?@"":self.token,
-                          @"memberNickName" : self.memberNickName == nil?@"":self.memberNickName,@"memberAvatarPath" : self.memberAvatarPath == nil?@"":self.memberAvatarPath,
+                          @"memberName" : self.memberName == nil?@"":self.memberName,@"memberAvatarPath" : self.memberAvatarPath == nil?@"":self.memberAvatarPath,
                          @"memberMobile" : self.memberMobile == nil?@"":self.memberMobile,
                           @"openid" : self.openid == nil?@"":self.openid,
                           @"roleId" : self.roleId == nil?@"":self.roleId,
@@ -58,7 +58,7 @@
 - (void)configUserInfoModelWithDic:(NSDictionary *) dic {
 
     self.token = dic[@"token"];
-    self.memberNickName = dic[@"memberNickName"];
+    self.memberName = dic[@"memberName"];
     self.memberAvatarPath = dic[@"memberAvatarPath"];
     self.memberMobile = dic[@"memberMobile"];
     self.openid = dic[@"opeid"];
@@ -74,7 +74,7 @@
 - (void)updateUserInfoModelWithDic:(NSDictionary *) dic {
 
     self.token = dic[@"token"] ;
-    self.memberNickName = dic[@"memberNickName"] ;
+    self.memberName = dic[@"memberName"] ;
     self.memberAvatarPath = dic[@"memberAvatarPath"] ;
     self.memberMobile = dic[@"memberMobile"];
     self.openid = dic[@"openid"];

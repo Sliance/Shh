@@ -50,7 +50,7 @@
 //    UserBaseInfoModel *userInfo = [[UserBaseInfoModel alloc] init];
     [UserCacheBean share].userInfo.token = @"";
     [UserCacheBean share].userInfo.memberMobile = @"";
-    [UserCacheBean share].userInfo.memberNickName = @"";
+    [UserCacheBean share].userInfo.memberName = @"";
     [UserCacheBean share].userInfo.memberAvatarPath = @"";
     [UserCacheBean share].userInfo.roleId = @"";
     [UserCacheBean share].userInfo.openid = @"";
