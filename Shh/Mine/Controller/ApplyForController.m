@@ -55,6 +55,9 @@
     [self.view addSubview:self.picker];
     [self creatFootView];
     self.req = [[ApplyForReq alloc]init];
+    self.industryArr = [NSMutableArray arrayWithObjects:@"瓷砖",@"地板",@"家具",@"照明",@"橱柜",@"卫浴",@"吊顶", nil];
+    self.natureArr = [NSMutableArray arrayWithObjects:@"家装公司",@"商家",@"企业",@"其他", nil];
+    self.comSizeArr = [NSMutableArray arrayWithObjects:@"0-300万",@"",@"",@"",@"", nil];
 }
 
 -(void)creatFootView{
