@@ -57,7 +57,8 @@
     self.req = [[ApplyForReq alloc]init];
     self.industryArr = [NSMutableArray arrayWithObjects:@"瓷砖",@"地板",@"家具",@"照明",@"橱柜",@"卫浴",@"吊顶", nil];
     self.natureArr = [NSMutableArray arrayWithObjects:@"家装公司",@"商家",@"企业",@"其他", nil];
-    self.comSizeArr = [NSMutableArray arrayWithObjects:@"0-300万",@"",@"",@"",@"", nil];
+    self.comSizeArr = [NSMutableArray arrayWithObjects:@"0-300万",@"300万-1000万",@"1000万-3000万",@"3000万-5000万",@"+1亿", nil];
+    self.teamSizeArr = [NSMutableArray arrayWithObjects:@"0-30人",@"30-100人",@"100-200人",@"200人以上", nil];
 }
 
 -(void)creatFootView{
@@ -162,10 +163,30 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    if (indexPath.section ==0) {
+        if (indexPath.row ==5) {
+            [self.picker setCustomArr:self.industryArr];
+            [self.picker setType:0];
+            self.picker.hidden = NO;
+        }else if (indexPath.row ==6){
+            [self.picker setCustomArr:self.natureArr];
+            [self.picker setType:1];
+            self.picker.hidden = NO;
+        }else if (indexPath.row ==7){
+            [self.picker setCustomArr:self.comSizeArr];
+            [self.picker setType:2];
+            self.picker.hidden = NO;
+        }else if (indexPath.row ==8){
+            [self.picker setCustomArr:self.teamSizeArr];
+            [self.picker setType:3];
+            self.picker.hidden = NO;
+        }
+    }
 }
-- (void)pickerView:(UIPickerView *)pickerView didSelectText:(NSString *)text {
-    
+- (void)pickerView:(UIPickerView *)pickerView didSelectText:(NSString *)text Type:(NSInteger)type{
+    if (type ==0) {
+        
+    }
 }
 -(void)pressSend{
     

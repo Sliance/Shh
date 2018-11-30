@@ -10,13 +10,14 @@
 
 @protocol HQPickerViewDelegate <NSObject>
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectText:(NSString *)text;
+- (void)pickerView:(UIPickerView *)pickerView didSelectText:(NSString *)text Type:(NSInteger)type;
 
 @end
 
 @interface HQPickerView : UIView
 
 @property (nonatomic, strong) NSArray *customArr;
+@property (nonatomic, assign) NSInteger type;
 @property (nonatomic, weak) id <HQPickerViewDelegate> delegate;
 
 @end

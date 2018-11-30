@@ -332,7 +332,7 @@ static NSString *likecellIds = @"HomeLikeCell";
     
     if(section ==0){
         if (self.freeListArr.count > 0) {
-            return CGSizeMake(SCREENWIDTH, 314);
+            return CGSizeMake(SCREENWIDTH, 310);
         }else{
             return CGSizeMake(SCREENWIDTH, 259);
         }
@@ -403,7 +403,7 @@ static NSString *likecellIds = @"HomeLikeCell";
             }
         }
         if (self.freeListArr.count > 0) {
-            validView.frame = CGRectMake(0, 0, SCREENWIDTH, 314);
+            validView.frame = CGRectMake(0, 0, SCREENWIDTH, 310);
             validView.bgView.hidden = NO;
         }else{
             validView.bgView.hidden = YES;

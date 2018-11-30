@@ -125,8 +125,8 @@
 #pragma mark-----取消
 - (void)completionBtnClick{
     NSString *str = [self.customArr objectAtIndex:[self.pickerView selectedRowInComponent:0]];
-    if (_delegate && [_delegate respondsToSelector:@selector(pickerView:didSelectText:)]) {
-        [self.delegate pickerView:self.pickerView didSelectText:str];
+    if (_delegate && [_delegate respondsToSelector:@selector(pickerView:didSelectText:Type:)]) {
+        [self.delegate pickerView:self.pickerView didSelectText:str Type:self.type];
     }
     [self hideAnimation];
 }
