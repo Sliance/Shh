@@ -22,4 +22,6 @@
 @property(nonatomic,strong)UIButton *serviceBtn;
 @property(nonatomic,copy)void (^messageBlock)(void);
 @property(nonatomic,copy)void (^editBlock)(void);
+@property(nonatomic,copy)void (^typeBlock)(NSInteger);
+
 @end

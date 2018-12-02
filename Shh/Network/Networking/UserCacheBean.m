@@ -52,7 +52,7 @@
     [UserCacheBean share].userInfo.memberMobile = @"";
     [UserCacheBean share].userInfo.memberName = @"";
     [UserCacheBean share].userInfo.memberAvatarPath = @"";
-    [UserCacheBean share].userInfo.roleId = @"";
+    [UserCacheBean share].userInfo.memberId = @"";
     [UserCacheBean share].userInfo.openid = @"";
     [self setUserInfo:[UserCacheBean share].userInfo];
 }

@@ -57,6 +57,7 @@
         _bgImage = [[UIImageView alloc]init];
         _bgImage.image = [UIImage imageNamed:@"bg_mine"];
         _bgImage.frame = CGRectMake(0, 0, SCREENWIDTH, 250);
+        _bgImage.userInteractionEnabled = YES;
     }
     return _bgImage;
 }
@@ -79,6 +80,7 @@
         [_headImage.layer setMasksToBounds:YES];
         [_headImage.layer setBorderColor:[UIColor whiteColor].CGColor];
         [_headImage.layer setBorderWidth:0.5];
+        _headImage.userInteractionEnabled = YES;
     }
     return _headImage;
 }
@@ -140,8 +142,8 @@
         [_messageBtn setTitle:@"\U0000e928" forState:UIControlStateNormal];
         _messageBtn.titleLabel.font = [UIFont fontWithName:@"icomoon"size:26];
         [_messageBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _messageBtn.frame = CGRectMake(17, 36, 24, 21);
-        [_messageBtn addTarget:self action:@selector(pressMessage) forControlEvents:UIControlEventTouchUpInside];
+        _messageBtn.frame = CGRectMake(0, 20, 58, 54);
+        [_messageBtn addTarget:self action:@selector(pressMessage:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _messageBtn;
 }
@@ -166,9 +168,14 @@
     return _nameLabel;
 }
 -(void)pressBtn:(MineTypeBtn*)sender{
-    
+    if (sender.tag==0) {
+        sender.imageLabel.textColor = DSColorFromHex(0x969696);
+        sender.typeLabel.text =@"已签到";
+    }else{
+        self.typeBlock(sender.tag);
+    }
 }
--(void)pressMessage{
+-(void)pressMessage:(UIButton*)sender{
     self.messageBlock();
 }
 -(void)pressEdit{

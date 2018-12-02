@@ -55,6 +55,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///视频还是音频
 @property(nonatomic,copy)NSString *courseVideoOrAudio;
 
+@property(nonatomic,strong)NSString *articleOrCourseType;
+
 @end
 
 NS_ASSUME_NONNULL_END

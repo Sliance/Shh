@@ -16,6 +16,11 @@
 #import "MineServiceApi.h"
 #import "HelpCenterController.h"
 #import "EnterShhController.h"
+#import "HistoryBaseController.h"
+#import "CollectionBaseController.h"
+#import "DownLoadController.h"
+#import "MineFollowController.h"
+#import "MinePurchaseController.h"
 
 @interface MineController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIScrollView *bgscrollow;
@@ -56,6 +61,7 @@
     __weak typeof(self)weakself = self;
     [self.headView setMessageBlock:^{
         MessageController *messageVC = [[MessageController alloc]init];
+        messageVC.hidesBottomBarWhenPushed = YES;
         [weakself.navigationController pushViewController:messageVC animated:YES];
     }];
     [self.headView setEditBlock:^{
@@ -69,24 +75,56 @@
             [weakself.navigationController pushViewController:loginVC animated:YES];
         }
     }];
+    [self.headView setTypeBlock:^(NSInteger index) {
+        if (index ==1) {
+            HistoryBaseController *setVC = [[HistoryBaseController alloc]init];
+            setVC.hidesBottomBarWhenPushed = YES;
+            [weakself.navigationController pushViewController:setVC animated:YES];
+        }else if (index ==2){
+            DownLoadController *setVC = [[DownLoadController alloc]init];
+            setVC.hidesBottomBarWhenPushed = YES;
+            [weakself.navigationController pushViewController:setVC animated:YES];
+        }
+    }];
     [self.footView setSelecteBlock:^(NSUInteger index) {
         
         switch (index) {
-            case 5:
+            case 0:
+            {
+                MinePurchaseController *setVC = [[MinePurchaseController alloc]init];
+                setVC.hidesBottomBarWhenPushed = YES;
+                [weakself.navigationController pushViewController:setVC animated:YES];
+            }
+                break;
+            case 1:
+            {
+                CollectionBaseController *setVC = [[CollectionBaseController alloc]init];
+                setVC.hidesBottomBarWhenPushed = YES;
+                [weakself.navigationController pushViewController:setVC animated:YES];
+            }
+                break;
+            case 2:
+            {
+                MineFollowController *setVC = [[MineFollowController alloc]init];
+                setVC.hidesBottomBarWhenPushed = YES;
+                [weakself.navigationController pushViewController:setVC animated:YES];
+            }
+                break;
+            case 3:
             {
                 SettingController *setVC = [[SettingController alloc]init];
                 setVC.hidesBottomBarWhenPushed = YES;
                 [weakself.navigationController pushViewController:setVC animated:YES];
             }
                 break;
-            case 6:
+            case 4:
             {
                 EnterShhController *enterVC = [[EnterShhController alloc]init];
                 enterVC.hidesBottomBarWhenPushed = YES;
                 [weakself.navigationController pushViewController:enterVC animated:YES];
             }
                 break;
-            case 7:
+            case 5:
             {
                     HelpCenterController *helpVC = [[HelpCenterController alloc]init];
                     helpVC.hidesBottomBarWhenPushed = YES;
@@ -130,6 +168,7 @@
     [[MineServiceApi share]getMenberInfoWithParam:req response:^(id response) {
         if (response) {
             weakself.result = response;
+            [UserCacheBean share].userInfo.memberId = weakself.result.memberId;
         }
     }];
 }

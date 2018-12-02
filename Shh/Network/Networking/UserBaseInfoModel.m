@@ -31,6 +31,7 @@
               @"area":@"area",
               @"thoroughfare":@"thoroughfare",
               @"address":@"address",
+             @"memberId":@"memberId",
              };
 }
 
@@ -44,7 +45,7 @@
                           @"memberName" : self.memberName == nil?@"":self.memberName,@"memberAvatarPath" : self.memberAvatarPath == nil?@"":self.memberAvatarPath,
                          @"memberMobile" : self.memberMobile == nil?@"":self.memberMobile,
                           @"openid" : self.openid == nil?@"":self.openid,
-                          @"roleId" : self.roleId == nil?@"":self.roleId,
+                          @"roleId" : self.memberId == nil?@"":self.memberId,
                           @"latitude" : self.latitude == nil?@"":self.latitude,
                           @"longitude" : self.longitude == nil?@"":self.longitude,
                           @"city" : self.city == nil?@"":self.city,
@@ -62,7 +63,7 @@
     self.memberAvatarPath = dic[@"memberAvatarPath"];
     self.memberMobile = dic[@"memberMobile"];
     self.openid = dic[@"opeid"];
-    self.roleId = dic[@"roleId"];
+    self.memberId = dic[@"memberId"];
     self.latitude = dic[@"latitude"];
     self.longitude = dic[@"longitude"];
     self.city = dic[@"city"];
@@ -78,7 +79,7 @@
     self.memberAvatarPath = dic[@"memberAvatarPath"] ;
     self.memberMobile = dic[@"memberMobile"];
     self.openid = dic[@"openid"];
-    self.roleId = dic[@"roleId"];
+    self.memberId = dic[@"memberId"];
     self.latitude = dic[@"latitude"];
     self.longitude = dic[@"longitude"];
     self.city = dic[@"city"];

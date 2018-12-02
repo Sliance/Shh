@@ -12,6 +12,11 @@
 #import "HelpRes.h"
 #import "MessageRes.h"
 #import "ApplyForReq.h"
+#import "FreeListReq.h"
+#import "FreeListRes.h"
+#import "OrderRes.h"
+#import "CollectionRes.h"
+#import "FollowRes.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -36,6 +41,15 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)getHelpListWithParam:(LoginReq *) req response:(responseModel) responseModel;
 ///申请入驻提交审核
 -(void)applyForWithParam:(ApplyForReq *) req response:(responseModel) responseModel;
+///历史记录
+-(void)getHistoryListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///我的购买
+-(void)getOrderListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///我的收藏
+-(void)getCollectListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///我的关注
+-(void)getFollowListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+
 @end
 
 NS_ASSUME_NONNULL_END

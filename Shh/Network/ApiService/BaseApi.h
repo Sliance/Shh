@@ -83,7 +83,14 @@
 #define help_list   @"/sihehui/help/desktop/v1/list"
 ///申请入驻提交审核
 #define apply_for_url @"/sihehui/company/settled/desktop/v1/save"
-
+///历史记录
+#define history_list_url @"/sihehui/member/watch/history/desktop/v1/list"
+///我的购买
+#define mine_purchse_url  @"/sihehui/order/desktop/v1/list"
+///我的收藏
+#define mine_collect_url @"/sihehui/member/book/desktop/v1/list"
+///我的关注
+#define mine_follow_url  @"/sihehui/member/follow/desktop/v1/list"
 typedef void(^responseModel)(id response);
 @interface BaseApi : NSObject
 + (void)requestAccountInfoModel:(responseModel ) response;
