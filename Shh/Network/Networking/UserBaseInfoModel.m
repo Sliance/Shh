@@ -24,7 +24,7 @@
              @"memberName"    : @"memberName",
              @"memberAvatarPath" : @"memberAvatarPath"
             , @"memberMobile" : @"memberMobile"
-             ,@"openid":@"openid",@"roleId":@"roleId",
+             ,@"openid":@"openid",
              @"latitude":@"latitude",
               @"longitude":@"longitude",
               @"city":@"city",
@@ -45,7 +45,7 @@
                           @"memberName" : self.memberName == nil?@"":self.memberName,@"memberAvatarPath" : self.memberAvatarPath == nil?@"":self.memberAvatarPath,
                          @"memberMobile" : self.memberMobile == nil?@"":self.memberMobile,
                           @"openid" : self.openid == nil?@"":self.openid,
-                          @"roleId" : self.memberId == nil?@"":self.memberId,
+                          @"memberId" : self.memberId == nil?@"":self.memberId,
                           @"latitude" : self.latitude == nil?@"":self.latitude,
                           @"longitude" : self.longitude == nil?@"":self.longitude,
                           @"city" : self.city == nil?@"":self.city,

@@ -17,12 +17,12 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        playerView = [[[NSBundle mainBundle] loadNibNamed:@"YGPlayerView" owner:nil options:nil] lastObject];
-        playerView.leftConstraint = @(0);
-        playerView.topConstraint = @(0);
-        playerView.widthConstraint = @(SCREENWIDTH);
-        playerView.heightConstraint = @(SCREENWIDTH * 9 / 16);
-        [self addSubview:playerView];
+        _playerView = [[[NSBundle mainBundle] loadNibNamed:@"YGPlayerView" owner:nil options:nil] lastObject];
+        _playerView.leftConstraint = @(0);
+        _playerView.topConstraint = @(0);
+        _playerView.widthConstraint = @(SCREENWIDTH);
+        _playerView.heightConstraint = @(SCREENWIDTH * 9 / 16);
+        [self addSubview:_playerView];
         self.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.headImage];
         [self addSubview:self.nameLabel];
@@ -38,7 +38,10 @@
         [self addSubview:self.commentLabel];
         [self addSubview:self.commentBtn];
         [self setLayoutVer];
-        
+        __weak typeof(self)weakself = self;
+        [_playerView setPlayBlock:^{
+            weakself.playblock();
+        }];
     }
     return self;
 }
@@ -47,8 +50,8 @@
 {
     YGPlayInfo *playInfo = [self.playInfos firstObject];
     playInfo.url = self.model.courseMediaPath;
-    [playerView playWithPlayInfo:playInfo];
-   
+    [self.playerView playWithPlayInfo:playInfo];
+    
 }
 #pragma mark - 懒加载
 - (NSMutableArray *)playInfos

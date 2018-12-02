@@ -64,6 +64,10 @@
     self.tableview.tableHeaderView = self.headView;
     self.articleArr = [NSMutableArray array];
     self.commentArr = [NSMutableArray array];
+    self.commentReq = [[CommentReq alloc]init];
+    self.commentReq.beCommentId = @"";
+    self.commentReq.beCommentMemberId = @"";
+    self.commentReq.beCommentMemberNickname = @"";
     self.tableview.tableFooterView = self.footView;
     __weak typeof(self)weakself = self;
     [self.headView setHeightBlock:^(CGFloat height) {
@@ -164,6 +168,26 @@
     _inputToolbarY = orignY;
 }
 -(void)addComment:(NSString*)content{
+    
+    self.commentReq.appId = @"1041622992853962754";
+    self.commentReq.token = [UserCacheBean share].userInfo.token;
+    self.commentReq.timestamp = @"0";
+    self.commentReq.platform = @"ios";
+    self.commentReq.commentContent = content;
+    self.commentReq.commentType = @"comment";
+    self.commentReq.articleOrCourseId = self.detailCourse.articleId;
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share]addCommentWithParam:self.commentReq response:^(id response) {
+        if ([response[@"code"] integerValue] ==200) {
+            [weakself showInfo:@"评论成功"];
+            [weakself getCommentList];
+            weakself.commentReq.beCommentMemberNickname = @"";
+            weakself.commentReq.beCommentMemberId = @"";
+            weakself.commentReq.beCommentId = @"";
+        }else{
+            [weakself showInfo:response[@"message"]];
+        }
+    }];
 }
 -(void)getArticleList:(NSString*)colmunid{
     FreeListReq *req = [[FreeListReq alloc]init];
@@ -239,6 +263,7 @@
        
     }];
 }
+
 -(void)setModel:(TodayListRes *)model{
     _model = model;
     self.title = @"文章详情";
@@ -285,17 +310,18 @@
     [headView setModel:model];
     headView.backgroundColor = [UIColor whiteColor];
     __weak typeof(self)weakself = self;
-    [headView setCommentBlock:^(CommentListRes *model) {
+    [headView setCommentBlock:^(CommentListRes *model1) {
        weakself.inputToolbar.isBecomeFirstResponder = YES;
-        weakself.commentReq.beCommentId = model.beCommentId;
-        weakself.commentReq.beCommentMemberId = model.beCommentMemberId;
-        weakself.commentReq.beCommentMemberNickname = model.beCommentMemberNickname;
-        weakself.commentReq.commentType = @"comment";
-        weakself.commentReq.articleOrCourseId = weakself.detailCourse.articleId;
+        weakself.commentReq.beCommentId = model1.beCommentId;
+        weakself.commentReq.beCommentMemberId = model1.beCommentMemberId;
+        weakself.commentReq.beCommentMemberNickname = model1.beCommentMemberNickname;
+        
     }];
     return headView;
 }
-
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.view endEditing:YES];
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identify = @"CommentCell";
     

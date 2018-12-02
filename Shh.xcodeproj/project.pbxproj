@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5ABE840F21B3FC460064C7DE /* HgMusicPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE840D21B3FC460064C7DE /* HgMusicPlayerManager.m */; };
 		5AEA797421B272BA007C0DB7 /* KKClassificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEA796F21B272BA007C0DB7 /* KKClassificationView.m */; };
 		5AEA797521B272BA007C0DB7 /* KKSliderButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEA797121B272BA007C0DB7 /* KKSliderButtonView.m */; };
 		5AEA797621B272BA007C0DB7 /* KKClassiflcationLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEA797321B272BA007C0DB7 /* KKClassiflcationLayout.m */; };
@@ -249,6 +250,8 @@
 
 /* Begin PBXFileReference section */
 		1E5225F8F403A3F9F20919F7 /* libPods-Shh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Shh.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5ABE840D21B3FC460064C7DE /* HgMusicPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HgMusicPlayerManager.m; sourceTree = "<group>"; };
+		5ABE840E21B3FC460064C7DE /* HgMusicPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HgMusicPlayerManager.h; sourceTree = "<group>"; };
 		5AEA796E21B272BA007C0DB7 /* KKSliderButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKSliderButtonView.h; sourceTree = "<group>"; };
 		5AEA796F21B272BA007C0DB7 /* KKClassificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKClassificationView.m; sourceTree = "<group>"; };
 		5AEA797021B272BA007C0DB7 /* KKClassiflcationLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKClassiflcationLayout.h; sourceTree = "<group>"; };
@@ -723,6 +726,15 @@
 				1E5225F8F403A3F9F20919F7 /* libPods-Shh.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5ABE840C21B3FC2E0064C7DE /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				5ABE840E21B3FC460064C7DE /* HgMusicPlayerManager.h */,
+				5ABE840D21B3FC460064C7DE /* HgMusicPlayerManager.m */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 		5AEA796D21B272BA007C0DB7 /* KKClassificationView */ = {
@@ -1230,6 +1242,7 @@
 		886DB951212E840D00CF8C64 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5ABE840C21B3FC2E0064C7DE /* Audio */,
 				89DBCB7E217FFE1400E66B85 /* ZSSortSelectorView */,
 				8850346F21393FFF000BDD3A /* Dry */,
 				88483F512137D4D6004CA3FA /* Sort */,
@@ -1423,14 +1436,14 @@
 			isa = PBXGroup;
 			children = (
 				887E03B1212FB1580013472F /* HomeNowCell.m */,
-				8905C299219282A700403EC2 /* YGPlayerView.h */,
-				8905C29A219282A700403EC2 /* YGLoadingView.h */,
+				8905C2AF219290AE00403EC2 /* playList.plist */,
 				8905C29B219282A700403EC2 /* YGBrightnessAndVolumeView.h */,
+				8905C29E219282A700403EC2 /* YGBrightnessAndVolumeView.m */,
+				8905C29A219282A700403EC2 /* YGLoadingView.h */,
+				8905C29F219282A700403EC2 /* YGLoadingView.m */,
+				8905C299219282A700403EC2 /* YGPlayerView.h */,
 				8905C29C219282A700403EC2 /* YGPlayerView.m */,
 				8905C29D219282A700403EC2 /* YGPlayerView.xib */,
-				8905C29E219282A700403EC2 /* YGBrightnessAndVolumeView.m */,
-				8905C29F219282A700403EC2 /* YGLoadingView.m */,
-				8905C2AF219290AE00403EC2 /* playList.plist */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1843,6 +1856,7 @@
 				891E254A219C2761009A7F72 /* DetailServiceController.m in Sources */,
 				89F03C7521B0035A00218809 /* ApplyForReq.m in Sources */,
 				89E0C0F421AE838000D18C44 /* ChangePassAlertView.m in Sources */,
+				5ABE840F21B3FC460064C7DE /* HgMusicPlayerManager.m in Sources */,
 				89856B4A217F1AE400688DF7 /* CourseHeadView.m in Sources */,
 				886B982F2136B7FD0074322D /* UIImage+RTStyle.m in Sources */,
 				886DB991212EC2D700CF8C64 /* NSData+ZSCache.m in Sources */,

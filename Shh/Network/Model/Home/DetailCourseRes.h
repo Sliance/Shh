@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @property(nonatomic,strong)NSArray *courseList;
 ///
-@property(nonatomic,strong)NSString *memberIsBuyThisCourse;
+@property(nonatomic,assign)BOOL memberIsBuyThisCourse;
 ///
 @property(nonatomic,strong)NSString *haveFollowMember;
 ///

@@ -22,6 +22,22 @@
 #define DSColorFromHex(rgb)     [UIColor colorWithRed:((float)((rgb & 0xFF0000) >> 16))/255.0 green:((float)((rgb & 0xFF00) >> 8))/255.0 blue:((float)(rgb & 0xFF))/255.0 alpha:1.0]
 #define DSColorAlphaFromHex(rgb,a)     [UIColor colorWithRed:((float)((rgb & 0xFF0000) >> 16))/255.0 green:((float)((rgb & 0xFF00) >> 8))/255.0 blue:((float)(rgb & 0xFF))/255.0 alpha:a]
 #define DSNavi  [UIColor whiteColor] //navigation的颜色
+// 实现一个单例
+#define Create_Singleton_Imp(cls) \
++ (instancetype)shared \
+{ \
+static cls *_gs_cls = nil; \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+if (!_gs_cls) { \
+_gs_cls = [cls new]; \
+} \
+}); \
+return _gs_cls; \
+} \
+
+// 声明一个单例
+#define Create_Singleton_Def() + (instancetype)shared
 #import <Masonry.h>
 #import "UIView+CTExtensions.h"
 #import <YYKit.h>

@@ -7,7 +7,7 @@
 //
 
 #import "YGPlayerView.h"
-#import <AVFoundation/AVFoundation.h>
+
 #import "YGPlayInfo.h"
 #import "YGVideoTool.h"
 #import "NSString+Time.h"
@@ -159,7 +159,7 @@ static id _instance;
 
 @interface YGPlayerView () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSMutableArray *playInfos;
-@property (nonatomic, strong) AVPlayer *player;
+
 @property (nonatomic, strong) AVPlayerItem *playerItem;
 @property (nonatomic, strong) AVURLAsset *asset;
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
@@ -212,7 +212,7 @@ static id _instance;
     if (_waitingView == nil) {
         _waitingView = [[YGLoadingView alloc] init];
         _waitingView.hidesWhenStopped = YES;
-        [self addSubview:_waitingView];
+//        [self addSubview:_waitingView];
     }
     return _waitingView;
 }
@@ -249,7 +249,7 @@ static id _instance;
         self.progressSlider.value = 0.f;
         self.loadedView.progress = 0.f;
         [self addGesture];
-        [self showOrHideControlPanel];
+        [self hideControlPanel];
         [self setupBrightnessAndVolumeView];
     }
     return self;
@@ -287,16 +287,16 @@ static id _instance;
         make.center.equalTo(self);
     }];
     
-    [self.waitingView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self);
-        make.width.height.mas_equalTo(80.f);
-    }];
+//    [self.waitingView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.center.equalTo(self);
+//        make.width.height.mas_equalTo(80.f);
+//    }];
     
     [self bringSubviewToFront:self.brightnessAndVolumeView];
     [self bringSubviewToFront:self.topView];
     [self bringSubviewToFront:self.bottomView];
     [self bringSubviewToFront:self.centerPlayBtn];
-    [self bringSubviewToFront:self.waitingView];
+//    [self bringSubviewToFront:self.waitingView];
     [self bringSubviewToFront:self.previewView];
     [self bringSubviewToFront:self.episodeCover];
     [self bringSubviewToFront:self.cover];
@@ -311,7 +311,7 @@ static id _instance;
     [self resetPlayer];
     
     // 切换隐藏控制面板
-    [self showOrHideControlPanel];
+    [self hideControlPanel];
     
     // 设置预览缩略图透明度为0
     self.previewView.alpha = .0f;
@@ -328,7 +328,7 @@ static id _instance;
     self.player = [self setupPlayer];
     
     // 设置播放器标题
-    self.titleLabel.text = playInfo.title;
+    self.titleLabel.text = @"";
     self.placeHolderView.hidden = NO;
     self.placeHolderView.image = [UIImage imageNamed:playInfo.placeholder];
     
@@ -359,12 +359,13 @@ static id _instance;
         if (!lastImage) return;
         [[self mutableArrayValueForKey:@"thumbImages"] addObject:lastImage];
     });
-    
+   
     [self.player replaceCurrentItemWithPlayerItem:self.playerItem];
     
     // 添加时间周期OB、OB和通知
     [self addTimerObserver];
     [self addPlayItemObserverAndNotification];
+    
 }
 
 // 创建播放器
@@ -498,7 +499,9 @@ static id _instance;
             self.totalTimeLabel.text = [NSString stringWithTime:self.totalTime];
             self.progressSlider.maximumValue = self.totalTime;
             self.placeHolderView.image = nil;
-            [self playOrPauseAction];
+            [self.player pause];
+            [self hideControlPanel];
+            self.centerPlayBtn.hidden = NO;
         } else if (status == AVPlayerStatusFailed) { // 播放错误 资源不存在 网络问题等等
             [self.waitingView stopAnimating];
             UILabel *busyLabel = [[UILabel alloc] init];
@@ -602,13 +605,16 @@ static id _instance;
 // 播放或暂停按钮点击
 - (IBAction)playOrPauseAction
 {
+    
     [self playOrPause];
+    
 }
 
 // 中间大的播放或站厅按钮点击
 - (IBAction)centerPlayOrPauseAction
 {
-    [self playOrPause];
+//    [self playOrPause];
+    self.playBlock();
 }
 
 // 点击按钮旋转屏幕
@@ -702,26 +708,26 @@ static id _instance;
 
 // 点击选集按钮
 - (IBAction)selectEpisodeAction:(UIButton *)sender {
-    UIButton *episodeCover = [UIButton buttonWithType:UIButtonTypeCustom];
-    episodeCover.backgroundColor = [UIColor blackColor];
-    episodeCover.alpha = 0.8f;
-    [episodeCover addTarget:self action:@selector(removeEpisodeCover:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:episodeCover];
-    self.episodeCover = episodeCover;
-    [episodeCover mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.left.top.bottom.equalTo(self);
-    }];
-    
-    UITableView *episodeTableView = [[UITableView alloc] init];
-    episodeTableView.backgroundColor = [UIColor clearColor];
-    episodeTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    episodeTableView.separatorColor = [UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:.4f];
-    episodeTableView.dataSource = self;
-    episodeTableView.delegate = self;
-    [self.episodeCover addSubview:episodeTableView];
-    episodeTableView.frame = CGRectMake(0, 0, SCREENWIDTH * 0.7, SCREENHEIGHT - 100);
-    episodeTableView.center = self.center;
-    [self removeGestureRecognizer:self.tapGesture];
+//    UIButton *episodeCover = [UIButton buttonWithType:UIButtonTypeCustom];
+//    episodeCover.backgroundColor = [UIColor blackColor];
+//    episodeCover.alpha = 0.8f;
+//    [episodeCover addTarget:self action:@selector(removeEpisodeCover:) forControlEvents:UIControlEventTouchUpInside];
+//    [self addSubview:episodeCover];
+//    self.episodeCover = episodeCover;
+//    [episodeCover mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.left.top.bottom.equalTo(self);
+//    }];
+//
+//    UITableView *episodeTableView = [[UITableView alloc] init];
+//    episodeTableView.backgroundColor = [UIColor clearColor];
+//    episodeTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+//    episodeTableView.separatorColor = [UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:.4f];
+//    episodeTableView.dataSource = self;
+//    episodeTableView.delegate = self;
+//    [self.episodeCover addSubview:episodeTableView];
+//    episodeTableView.frame = CGRectMake(0, 0, SCREENWIDTH * 0.7, SCREENHEIGHT - 100);
+//    episodeTableView.center = self.center;
+//    [self removeGestureRecognizer:self.tapGesture];
 }
 
 // 移除选集遮盖
@@ -814,9 +820,9 @@ static id _instance;
 - (void)addGesture
 {
     // 添加Tap手势
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOrHideControlPanel)];
-    [self addGestureRecognizer:tapGesture];
-    self.tapGesture = tapGesture;
+//    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOrHideControlPanel)];
+//    [self addGestureRecognizer:tapGesture];
+//    self.tapGesture = tapGesture;
 }
 
 // 显示或隐藏播放器控制面板

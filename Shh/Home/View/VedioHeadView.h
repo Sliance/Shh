@@ -16,9 +16,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface VedioHeadView : BaseView<UICollectionViewDelegate,UICollectionViewDataSource>
-{
-    YGPlayerView *playerView;
-}
+
 @property (nonatomic, strong) SingleCourseDrectoryRes *model;
 @property (nonatomic, strong) NSMutableArray *playInfos;
 @property (nonatomic, strong) UIImageView *headImage;
@@ -27,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIButton *fouceBtn;
 @property (nonatomic, strong) UILabel *lineLabel;
 @property (nonatomic, strong) UILabel *lineLabel1;
+@property (nonatomic, strong) YGPlayerView *playerView;
 @property(nonatomic,strong)DetailCourseRes *detailCourse;
 
 @property (nonatomic, strong) UILabel *introductLabel;
@@ -41,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)void(^heightBlock)(CGFloat);
 @property(nonatomic,copy)void(^fouceBlock)(BOOL);
 @property(nonatomic,copy)void(^listBlock)(FreeListRes *);
+@property(nonatomic,copy)void(^playblock)();
+
 @end
 
 NS_ASSUME_NONNULL_END

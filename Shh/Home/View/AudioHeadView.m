@@ -310,7 +310,15 @@
     CourseListModel*model = self.detailCourse.courseList[indexPath.row];
     model.watch = self.detailCourse.watchCount;
     [cell setModel:model];
+    __weak typeof(self)weakself = self;
+    [cell setPlayBlock:^(BOOL selected) {
+        weakself.playBlock(selected);
+    }];
+    cell.playBtn.selected = self.selected;
     return cell;
 }
-
+-(void)setSelected:(BOOL)selected{
+    _selected = selected;
+    [self.tableview reloadData];
+}
 @end

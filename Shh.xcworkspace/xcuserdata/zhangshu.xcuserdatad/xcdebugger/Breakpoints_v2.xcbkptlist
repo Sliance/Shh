@@ -73,58 +73,74 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Shh/Mine/Controller/foot/MineFollowController.m"
-            timestampString = "565369975.912372"
+            filePath = "Shh/Home/Controller/dry/DetailArticleController.m"
+            timestampString = "565448172.187237"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "-requestData"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "-addComment:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/Controller/dry/DetailArticleController.m"
+            timestampString = "565448172.187326"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "-addComment:"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[MineFollowController requestData]"
+                  symbolName = "-[DetailArticleController addComment:]"
                   moduleName = "Shh"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Mine/Controller/foot/MineFollowController.m"
-                  timestampString = "565369843.188607"
+                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailArticleController.m"
+                  timestampString = "565447193.009602"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "506">
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "764">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__35-[MineFollowController requestData]_block_invoke"
+                  symbolName = "__38-[DetailArticleController addComment:]_block_invoke"
                   moduleName = "Shh"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Mine/Controller/foot/MineFollowController.m"
-                  timestampString = "565369843.193565"
+                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailArticleController.m"
+                  timestampString = "565447193.013872"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "45"
-                  endingLineNumber = "45"
-                  offsetFromSymbolStart = "44">
+                  startingLineNumber = "181"
+                  endingLineNumber = "181"
+                  offsetFromSymbolStart = "54">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_"
+                  symbolName = "__destroy_helper_block_.241"
                   moduleName = "Shh"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Mine/Controller/foot/MineFollowController.m"
-                  timestampString = "565369843.197041"
+                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailArticleController.m"
+                  timestampString = "565447193.01696"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
                   offsetFromSymbolStart = "12">
                </Location>
             </Locations>
@@ -136,13 +152,141 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Shh/Network/ApiService/MineServiceApi.m"
-            timestampString = "565369975.91245"
+            filePath = "Shh/Home/Controller/dry/DetailArticleController.m"
+            timestampString = "565448172.1874011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
-            landmarkName = "-getHistoryListWithParam:response:"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "-tableView:viewForHeaderInSection:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/Controller/dry/DetailArticleController.m"
+            timestampString = "565448172.1874731"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/View/YGPlayerView/View/YGPlayerView.m"
+            timestampString = "565448172.187544"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "791"
+            endingLineNumber = "791"
+            landmarkName = "-playOrPause"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/View/YGPlayerView/View/YGPlayerView.m"
+            timestampString = "565448172.187633"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "618"
+            endingLineNumber = "618"
+            landmarkName = "-centerPlayOrPauseAction"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/View/YGPlayerView/View/YGPlayerView.m"
+            timestampString = "565448172.18771"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "611"
+            endingLineNumber = "611"
+            landmarkName = "-playOrPauseAction"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/View/YGPlayerView/View/YGPlayerView.m"
+            timestampString = "565448172.187789"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "625"
+            endingLineNumber = "625"
+            landmarkName = "-rotateScreen:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/Controller/dry/DetailAudioController.m"
+            timestampString = "565448172.187863"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/Controller/dry/DetailAudioController.m"
+            timestampString = "565448172.187932"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/Controller/dry/DetailAudioController.m"
+            timestampString = "565448172.187993"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

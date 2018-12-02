@@ -31,6 +31,8 @@
     if (!_playBtn) {
         _playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_playBtn setImage:[UIImage imageNamed:@"bofang"] forState:UIControlStateNormal];
+        [_playBtn setImage:[UIImage imageNamed:@"zanting"] forState:UIControlStateSelected];
+        [_playBtn addTarget:self action:@selector(pressPlay) forControlEvents:UIControlEventTouchUpInside];
     }
     return _playBtn;
 }
@@ -97,5 +99,8 @@
     NSString *time = [NSString stringWithFormat:@"%.2ld:%.2ld",model.courseMediaDuration
                       /60,model.courseMediaDuration%60];
     self.contentLabel.text = [NSString stringWithFormat:@"%@/%@人学过",time,model.watch];
+}
+-(void)pressPlay{
+    self.playBlock(self.playBtn.selected);
 }
 @end

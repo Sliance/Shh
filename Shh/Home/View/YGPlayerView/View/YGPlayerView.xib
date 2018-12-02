@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.30.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.19.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,7 +28,7 @@
                             </constraints>
                             <state key="normal" image="icon_arrow_left_white"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMi-jW-1sX" userLabel="more">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMi-jW-1sX" userLabel="more">
                             <rect key="frame" x="345" y="10" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="KLc-y2-0bw"/>
@@ -37,7 +37,7 @@
                             <state key="normal" image="icmpv_more_light"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgt-jv-pk1">
-                            <rect key="frame" x="38" y="9" width="287" height="21"/>
+                            <rect key="frame" x="38" y="9.5" width="287" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="7d3-zn-8if"/>
                             </constraints>
@@ -69,7 +69,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gy3-yX-I0y" userLabel="play">
-                            <rect key="frame" x="10" y="13" width="13" height="15"/>
+                            <rect key="frame" x="10" y="12.5" width="13" height="15"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="13" id="tH4-iG-aXm"/>
                                 <constraint firstAttribute="height" constant="15" id="tpr-Ef-rF8"/>
@@ -91,7 +91,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dw6-GJ-iwo">
-                            <rect key="frame" x="31" y="15" width="40" height="11"/>
+                            <rect key="frame" x="31" y="14.5" width="40" height="11"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="1yW-BT-e4k"/>
                                 <constraint firstAttribute="height" constant="11" id="g6L-AX-bFK"/>
@@ -109,7 +109,7 @@
                             <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </progressView>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="1x5-vd-QCE">
-                            <rect key="frame" x="78" y="4.5" width="162" height="31"/>
+                            <rect key="frame" x="78" y="4" width="162" height="31"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="M2q-8S-kAd"/>
@@ -121,7 +121,7 @@
                             </connections>
                         </slider>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iY-ZB-9GP">
-                            <rect key="frame" x="246" y="14" width="39" height="11"/>
+                            <rect key="frame" x="246" y="14.5" width="39" height="11"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="11" id="agc-nR-Wde"/>
                             </constraints>
@@ -129,7 +129,7 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lnc-6G-xQo">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lnc-6G-xQo">
                             <rect key="frame" x="293" y="9" width="30" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="MI4-tE-tse"/>
@@ -171,12 +171,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="207"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ab-OJ-Cwx">
-                    <rect key="frame" x="327" y="119" width="40" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="40" id="L91-Nh-iqf"/>
-                        <constraint firstAttribute="height" constant="40" id="gDc-B6-Nno"/>
-                    </constraints>
-                    <state key="normal" image="player_pause_iphone_fullscreen"/>
+                    <rect key="frame" x="172.5" y="88.5" width="30" height="30"/>
+                    <state key="normal" image="bofang_mine"/>
                     <connections>
                         <action selector="centerPlayOrPauseAction" destination="xVp-Po-57j" eventType="touchUpInside" id="7te-N5-EAw"/>
                     </connections>
@@ -184,11 +180,10 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="ZKs-UR-zag" firstAttribute="top" secondItem="0Ab-OJ-Cwx" secondAttribute="bottom" constant="8" id="45n-vJ-R2P"/>
                 <constraint firstItem="MkO-jz-WQ2" firstAttribute="top" secondItem="xVp-Po-57j" secondAttribute="top" id="6ci-jm-1z3"/>
                 <constraint firstItem="TKE-ir-nkp" firstAttribute="leading" secondItem="xVp-Po-57j" secondAttribute="leading" id="Bc0-MR-RJ1"/>
                 <constraint firstItem="ZKs-UR-zag" firstAttribute="leading" secondItem="xVp-Po-57j" secondAttribute="leading" id="WF4-gi-cQa"/>
-                <constraint firstAttribute="trailing" secondItem="0Ab-OJ-Cwx" secondAttribute="trailing" constant="8" id="bA3-VC-2xF"/>
+                <constraint firstItem="0Ab-OJ-Cwx" firstAttribute="centerY" secondItem="xVp-Po-57j" secondAttribute="centerY" id="XAM-Hp-TzX"/>
                 <constraint firstAttribute="trailing" secondItem="MkO-jz-WQ2" secondAttribute="trailing" id="equ-zY-ydh"/>
                 <constraint firstAttribute="trailing" secondItem="TKE-ir-nkp" secondAttribute="trailing" id="g03-aU-o8u"/>
                 <constraint firstItem="TKE-ir-nkp" firstAttribute="top" secondItem="xVp-Po-57j" secondAttribute="top" id="hP0-xV-19O"/>
@@ -196,6 +191,7 @@
                 <constraint firstAttribute="bottom" secondItem="TKE-ir-nkp" secondAttribute="bottom" id="mGy-6n-WLa"/>
                 <constraint firstAttribute="trailing" secondItem="ZKs-UR-zag" secondAttribute="trailing" id="n6I-Mn-rtb"/>
                 <constraint firstItem="MkO-jz-WQ2" firstAttribute="leading" secondItem="xVp-Po-57j" secondAttribute="leading" id="wLu-2e-aEW"/>
+                <constraint firstItem="0Ab-OJ-Cwx" firstAttribute="centerX" secondItem="xVp-Po-57j" secondAttribute="centerX" id="wNH-Bj-Umf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -223,9 +219,9 @@
     <resources>
         <image name="Rotation" width="20" height="20"/>
         <image name="Stop" width="17" height="17"/>
+        <image name="bofang_mine" width="30" height="30"/>
         <image name="icmpv_more_light" width="20" height="20"/>
         <image name="icon_arrow_left_white" width="40" height="40"/>
-        <image name="player_pause_iphone_fullscreen" width="80" height="80"/>
         <image name="video_mask_bottom" width="3" height="79"/>
         <image name="video_mask_top" width="3" height="80"/>
     </resources>

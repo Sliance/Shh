@@ -13,7 +13,8 @@
 #import "CommentCell.h"
 #import "CommentHeadCell.h"
 #import "LoginController.h"
-
+#import "InputToolbar.h"
+#import "UIView+Extension.h"
 @interface DetailCourseController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)NSMutableArray *courseArr;
 @property(nonatomic,strong)NSMutableArray *commentArr;
@@ -22,6 +23,9 @@
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,assign)CGFloat headHeight;
 @property(nonatomic,strong)UILabel *footView;
+@property (nonatomic,strong)InputToolbar *inputToolbar;
+@property (nonatomic,assign)CGFloat inputToolbarY;
+@property(nonatomic,strong)CommentReq *commentReq;
 
 @end
 
@@ -54,12 +58,23 @@
     self.tableview.tableHeaderView = self.headView;
     self.courseArr = [NSMutableArray array];
     self.commentArr = [NSMutableArray array];
+    self.commentReq = [[CommentReq alloc]init];
+    self.commentReq.beCommentId = @"";
+    self.commentReq.beCommentMemberId = @"";
+    self.commentReq.beCommentMemberNickname = @"";
      self.tableview.tableFooterView = self.footView;
     __weak typeof(self)weakself = self;
     [self.headView setHeightBlock:^(CGFloat height) {
         weakself.headHeight = height;
         weakself.headView.frame = CGRectMake(0, 0, SCREENWIDTH, height);
         [weakself.tableview reloadData];
+    }];
+    [self.headView setPlayblock:^{
+        if (weakself.detailCourse.memberIsBuyThisCourse ==YES) {
+            [weakself.headView.playerView.player play];
+        }else{
+            [weakself showInfo:@"请先购买"];
+        }
     }];
     [self.headView setFouceBlock:^(BOOL selected) {
         if ([UserCacheBean share].userInfo.token.length>0) {
@@ -80,6 +95,102 @@
         [weakself.navigationController pushViewController:detailVC animated:YES];
     }];
     [ZSNotification addChangeDirectionResultNotification:self action:@selector(changeDirection:)];
+    self.inputToolbar = [InputToolbar shareInstance];
+    [self.view addSubview:self.inputToolbar];
+    self.inputToolbar.textViewMaxVisibleLine = 4;
+    self.inputToolbar.width = self.view.width;
+    self.inputToolbar.height = [self navHeightWithHeight];
+    self.inputToolbar.y = SCREENHEIGHT - [self navHeightWithHeight];
+    [self.inputToolbar setMorebuttonViewDelegate:self];
+    
+    self.inputToolbar.sendContent = ^(NSObject *content){
+        
+        if ([UserCacheBean share].userInfo.token.length>0) {
+            [weakself addComment:(NSString*)content];
+        }else{
+            LoginController *loginVC = [[LoginController alloc]init];
+            loginVC.hidesBottomBarWhenPushed = YES;
+            [weakself.navigationController pushViewController:loginVC animated:YES];
+        }
+    };
+    
+    self.inputToolbar.inputToolbarFrameChange = ^(CGFloat height,CGFloat orignY){
+        weakself.inputToolbarY = orignY;
+        if (weakself.tableview.contentSize.height > orignY) {
+            [weakself.tableview setContentOffset:CGPointMake(0, weakself.tableview.contentSize.height - orignY) animated:YES];
+        }
+    };
+    [self.inputToolbar setZanBlock:^(BOOL selected) {
+        if ([UserCacheBean share].userInfo.token.length>0) {
+            if (selected ==NO) {
+                weakself.inputToolbar.emojiButton.selected = YES;
+            }else{
+                weakself.inputToolbar.emojiButton.selected = NO;
+            }
+        }else{
+            LoginController *loginVC = [[LoginController alloc]init];
+            loginVC.hidesBottomBarWhenPushed = YES;
+            [weakself.navigationController pushViewController:loginVC animated:YES];
+        }
+    }];
+    [self.inputToolbar setXinBlock:^(BOOL selected) {
+        if ([UserCacheBean share].userInfo.token.length>0) {
+            if (selected ==NO) {
+                weakself.inputToolbar.moreButton.selected = YES;
+            }else{
+                weakself.inputToolbar.moreButton.selected = NO;
+            }
+        }else{
+            LoginController *loginVC = [[LoginController alloc]init];
+            loginVC.hidesBottomBarWhenPushed = YES;
+            [weakself.navigationController pushViewController:loginVC animated:YES];
+        }
+    }];
+    
+    [self.inputToolbar resetInputToolbar];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pressTap)];
+    [self.tableview addGestureRecognizer:tap];
+    
+}
+-(void)pressTap{
+    [self.view endEditing:YES];
+}
+- (void)dealloc {
+    NSLog(@"dealloc");
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    self.inputToolbar.isBecomeFirstResponder = NO;
+}
+
+
+- (void)inputToolbar:(InputToolbar *)inputToolbar orignY:(CGFloat)orignY
+{
+    _inputToolbarY = orignY;
+}
+-(void)addComment:(NSString*)content{
+    
+    self.commentReq.appId = @"1041622992853962754";
+    self.commentReq.token = [UserCacheBean share].userInfo.token;
+    self.commentReq.timestamp = @"0";
+    self.commentReq.platform = @"ios";
+    self.commentReq.commentContent = content;
+    self.commentReq.commentType = @"comment";
+     CourseListModel *model = [self.detailCourse.courseList firstObject];
+    self.commentReq.articleOrCourseId = model.courseId;
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share]addCommentWithParam:self.commentReq response:^(id response) {
+        if ([response[@"code"] integerValue] ==200) {
+            [weakself showInfo:@"评论成功"];
+            [weakself getCommentList];
+            weakself.commentReq.beCommentMemberNickname = @"";
+            weakself.commentReq.beCommentMemberId = @"";
+            weakself.commentReq.beCommentId = @"";
+        }else{
+            [weakself showInfo:response[@"message"]];
+        }
+    }];
 }
 -(void)changeDirection:(NSNotification *)noti{
     NSDictionary *userInfo = [noti userInfo];
@@ -251,11 +362,11 @@
     }
     [headView setModel:model];
     headView.backgroundColor = [UIColor whiteColor];
-    __weak typeof(headView)wealself = headView;
-    
+    __weak typeof(headView)wealhead = headView;
+    __weak typeof(self)wealself = self;
     [headView setZanBlock:^(BOOL selected) {
         if ([UserCacheBean share].userInfo.token.length>0) {
-          wealself.zanBtn.selected = !selected;
+          wealhead.zanBtn.selected = !selected;
             if (selected ==NO) {
                 
             }else{
@@ -267,9 +378,13 @@
             [self.navigationController pushViewController:loginVC animated:YES];
         }
     }];
-    [headView setCommentBlock:^(CommentListRes *model) {
+    [headView setCommentBlock:^(CommentListRes *model1) {
         if ([UserCacheBean share].userInfo.token.length>0) {
-            
+            wealself.inputToolbar.isBecomeFirstResponder = YES;
+            wealself.commentReq.beCommentId = model1.beCommentId;
+            wealself.commentReq.beCommentMemberId = model1.beCommentMemberId;
+            wealself.commentReq.beCommentMemberNickname = model1.beCommentMemberNickname;
+        
         }else{
             LoginController *loginVC = [[LoginController alloc]init];
             loginVC.hidesBottomBarWhenPushed = YES;
