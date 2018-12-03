@@ -89,6 +89,7 @@
         _hYView = [[UIView alloc]init];
         _hYView.backgroundColor = DSColorFromHex(0xCDB59C);
         _hYView.frame = CGRectMake(0, 165, SCREENWIDTH-30, 200);
+        _hYView.userInteractionEnabled = YES;
     }
     return _hYView;
 }
@@ -123,6 +124,9 @@
         _hYDate.text = @"加入会员 >";
         _hYDate.numberOfLines = 1;
         _hYDate.frame = CGRectMake(SCREENWIDTH-30-105, 0, 100, 35);
+        _hYDate.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pressTap)];
+        [_hYDate addGestureRecognizer:tap];
     }
     return _hYDate;
 }
@@ -180,5 +184,9 @@
 }
 -(void)pressEdit{
     self.editBlock();
+}
+
+-(void)pressTap{
+    self.addBlock();
 }
 @end

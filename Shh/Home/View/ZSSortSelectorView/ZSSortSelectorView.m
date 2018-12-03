@@ -69,9 +69,9 @@
             [view removeFromSuperview];
         }
     }
-    _mainView.contentSize = CGSizeMake(_dataArr.count*80+80, _height);
+    _mainView.contentSize = CGSizeMake(_dataArr.count*SCREENWIDTH/_dataArr.count+80, _height);
     for (int i=0; i<_dataArr.count; i++) {
-        ZSScrollButton *btn = [[ZSScrollButton alloc]initWithFrame:CGRectMake(i*80, 0, 80, _height) miantitle:dataArr[i] count:[NSString stringWithFormat:@"33"]];
+        ZSScrollButton *btn = [[ZSScrollButton alloc]initWithFrame:CGRectMake(i*SCREENWIDTH/_dataArr.count, 0, SCREENWIDTH/_dataArr.count, _height) miantitle:dataArr[i] count:[NSString stringWithFormat:@"33"]];
         btn.tag = i+33;
         if (!i) {
             [btn changeStatus:YES];

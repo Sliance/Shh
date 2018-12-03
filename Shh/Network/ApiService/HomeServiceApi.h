@@ -22,6 +22,7 @@
 #import "DetailArticleRes.h"
 #import "DetailServiceRes.h"
 #import "CommentReq.h"
+#import "HotSearchListRes.h"
 
 @interface HomeServiceApi : BaseApi
 + (instancetype)share;
@@ -53,5 +54,10 @@
 -(void)getServiceDetailWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///新增评论
 -(void)addCommentWithParam:(CommentReq *) req response:(responseModel) responseModel;
-
+///获取热门搜索
+-(void)getHotSearchWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///获取搜索列表
+-(void)getSearchListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///课程购买
+-(void)buyCourseWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 @end

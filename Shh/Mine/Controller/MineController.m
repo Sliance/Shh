@@ -21,6 +21,7 @@
 #import "DownLoadController.h"
 #import "MineFollowController.h"
 #import "MinePurchaseController.h"
+#import "MemberShipController.h"
 
 @interface MineController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIScrollView *bgscrollow;
@@ -86,6 +87,12 @@
             [weakself.navigationController pushViewController:setVC animated:YES];
         }
     }];
+    [self.headView setAddBlock:^{
+        MemberShipController*memberVC = [[MemberShipController alloc]init];
+        memberVC.hidesBottomBarWhenPushed = YES;
+        [weakself.navigationController pushViewController:memberVC animated:YES];
+    }];
+   
     [self.footView setSelecteBlock:^(NSUInteger index) {
         
         switch (index) {

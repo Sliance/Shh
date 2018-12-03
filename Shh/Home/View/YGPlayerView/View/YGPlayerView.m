@@ -57,6 +57,7 @@ static id _instance;
         _previewImageView.layer.cornerRadius = 5;
         _previewImageView.clipsToBounds = YES;
         _previewImageView.backgroundColor = [UIColor colorWithRed:.0f green:.0f blue:.0f alpha:.5f];
+        _previewImageView.userInteractionEnabled = YES;
         [self addSubview:_previewImageView];
     }
     return _previewImageView;

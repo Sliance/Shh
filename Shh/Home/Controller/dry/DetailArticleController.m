@@ -147,7 +147,7 @@
     
     [self.inputToolbar resetInputToolbar];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pressTap)];
-    [self.tableview addGestureRecognizer:tap];
+//    [self.tableview addGestureRecognizer:tap];
     
 }
 -(void)pressTap{
@@ -320,7 +320,8 @@
     return headView;
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [self.view endEditing:YES];
+ self.inputToolbar.isBecomeFirstResponder = NO;
+   
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identify = @"CommentCell";

@@ -23,5 +23,6 @@
 @property(nonatomic,copy)void (^messageBlock)(void);
 @property(nonatomic,copy)void (^editBlock)(void);
 @property(nonatomic,copy)void (^typeBlock)(NSInteger);
+@property(nonatomic,copy)void (^addBlock)(void);
 
 @end

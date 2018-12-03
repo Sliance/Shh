@@ -104,7 +104,8 @@
 
 - (void)setCustomArr:(NSArray *)customArr {
     _customArr = customArr;
-    self.pickerView = [UIPickerView new];
+    [self.array removeAllObjects];
+    self.pickerView = [[UIPickerView alloc]init];
     [self.bgView addSubview:self.pickerView];
     [self.pickerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(0);
@@ -113,7 +114,7 @@
     }];
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
-    [self.array addObject:customArr];
+    [self.array addObjectsFromArray:customArr];
 }
 
 
@@ -133,14 +134,15 @@
 
 #pragma mark-----隐藏的动画
 - (void)hideAnimation{
+   
     [UIView animateWithDuration:0.5 animations:^{
-        CGRect frame = self.bgView.frame;
-        frame.origin.y = KScreenHeight;
-        self.bgView.frame = frame;
+//        CGRect frame = self.bgView.frame;
+//        frame.origin.y = KScreenHeight;
+//        self.bgView.frame = frame;
     } completion:^(BOOL finished) {
         
-        [self.bgView removeFromSuperview];
-        [self removeFromSuperview];
+
+        [self.pickerView removeFromSuperview];
     }];
 }
 

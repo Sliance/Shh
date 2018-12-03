@@ -65,6 +65,7 @@
         _searchBtn.backgroundColor = DSColorFromHex(0xF0F0F0);
         [_searchBtn.layer setCornerRadius:15];
         [_searchBtn.layer setMasksToBounds:YES];
+        [_searchBtn addTarget:self action:@selector(pressSearch) forControlEvents:UIControlEventTouchUpInside];
     }
     return _searchBtn;
 }
@@ -74,6 +75,7 @@
         [_historyBtn setTitle:@"\U0000e913" forState:UIControlStateNormal];
         _historyBtn.titleLabel.font = [UIFont fontWithName:@"icomoon"size:22];
         [_historyBtn setTitleColor:DSColorFromHex(0x464646) forState:UIControlStateNormal];
+        [_historyBtn addTarget:self action:@selector(pressHistory) forControlEvents:UIControlEventTouchUpInside];
     }
     return _historyBtn;
 }
@@ -97,5 +99,11 @@
 }
 -(void)pressLeft{
     self.leftBlock();
+}
+-(void)pressHistory{
+    self.historyBlock();
+}
+-(void)pressSearch{
+    self.searchBlock();
 }
 @end

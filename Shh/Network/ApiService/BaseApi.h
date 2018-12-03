@@ -91,6 +91,11 @@
 #define mine_collect_url @"/sihehui/member/book/desktop/v1/list"
 ///我的关注
 #define mine_follow_url  @"/sihehui/member/follow/desktop/v1/list"
+///课程购买
+#define buy_course_url   @"/sihehui/order/desktop/v1/app/course/wx/save"
+
+
+
 typedef void(^responseModel)(id response);
 @interface BaseApi : NSObject
 + (void)requestAccountInfoModel:(responseModel ) response;

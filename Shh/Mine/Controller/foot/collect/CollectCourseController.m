@@ -21,14 +21,14 @@ static NSString *freecellIds = @"HistorysCell";
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 18, SCREENWIDTH, SCREENHEIGHT) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) collectionViewLayout:layout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
         [_collectionView registerClass:[HistorysCell class] forCellWithReuseIdentifier:freecellIds];
         
-        _collectionView.backgroundColor = DSColorFromHex(0xFAFAFA);
+        _collectionView.backgroundColor = [UIColor whiteColor];
         
         [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableView"];
         [_collectionView

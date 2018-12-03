@@ -11,6 +11,7 @@
 #import "ApplyImageCell.h"
 #import "HQPickerView.h"
 #import "MineServiceApi.h"
+#import "XXInputView.h"
 
 @interface ApplyForController ()<UITableViewDelegate,UITableViewDataSource,HQPickerViewDelegate>
 @property(nonatomic,strong)UITableView *tableview;
@@ -27,6 +28,7 @@
 @property(nonatomic,strong)NSMutableArray *natureArr;
 @property(nonatomic,strong)NSMutableArray *comSizeArr;
 @property(nonatomic,strong)NSMutableArray *teamSizeArr;
+@property (weak, nonatomic) XXInputView *inputView;
 
 @end
 
@@ -146,10 +148,23 @@
          NSArray *detailArr = @[@"请选择",@"请选择：",@"请填写企业全称",@"请填写企业简称",@"请填写品牌名称（选填）",@"请选择您的行业（选填）",@"请选择您的企业性质（选填）",@"请选择您的企业规模（选填）",@"请选择您的团队规模（选填）",@"请选择您所在省市",@"请填写公司地址"];
         cell.titleLabel.text = titleArr[indexPath.row];
         cell.contentFiled.placeholder = detailArr[indexPath.row];
-        if (indexPath.row ==5||indexPath.row ==6||indexPath.row ==7||indexPath.row ==8||indexPath.row ==9) {
+        if (indexPath.row ==5||indexPath.row ==6||indexPath.row ==7||indexPath.row ==8) {
             cell.contentFiled.userInteractionEnabled = NO;
+            if (indexPath.row ==5&&self.req.industry.length>0) {
+                cell.contentFiled.text = self.req.industry;
+            }else if (indexPath.row ==6&&self.req.typeid.length>0){
+                cell.contentFiled.text = self.req.typeid;
+            }else if (indexPath.row ==7&&self.req.companySize.length>0){
+                cell.contentFiled.text = self.req.companySize;
+            }else if (indexPath.row ==8&&self.req.teamSize.length>0){
+                cell.contentFiled.text = self.req.teamSize;
+            }
         }else{
             cell.contentFiled.userInteractionEnabled = YES;
+            if (indexPath.row ==9) {
+                cell.contentFiled.mode = XXPickerViewModeProvinceCity;
+                self.req.location = cell.contentFiled.text;
+            }
         }
     }else{
         NSArray *titleArr = @[@"联系人：",@"联系电话：",@"固定电话："];
@@ -184,13 +199,44 @@
     }
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectText:(NSString *)text Type:(NSInteger)type{
+    self.picker.hidden = YES;
     if (type ==0) {
-        
+        self.req.industry = text;
+    }else if (type ==1){
+        self.req.typeid = text;
+    }else if (type ==2){
+        self.req.companySize = text;
+    }else if (type ==3){
+        self.req.teamSize = text;
     }
+    [self.tableview reloadData];
 }
 -(void)pressSend{
-    
+    self.req.appId = @"1041622992853962754";
+    self.req.timestamp = @"0";
+    self.req.platform = @"ios";
+    self.req.token = [UserCacheBean share].userInfo.token;
+    __weak typeof(self)weakself = self;
+    [[MineServiceApi share]applyForWithParam:self.req response:^(id response) {
+        if (response) {
+            [weakself showInfo:response[@"message"]];
+        }
+    }];
 }
-
+- (XXInputView *)inputView {
+    if (_inputView == nil) {
+        XXInputView *inputView = [[XXInputView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 250) mode:XXPickerViewModeDate dataSource:nil];
+        inputView.hideSeparator = YES;
+        inputView.completeBlock = ^(NSString *dateString){
+            
+        };
+        
+        [self.view addSubview:inputView];
+        
+        self.inputView = inputView;
+    }
+    
+    return _inputView;
+}
 
 @end

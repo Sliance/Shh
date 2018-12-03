@@ -29,7 +29,7 @@ static NSString *freecellIds = @"HistorysCell";
         _collectionView.showsHorizontalScrollIndicator = NO;
         [_collectionView registerClass:[HistorysCell class] forCellWithReuseIdentifier:freecellIds];
         
-        _collectionView.backgroundColor = DSColorFromHex(0xFAFAFA);
+        _collectionView.backgroundColor = [UIColor whiteColor];
         
         [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableView"];
         [_collectionView

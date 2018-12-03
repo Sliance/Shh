@@ -194,7 +194,11 @@
             [weakself forgetSendCode];
         }
     }];
-    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pressTap)];
+    [self.view addGestureRecognizer:tap];;
+}
+-(void)pressTap{
+    [self.view endEditing:YES];
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {

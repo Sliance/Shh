@@ -21,11 +21,9 @@ static NSString *freecellIds = @"HistorysCell";
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 18, SCREENWIDTH, SCREENHEIGHT) collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-[self navHeightWithHeight]-30) collectionViewLayout:layout];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
-        _collectionView.showsVerticalScrollIndicator = NO;
-        _collectionView.showsHorizontalScrollIndicator = NO;
         [_collectionView registerClass:[HistorysCell class] forCellWithReuseIdentifier:freecellIds];
         
         _collectionView.backgroundColor = DSColorFromHex(0xFAFAFA);
@@ -126,7 +124,9 @@ static NSString *freecellIds = @"HistorysCell";
     return CGSizeMake(SCREENWIDTH, 0);
     
 }
-
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
+    return CGSizeMake(SCREENWIDTH, 80);
+}
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     HistorysCell *freecell = [collectionView dequeueReusableCellWithReuseIdentifier:freecellIds forIndexPath:indexPath];

@@ -15,6 +15,8 @@
 #import "SortViewController.h"
 #import "DetailCourseController.h"
 #import "DetailAudioController.h"
+#import "HistoryBaseController.h"
+#import "SearchController.h"
 @interface CourseController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property (nonatomic, strong)NavigationView *navView;
@@ -65,6 +67,17 @@ static NSString *givecellIds = @"HomeGivingCell";
     self.sortArr = [NSMutableArray array];
     self.bannerArr = [NSMutableArray array];
     self.courseArr = [NSMutableArray array];
+    __weak typeof(self)weakself = self;
+    [self.navView setHistoryBlock:^{
+        HistoryBaseController *setVC = [[HistoryBaseController alloc]init];
+        setVC.hidesBottomBarWhenPushed = YES;
+        [weakself.navigationController pushViewController:setVC animated:YES];
+    }];
+    [self.navView setSearchBlock:^{
+        SearchController *setVC = [[SearchController alloc]init];
+        setVC.hidesBottomBarWhenPushed = YES;
+        [weakself.navigationController pushViewController:setVC animated:YES];
+    }];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

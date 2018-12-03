@@ -18,6 +18,8 @@
 #import "AllTrainingController.h"
 #import "AllServiceListController.h"
 #import "DetailServiceController.h"
+#import "HistoryBaseController.h"
+#import "SearchController.h"
 
 @interface ServiceController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableview;
@@ -72,6 +74,17 @@
      self.trainArr = [NSMutableArray array];
      self.activityArr = [NSMutableArray array];
      self.joinArr = [NSMutableArray array];
+    __weak typeof(self)weakself = self;
+    [self.navView setHistoryBlock:^{
+        HistoryBaseController *setVC = [[HistoryBaseController alloc]init];
+        setVC.hidesBottomBarWhenPushed = YES;
+        [weakself.navigationController pushViewController:setVC animated:YES];
+    }];
+    [self.navView setSearchBlock:^{
+        SearchController *setVC = [[SearchController alloc]init];
+        setVC.hidesBottomBarWhenPushed = YES;
+        [weakself.navigationController pushViewController:setVC animated:YES];
+    }];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

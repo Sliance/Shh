@@ -148,12 +148,7 @@
     }];
     
     [self.inputToolbar resetInputToolbar];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pressTap)];
-    [self.tableview addGestureRecognizer:tap];
     
-}
--(void)pressTap{
-    [self.view endEditing:YES];
 }
 - (void)dealloc {
     NSLog(@"dealloc");
@@ -406,6 +401,8 @@
     [cell setModel:becommentmodel];
     return cell;
 }
-
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+     self.inputToolbar.isBecomeFirstResponder = NO;
+}
 
 @end

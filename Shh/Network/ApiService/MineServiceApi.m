@@ -150,7 +150,7 @@
 ///获取会员基本信息
 -(void)getMenberInfoWithParam:(LoginReq *) req response:(responseModel) responseModel{
     NSDictionary *dic = [req mj_keyValues];
-    [[ZSAPIProxy shareProxy] callPOSTWithUrl:mine_info Params:dic isShowLoading:YES successCallBack:^(ZSURLResponse *response) {
+    [[ZSAPIProxy shareProxy] callPOSTWithUrl:mine_info Params:dic isShowLoading:NO successCallBack:^(ZSURLResponse *response) {
         if ([response.content isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dicResponse = (NSDictionary *) response.content;
             if ([dicResponse[@"code"] integerValue] == 200) {
@@ -309,6 +309,31 @@
             }else {
                 if (responseModel) {
                     responseModel(nil);
+                }
+            }
+        } else {
+            if (responseModel) {
+                responseModel(nil);
+            }
+        }
+    } faildCallBack:^(ZSURLResponse *response) {
+        
+    }];
+}
+///申请入驻提交审核
+-(void)applyForWithParam:(ApplyForReq *) req response:(responseModel) responseModel{
+    NSDictionary *dic = [req mj_keyValues];
+    [[ZSAPIProxy shareProxy] callPOSTWithUrl:apply_for_url Params:dic isShowLoading:NO successCallBack:^(ZSURLResponse *response) {
+        if ([response.content isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dicResponse = (NSDictionary *) response.content;
+            if ([dicResponse[@"code"] integerValue] == 200) {
+                if (responseModel) {
+                    
+                    responseModel(response);
+                }
+            }else {
+                if (responseModel) {
+                    responseModel(response);
                 }
             }
         } else {

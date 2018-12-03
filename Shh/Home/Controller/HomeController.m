@@ -28,6 +28,8 @@
 #import "DetailArticleController.h"
 #import "DetailAudioController.h"
 #import "DetailServiceController.h"
+#import "HistoryBaseController.h"
+#import "SearchController.h"
 
 @interface HomeController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -95,6 +97,17 @@ static NSString *likecellIds = @"HomeLikeCell";
     self.guessListArr = [NSMutableArray array];
     self.homeBottomArr = [NSMutableArray array];
     [self getBannerList:@"wxIndex"];
+    __weak typeof(self)weakself = self;
+    [self.navView setHistoryBlock:^{
+        HistoryBaseController *setVC = [[HistoryBaseController alloc]init];
+        setVC.hidesBottomBarWhenPushed = YES;
+        [weakself.navigationController pushViewController:setVC animated:YES];
+    }];
+    [self.navView setSearchBlock:^{
+        SearchController *setVC = [[SearchController alloc]init];
+        setVC.hidesBottomBarWhenPushed = YES;
+        [weakself.navigationController pushViewController:setVC animated:YES];
+    }];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

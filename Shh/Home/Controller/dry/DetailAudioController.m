@@ -16,6 +16,7 @@
 #import "InputToolbar.h"
 #import "UIView+Extension.h"
 #import "HgMusicPlayerManager.h"
+#import "PayViewController.h"
 
 @interface DetailAudioController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)NSMutableArray *courseArr;
@@ -85,6 +86,9 @@
            
         }else{
             [weakself showInfo:@"请先购买"];
+            PayViewController *payVC = [[PayViewController alloc]init];
+            [payVC setCourseId:weakself.detailCourse.course.courseId];
+            [weakself.navigationController pushViewController:payVC animated:YES];
         }
     }];
     [self.headView setFouceBlock:^(BOOL selected) {
@@ -158,12 +162,7 @@
     }];
     
     [self.inputToolbar resetInputToolbar];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pressTap)];
-    [self.tableview addGestureRecognizer:tap];
-    
-}
--(void)pressTap{
-    [self.view endEditing:YES];
+   
 }
 - (void)dealloc {
     NSLog(@"dealloc");
@@ -389,5 +388,7 @@
     return cell;
 }
 
-
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+     self.inputToolbar.isBecomeFirstResponder = NO;
+}
 @end

@@ -14,6 +14,7 @@
 @property(nonatomic,strong)UIButton *leftBtn;
 @property(nonatomic,assign)NSInteger leftWidth;
 @property(nonatomic,strong)UILabel *lineLabel;
-@property(nonatomic,copy)void (^leftBlock)();
-
+@property(nonatomic,copy)void (^leftBlock)(void);
+@property(nonatomic,copy)void (^historyBlock)(void);
+@property(nonatomic,copy)void (^searchBlock)(void);
 @end

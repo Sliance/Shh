@@ -388,4 +388,80 @@
         
     }];
 }
+///获取热门搜索
+-(void)getHotSearchWithParam:(FreeListReq *) req response:(responseModel) responseModel{
+    NSDictionary *dic = [req mj_keyValues];
+    [[ZSAPIProxy shareProxy] callPOSTWithUrl:hot_search_list Params:dic isShowLoading:NO successCallBack:^(ZSURLResponse *response) {
+        if ([response.content isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dicResponse = (NSDictionary *) response.content;
+            if ([dicResponse[@"code"] integerValue] == 200) {
+                if (responseModel) {
+                    NSArray *result = [HotSearchListRes mj_objectArrayWithKeyValuesArray:dicResponse[@"data"][@"list"]];
+                    responseModel(result);
+                }
+            }else {
+                if (responseModel) {
+                    responseModel(nil);
+                }
+            }
+        } else {
+            if (responseModel) {
+                responseModel(nil);
+            }
+        }
+    } faildCallBack:^(ZSURLResponse *response) {
+        
+    }];
+}
+///获取搜索列表
+-(void)getSearchListWithParam:(FreeListReq *) req response:(responseModel) responseModel{
+    NSDictionary *dic = [req mj_keyValues];
+    [[ZSAPIProxy shareProxy] callPOSTWithUrl:search_course Params:dic isShowLoading:NO successCallBack:^(ZSURLResponse *response) {
+        if ([response.content isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dicResponse = (NSDictionary *) response.content;
+            if ([dicResponse[@"code"] integerValue] == 200) {
+                if (responseModel) {
+                    NSArray *result = [FreeListRes mj_objectArrayWithKeyValuesArray:dicResponse[@"data"][@"list"]];
+                    responseModel(result);
+                }
+            }else {
+                if (responseModel) {
+                    responseModel(nil);
+                }
+            }
+        } else {
+            if (responseModel) {
+                responseModel(nil);
+            }
+        }
+    } faildCallBack:^(ZSURLResponse *response) {
+        
+    }];
+}
+///课程购买
+-(void)buyCourseWithParam:(FreeListReq *) req response:(responseModel) responseModel{
+    NSDictionary *dic = [req mj_keyValues];
+    [[ZSAPIProxy shareProxy] callPOSTWithUrl:buy_course_url Params:dic isShowLoading:NO successCallBack:^(ZSURLResponse *response) {
+        if ([response.content isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dicResponse = (NSDictionary *) response.content;
+            if ([dicResponse[@"code"] integerValue] == 200) {
+                if (responseModel) {
+                   
+                    responseModel(dicResponse);
+                }
+            }else {
+                if (responseModel) {
+                    responseModel(nil);
+                }
+            }
+        } else {
+            if (responseModel) {
+                responseModel(nil);
+            }
+        }
+    } faildCallBack:^(ZSURLResponse *response) {
+        
+    }];
+}
+
 @end
