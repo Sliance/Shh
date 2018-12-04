@@ -43,6 +43,7 @@
         _contentFiled.delegate = self;
         _contentFiled.font = [UIFont systemFontOfSize:14];
         _contentFiled.textColor = DSColorFromHex(0x464646);
+        _contentFiled.textAlignment = NSTextAlignmentRight;
         _contentFiled.placeholder = @"请填写您的姓名";
         [_contentFiled setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
     }

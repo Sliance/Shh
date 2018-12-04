@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @property(nonatomic,strong)NSString *articleReviewStatus;
 ///
-@property(nonatomic,strong)NSString *haveFollowMember;
+@property(nonatomic,assign)BOOL haveFollowMember;
 ///
 @property(nonatomic,strong)NSString *systemVersion;
 ///
@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @property(nonatomic,strong)NSString *realClickCount;
 ///
-@property(nonatomic,strong)NSString *memberIsBook;
+@property(nonatomic,assign)BOOL memberIsBook;
 ///
 @property(nonatomic,strong)NSString *articleImagePosition;
 ///
@@ -47,7 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @property(nonatomic,strong)NSString *systemUpdateTime;
 ///
-@property(nonatomic,strong)NSString *memberIsLike;
+@property(nonatomic,assign)BOOL memberIsLike;
 ///
 @property(nonatomic,strong)NSString *articleId;
 ///

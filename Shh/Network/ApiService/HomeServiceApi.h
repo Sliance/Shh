@@ -23,6 +23,7 @@
 #import "DetailServiceRes.h"
 #import "CommentReq.h"
 #import "HotSearchListRes.h"
+#import "FollowReq.h"
 
 @interface HomeServiceApi : BaseApi
 + (instancetype)share;
@@ -60,4 +61,11 @@
 -(void)getSearchListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///课程购买
 -(void)buyCourseWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+
+///关注
+-(void)followWithParam:(FollowReq *) req response:(responseModel) responseModel;
+///点赞
+-(void)likeWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///收藏
+-(void)bookWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 @end

@@ -180,7 +180,7 @@ static InputToolbar* _instance = nil;
     if (!self.voiceButton) {
         self.moreButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(self.emojiButton.frame) + 5, 10, 30, 30)];
         [self.moreButton setImage:[UIImage imageNamed:@"xin_detail"] forState:UIControlStateNormal];
-        [self.moreButton setImage:[UIImage imageNamed:@"xin_selected"] forState:UIControlStateHighlighted];
+        [self.moreButton setImage:[UIImage imageNamed:@"xin_selected"] forState:UIControlStateSelected];
         [self.moreButton addTarget:self action:@selector(clickMoreButton:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.moreButton];
     }

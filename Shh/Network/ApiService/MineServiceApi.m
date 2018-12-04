@@ -329,11 +329,36 @@
             if ([dicResponse[@"code"] integerValue] == 200) {
                 if (responseModel) {
                     
-                    responseModel(response);
+                    responseModel(dicResponse);
                 }
             }else {
                 if (responseModel) {
-                    responseModel(response);
+                    responseModel(dicResponse);
+                }
+            }
+        } else {
+            if (responseModel) {
+                responseModel(nil);
+            }
+        }
+    } faildCallBack:^(ZSURLResponse *response) {
+        
+    }];
+}
+///加入思和会
+-(void)joinInWithParam:(ApplyForReq *) req response:(responseModel) responseModel{
+    NSDictionary *dic = [req mj_keyValues];
+    [[ZSAPIProxy shareProxy] callPOSTWithUrl:join_in_url Params:dic isShowLoading:NO successCallBack:^(ZSURLResponse *response) {
+        if ([response.content isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dicResponse = (NSDictionary *) response.content;
+            if ([dicResponse[@"code"] integerValue] == 200) {
+                if (responseModel) {
+                    
+                    responseModel(dicResponse);
+                }
+            }else {
+                if (responseModel) {
+                    responseModel(dicResponse);
                 }
             }
         } else {

@@ -93,11 +93,7 @@
     }];
     [self.headView setFouceBlock:^(BOOL selected) {
         if ([UserCacheBean share].userInfo.token.length>0) {
-            if (selected ==NO) {
-                weakself.headView.fouceBtn.backgroundColor = DSColorFromHex(0xDCDCDC);
-            }else{
-                weakself.headView.fouceBtn.backgroundColor = DSColorFromHex(0xE70019);
-            }
+            [weakself getFollow];
         }else{
             LoginController *loginVC = [[LoginController alloc]init];
             loginVC.hidesBottomBarWhenPushed = YES;
@@ -136,11 +132,7 @@
     };
     [self.inputToolbar setZanBlock:^(BOOL selected) {
         if ([UserCacheBean share].userInfo.token.length>0) {
-            if (selected ==NO) {
-                weakself.inputToolbar.emojiButton.selected = YES;
-            }else{
-                weakself.inputToolbar.emojiButton.selected = NO;
-            }
+            [weakself getLike];
         }else{
             LoginController *loginVC = [[LoginController alloc]init];
             loginVC.hidesBottomBarWhenPushed = YES;
@@ -149,11 +141,7 @@
     }];
     [self.inputToolbar setXinBlock:^(BOOL selected) {
         if ([UserCacheBean share].userInfo.token.length>0) {
-            if (selected ==NO) {
-                weakself.inputToolbar.moreButton.selected = YES;
-            }else{
-                weakself.inputToolbar.moreButton.selected = NO;
-            }
+            [weakself getCollect];
         }else{
             LoginController *loginVC = [[LoginController alloc]init];
             loginVC.hidesBottomBarWhenPushed = YES;
@@ -213,7 +201,77 @@
     self.title = @"课程详情";
     [self getCourseList];
 }
-
+-(void)getFollow{
+    FollowReq *req = [[FollowReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.version = @"1.0.0";
+    req.cityName = @"上海市";
+    req.beFollowMemberId = self.detailCourse.member.memberId;
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share]followWithParam:req response:^(id response) {
+        if (response) {
+            [weakself showInfo:response[@"message"]];
+            if ([response[@"code"]integerValue] ==200  ) {
+            if (weakself.headView.fouceBtn ==NO) {
+                weakself.headView.fouceBtn.backgroundColor = DSColorFromHex(0xF0F0F0);
+                weakself.headView.fouceBtn.selected = YES;
+            }else{
+                weakself.headView.fouceBtn.backgroundColor = DSColorFromHex(0xE70019);
+                weakself.headView.fouceBtn.selected = NO;
+            }
+            }
+        }
+    }];
+}
+-(void)getLike{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.articleOrCourseId= self.detailCourse.course.courseId;
+    req.articleOrCourseType = @"course";
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share]likeWithParam:req response:^(id response) {
+        if (response) {
+            [weakself showInfo:response[@"message"]];
+            if ([response[@"code"]integerValue] ==200  ) {
+                if (weakself.inputToolbar.emojiButton.selected ==NO) {
+                    weakself.inputToolbar.emojiButton.selected = YES;
+                }else{
+                    weakself.inputToolbar.emojiButton.selected = NO;
+                }
+            }
+        }
+    }];
+}
+-(void)getCollect{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.articleOrCourseId= self.detailCourse.course.courseId;
+    req.articleOrCourseType = @"course";
+    req.articleOrCourseTitle = self.detailCourse.course.courseTitle;
+    req.articleOrCourseImagePath = self.detailCourse.course.courseAppImagePath;
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share]bookWithParam:req response:^(id response) {
+        if (response) {
+            [weakself showInfo:response[@"message"]];
+            if ([response[@"code"]integerValue] ==200  ) {
+                if (weakself.inputToolbar.moreButton.selected ==NO) {
+                    weakself.inputToolbar.moreButton.selected = YES;
+                }else{
+                    weakself.inputToolbar.moreButton.selected = NO;
+                }
+            }
+        }
+    }];
+}
 -(void)getSingleCourse{
     FreeListReq *req = [[FreeListReq alloc]init];
     req.appId = @"1041622992853962754";
@@ -232,6 +290,8 @@
             CourseListModel *model = [weakself.detailCourse.courseList firstObject];
             [weakself.headView setDetailCourse:weakself.detailCourse];
             [weakself getSingleFind:model.courseListId];
+            weakself.inputToolbar.emojiButton.selected = weakself.detailCourse.memberIsLike;
+            weakself.inputToolbar.moreButton.selected = weakself.detailCourse.memberIsBook;
         }
         
     }];

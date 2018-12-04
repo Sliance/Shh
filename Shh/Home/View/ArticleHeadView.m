@@ -185,6 +185,13 @@ static NSString *nowcellIds = @"HomeNowCell";
     self.titleLabel.text = model.articleTitle;
     NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,model.member.memberAvatarPath];
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:url]];
+    if (model.haveFollowMember ==YES) {
+        self.fouceBtn.selected = YES;
+        self.fouceBtn.backgroundColor = DSColorFromHex(0xF0F0F0);
+    }else{
+        self.fouceBtn.selected = NO;
+        self.fouceBtn.backgroundColor = DSColorFromHex(0xE70019);
+    }
     self.nameLabel.text = model.member.memberName;
     self.detailLabel.text = model.member.memberDesc;
     NSString *url1 = [NSString stringWithFormat:@"%@%@",DPHOST,model.articleAppCoverImagePath];

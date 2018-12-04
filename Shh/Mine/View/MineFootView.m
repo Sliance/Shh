@@ -61,6 +61,7 @@
         [_headView.layer setCornerRadius:20];
         [_headView.layer setMasksToBounds:YES];
         _headView.frame = CGRectMake(13, 10, SCREENWIDTH-30-26, 40);
+        _headView.userInteractionEnabled = YES;
     }
     return _headView;
 }
@@ -95,10 +96,16 @@
         _hYDate.text = @" >";
         _hYDate.numberOfLines = 1;
         _hYDate.frame = CGRectMake(SCREENWIDTH-30-125-30, 0, 120, 40);
+        _hYDate.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pressTap)];
+        [_hYDate addGestureRecognizer:tap];
     }
     return _hYDate;
 }
 -(void)pressBtn:(MineTypeBtn*)sender{
     self.selecteBlock(sender.tag);
+}
+-(void)pressTap{
+    self.tapBlock();
 }
 @end

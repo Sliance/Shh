@@ -11,9 +11,11 @@
 #import "ApplyImageCell.h"
 #import "HQPickerView.h"
 #import "MineServiceApi.h"
-#import "XXInputView.h"
 
-@interface ApplyForController ()<UITableViewDelegate,UITableViewDataSource,HQPickerViewDelegate>
+#import "GFAddressPicker.h"
+
+
+@interface ApplyForController ()<UITableViewDelegate,UITableViewDataSource,HQPickerViewDelegate,GFAddressPickerDelegate>
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,strong)UITextField *allName;
 @property(nonatomic,strong)UITextField *refereeName;
@@ -23,12 +25,13 @@
 @property(nonatomic,strong)UITextField *contactPhone;
 @property(nonatomic,strong)UITextField *fixPhone;
 @property(nonatomic,strong)HQPickerView *picker;
+@property (nonatomic, strong) GFAddressPicker *pickerView;
 @property(nonatomic,strong)ApplyForReq *req;
 @property(nonatomic,strong)NSMutableArray *industryArr;
 @property(nonatomic,strong)NSMutableArray *natureArr;
 @property(nonatomic,strong)NSMutableArray *comSizeArr;
 @property(nonatomic,strong)NSMutableArray *teamSizeArr;
-@property (weak, nonatomic) XXInputView *inputView;
+
 
 @end
 
@@ -51,10 +54,21 @@
     }
     return _picker;
 }
+-(GFAddressPicker *)pickerView{
+    if (!_pickerView) {
+        _pickerView = [[GFAddressPicker alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+        [_pickerView updateAddressAtProvince:@"河南省" city:@"郑州市" town:@"金水区"];
+        _pickerView.delegate = self;
+        _pickerView.font = [UIFont boldSystemFontOfSize:18];
+        _pickerView.hidden = YES;
+    }
+    return _pickerView;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableview];
     [self.view addSubview:self.picker];
+    [self.view addSubview:self.pickerView];
     [self creatFootView];
     self.req = [[ApplyForReq alloc]init];
     self.industryArr = [NSMutableArray arrayWithObjects:@"瓷砖",@"地板",@"家具",@"照明",@"橱柜",@"卫浴",@"吊顶", nil];
@@ -148,7 +162,7 @@
          NSArray *detailArr = @[@"请选择",@"请选择：",@"请填写企业全称",@"请填写企业简称",@"请填写品牌名称（选填）",@"请选择您的行业（选填）",@"请选择您的企业性质（选填）",@"请选择您的企业规模（选填）",@"请选择您的团队规模（选填）",@"请选择您所在省市",@"请填写公司地址"];
         cell.titleLabel.text = titleArr[indexPath.row];
         cell.contentFiled.placeholder = detailArr[indexPath.row];
-        if (indexPath.row ==5||indexPath.row ==6||indexPath.row ==7||indexPath.row ==8) {
+        if (indexPath.row ==5||indexPath.row ==6||indexPath.row ==7||indexPath.row ==8||indexPath.row ==9) {
             cell.contentFiled.userInteractionEnabled = NO;
             if (indexPath.row ==5&&self.req.industry.length>0) {
                 cell.contentFiled.text = self.req.industry;
@@ -158,13 +172,12 @@
                 cell.contentFiled.text = self.req.companySize;
             }else if (indexPath.row ==8&&self.req.teamSize.length>0){
                 cell.contentFiled.text = self.req.teamSize;
+            }else if (indexPath.row ==9&&self.req.location.length>0){
+                cell.contentFiled.text = self.req.location;
             }
         }else{
             cell.contentFiled.userInteractionEnabled = YES;
-            if (indexPath.row ==9) {
-                cell.contentFiled.mode = XXPickerViewModeProvinceCity;
-                self.req.location = cell.contentFiled.text;
-            }
+            
         }
     }else{
         NSArray *titleArr = @[@"联系人：",@"联系电话：",@"固定电话："];
@@ -178,6 +191,8 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.pickerView.hidden = YES;
+    self.picker.hidden = YES;
     if (indexPath.section ==0) {
         if (indexPath.row ==5) {
             [self.picker setCustomArr:self.industryArr];
@@ -192,9 +207,12 @@
             [self.picker setType:2];
             self.picker.hidden = NO;
         }else if (indexPath.row ==8){
+            
             [self.picker setCustomArr:self.teamSizeArr];
             [self.picker setType:3];
             self.picker.hidden = NO;
+        }else if (indexPath.row ==9){
+            self.pickerView.hidden = NO;
         }
     }
 }
@@ -223,20 +241,19 @@
         }
     }];
 }
-- (XXInputView *)inputView {
-    if (_inputView == nil) {
-        XXInputView *inputView = [[XXInputView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, 250) mode:XXPickerViewModeDate dataSource:nil];
-        inputView.hideSeparator = YES;
-        inputView.completeBlock = ^(NSString *dateString){
-            
-        };
-        
-        [self.view addSubview:inputView];
-        
-        self.inputView = inputView;
-    }
-    
-    return _inputView;
+- (void)GFAddressPickerCancleAction
+{
+    self.pickerView.hidden = YES;
 }
+
+- (void)GFAddressPickerWithProvince:(NSString *)province
+                               city:(NSString *)city area:(NSString *)area
+{
+    self.pickerView.hidden = YES;
+    
+    self.req.location = [NSString stringWithFormat:@"%@  %@  %@",province,city,area];
+    [self.tableview reloadData];
+}
+
 
 @end

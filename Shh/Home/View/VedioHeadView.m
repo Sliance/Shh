@@ -12,17 +12,19 @@
 #import "YGPlayInfo.h"
 #import "ZSNotification.h"
 #import "HomeLikeCell.h"
+#import "SJTableHeaderView.h"
+
 @implementation VedioHeadView
 
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        _playerView = [[[NSBundle mainBundle] loadNibNamed:@"YGPlayerView" owner:nil options:nil] lastObject];
-        _playerView.leftConstraint = @(0);
-        _playerView.topConstraint = @(0);
-        _playerView.widthConstraint = @(SCREENWIDTH);
-        _playerView.heightConstraint = @(SCREENWIDTH * 9 / 16);
-        [self addSubview:_playerView];
+//        _playerView = [[[NSBundle mainBundle] loadNibNamed:@"YGPlayerView" owner:nil options:nil] lastObject];
+//        _playerView.leftConstraint = @(0);
+//        _playerView.topConstraint = @(0);
+//        _playerView.widthConstraint = @(SCREENWIDTH);
+//        _playerView.heightConstraint = @(SCREENWIDTH * 9 / 16);
+//        [self addSubview:_playerView];
         self.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.headImage];
         [self addSubview:self.nameLabel];
@@ -37,14 +39,39 @@
         [self addSubview:self.lineLabel1];
         [self addSubview:self.commentLabel];
         [self addSubview:self.commentBtn];
+        [self addSubview:self.coverImageView];
+        [self.coverImageView addSubview:self.playButton];
         [self setLayoutVer];
-        __weak typeof(self)weakself = self;
-        [_playerView setPlayBlock:^{
-            weakself.playblock();
-        }];
+        [self.player stopAndFadeOut];
+        
+        // create new player
+        self.player = [SJVideoPlayer player];
+
+        self.player.URLAsset.title = @"";
+        self.player.URLAsset.alwaysShowTitle = YES;
+
     }
     return self;
 }
+
+- (UIImageView *)coverImageView {
+    if ( _coverImageView ) return _coverImageView;
+    _coverImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+    _coverImageView.contentMode = UIViewContentModeScaleAspectFill;
+    _coverImageView.clipsToBounds = YES;
+    _coverImageView.userInteractionEnabled = YES;
+    _coverImageView.tag = 101;
+    return _coverImageView;
+}
+
+- (UIButton *)playButton {
+    if ( _playButton ) return _playButton;
+    _playButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_playButton setImage:[UIImage imageNamed:@"bofang_mine"] forState:UIControlStateNormal];
+    [_playButton addTarget:self action:@selector(userClickedPlayButton) forControlEvents:UIControlEventTouchUpInside];
+    return _playButton;
+}
+
 // 初始化播放器View
 - (void)setupPlayerView
 {
@@ -175,11 +202,19 @@
 }
 -(void)setDetailCourse:(DetailCourseRes *)detailCourse{
     _detailCourse = detailCourse;
+    NSString *url1 = [NSString stringWithFormat:@"%@%@",DPHOST,detailCourse.course.courseAppImagePath];
+    [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:url1]];
     NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,detailCourse.member.memberAvatarPath];
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:url]];
     self.nameLabel.text = detailCourse.member.memberName;
     self.detailLabel.text = detailCourse.member.memberDesc;
-  
+    if (detailCourse.haveFollowMember ==YES) {
+        self.fouceBtn.selected = YES;
+        self.fouceBtn.backgroundColor = DSColorFromHex(0xF0F0F0);
+    }else{
+        self.fouceBtn.selected = NO;
+        self.fouceBtn.backgroundColor = DSColorFromHex(0xE70019);
+    }
     [self.introducTDecs setText:detailCourse.course.courseIntroduction lineSpacing:5];
     self.introducTDecs.frame = CGRectMake(15, self.introductLabel.ctBottom+20, SCREENWIDTH-30, [self.introducTDecs getHeightLineWithString:detailCourse.course.courseIntroduction withWidth:SCREENWIDTH-30 withFont:[UIFont systemFontOfSize:14]lineSpacing:5]);
     self.recommendLabel.frame = CGRectMake(14, self.introducTDecs.ctBottom+37, SCREENWIDTH-30, 17);
@@ -192,6 +227,14 @@
     [ZSNotification addChangeDirectionResultNotification:self action:@selector(changeDirection:)];
 }
 -(void)setLayoutVer{
+    [self.coverImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.equalTo(self);
+        make.height.mas_equalTo(SCREENWIDTH * 9 / 16);
+    }];
+    [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.coverImageView);
+        make.centerY.equalTo(self.coverImageView);
+    }];
     self.headImage.frame = CGRectMake(15, SCREENWIDTH * 9 / 16+15, 50, 50);
     self.nameLabel.frame = CGRectMake(self.headImage.ctRight+10, self.headImage.ctTop, SCREENWIDTH-120, 16);
     self.detailLabel.frame = CGRectMake(self.headImage.ctRight+10, self.nameLabel.ctBottom+5, SCREENWIDTH-120, 40);
@@ -285,5 +328,18 @@
     
     self.fouceBlock(sender.selected);
 }
+-(void)userClickedPlayButton{
+    if (self.detailCourse.memberIsBuyThisCourse ==YES) {
+#ifdef SJMAC
+        self.player.disablePromptWhenNetworkStatusChanges = YES;
+#endif
+        [self.coverImageView addSubview:self.player.view];
+        [self.player.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.offset(0);
+        }];
+    }else{
+        self.playblock();
+    }
 
+}
 @end

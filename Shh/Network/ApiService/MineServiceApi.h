@@ -49,6 +49,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)getCollectListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///我的关注
 -(void)getFollowListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///加入思和会
+-(void)joinInWithParam:(ApplyForReq *) req response:(responseModel) responseModel;
 
 @end
 

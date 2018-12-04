@@ -22,5 +22,15 @@
 + (UIImage *)autoGetImage:(NSString *)fileName;
 
 + (UIImage *)addImage:(UIImage *)image1 toImage:(UIImage *)image2;
+/**
+ *  根据CIImage生成指定大小的UIImage
+ *
+ *  @param image CIImage
+ *  @param size  图片宽度
+ *
+ *  @return 生成的高清的UIImage
+ */
++ (UIImage *)creatNonInterpolatedUIImageFormCIImage:(CIImage *)image withSize:(CGFloat)size;
+
 
 @end

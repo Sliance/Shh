@@ -7,13 +7,13 @@
 //
 
 #import "BaseTableViewCell.h"
-#import "XXTextField.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ApplyCustomCell : BaseTableViewCell<UITextFieldDelegate>
 @property(nonatomic,strong)UILabel *titleLabel;
-@property(nonatomic,strong)XXTextField *contentFiled;
+@property(nonatomic,strong)UITextField *contentFiled;
 
 @end
 

@@ -20,7 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *courseId;
 
 @property(nonatomic,copy)NSString *articleOrCourseType;
-
+@property(nonatomic,copy)NSString *articleOrCourseImagePath;
+@property(nonatomic,copy)NSString *articleOrCourseTitle;
 @property(nonatomic,copy)NSString *articleOrCourseId;
 @property(nonatomic,copy)NSString *articleId;
 @property(nonatomic,copy)NSString *siheserviceId;

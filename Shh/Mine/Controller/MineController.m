@@ -22,6 +22,7 @@
 #import "MineFollowController.h"
 #import "MinePurchaseController.h"
 #import "MemberShipController.h"
+#import "PromoteQrController.h"
 
 @interface MineController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIScrollView *bgscrollow;
@@ -142,6 +143,11 @@
             default:
                 break;
         }
+    }];
+    [self.footView setTapBlock:^{
+        PromoteQrController *qrVC = [[PromoteQrController alloc]init];
+        qrVC.hidesBottomBarWhenPushed = YES;
+        [weakself.navigationController pushViewController:qrVC animated:YES];
     }];
 }
 -(void)viewWillAppear:(BOOL)animated{

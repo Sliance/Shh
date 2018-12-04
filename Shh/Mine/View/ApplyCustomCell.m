@@ -31,9 +31,9 @@
     }
     return _titleLabel;
 }
--(XXTextField *)contentFiled{
+-(UITextField *)contentFiled{
     if (!_contentFiled) {
-        _contentFiled = [[XXTextField alloc]init];
+        _contentFiled = [[UITextField alloc]init];
         _contentFiled.delegate = self;
         _contentFiled.font = [UIFont systemFontOfSize:14];
         _contentFiled.textColor = DSColorFromHex(0x464646);

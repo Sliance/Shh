@@ -177,7 +177,13 @@
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:url]];
     NSString *bannerurl = [NSString stringWithFormat:@"%@%@",DPHOST,detailCourse.course.courseAppImagePath];
     [self.bannerImage sd_setImageWithURL:[NSURL URLWithString:bannerurl]];
-    
+    if (detailCourse.haveFollowMember ==YES) {
+        self.fouceBtn.selected = YES;
+        self.fouceBtn.backgroundColor = DSColorFromHex(0xF0F0F0);
+    }else{
+        self.fouceBtn.selected = NO;
+        self.fouceBtn.backgroundColor = DSColorFromHex(0xE70019);
+    }
     self.nameLabel.text = detailCourse.member.memberName;
     self.detailLabel.text = detailCourse.member.memberDesc;
     

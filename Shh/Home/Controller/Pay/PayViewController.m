@@ -10,6 +10,7 @@
 #import "HomeServiceApi.h"
 #import "MemberShipController.h"
 
+
 @interface PayViewController ()
 @property(nonatomic,strong)UIImageView *headImage;
 @property(nonatomic,strong)UILabel *titleLabel;
@@ -41,6 +42,7 @@
     }
     return _wxImage;
 }
+
 -(UILabel *)titleLabel{
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc]init];
