@@ -15,6 +15,8 @@
 #import "CourseServiceApi.h"
 #import "HomeServiceApi.h"
 #import "DetailArticleController.h"
+#import "HistoryBaseController.h"
+#import "SearchController.h"
 
 @interface DryHeadlinesController ()<UITableViewDelegate,UITableViewDataSource,ZSSortSelectorViewDelegate>
 @property(nonatomic,strong)UITableView *tableview;
@@ -76,6 +78,17 @@
     __weak typeof(self)weakself = self;
     [self.navView setLeftBlock:^{
         [weakself.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    [self.navView setHistoryBlock:^{
+        HistoryBaseController *setVC = [[HistoryBaseController alloc]init];
+        setVC.hidesBottomBarWhenPushed = YES;
+        [weakself.navigationController pushViewController:setVC animated:YES];
+    }];
+    [self.navView setSearchBlock:^{
+        SearchController *setVC = [[SearchController alloc]init];
+        setVC.hidesBottomBarWhenPushed = YES;
+        [weakself.navigationController pushViewController:setVC animated:YES];
     }];
     [self getCourseSort];
 }

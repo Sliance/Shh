@@ -9,7 +9,9 @@
 #import "PayViewController.h"
 #import "HomeServiceApi.h"
 #import "MemberShipController.h"
-
+#import "WXApiObject.h"
+#import "WXApi.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface PayViewController ()
 @property(nonatomic,strong)UIImageView *headImage;
@@ -18,6 +20,9 @@
 @property(nonatomic,strong)UIImageView *wxImage;
 @property(nonatomic,strong)UILabel *wxLabel;
 @property(nonatomic,strong)UIButton *wxBtn;
+@property(nonatomic,strong)UIImageView *alipayImage;
+@property(nonatomic,strong)UILabel *alipayLabel;
+@property(nonatomic,strong)UIButton *alipayBtn;
 @property(nonatomic,strong)UIButton *submitBtn;
 @property(nonatomic,strong)UIButton *huiBtn;
 @property(nonatomic,strong)UILabel *huiLabel;
@@ -42,7 +47,13 @@
     }
     return _wxImage;
 }
-
+-(UIImageView *)alipayImage{
+    if (!_alipayImage) {
+        _alipayImage = [[UIImageView alloc]init];
+        _alipayImage.image = [UIImage imageNamed:@"alipay"];
+    }
+    return _alipayImage;
+}
 -(UILabel *)titleLabel{
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc]init];
@@ -72,6 +83,16 @@
     }
     return _wxLabel;
 }
+-(UILabel *)alipayLabel{
+    if (!_alipayLabel) {
+        _alipayLabel = [[UILabel alloc]init];
+        _alipayLabel.text = @"支付宝支付";
+        _alipayLabel.font = [UIFont systemFontOfSize:14];
+        _alipayLabel.textAlignment = NSTextAlignmentLeft;
+        _alipayLabel.textColor = [UIColor blackColor];
+    }
+    return _alipayLabel;
+}
 -(UIButton *)wxBtn{
     if (!_wxBtn) {
         _wxBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -81,6 +102,16 @@
         [_wxBtn addTarget:self action:@selector(pressWx:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _wxBtn;
+}
+-(UIButton *)alipayBtn{
+    if (!_alipayBtn) {
+        _alipayBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_alipayBtn setImage:[UIImage imageNamed:@"wx_normal"] forState:UIControlStateNormal];
+        [_alipayBtn setImage:[UIImage imageNamed:@"wx_selected"] forState:UIControlStateSelected];
+        _alipayBtn.selected = NO;
+        [_alipayBtn addTarget:self action:@selector(pressAlipay) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _alipayBtn;
 }
 -(UIButton *)submitBtn{
     if (!_submitBtn) {
@@ -125,10 +156,23 @@
     [self.view addSubview:self.wxImage];
     [self.view addSubview:self.wxLabel];
     [self.view addSubview:self.wxBtn];
+    [self.view addSubview:self.alipayImage];
+    [self.view addSubview:self.alipayLabel];
+    [self.view addSubview:self.alipayBtn];
     [self.view addSubview:self.submitBtn];
     [self.view addSubview:self.huiBtn];
     [self.view addSubview:self.huiLabel];
     [self setContentLauout];
+    [ZSNotification addWeixinPayResultNotification:self action:@selector(weixinPay:)];
+}
+#pragma mark-支付回调通知
+
+-(void)weixinPay:(NSNotification *)notifi{
+    NSDictionary *userInfo = [notifi userInfo];
+    if ([[userInfo objectForKey:@"weixinpay"] isEqualToString:@"success"]) {
+        [self showInfo:@"付款成功"];
+    }
+    [self showInfo:[userInfo objectForKey:@"strMsg"]];
 }
 -(void)setContentLauout{
     [self.headImage mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -147,7 +191,7 @@
     [self.wxImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view).offset(15);
         make.top.equalTo(self.priceLabel.mas_bottom).offset(30);
-        
+        make.width.height.mas_equalTo(24);
     }];
     [self.wxLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.wxImage.mas_right).offset(10);
@@ -156,11 +200,27 @@
     [self.wxBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.view).offset(-15);
         make.centerY.equalTo(self.wxImage);
+         make.width.height.mas_equalTo(40);
+    }];
+    [self.alipayImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view).offset(15);
+        make.top.equalTo(self.wxImage.mas_bottom).offset(20);
+        make.width.height.mas_equalTo(24);
+        
+    }];
+    [self.alipayLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.alipayImage.mas_right).offset(10);
+        make.centerY.equalTo(self.alipayImage);
+    }];
+    [self.alipayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.view).offset(-15);
+        make.centerY.equalTo(self.alipayImage);
+        make.width.height.mas_equalTo(40);
     }];
     [self.submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
          make.right.equalTo(self.view).offset(-15);
          make.left.equalTo(self.view).offset(15);
-        make.top.equalTo(self.wxImage.mas_bottom).offset(40);
+        make.top.equalTo(self.alipayImage.mas_bottom).offset(40);
         make.height.mas_equalTo(40);
     }];
     [self.huiBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -206,13 +266,52 @@
 }
 
 -(void)pressWx:(UIButton*)sender{
-    sender.selected = !sender.selected;
+  
+    self.wxBtn.selected = YES;
+    self.alipayBtn.selected = NO;
+}
+-(void)pressAlipay{
+    self.wxBtn.selected = NO;
+    self.alipayBtn.selected = YES;
 }
 -(void)pressSubmit{
-    if (self.wxBtn.selected ==NO) {
+    if (self.wxBtn.selected ==NO&&self.alipayBtn.selected == NO) {
         [self showInfo:@"请选择付款方式"];
         return;
     }
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.orderId = self.resultDic[@"orderId"];
+    if (self.wxBtn.selected == YES) {
+            [[HomeServiceApi share]getWxPayWithParam:req response:^(id response) {
+                if(response){
+                    OrderPayRes *model = response;
+                    //调起微信支付
+                    PayReq* req             = [[PayReq alloc] init];
+                    req.partnerId           = model.partnerid;
+                    req.prepayId            = model.prepayid;
+                    req.nonceStr            = model.noncestr;
+                    req.timeStamp           = model.timestamp.intValue;
+                    req.package             = model.packagestr;
+                    req.sign                = model.sign;
+                    [WXApi sendReq:req];
+                }
+            }];
+    }else if (self.alipayBtn.selected ==YES){
+        [[HomeServiceApi share]getAlipayWithParam:req response:^(id response) {
+            if (response) {
+                OrderPayRes *model = response;
+                NSString *appScheme = @"ShhScheme";
+                [[AlipaySDK defaultService] payOrder:model.body fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+                    NSLog(@"reslut = %@",resultDic);
+                }];
+            }
+        }];
+    }
+
     
 }
 -(void)pressHui{

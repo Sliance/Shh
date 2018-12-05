@@ -22,7 +22,6 @@
 		5AEA799321B28687007C0DB7 /* DownLoadingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEA799221B28687007C0DB7 /* DownLoadingController.m */; };
 		5AEA799821B28A76007C0DB7 /* CollectCourseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEA799721B28A76007C0DB7 /* CollectCourseController.m */; };
 		5AEA799B21B28A91007C0DB7 /* CollectArticleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEA799A21B28A91007C0DB7 /* CollectArticleController.m */; };
-		5AEA79A121B28F82007C0DB7 /* HistorysCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEA79A021B28F82007C0DB7 /* HistorysCell.m */; };
 		5AEA79A521B2C242007C0DB7 /* OrderRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEA79A421B2C242007C0DB7 /* OrderRes.m */; };
 		5AEA79A821B2CA1A007C0DB7 /* CollectionRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEA79A721B2CA1A007C0DB7 /* CollectionRes.m */; };
 		5AEA79AB21B2D692007C0DB7 /* FollowRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AEA79AA21B2D692007C0DB7 /* FollowRes.m */; };
@@ -162,6 +161,12 @@
 		89085EA82191B1D700259A68 /* CourseMemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085EA72191B1D700259A68 /* CourseMemberModel.m */; };
 		890D559F217EAE21009B33B2 /* GuessListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D559E217EAE21009B33B2 /* GuessListRes.m */; };
 		890D55A9217F0404009B33B2 /* DetailFreeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 890D55A8217F0404009B33B2 /* DetailFreeController.m */; };
+		8915D70321B7BAAE000C9718 /* FollowDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8915D70221B7BAAE000C9718 /* FollowDetailController.m */; };
+		8915D70B21B7BCEB000C9718 /* HistorysCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8915D70921B7BCEB000C9718 /* HistorysCell.m */; };
+		8915D72121B7C3E4000C9718 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8915D71F21B7C3E4000C9718 /* AlipaySDK.bundle */; };
+		8915D72221B7C3E4000C9718 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8915D72021B7C3E4000C9718 /* AlipaySDK.framework */; };
+		8915D72421B7C474000C9718 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8915D72321B7C474000C9718 /* CoreMotion.framework */; };
+		8915D72721B7D8FF000C9718 /* DetailFollowHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8915D72621B7D8FF000C9718 /* DetailFollowHeadView.m */; };
 		891E2544219BD415009A7F72 /* AudioCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 891E2543219BD415009A7F72 /* AudioCell.m */; };
 		891E254A219C2761009A7F72 /* DetailServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 891E2549219C2761009A7F72 /* DetailServiceController.m */; };
 		891E254D219C30CD009A7F72 /* ServiceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 891E254C219C30CD009A7F72 /* ServiceDetailView.m */; };
@@ -240,6 +245,8 @@
 		895DBF7F21798E3500E65B16 /* BannerRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7E21798E3500E65B16 /* BannerRes.m */; };
 		895DBF8221798EFC00E65B16 /* FreeListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF8121798EFC00E65B16 /* FreeListRes.m */; };
 		8961E9E921871CBB00B914FD /* MoreSortRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8961E9E821871CBB00B914FD /* MoreSortRes.m */; };
+		898569E521B778A50016A24A /* ImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 898569E421B778A40016A24A /* ImageModel.m */; };
+		898569E821B7AC2E0016A24A /* OrderPayRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 898569E721B7AC2E0016A24A /* OrderPayRes.m */; };
 		89856B47217F1A2100688DF7 /* CourseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89856B46217F1A2100688DF7 /* CourseController.m */; };
 		89856B4A217F1AE400688DF7 /* CourseHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89856B49217F1AE400688DF7 /* CourseHeadView.m */; };
 		89CAFFC3219164D100E4B7AE /* AllBigClassController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CAFFC2219164D100E4B7AE /* AllBigClassController.m */; };
@@ -350,8 +357,6 @@
 		5AEA799721B28A76007C0DB7 /* CollectCourseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectCourseController.m; sourceTree = "<group>"; };
 		5AEA799921B28A91007C0DB7 /* CollectArticleController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectArticleController.h; sourceTree = "<group>"; };
 		5AEA799A21B28A91007C0DB7 /* CollectArticleController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectArticleController.m; sourceTree = "<group>"; };
-		5AEA79A021B28F82007C0DB7 /* HistorysCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistorysCell.m; sourceTree = "<group>"; };
-		5AEA79A221B28FCD007C0DB7 /* HistorysCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistorysCell.h; sourceTree = "<group>"; };
 		5AEA79A321B2C242007C0DB7 /* OrderRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderRes.h; sourceTree = "<group>"; };
 		5AEA79A421B2C242007C0DB7 /* OrderRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderRes.m; sourceTree = "<group>"; };
 		5AEA79A621B2CA1A007C0DB7 /* CollectionRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionRes.h; sourceTree = "<group>"; };
@@ -625,6 +630,15 @@
 		890D559E217EAE21009B33B2 /* GuessListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessListRes.m; sourceTree = "<group>"; };
 		890D55A7217F0404009B33B2 /* DetailFreeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailFreeController.h; sourceTree = "<group>"; };
 		890D55A8217F0404009B33B2 /* DetailFreeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailFreeController.m; sourceTree = "<group>"; };
+		8915D70121B7BAAE000C9718 /* FollowDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollowDetailController.h; sourceTree = "<group>"; };
+		8915D70221B7BAAE000C9718 /* FollowDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowDetailController.m; sourceTree = "<group>"; };
+		8915D70921B7BCEB000C9718 /* HistorysCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistorysCell.m; sourceTree = "<group>"; };
+		8915D70A21B7BCEB000C9718 /* HistorysCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistorysCell.h; sourceTree = "<group>"; };
+		8915D71F21B7C3E4000C9718 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		8915D72021B7C3E4000C9718 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		8915D72321B7C474000C9718 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		8915D72521B7D8FF000C9718 /* DetailFollowHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailFollowHeadView.h; sourceTree = "<group>"; };
+		8915D72621B7D8FF000C9718 /* DetailFollowHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailFollowHeadView.m; sourceTree = "<group>"; };
 		891E2542219BD415009A7F72 /* AudioCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioCell.h; sourceTree = "<group>"; };
 		891E2543219BD415009A7F72 /* AudioCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioCell.m; sourceTree = "<group>"; };
 		891E2548219C2761009A7F72 /* DetailServiceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailServiceController.h; sourceTree = "<group>"; };
@@ -780,6 +794,10 @@
 		895DBF8121798EFC00E65B16 /* FreeListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreeListRes.m; sourceTree = "<group>"; };
 		8961E9E721871CBB00B914FD /* MoreSortRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoreSortRes.h; sourceTree = "<group>"; };
 		8961E9E821871CBB00B914FD /* MoreSortRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoreSortRes.m; sourceTree = "<group>"; };
+		898569E321B778A40016A24A /* ImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageModel.h; sourceTree = "<group>"; };
+		898569E421B778A40016A24A /* ImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageModel.m; sourceTree = "<group>"; };
+		898569E621B7AC2D0016A24A /* OrderPayRes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderPayRes.h; sourceTree = "<group>"; };
+		898569E721B7AC2E0016A24A /* OrderPayRes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPayRes.m; sourceTree = "<group>"; };
 		89856B45217F1A2100688DF7 /* CourseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseController.h; sourceTree = "<group>"; };
 		89856B46217F1A2100688DF7 /* CourseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseController.m; sourceTree = "<group>"; };
 		89856B48217F1AE400688DF7 /* CourseHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseHeadView.h; sourceTree = "<group>"; };
@@ -906,8 +924,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8915D72421B7C474000C9718 /* CoreMotion.framework in Frameworks */,
 				8905C2AE21928A3A00403EC2 /* ImageIO.framework in Frameworks */,
 				70A261FE6E2EB350FDA3792C /* libPods-Shh.a in Frameworks */,
+				8915D72221B7C3E4000C9718 /* AlipaySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -931,6 +951,7 @@
 		29965237B90419D2E9DDFCE3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8915D72321B7C474000C9718 /* CoreMotion.framework */,
 				8905C2AD21928A3A00403EC2 /* ImageIO.framework */,
 				1E5225F8F403A3F9F20919F7 /* libPods-Shh.a */,
 			);
@@ -974,9 +995,8 @@
 		5AEA797E21B273A4007C0DB7 /* foot */ = {
 			isa = PBXGroup;
 			children = (
+				8915D70021B7BA86000C9718 /* Ffollow */,
 				5AEA799521B28A59007C0DB7 /* collect */,
-				5AEA798221B2741C007C0DB7 /* MineFollowController.h */,
-				5AEA798321B2741C007C0DB7 /* MineFollowController.m */,
 				5AEA798521B27507007C0DB7 /* MinePurchaseController.h */,
 				5AEA798621B27507007C0DB7 /* MinePurchaseController.m */,
 			);
@@ -1048,6 +1068,7 @@
 		8824EAEC21300869000CBA7E /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				8915D71E21B7C3E4000C9718 /* Alipay */,
 				8921F81321B6484400F9FE10 /* Address */,
 				8921F74B21B60EBD00F9FE10 /* SJVideoPlayer */,
 				5AEA796D21B272BA007C0DB7 /* KKClassificationView */,
@@ -1145,29 +1166,16 @@
 		886B978E2136714A0074322D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8915D70821B7BB30000C9718 /* History */,
+				8915D70721B7BB14000C9718 /* EnterShh */,
+				8915D70621B7BAF8000C9718 /* Mine */,
+				8915D70521B7BAD4000C9718 /* ApplyFor */,
+				8915D70421B7BAC4000C9718 /* Follow */,
 				89F03C6C21AFF3EE00218809 /* HQPickerView */,
-				886B978F213672330074322D /* MineHeadView.h */,
-				886B9790213672330074322D /* MineHeadView.m */,
-				886B97922136726A0074322D /* MineFootView.h */,
-				886B97932136726A0074322D /* MineFootView.m */,
 				8924E36E21AE3018003A1152 /* SettingCell.h */,
 				8924E36F21AE3018003A1152 /* SettingCell.m */,
 				89F03C4E21AF85DC00218809 /* HelpCell.h */,
 				89F03C4F21AF85DC00218809 /* HelpCell.m */,
-				89F03C5A21AFC43500218809 /* EnterShhCell.h */,
-				89F03C5B21AFC43500218809 /* EnterShhCell.m */,
-				89F03C5D21AFC8F400218809 /* EnterShhHeadView.h */,
-				89F03C5E21AFC8F400218809 /* EnterShhHeadView.m */,
-				89F03C6021AFC90400218809 /* EnterShhFootView.h */,
-				89F03C6121AFC90400218809 /* EnterShhFootView.m */,
-				89F03C6621AFEA8000218809 /* ApplyCustomCell.h */,
-				89F03C6721AFEA8000218809 /* ApplyCustomCell.m */,
-				89F03C6921AFEFFB00218809 /* ApplyImageCell.h */,
-				89F03C6A21AFEFFB00218809 /* ApplyImageCell.m */,
-				5AEA79A221B28FCD007C0DB7 /* HistorysCell.h */,
-				5AEA79A021B28F82007C0DB7 /* HistorysCell.m */,
-				5AEA79AF21B2D95E007C0DB7 /* FollowsCell.h */,
-				5AEA79B021B2D95E007C0DB7 /* FollowsCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1400,8 +1408,6 @@
 				886DB919212E80A600CF8C64 /* ViewController.h */,
 				886DB91A212E80A600CF8C64 /* ViewController.m */,
 				886DB94C212E82A600CF8C64 /* ZSConfig.h */,
-				8905C2B42192B9F300403EC2 /* ZSNotification.h */,
-				8905C2B32192B9F200403EC2 /* ZSNotification.m */,
 				886B97FD2136B7FD0074322D /* Category */,
 				886B97982136B7BE0074322D /* Network */,
 				886DB975212EC23F00CF8C64 /* Base */,
@@ -1582,6 +1588,8 @@
 		886DB975212EC23F00CF8C64 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				8905C2B42192B9F300403EC2 /* ZSNotification.h */,
+				8905C2B32192B9F200403EC2 /* ZSNotification.m */,
 				88483F582137DC9F004CA3FA /* BaseViewController.h */,
 				88483F592137DC9F004CA3FA /* BaseViewController.m */,
 				886DB94D212E83C200CF8C64 /* ShhTabBarController.h */,
@@ -1684,6 +1692,81 @@
 				89085E8F21917E4F00259A68 /* AllServiceListController.m */,
 			);
 			path = All;
+			sourceTree = "<group>";
+		};
+		8915D70021B7BA86000C9718 /* Ffollow */ = {
+			isa = PBXGroup;
+			children = (
+				5AEA798221B2741C007C0DB7 /* MineFollowController.h */,
+				5AEA798321B2741C007C0DB7 /* MineFollowController.m */,
+				8915D70121B7BAAE000C9718 /* FollowDetailController.h */,
+				8915D70221B7BAAE000C9718 /* FollowDetailController.m */,
+			);
+			path = Ffollow;
+			sourceTree = "<group>";
+		};
+		8915D70421B7BAC4000C9718 /* Follow */ = {
+			isa = PBXGroup;
+			children = (
+				5AEA79AF21B2D95E007C0DB7 /* FollowsCell.h */,
+				5AEA79B021B2D95E007C0DB7 /* FollowsCell.m */,
+				8915D72521B7D8FF000C9718 /* DetailFollowHeadView.h */,
+				8915D72621B7D8FF000C9718 /* DetailFollowHeadView.m */,
+			);
+			path = Follow;
+			sourceTree = "<group>";
+		};
+		8915D70521B7BAD4000C9718 /* ApplyFor */ = {
+			isa = PBXGroup;
+			children = (
+				89F03C6621AFEA8000218809 /* ApplyCustomCell.h */,
+				89F03C6721AFEA8000218809 /* ApplyCustomCell.m */,
+				89F03C6921AFEFFB00218809 /* ApplyImageCell.h */,
+				89F03C6A21AFEFFB00218809 /* ApplyImageCell.m */,
+			);
+			path = ApplyFor;
+			sourceTree = "<group>";
+		};
+		8915D70621B7BAF8000C9718 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				886B978F213672330074322D /* MineHeadView.h */,
+				886B9790213672330074322D /* MineHeadView.m */,
+				886B97922136726A0074322D /* MineFootView.h */,
+				886B97932136726A0074322D /* MineFootView.m */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		8915D70721B7BB14000C9718 /* EnterShh */ = {
+			isa = PBXGroup;
+			children = (
+				89F03C5A21AFC43500218809 /* EnterShhCell.h */,
+				89F03C5B21AFC43500218809 /* EnterShhCell.m */,
+				89F03C5D21AFC8F400218809 /* EnterShhHeadView.h */,
+				89F03C5E21AFC8F400218809 /* EnterShhHeadView.m */,
+				89F03C6021AFC90400218809 /* EnterShhFootView.h */,
+				89F03C6121AFC90400218809 /* EnterShhFootView.m */,
+			);
+			path = EnterShh;
+			sourceTree = "<group>";
+		};
+		8915D70821B7BB30000C9718 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				8915D70A21B7BCEB000C9718 /* HistorysCell.h */,
+				8915D70921B7BCEB000C9718 /* HistorysCell.m */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		8915D71E21B7C3E4000C9718 /* Alipay */ = {
+			isa = PBXGroup;
+			children = (
+				8915D71F21B7C3E4000C9718 /* AlipaySDK.bundle */,
+				8915D72021B7C3E4000C9718 /* AlipaySDK.framework */,
+			);
+			path = Alipay;
 			sourceTree = "<group>";
 		};
 		8921F74B21B60EBD00F9FE10 /* SJVideoPlayer */ = {
@@ -2022,6 +2105,8 @@
 		8924E36621AE298A003A1152 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				898569E621B7AC2D0016A24A /* OrderPayRes.h */,
+				898569E721B7AC2E0016A24A /* OrderPayRes.m */,
 				890D559D217EAE21009B33B2 /* GuessListRes.h */,
 				890D559E217EAE21009B33B2 /* GuessListRes.m */,
 				89085E9121918E0F00259A68 /* CommentListRes.h */,
@@ -2065,6 +2150,8 @@
 		8924E36721AE29BA003A1152 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				898569E321B778A40016A24A /* ImageModel.h */,
+				898569E421B778A40016A24A /* ImageModel.m */,
 				8924E36821AE29D7003A1152 /* LoginReq.h */,
 				8924E36921AE29D7003A1152 /* LoginReq.m */,
 				89E0C0F521AEB8E200D18C44 /* MemberInfoRes.h */,
@@ -2353,6 +2440,7 @@
 				8921F81521B648B100F9FE10 /* Address.plist in Resources */,
 				887081DA213392400083E540 /* demo.html in Resources */,
 				887081D5213392330083E540 /* icomoon.ttf in Resources */,
+				8915D72121B7C3E4000C9718 /* AlipaySDK.bundle in Resources */,
 				8905C2B0219290AE00403EC2 /* playList.plist in Resources */,
 				887081D2213392330083E540 /* icomoon.svg in Resources */,
 				886DB920212E80AA00CF8C64 /* Assets.xcassets in Resources */,
@@ -2489,6 +2577,7 @@
 				89F03C5321AF921500218809 /* HelpRes.m in Sources */,
 				8921F80521B60EBE00F9FE10 /* SJFilmEditingGenerateGIFView.m in Sources */,
 				5AEA799821B28A76007C0DB7 /* CollectCourseController.m in Sources */,
+				8915D70B21B7BCEB000C9718 /* HistorysCell.m in Sources */,
 				891E2544219BD415009A7F72 /* AudioCell.m in Sources */,
 				5AEA797D21B27351007C0DB7 /* DownLoadController.m in Sources */,
 				886B97EE2136B7BE0074322D /* NSString+CLTools.m in Sources */,
@@ -2500,6 +2589,7 @@
 				886B982E2136B7FD0074322D /* UIImage+RoundedCorner.m in Sources */,
 				8921F7FA21B60EBE00F9FE10 /* SJVideoPlayerDraggingProgressView.m in Sources */,
 				89D4C9B6219E8D5F00566685 /* EmojiButtonView.m in Sources */,
+				898569E521B778A50016A24A /* ImageModel.m in Sources */,
 				886B978721363B280074322D /* TrainingServicesCell.m in Sources */,
 				8819859F2178A184003C962D /* BaseModelReq.m in Sources */,
 				5AEA798A21B27777007C0DB7 /* HistoryCourseController.m in Sources */,
@@ -2514,6 +2604,7 @@
 				886B98302136B7FD0074322D /* UIView+CTExtensions.m in Sources */,
 				89DBCB9221804B9600E66B85 /* ServiceListRes.m in Sources */,
 				886DB98A212EC2D700CF8C64 /* UIView+Frame.m in Sources */,
+				8915D72721B7D8FF000C9718 /* DetailFollowHeadView.m in Sources */,
 				886DB98F212EC2D700CF8C64 /* ZSScrollViewCell.m in Sources */,
 				886B97DF2136B7BE0074322D /* NSArray+TYAFNetworking.m in Sources */,
 				89F03C5C21AFC43500218809 /* EnterShhCell.m in Sources */,
@@ -2600,7 +2691,6 @@
 				89F1ADFD2190609E009A872A /* AllFreeListController.m in Sources */,
 				8824EAE8212FDB6B000CBA7E /* VTMenuBar.m in Sources */,
 				89F03C5F21AFC8F400218809 /* EnterShhHeadView.m in Sources */,
-				5AEA79A121B28F82007C0DB7 /* HistorysCell.m in Sources */,
 				891E254D219C30CD009A7F72 /* ServiceDetailView.m in Sources */,
 				89085E9F2191B04400259A68 /* DetailCourseRes.m in Sources */,
 				89D4C9B5219E8D5F00566685 /* UITextView+Category.m in Sources */,
@@ -2629,6 +2719,7 @@
 				8905C2B52192B9F300403EC2 /* ZSNotification.m in Sources */,
 				8921F7E721B60EBE00F9FE10 /* SJVideoPlayerMoreSettingSecondary.m in Sources */,
 				89E0C0E821AE672C00D18C44 /* SendCodeAlertView.m in Sources */,
+				8915D70321B7BAAE000C9718 /* FollowDetailController.m in Sources */,
 				89D4C9BB219E8D5F00566685 /* VoiceButtonView.m in Sources */,
 				89CDE3752194327800071267 /* DetailArticleRes.m in Sources */,
 				886B97ED2136B7BE0074322D /* NSString+Cache.m in Sources */,
@@ -2691,6 +2782,7 @@
 				886DB98D212EC2D700CF8C64 /* ZSPageControl.m in Sources */,
 				8850347521394068000BDD3A /* DryBigImageCell.m in Sources */,
 				89085E892191743900259A68 /* AllRecommentController.m in Sources */,
+				898569E821B7AC2E0016A24A /* OrderPayRes.m in Sources */,
 				8921F7EB21B60EBE00F9FE10 /* SJVideoPlayerMoreSettingsSecondaryHeaderView.m in Sources */,
 				89F03C6F21AFF3EE00218809 /* HQPickerView.m in Sources */,
 				89CDE36C21940D6C00071267 /* LoginController.m in Sources */,
@@ -2878,6 +2970,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GH8DJURR96;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Shh/Tool/Alipay",
+				);
 				INFOPLIST_FILE = Shh/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2899,6 +2995,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GH8DJURR96;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Shh/Tool/Alipay",
+				);
 				INFOPLIST_FILE = Shh/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

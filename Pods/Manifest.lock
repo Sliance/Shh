@@ -98,6 +98,7 @@ PODS:
   - SJUIFactory/Category (0.0.16)
   - SJUIKit/Refresh (0.0.0.6):
     - MJRefresh
+  - WechatOpenSDK (1.8.3)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
@@ -118,6 +119,7 @@ DEPENDENCIES:
   - SJScrollEntriesView
   - SJUIFactory
   - SJUIKit/Refresh
+  - WechatOpenSDK
   - YYKit
 
 SPEC REPOS:
@@ -139,6 +141,7 @@ SPEC REPOS:
     - SJScrollEntriesView
     - SJUIFactory
     - SJUIKit
+    - WechatOpenSDK
     - YYKit
 
 SPEC CHECKSUMS:
@@ -159,8 +162,9 @@ SPEC CHECKSUMS:
   SJScrollEntriesView: 2388fec9dbb6ab639f8966de036394eeb753617d
   SJUIFactory: b3e973c5e2ae08bc5a1bd2c68d94c00f81e01a0b
   SJUIKit: db663bfe8bdbd069c4881bf4167582da37a72ece
+  WechatOpenSDK: 3117412f8aafde4758cac1e8d20b93c67cafcfef
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: c60c4532b966270e964e0c6f31cbcfa7af4e1a6f
+PODFILE CHECKSUM: 833c82ee1f28d8b754708c93ec503dd4074efbe2
 
 COCOAPODS: 1.5.3

@@ -40,6 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @property(nonatomic,copy)NSString *phoneNumber;
 ///
+@property(nonatomic,copy)NSString *address;
+///
 @property(nonatomic,copy)NSString *telephoneNumber;
 ///
 @property(nonatomic,copy)NSString *typeid;

@@ -106,6 +106,7 @@
     self.commentBtn.frame = CGRectMake(SCREENWIDTH-35, self.contentLabel.ctBottom+12, 20, 20);
     self.dateLabel.text = [NSDate cStringFromTimestamp:model.systemCreateTime Formatter:@"yyyy年MM月dd日"];
     [self.zanBtn setTitle:model.commentLikeCount forState:UIControlStateNormal];
+    self.zanBtn.selected = model.memberIsLike;
 }
 +(CGFloat)getCellHeight:(CommentListRes *)model{
     UILabel *label = [[UILabel alloc]init];

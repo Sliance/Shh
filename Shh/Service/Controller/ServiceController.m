@@ -20,6 +20,7 @@
 #import "DetailServiceController.h"
 #import "HistoryBaseController.h"
 #import "SearchController.h"
+#import "MemberShipController.h"
 
 @interface ServiceController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableview;
@@ -45,7 +46,7 @@
 -(ServiceHeadView *)headview{
     if (!_headview) {
         _headview = [[ServiceHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 235)];
-        
+        [_headview.memberBtn addTarget:self action:@selector(addMember) forControlEvents:UIControlEventTouchUpInside];
     }
     return _headview;
 }
@@ -282,19 +283,16 @@
     }
     
 }
+-(void)addMember{
+    MemberShipController *memberVC = [[MemberShipController alloc]init];
+    memberVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:memberVC animated:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

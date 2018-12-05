@@ -19,6 +19,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *memberName;
 ///
 @property(nonatomic,copy)NSString *beFollowMemberId;
+///
+@property(nonatomic,copy)NSString *followCount;
+///
+@property(nonatomic,copy)NSString *courseAndArticleCount;
+///
+@property(nonatomic,copy)NSString *memberAvatarId;
 
 @end
 

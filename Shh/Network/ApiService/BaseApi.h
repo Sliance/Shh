@@ -101,7 +101,16 @@
 #define like_url     @"/sihehui/member/like/desktop/v1/save"
 ///收藏
 #define book_url    @"/sihehui/member/book/desktop/v1/save"
-
+///关注的人的信息
+#define teacher_url @"/sihehui/member/desktop/v1/home/teacher"
+///关注的人的文章
+#define teacher_article_url  @"/sihehui/article/desktop/v1/home/list"
+///上传图片
+#define upload_photo_url  @"/file/file/admin/v1/file/upload"
+///微信支付
+#define wx_pay_url @"/sihehui/pay/mobile/v1/app/wxpay"
+///支付宝支付
+#define alipay_pay_url @"/sihehui/pay/mobile/v1/app/alipay"
 
 typedef void(^responseModel)(id response);
 @interface BaseApi : NSObject

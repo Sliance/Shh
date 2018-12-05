@@ -56,11 +56,11 @@
         [self addSubview:self.contentFiled];
         [self addSubview:self.headImage];
         [self.headImage mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self).offset(15);
+            make.left.equalTo(self).offset(20);
             make.centerY.equalTo(self);
         }];
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.headImage.mas_right).offset(20);
+            make.left.equalTo(self.headImage.mas_right).offset(18);
             make.centerY.equalTo(self);
         }];
         [self.contentFiled mas_makeConstraints:^(MASConstraintMaker *make) {

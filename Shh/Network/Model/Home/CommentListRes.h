@@ -39,7 +39,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong)NSArray *beCommentList;
 ///
 @property(nonatomic,strong)NSString *memberId;
-
+///
+@property(nonatomic,assign)BOOL memberIsLike;
 
 @end
 

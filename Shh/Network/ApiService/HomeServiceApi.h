@@ -24,6 +24,7 @@
 #import "CommentReq.h"
 #import "HotSearchListRes.h"
 #import "FollowReq.h"
+#import "OrderPayRes.h"
 
 @interface HomeServiceApi : BaseApi
 + (instancetype)share;
@@ -61,6 +62,10 @@
 -(void)getSearchListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///课程购买
 -(void)buyCourseWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///微信支付
+-(void)getWxPayWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///支付宝支付
+-(void)getAlipayWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 
 ///关注
 -(void)followWithParam:(FollowReq *) req response:(responseModel) responseModel;

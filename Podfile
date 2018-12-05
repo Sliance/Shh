@@ -25,7 +25,7 @@ pod 'AFNetworking'
   pod 'MJRefresh', :inhibit_warnings => true
   pod 'SJRouter'
   pod 'SJScrollEntriesView'
-  
+   pod 'WechatOpenSDK'
 
 end
 

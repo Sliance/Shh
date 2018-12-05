@@ -18,7 +18,7 @@
         [self.bgView addSubview:self.titleLabel];
         [self.bgView addSubview:self.rightLabel];
         [self.bgView addSubview:self.allBtn];
-        self.bgView.frame = CGRectMake(0, 0, SCREENWIDTH, 50);
+        self.bgView.frame = CGRectMake(0, 5, SCREENWIDTH, 50);
         self.titleLabel.frame = CGRectMake(15, 0, SCREENWIDTH-15, 50);
         self.backgroundColor = DSColorFromHex(0xF5F5F5);
     }

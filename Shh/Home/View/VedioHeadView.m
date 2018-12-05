@@ -324,8 +324,6 @@
     self.listBlock(model);
 }
 -(void)pressFouce:(UIButton*)sender{
-    
-    
     self.fouceBlock(sender.selected);
 }
 -(void)userClickedPlayButton{

@@ -117,7 +117,7 @@
     };
     [self.inputToolbar setZanBlock:^(BOOL selected) {
         if ([UserCacheBean share].userInfo.token.length>0) {
-            [weakself getLike];
+            [weakself getLike:@"article" CourseId:weakself.detailCourse.articleId];
         }else{
             LoginController *loginVC = [[LoginController alloc]init];
             loginVC.hidesBottomBarWhenPushed = YES;
@@ -170,7 +170,7 @@
         if (response) {
             [weakself showInfo:response[@"message"]];
             if ([response[@"code"]integerValue] ==200  ) {
-            if (weakself.headView.fouceBtn ==NO) {
+            if (weakself.headView.fouceBtn.selected ==NO) {
                 weakself.headView.fouceBtn.backgroundColor = DSColorFromHex(0xF0F0F0);
                 weakself.headView.fouceBtn.selected = YES;
             }else{
@@ -181,25 +181,30 @@
         }
     }];
 }
--(void)getLike{
-    FreeListReq *req = [[FreeListReq alloc]init];
-    req.appId = @"1041622992853962754";
-    req.token = [UserCacheBean share].userInfo.token;
-    req.timestamp = @"0";
-    req.platform = @"ios";
-    req.articleOrCourseId= self.detailCourse.articleId;
-    req.articleOrCourseType = @"article";
-    __weak typeof(self)weakself = self;
+
+-(void)getLike:(NSString*)type CourseId:(NSString*)Id{
+        FreeListReq *req = [[FreeListReq alloc]init];
+        req.appId = @"1041622992853962754";
+        req.token = [UserCacheBean share].userInfo.token;
+        req.timestamp = @"0";
+        req.platform = @"ios";
+        req.articleOrCourseId= Id;
+        req.articleOrCourseType = type;
+        __weak typeof(self)weakself = self;
     [[HomeServiceApi share]likeWithParam:req response:^(id response) {
         if (response) {
             [weakself showInfo:response[@"message"]];
-            if ([response[@"code"]integerValue] ==200  ) {
+            if ([type isEqualToString:@"comment"]) {
+                [weakself getCommentList];
+            }else{
+              if ([response[@"code"]integerValue] ==200  ) {
                 if (weakself.inputToolbar.emojiButton.selected ==NO) {
                     weakself.inputToolbar.emojiButton.selected = YES;
-                }else{
+                  }else{
                     weakself.inputToolbar.emojiButton.selected = NO;
                 }
-            }
+              }
+           }
         }
     }];
 }
@@ -371,6 +376,16 @@
     [headView setModel:model];
     headView.backgroundColor = [UIColor whiteColor];
     __weak typeof(self)weakself = self;
+    [headView setZanBlock:^(BOOL selected) {
+        if ([UserCacheBean share].userInfo.token.length>0) {
+            
+            [weakself getLike:@"comment" CourseId:model.commentId];
+        }else{
+            LoginController *loginVC = [[LoginController alloc]init];
+            loginVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:loginVC animated:YES];
+        }
+    }];
     [headView setCommentBlock:^(CommentListRes *model1) {
        weakself.inputToolbar.isBecomeFirstResponder = YES;
         weakself.commentReq.beCommentId = model1.beCommentId;
