@@ -10,6 +10,9 @@
 #import "FreeListRes.h"
 #import "OrderRes.h"
 #import "CollectionRes.h"
+#import "TodayListRes.h"
+#import "FreeListRes.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong)FreeListRes *model;
 @property(nonatomic,strong)OrderRes *ordermodel;
 @property(nonatomic,strong)CollectionRes*collectModel;
+@property(nonatomic,strong)TodayListRes*articleModel;
+@property(nonatomic,strong)FreeListRes*coursemodel;
+
 
 @end
 

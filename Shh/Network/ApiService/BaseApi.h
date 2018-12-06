@@ -27,8 +27,7 @@
 #define single_course_directory   @"/sihehui/course/list/desktop/v1/find"
 ///获取单条文章
 #define single_article    @"/sihehui/article/desktop/v1/find"
-///获取会员的课程列表
-#define mine_course_list          @"/sihehui/course/desktop/v1/home/list"
+
 ///获取会员的课程列表/精品微课
 #define fine_course_list          @"/sihehui/course/desktop/v1/list"
 
@@ -105,12 +104,17 @@
 #define teacher_url @"/sihehui/member/desktop/v1/home/teacher"
 ///关注的人的文章
 #define teacher_article_url  @"/sihehui/article/desktop/v1/home/list"
+///获取关注的人的课程列表
+#define teacher_course_list          @"/sihehui/course/desktop/v1/home/list"
 ///上传图片
 #define upload_photo_url  @"/file/file/admin/v1/file/upload"
 ///微信支付
 #define wx_pay_url @"/sihehui/pay/mobile/v1/app/wxpay"
 ///支付宝支付
 #define alipay_pay_url @"/sihehui/pay/mobile/v1/app/alipay"
+
+///修改个人信息
+#define update_Info_url  @"/sihehui/member/desktop/v1/update/info"
 
 typedef void(^responseModel)(id response);
 @interface BaseApi : NSObject

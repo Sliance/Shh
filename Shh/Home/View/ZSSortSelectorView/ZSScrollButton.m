@@ -88,7 +88,7 @@
 
 - (UIImageView *)lineIV {
     if (!_lineIV) {
-        _lineIV = [[UIImageView alloc]initWithFrame:CGRectMake(10, _height-2, _width-20, 2)];
+        _lineIV = [[UIImageView alloc]initWithFrame:CGRectMake(_width/2-25, _height-2, 50, 2)];
         _lineIV.backgroundColor = DSColorFromHex(0xE70019);
         _lineIV.hidden = YES;
     }

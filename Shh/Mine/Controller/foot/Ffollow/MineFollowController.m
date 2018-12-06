@@ -30,7 +30,11 @@
     [super viewDidLoad];
     [self.view addSubview:self.tableview];
     _dataArr = [[NSMutableArray alloc]init];
-    [self requestData];
+  
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear: animated];
+      [self requestData];
 }
 -(void)requestData{
         FreeListReq *req = [[FreeListReq alloc]init];

@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)singleCourseDirectoryWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///课程分类
 -(void)courseSortDirectoryWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+
 @end
 
 NS_ASSUME_NONNULL_END

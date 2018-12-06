@@ -316,6 +316,7 @@
     CourseListModel*model = self.detailCourse.courseList[indexPath.row];
     model.watch = self.detailCourse.watchCount;
     [cell setModel:model];
+    cell.suoBtn.selected = self.detailCourse.memberIsBuyThisCourse;
     __weak typeof(self)weakself = self;
     [cell setPlayBlock:^(BOOL selected) {
         weakself.playBlock(selected);

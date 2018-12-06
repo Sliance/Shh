@@ -70,16 +70,29 @@
     }
     return _fouceBtn;
 }
+-(ZSSortSelectorView *)selectorView{
+    if (!_selectorView) {
+        _selectorView = [[ZSSortSelectorView alloc]initWithFrame:CGRectMake(0, 225, SCREENWIDTH, 40)];
+        _selectorView.delegate = self;
+        
+        
+    }
+    return _selectorView;
+}
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.headImage];
         [self addSubview:self.nameLabel];
         [self addSubview:self.detailLabel];
         [self addSubview:self.lineLabel];
         [self addSubview:self.fouceBtn];
         [self addSubview:self.fouceLabel];
+        [self addSubview:self.selectorView];
         [self setContentLayout];
+        [self.selectorView setDataArr:@[@"文章",@"课程"]];
+        [self.selectorView setCurrentPage:0];
     }
     return self;
 }
@@ -123,6 +136,9 @@
     
 }
 -(void)pressFouce{
-    
+    self.fouceBlock();
+}
+-(void)chooseButtonType:(NSInteger)type{
+    self.chooseBlock(type);
 }
 @end

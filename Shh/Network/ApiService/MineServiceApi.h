@@ -17,6 +17,8 @@
 #import "OrderRes.h"
 #import "CollectionRes.h"
 #import "FollowRes.h"
+#import "TodayListRes.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -35,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)forgetPasswordWithParam:(LoginReq *) req response:(responseModel) responseModel;
 ///获取会员基本信息
 -(void)getMenberInfoWithParam:(LoginReq *) req response:(responseModel) responseModel;
+///修改个人信息
+-(void)changeMemberInfoWithParam:(MemberInfoRes *) req response:(responseModel) responseModel;
 ///消息列表
 -(void)getMessageListWithParam:(LoginReq *) req response:(responseModel) responseModel;
 ///帮助列表
@@ -55,7 +59,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)getTeacherInfoWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///我关注的授课师的文章
 -(void)getTeacherArticleWithParam:(FreeListReq *) req response:(responseModel) responseModel;
-
+///我关注的授课师的课程
+-(void)getTeacherCourseWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 @end
 
 NS_ASSUME_NONNULL_END

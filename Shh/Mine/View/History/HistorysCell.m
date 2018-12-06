@@ -162,4 +162,20 @@
     [self.headiamge sd_setImageWithURL:[NSURL URLWithString:url]];
     self.titleLabel.text = collectModel.articleOrCourseTitle;
 }
+-(void)setArticleModel:(TodayListRes *)articleModel{
+    _articleModel = articleModel;
+    NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,articleModel.articleAppCoverImagePath];
+    [self.headiamge sd_setImageWithURL:[NSURL URLWithString:url]];
+    self.titleLabel.text = articleModel.articleTitle;
+    self.priceLabel.text = articleModel.virtualReadCount;
+    self.countLabel.text = articleModel.virtualLikeCount;
+}
+-(void)setCoursemodel:(FreeListRes *)coursemodel{
+    _coursemodel = coursemodel;
+    NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,coursemodel.courseAppImagePath];
+    [self.headiamge sd_setImageWithURL:[NSURL URLWithString:url]];
+    self.titleLabel.text = coursemodel.courseTitle;
+    self.priceLabel.text = coursemodel.courseTrueClickCount;
+    self.countLabel.text = coursemodel.courseTrueLikeCount;
+}
 @end

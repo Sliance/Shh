@@ -8,10 +8,10 @@
 
 #import "BaseView.h"
 #import "FollowRes.h"
-
+#import "ZSSortSelectorView.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DetailFollowHeadView : BaseView
+@interface DetailFollowHeadView : BaseView<ZSSortSelectorViewDelegate>
 @property (nonatomic, strong) UIImageView *headImage;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *detailLabel;
@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIButton *fouceBtn;
 @property (nonatomic, strong) UILabel *lineLabel;
 @property (nonatomic, strong)FollowRes*model;
+@property(nonatomic,strong)ZSSortSelectorView *selectorView;
+@property(nonatomic,copy)void (^chooseBlock)(NSInteger);
+@property(nonatomic,copy)void (^fouceBlock)(void);
 
 @end
 

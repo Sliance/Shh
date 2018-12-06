@@ -35,6 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *courseIntroduction;
 ///课程app封面图
 @property(nonatomic,copy)NSString *courseAppCoverImagePath;
+@property(nonatomic,copy)NSString *courseAppImagePath;
 ///课程pc封面图
 @property(nonatomic,copy)NSString *coursePcCoverImagePath;
 ///课程pc主图

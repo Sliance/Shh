@@ -40,6 +40,11 @@
     if (!_suoBtn) {
         _suoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_suoBtn setImage:[UIImage imageNamed:@"suo"] forState:UIControlStateNormal];
+        [_suoBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateSelected];
+        [_suoBtn setTitleColor:DSColorFromHex(0x969696) forState:UIControlStateNormal];
+        [_suoBtn setTitle:@"" forState:UIControlStateNormal];
+        [_suoBtn setTitle:@"已购买" forState:UIControlStateSelected];
+        _suoBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     }
     return _suoBtn;
 }

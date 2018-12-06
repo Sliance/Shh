@@ -26,7 +26,7 @@
 @property(nonatomic,strong)UITextField *fixPhone;
 @property(nonatomic,strong)HQPickerView *picker;
 @property (nonatomic, strong) GFAddressPicker *pickerView;
-@property(nonatomic,strong)ApplyForReq *req;
+
 @property(nonatomic,strong)NSMutableArray *industryArr;
 @property(nonatomic,strong)NSMutableArray *natureArr;
 @property(nonatomic,strong)NSMutableArray *comSizeArr;
@@ -72,11 +72,12 @@
     [self.view addSubview:self.picker];
     [self.view addSubview:self.pickerView];
     [self creatFootView];
-    self.req = [[ApplyForReq alloc]init];
+    
     self.industryArr = [NSMutableArray arrayWithObjects:@"瓷砖",@"地板",@"家具",@"照明",@"橱柜",@"卫浴",@"吊顶", nil];
     self.natureArr = [NSMutableArray arrayWithObjects:@"家装公司",@"商家",@"企业",@"其他", nil];
     self.comSizeArr = [NSMutableArray arrayWithObjects:@"0-300万",@"300万-1000万",@"1000万-3000万",@"3000万-5000万",@"+1亿", nil];
     self.teamSizeArr = [NSMutableArray arrayWithObjects:@"0-30人",@"30-100人",@"100-200人",@"200人以上", nil];
+    [self requestData];
 }
 -(void)requestData{
     LoginReq *req = [[LoginReq alloc]init];
@@ -123,7 +124,7 @@
     if (section ==0) {
         return 11;
     }
-    return 3;
+    return 2;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section ==0&&(indexPath.row ==0||indexPath.row ==1)) {
@@ -138,17 +139,19 @@
     return @"";
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section ==0) {
-        return 0.01;
-    }
-    return 0;
+    
+    return 5;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView*view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 5)];
+    return view;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView*view = [[UIView alloc]init];
+    UIView*view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 5)];
     return view;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 5;
+    return 0;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section ==0&&indexPath.row ==0) {
@@ -159,100 +162,121 @@
         }
             cell.titleLabel.text = @"头像";
             [cell setWidth:40];
-            if (self.req.companyLogoPath.length>0) {
+        
                 NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,self.result.memberAvatarPath];
                 [cell.logoImage sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"mine"]];
-        }
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     }
-    static NSString *identify = @"ApplyCustomCell";
-    ApplyCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
-    if (!cell) {
-        cell = [[ApplyCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
-    }
+    
+
     if (indexPath.section ==0) {
         NSArray *titleArr = @[@"头像",@"姓名",@"电话",@"行业",@"职位",@"品牌名称",@"公司名称",@"企业性质",@"企业规模",@"团队规模",@"所在省市"];
-        NSArray *detailArr = @[@"请选择",@"请选择：",@"请填写企业全称",@"请填写企业简称",@"请填写品牌名称（选填）",@"请选择您的行业（选填）",@"请选择您的企业性质（选填）",@"请选择您的企业规模（选填）",@"请选择您的团队规模（选填）",@"请选择您所在省市",@"请填写公司地址"];
-        cell.titleLabel.text = titleArr[indexPath.row];
-        cell.contentFiled.placeholder = detailArr[indexPath.row];
-        if (indexPath.row ==5||indexPath.row ==6||indexPath.row ==7||indexPath.row ==8||indexPath.row ==9) {
-            cell.contentFiled.userInteractionEnabled = NO;
-            if (indexPath.row ==5) {
-                if (self.req.industry.length>0) {
-                    cell.contentFiled.text = self.req.industry;
+        NSArray *detailArr = @[@"头像",@"姓名",@"电话",@"行业",@"职位",@"品牌名称",@"公司名称",@"企业性质",@"企业规模",@"团队规模",@"所在省市"];
+        
+        if (indexPath.row ==3||indexPath.row ==10||indexPath.row ==7||indexPath.row ==8||indexPath.row ==9) {
+            static NSString *identify = @"UITableViewCell";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+            if (!cell) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identify];
+            }
+            cell.textLabel.text = titleArr[indexPath.row];
+            cell.detailTextLabel.text = detailArr[indexPath.row];
+            cell.textLabel.font = [UIFont systemFontOfSize:14];
+            cell.textLabel.textColor = DSColorFromHex(0x464646);
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
+            cell.detailTextLabel.textColor = DSColorFromHex(0x464646);
+            if (indexPath.row ==3) {
+                if(self.result.industryType.length>0){
+                    cell.detailTextLabel.text = self.result.industryType;
                 }
-                self.req.industry = cell.contentFiled.text;
-            }else if (indexPath.row ==6){
-                if (self.req.typeid.length>0) {
-                    cell.contentFiled.text = self.req.typeid;
-                }
-                self.req.typeid = cell.contentFiled.text;
+                self.result.industryType = cell.detailTextLabel.text;
             }else if (indexPath.row ==7){
-                if (self.req.companySize.length>0) {
-                    cell.contentFiled.text = self.req.companySize;
+                if (self.result.companyType.length>0) {
+                    cell.detailTextLabel.text = self.result.companyType;
                 }
-                self.req.companySize = cell.contentFiled.text;
+                self.result.companyType = cell.detailTextLabel.text;
             }else if (indexPath.row ==8){
-                if (self.req.teamSize.length>0) {
-                    cell.contentFiled.text = self.req.teamSize;
+                if (self.result.companySize.length>0) {
+                    cell.detailTextLabel.text = self.result.companySize;
                 }
-                self.req.teamSize = cell.contentFiled.text;
+                self.result.companySize = cell.detailTextLabel.text;
             }else if (indexPath.row ==9){
-                if (self.req.location.length>0) {
-                    cell.contentFiled.text = self.req.location;
+                if (self.result.teamSize.length>0) {
+                    cell.detailTextLabel.text = self.result.teamSize;
                 }
-                self.req.location = cell.contentFiled.text;
-            }
-        }else{
-            cell.contentFiled.userInteractionEnabled = YES;
-            if (indexPath.row ==2) {
-                if (self.req.companyName.length>0) {
-                    cell.contentFiled.text = self.req.companyName;
-                }
-                self.req.companyName = cell.contentFiled.text;
-            }else if (indexPath.row ==3){
-                if (self.req.companyNameAbbr.length>0) {
-                    cell.contentFiled.text = self.req.companyNameAbbr;
-                }
-                self.req.companyNameAbbr = cell.contentFiled.text;
-            }else if (indexPath.row ==4){
-                if (self.req.brandName.length>0) {
-                    cell.contentFiled.text = self.req.brandName;
-                }
-                self.req.brandName = cell.contentFiled.text;
+                self.result.teamSize = cell.detailTextLabel.text;
             }else if (indexPath.row ==10){
-                if (self.req.address.length>0) {
-                    cell.contentFiled.text = self.req.address;
+                if (self.result.province.length>0) {
+                    cell.detailTextLabel.text = self.result.province;
                 }
-                self.req.address = cell.contentFiled.text;
-                
+                self.result.province = cell.detailTextLabel.text;
             }
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            return cell;
+            
+            
+               }else{
+                   static NSString *identify = @"ApplyCustomCell";
+                   ApplyCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+                   if (!cell) {
+                       cell = [[ApplyCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+                   }
+                   cell.titleLabel.text = titleArr[indexPath.row];
+                   cell.contentFiled.placeholder = detailArr[indexPath.row];
+                   cell.contentFiled.userInteractionEnabled = YES;
+                   if (indexPath.row ==6) {
+                       if (self.result.companyName.length>0) {
+                           cell.contentFiled.text = self.result.companyName;
+                       }
+                       self.result.companyName = cell.contentFiled.text;
+                   }else if (indexPath.row ==1){
+                       if (self.result.memberName.length>0) {
+                           cell.contentFiled.text = self.result.memberName;
+                       }
+                       self.result.memberName = cell.contentFiled.text;
+                   }else if (indexPath.row ==5){
+                       if (self.result.brandName.length>0) {
+                           cell.contentFiled.text = self.result.brandName;
+                       }
+                       self.result.brandName = cell.contentFiled.text;
+                   }else if (indexPath.row ==2){
+                       if (self.result.memberTel.length>0) {
+                           cell.contentFiled.text = self.result.memberTel;
+                       }
+                       self.result.memberTel = cell.contentFiled.text;
+                       
+                   }
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                   return cell;
+                      
+          }
+                   
+
+    }
+        static NSString *identify = @"ApplyCustomCell";
+        ApplyCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+        if (!cell) {
+            cell = [[ApplyCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
         }
-    }else{
-        NSArray *titleArr = @[@"联系人：",@"联系电话：",@"固定电话："];
-        NSArray *detailArr = @[@"请填写联系人",@"请填写联系电话",@"请填写固定电话（选填）"];
+        
+        NSArray *titleArr = @[@"微信号",@"QQ号"];
+        NSArray *detailArr = @[@"请填写微信号",@"请填写QQ号"];
         cell.titleLabel.text = titleArr[indexPath.row];
         cell.contentFiled.placeholder = detailArr[indexPath.row];
-        if (indexPath.row ==0) {
-            if (self.req.contact.length>0) {
-                cell.contentFiled.text = self.req.contact;
+         cell.accessoryType = UITableViewCellAccessoryNone;
+        if (indexPath.row ==0&&indexPath.section ==1) {
+            if (self.result.wechatNo.length>0) {
+                cell.contentFiled.text = self.result.wechatNo;
             }
-            self.req.contact = cell.contentFiled.text;
-        }else if (indexPath.row ==1){
-            if (self.req.phoneNumber.length>0) {
-                cell.contentFiled.text = self.req.phoneNumber;
+            self.result.wechatNo = cell.contentFiled.text;
+        }else if (indexPath.row ==1&&indexPath.section ==1){
+            if (self.result.tencentNo.length>0) {
+                cell.contentFiled.text = self.result.tencentNo;
             }
-            self.req.phoneNumber = cell.contentFiled.text;
-        }else if (indexPath.row ==2){
-            if (self.req.telephoneNumber.length>0) {
-                cell.contentFiled.text = self.req.telephoneNumber;
-            }
-            self.req.telephoneNumber = cell.contentFiled.text;
+           self.result.tencentNo = cell.contentFiled.text;
         }
-    }
-    
-    cell.accessoryType = UITableViewCellAccessoryNone;
+   
     return cell;
 }
 
@@ -270,24 +294,24 @@
             leftAction.tag = 102;
             [leftAction showInView:self.view];
             self.ImageType =1;
-        }else if (indexPath.row ==5) {
+        }else if (indexPath.row ==3) {
             [self.picker setCustomArr:self.industryArr];
             [self.picker setType:0];
             self.picker.hidden = NO;
-        }else if (indexPath.row ==6){
+        }else if (indexPath.row ==7){
             [self.picker setCustomArr:self.natureArr];
             [self.picker setType:1];
             self.picker.hidden = NO;
-        }else if (indexPath.row ==7){
+        }else if (indexPath.row ==8){
             [self.picker setCustomArr:self.comSizeArr];
             [self.picker setType:2];
             self.picker.hidden = NO;
-        }else if (indexPath.row ==8){
+        }else if (indexPath.row ==9){
             
             [self.picker setCustomArr:self.teamSizeArr];
             [self.picker setType:3];
             self.picker.hidden = NO;
-        }else if (indexPath.row ==9){
+        }else if (indexPath.row ==10){
             self.pickerView.hidden = NO;
         }
     }
@@ -295,23 +319,23 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectText:(NSString *)text Type:(NSInteger)type{
     self.picker.hidden = YES;
     if (type ==0) {
-        self.req.industry = text;
+        self.result.industryType = text;
     }else if (type ==1){
-        self.req.typeid = text;
+        self.result.companyType = text;
     }else if (type ==2){
-        self.req.companySize = text;
+        self.result.companySize = text;
     }else if (type ==3){
-        self.req.teamSize = text;
+        self.result.teamSize = text;
     }
     [self.tableview reloadData];
 }
 -(void)pressSend{
-    self.req.appId = @"1041622992853962754";
-    self.req.timestamp = @"0";
-    self.req.platform = @"ios";
-    self.req.token = [UserCacheBean share].userInfo.token;
+    self.result.appId = @"1041622992853962754";
+    self.result.timestamp = @"0";
+    self.result.platform = @"ios";
+    self.result.token = [UserCacheBean share].userInfo.token;
     __weak typeof(self)weakself = self;
-    [[MineServiceApi share]applyForWithParam:self.req response:^(id response) {
+    [[MineServiceApi share]changeMemberInfoWithParam:self.result response:^(id response) {
         if (response) {
             [weakself showInfo:response[@"message"]];
         }
@@ -327,7 +351,7 @@
 {
     self.pickerView.hidden = YES;
     
-    self.req.location = [NSString stringWithFormat:@"%@  %@  %@",province,city,area];
+    self.result.province = [NSString stringWithFormat:@"%@%@",province,city];
     [self.tableview reloadData];
 }
 
@@ -399,13 +423,7 @@
         NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSArray *result = [ImageModel mj_objectArrayWithKeyValuesArray:dic[@"data"]];
         ImageModel*model = [result firstObject];
-        if (weakself.ImageType==0) {
-            weakself.req.companyLogoId = model.fileId;
-            weakself.req.companyLogoPath = model.fileOriginalPath;
-        }else if (weakself.ImageType ==1){
-            weakself.req.businessLicenseId = model.fileId;
-            weakself.req.businessLicensePath = model.fileOriginalPath;
-        }
+        weakself.result.memberAvatarPath = model.fileOriginalPath;
         [weakself showInfo:@"上传成功"];
         [weakself.tableview reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

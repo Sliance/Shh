@@ -540,7 +540,7 @@
 ///微信支付
 -(void)getWxPayWithParam:(FreeListReq *) req response:(responseModel) responseModel{
     NSDictionary *dic = [req mj_keyValues];
-    [[ZSAPIProxy shareProxy] callPOSTWithUrl:wx_pay_url Params:dic isShowLoading:NO successCallBack:^(ZSURLResponse *response) {
+    [[ZSAPIProxy shareProxy] callPOSTWithUrl:wx_pay_url Params:dic isShowLoading:YES successCallBack:^(ZSURLResponse *response) {
         if ([response.content isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dicResponse = (NSDictionary *) response.content;
             if ([dicResponse[@"code"] integerValue] == 200) {
@@ -565,7 +565,7 @@
 ///支付宝支付
 -(void)getAlipayWithParam:(FreeListReq *) req response:(responseModel) responseModel{
     NSDictionary *dic = [req mj_keyValues];
-    [[ZSAPIProxy shareProxy] callPOSTWithUrl:alipay_pay_url Params:dic isShowLoading:NO successCallBack:^(ZSURLResponse *response) {
+    [[ZSAPIProxy shareProxy] callPOSTWithUrl:alipay_pay_url Params:dic isShowLoading:YES successCallBack:^(ZSURLResponse *response) {
         if ([response.content isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dicResponse = (NSDictionary *) response.content;
             if ([dicResponse[@"code"] integerValue] == 200) {

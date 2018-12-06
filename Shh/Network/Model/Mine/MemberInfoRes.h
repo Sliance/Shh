@@ -2,15 +2,15 @@
 //  MemberInfoRes.h
 //  Shh
 //
-//  Created by zhangshu on 2018/11/28.
+//  Created by zhangshu on 2018/12/6.
 //  Copyright © 2018 zhangshu. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "BaseModelReq.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MemberInfoRes : NSObject
+@interface MemberInfoRes : BaseModelReq
 ///
 @property(nonatomic,copy)NSString *city;
 ///
