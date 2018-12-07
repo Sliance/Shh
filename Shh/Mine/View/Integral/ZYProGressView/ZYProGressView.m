@@ -73,7 +73,7 @@
 -(void)setProgressValue:(NSString *)progressValue
 {
     if (!_time) {
-        _time = 3.0f;
+        _time = 0.0f;
     }
     _progressValue = progressValue;
     self.percentView.text = [NSString stringWithFormat:@"%.0f%%",progressValue.floatValue*100];
