@@ -18,7 +18,8 @@
 #import "CollectionRes.h"
 #import "FollowRes.h"
 #import "TodayListRes.h"
-
+#import "IntegralRes.h"
+#import "MineMedalRes.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -61,6 +62,17 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)getTeacherArticleWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///我关注的授课师的课程
 -(void)getTeacherCourseWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+
+///积分明细
+-(void)getIntegralDetailWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///积分排行
+-(void)getIntegralRankWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///勋章
+-(void)getmMineMedalWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END

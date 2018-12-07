@@ -25,12 +25,12 @@
     [self.headView addSubview:self.hYimage];
     [self.headView addSubview:self.hYtitle];
     
-    NSArray *imageArr= @[@"\U0000e908",@"\U0000e924",@"\U0000e922",@"\U0000e919",@"\U0000e917",@"\U0000e900"];
-    //@"\U0000e90c",@"\U0000e92a",@"\U0000e907"
-    NSArray *dataArr = @[@"我的购买",@"我的收藏",@"我的关注",@"设置",@"入驻思和会",@"帮助中心"];
-//    @"我的积分",@"我的勋章",
-    for (int i = 0; i<6; i++) {
-        MineTypeBtn *btn = [[MineTypeBtn alloc]initWithFrame:CGRectMake(i%3*(SCREENWIDTH/3-10), 80+i/3*115, SCREENWIDTH/3-10, 115)];
+    NSArray *imageArr= @[@"\U0000e908",@"\U0000e90c",@"\U0000e92a",@"\U0000e924",@"\U0000e922",@"\U0000e919",@"\U0000e917",@"\U0000e900"];
+    //@"\U0000e907"
+    NSArray *dataArr = @[@"我的购买",@"我的积分",@"我的勋章",@"我的收藏",@"我的关注",@"设置",@"入驻思和会",@"帮助中心"];
+
+    for (int i = 0; i<imageArr.count; i++) {
+        MineTypeBtn *btn = [[MineTypeBtn alloc]initWithFrame:CGRectMake(i%3*(SCREENWIDTH/3-10), 70+i/3*88, SCREENWIDTH/3-10, 88)];
         btn.imageLabel.font = [UIFont fontWithName:@"icomoon"size:26];
         btn.imageLabel.text = imageArr[i];
         btn.typeLabel.text = dataArr[i];

@@ -251,6 +251,15 @@
 		8924E37021AE3018003A1152 /* SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8924E36F21AE3018003A1152 /* SettingCell.m */; };
 		8924E37321AE3A18003A1152 /* RegisterAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8924E37221AE3A18003A1152 /* RegisterAlertView.m */; };
 		8924E37621AE453B003A1152 /* AgreeMentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8924E37521AE453B003A1152 /* AgreeMentController.m */; };
+		893EF0A921BA14170049B529 /* MineIntegralController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893EF0A821BA14170049B529 /* MineIntegralController.m */; };
+		893EF0AC21BA14740049B529 /* MineMedalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893EF0AB21BA14740049B529 /* MineMedalController.m */; };
+		893EF0B021BA16320049B529 /* IntegralHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 893EF0AF21BA16320049B529 /* IntegralHeadView.m */; };
+		893EF0B321BA1DF10049B529 /* IntegralRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 893EF0B221BA1DF10049B529 /* IntegralRes.m */; };
+		893EF0B621BA3F490049B529 /* IntegralCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 893EF0B521BA3F490049B529 /* IntegralCell.m */; };
+		893EF0B921BA3F630049B529 /* IntegralRankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 893EF0B821BA3F630049B529 /* IntegralRankCell.m */; };
+		893EF0BC21BA705B0049B529 /* MineMedalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 893EF0BB21BA705B0049B529 /* MineMedalCell.m */; };
+		893EF0BF21BA727B0049B529 /* MineMedalRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 893EF0BE21BA727B0049B529 /* MineMedalRes.m */; };
+		893EF0C321BA86760049B529 /* ZYProGressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 893EF0C221BA86760049B529 /* ZYProGressView.m */; };
 		895DBF70217980C200E65B16 /* BannersReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF6F217980C200E65B16 /* BannersReq.m */; };
 		895DBF7C21798CBD00E65B16 /* FreeListReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7B21798CBD00E65B16 /* FreeListReq.m */; };
 		895DBF7F21798E3500E65B16 /* BannerRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7E21798E3500E65B16 /* BannerRes.m */; };
@@ -806,6 +815,24 @@
 		8924E37221AE3A18003A1152 /* RegisterAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterAlertView.m; sourceTree = "<group>"; };
 		8924E37421AE453B003A1152 /* AgreeMentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AgreeMentController.h; sourceTree = "<group>"; };
 		8924E37521AE453B003A1152 /* AgreeMentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgreeMentController.m; sourceTree = "<group>"; };
+		893EF0A721BA14170049B529 /* MineIntegralController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineIntegralController.h; sourceTree = "<group>"; };
+		893EF0A821BA14170049B529 /* MineIntegralController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineIntegralController.m; sourceTree = "<group>"; };
+		893EF0AA21BA14740049B529 /* MineMedalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineMedalController.h; sourceTree = "<group>"; };
+		893EF0AB21BA14740049B529 /* MineMedalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineMedalController.m; sourceTree = "<group>"; };
+		893EF0AE21BA16320049B529 /* IntegralHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegralHeadView.h; sourceTree = "<group>"; };
+		893EF0AF21BA16320049B529 /* IntegralHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntegralHeadView.m; sourceTree = "<group>"; };
+		893EF0B121BA1DF10049B529 /* IntegralRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegralRes.h; sourceTree = "<group>"; };
+		893EF0B221BA1DF10049B529 /* IntegralRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntegralRes.m; sourceTree = "<group>"; };
+		893EF0B421BA3F490049B529 /* IntegralCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegralCell.h; sourceTree = "<group>"; };
+		893EF0B521BA3F490049B529 /* IntegralCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntegralCell.m; sourceTree = "<group>"; };
+		893EF0B721BA3F630049B529 /* IntegralRankCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntegralRankCell.h; sourceTree = "<group>"; };
+		893EF0B821BA3F630049B529 /* IntegralRankCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntegralRankCell.m; sourceTree = "<group>"; };
+		893EF0BA21BA705B0049B529 /* MineMedalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineMedalCell.h; sourceTree = "<group>"; };
+		893EF0BB21BA705B0049B529 /* MineMedalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineMedalCell.m; sourceTree = "<group>"; };
+		893EF0BD21BA727B0049B529 /* MineMedalRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineMedalRes.h; sourceTree = "<group>"; };
+		893EF0BE21BA727B0049B529 /* MineMedalRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineMedalRes.m; sourceTree = "<group>"; };
+		893EF0C121BA86760049B529 /* ZYProGressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYProGressView.h; sourceTree = "<group>"; };
+		893EF0C221BA86760049B529 /* ZYProGressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYProGressView.m; sourceTree = "<group>"; };
 		895DBF6E217980C200E65B16 /* BannersReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannersReq.h; sourceTree = "<group>"; };
 		895DBF6F217980C200E65B16 /* BannersReq.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannersReq.m; sourceTree = "<group>"; };
 		895DBF7A21798CBD00E65B16 /* FreeListReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeListReq.h; sourceTree = "<group>"; };
@@ -1035,10 +1062,13 @@
 		5AEA797E21B273A4007C0DB7 /* foot */ = {
 			isa = PBXGroup;
 			children = (
+				893EF0A621BA13F90049B529 /* integral */,
 				8915D70021B7BA86000C9718 /* Ffollow */,
 				5AEA799521B28A59007C0DB7 /* collect */,
 				5AEA798521B27507007C0DB7 /* MinePurchaseController.h */,
 				5AEA798621B27507007C0DB7 /* MinePurchaseController.m */,
+				893EF0AA21BA14740049B529 /* MineMedalController.h */,
+				893EF0AB21BA14740049B529 /* MineMedalController.m */,
 			);
 			path = foot;
 			sourceTree = "<group>";
@@ -1206,6 +1236,7 @@
 		886B978E2136714A0074322D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				893EF0AD21BA16150049B529 /* Integral */,
 				8915D70821B7BB30000C9718 /* History */,
 				8915D70721B7BB14000C9718 /* EnterShh */,
 				8915D70621B7BAF8000C9718 /* Mine */,
@@ -2208,8 +2239,46 @@
 				5AEA79AA21B2D692007C0DB7 /* FollowRes.m */,
 				891188F821B9290D002A545B /* MemberInfoRes.h */,
 				891188F921B9290D002A545B /* MemberInfoRes.m */,
+				893EF0B121BA1DF10049B529 /* IntegralRes.h */,
+				893EF0B221BA1DF10049B529 /* IntegralRes.m */,
+				893EF0BD21BA727B0049B529 /* MineMedalRes.h */,
+				893EF0BE21BA727B0049B529 /* MineMedalRes.m */,
 			);
 			path = Mine;
+			sourceTree = "<group>";
+		};
+		893EF0A621BA13F90049B529 /* integral */ = {
+			isa = PBXGroup;
+			children = (
+				893EF0A721BA14170049B529 /* MineIntegralController.h */,
+				893EF0A821BA14170049B529 /* MineIntegralController.m */,
+			);
+			path = integral;
+			sourceTree = "<group>";
+		};
+		893EF0AD21BA16150049B529 /* Integral */ = {
+			isa = PBXGroup;
+			children = (
+				893EF0C021BA864A0049B529 /* ZYProGressView */,
+				893EF0AE21BA16320049B529 /* IntegralHeadView.h */,
+				893EF0AF21BA16320049B529 /* IntegralHeadView.m */,
+				893EF0B421BA3F490049B529 /* IntegralCell.h */,
+				893EF0B521BA3F490049B529 /* IntegralCell.m */,
+				893EF0B721BA3F630049B529 /* IntegralRankCell.h */,
+				893EF0B821BA3F630049B529 /* IntegralRankCell.m */,
+				893EF0BA21BA705B0049B529 /* MineMedalCell.h */,
+				893EF0BB21BA705B0049B529 /* MineMedalCell.m */,
+			);
+			path = Integral;
+			sourceTree = "<group>";
+		};
+		893EF0C021BA864A0049B529 /* ZYProGressView */ = {
+			isa = PBXGroup;
+			children = (
+				893EF0C121BA86760049B529 /* ZYProGressView.h */,
+				893EF0C221BA86760049B529 /* ZYProGressView.m */,
+			);
+			path = ZYProGressView;
 			sourceTree = "<group>";
 		};
 		895DBF6A21797F5900E65B16 /* Model */ = {
@@ -2577,6 +2646,7 @@
 				891E2550219C3891009A7F72 /* DetailServiceRes.m in Sources */,
 				887E03B5212FB1B50013472F /* HomeGivingCell.m in Sources */,
 				886B98332136B7FD0074322D /* UIViewController+Loading.m in Sources */,
+				893EF0B621BA3F490049B529 /* IntegralCell.m in Sources */,
 				89F03C5921AFC36B00218809 /* EnterShhController.m in Sources */,
 				886B978D213647430074322D /* ServiceHeadView.m in Sources */,
 				886B97F82136B7BE0074322D /* FilePathManager.m in Sources */,
@@ -2628,6 +2698,7 @@
 				886B97F02136B7BE0074322D /* UserCacheBean.m in Sources */,
 				886B982E2136B7FD0074322D /* UIImage+RoundedCorner.m in Sources */,
 				8921F7FA21B60EBE00F9FE10 /* SJVideoPlayerDraggingProgressView.m in Sources */,
+				893EF0B921BA3F630049B529 /* IntegralRankCell.m in Sources */,
 				89D4C9B6219E8D5F00566685 /* EmojiButtonView.m in Sources */,
 				898569E521B778A50016A24A /* ImageModel.m in Sources */,
 				886B978721363B280074322D /* TrainingServicesCell.m in Sources */,
@@ -2682,6 +2753,7 @@
 				89F1ADFA219050BC009A872A /* CourseListController.m in Sources */,
 				89DBCB9521805DC300E66B85 /* DryHeadlinesController.m in Sources */,
 				89F03C6821AFEA8000218809 /* ApplyCustomCell.m in Sources */,
+				893EF0AC21BA14740049B529 /* MineMedalController.m in Sources */,
 				8901A29A217DDF1B00587310 /* TodayListRes.m in Sources */,
 				886DB968212E85A900CF8C64 /* ServiceController.m in Sources */,
 				886B982C2136B7FD0074322D /* UIImage+Alpha.m in Sources */,
@@ -2696,6 +2768,7 @@
 				8824EAE4212FDB6B000CBA7E /* UIViewController+VTMagic.m in Sources */,
 				8924E36A21AE29D7003A1152 /* LoginReq.m in Sources */,
 				8921F7D521B60EBE00F9FE10 /* SJButtonProgressSlider.m in Sources */,
+				893EF0BF21BA727B0049B529 /* MineMedalRes.m in Sources */,
 				89E0C0EE21AE772900D18C44 /* PersonInfoController.m in Sources */,
 				89085E992191914800259A68 /* DetailCourseController.m in Sources */,
 				8921F7E621B60EBE00F9FE10 /* SJVideoPlayerMoreSetting+Exe.m in Sources */,
@@ -2709,6 +2782,7 @@
 				89D4C9B9219E8D5F00566685 /* EmotionImages.m in Sources */,
 				8921F7EF21B60EBE00F9FE10 /* SJButtonItemCollectionViewCell.m in Sources */,
 				8824EAE2212FDB6B000CBA7E /* UIColor+VTMagic.m in Sources */,
+				893EF0BC21BA705B0049B529 /* MineMedalCell.m in Sources */,
 				8849B8512135452C00CAE299 /* MenuInfo.m in Sources */,
 				887E03AF212FB1190013472F /* HomeFreeCell.m in Sources */,
 				8921F80C21B612B300F9FE10 /* SJTableHeaderView.m in Sources */,
@@ -2732,6 +2806,7 @@
 				8824EAE8212FDB6B000CBA7E /* VTMenuBar.m in Sources */,
 				89F03C5F21AFC8F400218809 /* EnterShhHeadView.m in Sources */,
 				891E254D219C30CD009A7F72 /* ServiceDetailView.m in Sources */,
+				893EF0A921BA14170049B529 /* MineIntegralController.m in Sources */,
 				89085E9F2191B04400259A68 /* DetailCourseRes.m in Sources */,
 				89D4C9B5219E8D5F00566685 /* UITextView+Category.m in Sources */,
 				89085E9C2191915B00259A68 /* DetailArticleController.m in Sources */,
@@ -2770,6 +2845,7 @@
 				886B97F52136B7BE0074322D /* ZSURLResponse.m in Sources */,
 				886B97E32136B7BE0074322D /* BaseApi.m in Sources */,
 				8921F82321B6871E00F9FE10 /* FollowReq.m in Sources */,
+				893EF0B321BA1DF10049B529 /* IntegralRes.m in Sources */,
 				886B97F92136B7BE0074322D /* ImageUtils.m in Sources */,
 				5AEA799021B28672007C0DB7 /* FinshDownController.m in Sources */,
 				886B97F32136B7BE0074322D /* ZSRequestGenerator.m in Sources */,
@@ -2801,6 +2877,7 @@
 				88483F4D2137C63B004CA3FA /* QualityCollectionCell.m in Sources */,
 				8921F7ED21B60EBE00F9FE10 /* SJLoadingView.m in Sources */,
 				5AEA797421B272BA007C0DB7 /* KKClassificationView.m in Sources */,
+				893EF0C321BA86760049B529 /* ZYProGressView.m in Sources */,
 				8921F7E821B60EBE00F9FE10 /* SJVideoPlayerMoreSettingsSlidersView.m in Sources */,
 				886DB94F212E83C200CF8C64 /* ShhTabBarController.m in Sources */,
 				8921F80321B60EBE00F9FE10 /* SJFilmEditingControlLayer.m in Sources */,
@@ -2832,6 +2909,7 @@
 				886B97F72136B7BE0074322D /* DSBaseModel.m in Sources */,
 				89085E9021917E4F00259A68 /* AllServiceListController.m in Sources */,
 				8921F7FE21B60EBE00F9FE10 /* SJEdgeControlLayerLoader.m in Sources */,
+				893EF0B021BA16320049B529 /* IntegralHeadView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

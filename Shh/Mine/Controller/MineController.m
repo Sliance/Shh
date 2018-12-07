@@ -23,6 +23,8 @@
 #import "MinePurchaseController.h"
 #import "MemberShipController.h"
 #import "PromoteQrController.h"
+#import "MineMedalController.h"
+#import "MineIntegralController.h"
 
 @interface MineController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIScrollView *bgscrollow;
@@ -106,33 +108,47 @@
                 break;
             case 1:
             {
-                CollectionBaseController *setVC = [[CollectionBaseController alloc]init];
+                MineIntegralController *setVC = [[MineIntegralController alloc]init];
                 setVC.hidesBottomBarWhenPushed = YES;
                 [weakself.navigationController pushViewController:setVC animated:YES];
             }
                 break;
             case 2:
             {
-                MineFollowController *setVC = [[MineFollowController alloc]init];
+                MineMedalController *setVC = [[MineMedalController alloc]init];
                 setVC.hidesBottomBarWhenPushed = YES;
                 [weakself.navigationController pushViewController:setVC animated:YES];
             }
                 break;
             case 3:
             {
-                SettingController *setVC = [[SettingController alloc]init];
+                CollectionBaseController *setVC = [[CollectionBaseController alloc]init];
                 setVC.hidesBottomBarWhenPushed = YES;
                 [weakself.navigationController pushViewController:setVC animated:YES];
             }
                 break;
             case 4:
             {
+                MineFollowController *setVC = [[MineFollowController alloc]init];
+                setVC.hidesBottomBarWhenPushed = YES;
+                [weakself.navigationController pushViewController:setVC animated:YES];
+            }
+                break;
+            case 5:
+            {
+                SettingController *setVC = [[SettingController alloc]init];
+                setVC.hidesBottomBarWhenPushed = YES;
+                [weakself.navigationController pushViewController:setVC animated:YES];
+            }
+                break;
+            case 6:
+            {
                 EnterShhController *enterVC = [[EnterShhController alloc]init];
                 enterVC.hidesBottomBarWhenPushed = YES;
                 [weakself.navigationController pushViewController:enterVC animated:YES];
             }
                 break;
-            case 5:
+            case 7:
             {
                     HelpCenterController *helpVC = [[HelpCenterController alloc]init];
                     helpVC.hidesBottomBarWhenPushed = YES;

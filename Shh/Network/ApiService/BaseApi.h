@@ -115,6 +115,12 @@
 
 ///修改个人信息
 #define update_Info_url  @"/sihehui/member/desktop/v1/update/info"
+///积分明细
+#define mine_Integral  @"/sihehui/member/integral/desktop/v1/list"
+///积分排行
+#define rank_Integral  @"/sihehui/member/integral/desktop/v1/rank"
+///勋章
+#define mine_medal  @"/sihehui/member/badge/desktop/v1/list"
 
 typedef void(^responseModel)(id response);
 @interface BaseApi : NSObject
