@@ -137,7 +137,7 @@ static InputToolbar* _instance = nil;
     [UIView animateWithDuration:duration animations:^{
         self.y = keyboardFrame.origin.y - InputToolbarHeight;
     }];
-    _inputToolbarFrameChange(self.height,self.y);
+    _inputToolbarFrameChange(self.height,InputToolbarHeight);
     self.keyboardIsVisiable = NO;
     [self setShowKeyboardButton:NO];
 }
@@ -276,7 +276,7 @@ static InputToolbar* _instance = nil;
     if ([text isEqualToString:@"\n"]) {
         if (_sendContent) {
             _sendContent(self.textUpload.text);
-            self.y = SCREEN_HEIGHT - _keyboardHeight - 49;
+            self.y = SCREEN_HEIGHT -InputToolbarHeight;
             _inputToolbarFrameChange(self.height,self.y);
         }
         textView.text = nil;

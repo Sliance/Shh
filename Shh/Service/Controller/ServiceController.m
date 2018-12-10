@@ -45,7 +45,7 @@
 
 -(ServiceHeadView *)headview{
     if (!_headview) {
-        _headview = [[ServiceHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 235)];
+        _headview = [[ServiceHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200*SCREENWIDTH/375+65)];
         [_headview.memberBtn addTarget:self action:@selector(addMember) forControlEvents:UIControlEventTouchUpInside];
     }
     return _headview;

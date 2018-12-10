@@ -12,7 +12,7 @@
 
 -(ZSCycleScrollView *)cycleView{
     if (!_cycleView) {
-        _cycleView = [[ZSCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 169)];
+        _cycleView = [[ZSCycleScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200*SCREENWIDTH/375)];
         _cycleView.delegate = self;
         _cycleView.autoScrollTimeInterval = 3.0;
         _cycleView.dotColor = [UIColor whiteColor];
@@ -21,7 +21,7 @@
 }
 -(ZSSortSelectorView *)selectorView{
     if (!_selectorView) {
-        _selectorView = [[ZSSortSelectorView alloc]initWithFrame:CGRectMake(0,  169, SCREENWIDTH, 40)];
+        _selectorView = [[ZSSortSelectorView alloc]initWithFrame:CGRectMake(0,  200*SCREENWIDTH/375, SCREENWIDTH, 40)];
         _selectorView.delegate = self;
         
     }

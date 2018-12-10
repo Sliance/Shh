@@ -17,7 +17,9 @@
 #import "UIView+Extension.h"
 #import "HgMusicPlayerManager.h"
 #import "PayViewController.h"
-
+#import "SuspensionAudioView.h"
+#import "AudioPlayController.h"
+#import "HgSongInfo.h"
 @interface DetailAudioController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)NSMutableArray *courseArr;
 @property(nonatomic,strong)NSMutableArray *commentArr;
@@ -30,6 +32,9 @@
 @property (nonatomic,assign)CGFloat inputToolbarY;
 @property(nonatomic,strong)CommentReq *commentReq;
 @property(nonatomic,strong)SingleCourseDrectoryRes *audioRes;
+@property(nonatomic,strong)SuspensionAudioView *susView;
+@property (nonatomic,strong)NSTimer *timer;
+@property(nonatomic,assign)NSInteger second;
 
 @end
 
@@ -56,12 +61,27 @@
     }
     return _footView;
 }
+-(SuspensionAudioView *)susView{
+    if (!_susView) {
+        _susView = [[SuspensionAudioView alloc]initWithFrame:CGRectMake(30, SCREENHEIGHT-[self tabBarHeight]-85, SCREENWIDTH-60, 80)];
+        [_susView.layer setCornerRadius:4];
+        [_susView.layer setMasksToBounds:YES];
+        _susView.hidden = YES;
+        _susView.backgroundColor = [UIColor whiteColor];
+        [_susView.layer setBorderColor:DSColorFromHex(0x969696).CGColor];
+        [_susView.layer setBorderWidth:0.5];
+        
+    }
+    return _susView;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableview];
+    [self.view addSubview:self.susView];
     self.tableview.tableHeaderView = self.headView;
     self.courseArr = [NSMutableArray array];
     self.commentArr = [NSMutableArray array];
+    
     self.commentReq = [[CommentReq alloc]init];
     self.commentReq.beCommentId = @"";
     self.commentReq.beCommentMemberId = @"";
@@ -75,14 +95,8 @@
     }];
     [self.headView setPlayBlock:^(BOOL selected) {
         if (self.detailCourse.memberIsBuyThisCourse ==YES  ) {
-            if (selected ==NO) {
-                 [[HgMusicPlayerManager shared]play:weakself.audioRes.courseMediaPath];
-                weakself.headView.selected = YES;
-            }else{
-                [[HgMusicPlayerManager shared]stopPlay];
-                weakself.headView.selected = NO;
-                
-            }
+            weakself.susView.hidden = NO;
+            
            
         }else{
             if ([UserCacheBean share].userInfo.token.length>0) {
@@ -96,6 +110,25 @@
                 [weakself.navigationController pushViewController:loginVC animated:YES];
             }
         }
+    }];
+    [self.susView setPlayBlock:^(BOOL selected) {
+        if (selected ==NO) {
+            weakself.susView.playBtn.selected = YES;
+            [[HgMusicPlayerManager shared]play:weakself.audioRes.courseMediaPath];
+             [weakself.timer setFireDate:[NSDate distantPast]]; //很远的过去
+        }else{
+            weakself.susView.playBtn.selected = NO;
+            [[HgMusicPlayerManager shared]stopPlay];
+             [weakself.timer setFireDate:[NSDate distantFuture]];  //很远的将来
+            
+        }
+    }];
+    [self.susView setDetailBlock:^{
+        weakself.susView.playBtn.selected = NO;
+        [[HgMusicPlayerManager shared]stopPlay];
+        AudioPlayController*audioVC = [[AudioPlayController alloc]init];
+        [audioVC setAudioRes:weakself.audioRes];
+        [weakself.navigationController pushViewController:audioVC animated:YES];
     }];
     [self.headView setFouceBlock:^(BOOL selected) {
         if ([UserCacheBean share].userInfo.token.length>0) {
@@ -120,7 +153,9 @@
     [self.inputToolbar setMorebuttonViewDelegate:self];
     
     self.inputToolbar.sendContent = ^(NSObject *content){
-        
+        weakself.inputToolbar.isBecomeFirstResponder = NO;
+        weakself.inputToolbarY = [weakself navHeightWithHeight];
+        weakself.susView.frame =  CGRectMake(30, SCREENHEIGHT-[self tabBarHeight]-85, SCREENWIDTH-60, 80);
         if ([UserCacheBean share].userInfo.token.length>0) {
             [weakself addComment:(NSString*)content];
         }else{
@@ -135,6 +170,8 @@
         if (weakself.tableview.contentSize.height > orignY) {
             [weakself.tableview setContentOffset:CGPointMake(0, weakself.tableview.contentSize.height - orignY) animated:YES];
         }
+        weakself.susView.frame =  CGRectMake(30, orignY-90, SCREENWIDTH-60, 80);
+        
     };
     [self.inputToolbar setZanBlock:^(BOOL selected) {
         if ([UserCacheBean share].userInfo.token.length>0) {
@@ -156,12 +193,24 @@
     }];
     
     [self.inputToolbar resetInputToolbar];
-   
+    self.timer =  [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
+    [weakself.timer setFireDate:[NSDate distantFuture]];  //很远的将来
+}
+-(void)updateTime{
+    self.second +=1;
+    NSInteger minute = self.second/60;
+    NSInteger ss = self.second%60;
+    self.susView.dateLabel.text = [NSString stringWithFormat:@"%.2ld:%.2ld",minute,ss];
 }
 - (void)dealloc {
     NSLog(@"dealloc");
 }
-
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [[HgMusicPlayerManager shared]stopPlay];
+    [self.timer invalidate];
+    self.timer = nil;
+}
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     self.inputToolbar.isBecomeFirstResponder = NO;
@@ -300,6 +349,7 @@
             if (weakself.detailCourse.courseList.count>0) {
                 CourseListModel *model = [weakself.detailCourse.courseList firstObject];
                 [weakself.headView setDetailCourse:weakself.detailCourse];
+                [weakself.susView setDetailCourse:weakself.detailCourse];
                 [weakself getSingleFind:model.courseListId];
             }
             weakself.inputToolbar.emojiButton.selected = weakself.detailCourse.memberIsLike;
@@ -456,7 +506,6 @@
     return cell;
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-     self.inputToolbar.isBecomeFirstResponder = NO;
-}
+
+
 @end

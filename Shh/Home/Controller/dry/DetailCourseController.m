@@ -125,7 +125,8 @@
     [self.inputToolbar setMorebuttonViewDelegate:self];
     
     self.inputToolbar.sendContent = ^(NSObject *content){
-        
+        weakself.inputToolbar.isBecomeFirstResponder = NO;
+        weakself.inputToolbarY = [weakself navHeightWithHeight];
         if ([UserCacheBean share].userInfo.token.length>0) {
             [weakself addComment:(NSString*)content];
         }else{
@@ -495,9 +496,7 @@
     [cell setModel:becommentmodel];
     return cell;
 }
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-     self.inputToolbar.isBecomeFirstResponder = NO;
-}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.headView.player vc_viewDidAppear];

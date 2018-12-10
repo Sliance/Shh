@@ -190,7 +190,7 @@ static NSString *givecellIds = @"HomeGivingCell";
     
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    return CGSizeMake(SCREENWIDTH, 210);
+    return CGSizeMake(SCREENWIDTH, 200*SCREENWIDTH/375+40);
     
 }
 
@@ -212,7 +212,7 @@ static NSString *givecellIds = @"HomeGivingCell";
         }
     }
     CourseHeadView *courseView = [[CourseHeadView alloc]init];
-    courseView.frame = CGRectMake(0, 0, SCREENWIDTH, 210);
+    courseView.frame = CGRectMake(0, 0, SCREENWIDTH, 200*SCREENWIDTH/375+40);
     NSMutableArray *arr = [NSMutableArray array];
     [arr addObject:@"分类"];
     for (CourseSortRes *model in self.sortArr) {

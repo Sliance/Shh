@@ -31,7 +31,7 @@
     if (!_playBtn) {
         _playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_playBtn setImage:[UIImage imageNamed:@"bofang"] forState:UIControlStateNormal];
-        [_playBtn setImage:[UIImage imageNamed:@"zanting"] forState:UIControlStateSelected];
+        [_playBtn setImage:[UIImage imageNamed:@"bofang"] forState:UIControlStateSelected];
         [_playBtn addTarget:self action:@selector(pressPlay) forControlEvents:UIControlEventTouchUpInside];
     }
     return _playBtn;
@@ -39,12 +39,13 @@
 -(UIButton *)suoBtn{
     if (!_suoBtn) {
         _suoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_suoBtn setImage:[UIImage imageNamed:@"suo"] forState:UIControlStateNormal];
-        [_suoBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateSelected];
-        [_suoBtn setTitleColor:DSColorFromHex(0x969696) forState:UIControlStateNormal];
-        [_suoBtn setTitle:@"" forState:UIControlStateNormal];
+//         [_suoBtn setTitle:@"" forState:UIControlStateNormal];
+//        [_suoBtn setImage:[UIImage imageNamed:@"suo"] forState:UIControlStateNormal];
         [_suoBtn setTitle:@"已购买" forState:UIControlStateSelected];
+        [_suoBtn setImage:[UIImage imageNamed:@"111"] forState:UIControlStateSelected];
+        [_suoBtn setTitleColor:DSColorFromHex(0x969696) forState:UIControlStateSelected];
         _suoBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        _suoBtn.selected = NO;
     }
     return _suoBtn;
 }
@@ -104,6 +105,14 @@
     NSString *time = [NSString stringWithFormat:@"%.2ld:%.2ld",model.courseMediaDuration
                       /60,model.courseMediaDuration%60];
     self.contentLabel.text = [NSString stringWithFormat:@"%@/%@人学过",time,model.watch];
+    self.suoBtn.selected = model.memberIsBuyThisCourse;
+    if (_suoBtn.selected ==YES) {
+        [_suoBtn setImage:[UIImage imageNamed:@"111"] forState:UIControlStateSelected];
+         [_suoBtn setTitle:@"已购买" forState:UIControlStateSelected];
+    }else{
+        [_suoBtn setTitle:@"" forState:UIControlStateNormal];
+        [_suoBtn setImage:[UIImage imageNamed:@"suo"] forState:UIControlStateNormal];
+    }
 }
 -(void)pressPlay{
     self.playBlock(self.playBtn.selected);

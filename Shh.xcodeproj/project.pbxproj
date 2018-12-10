@@ -148,6 +148,13 @@
 		8905C2B52192B9F300403EC2 /* ZSNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 8905C2B32192B9F200403EC2 /* ZSNotification.m */; };
 		8905C2B82193027300403EC2 /* CommentHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8905C2B72193027300403EC2 /* CommentHeadCell.m */; };
 		8905C2BB2193029D00403EC2 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8905C2BA2193029D00403EC2 /* CommentCell.m */; };
+		8905E85721BDF9BF001C0BB4 /* SuspensionAudioView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8905E85621BDF9BF001C0BB4 /* SuspensionAudioView.m */; };
+		8905E85A21BE05BC001C0BB4 /* AudioPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8905E85921BE05BC001C0BB4 /* AudioPlayController.m */; };
+		8905E85D21BE1478001C0BB4 /* HgMusicBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8905E85C21BE1478001C0BB4 /* HgMusicBottomView.m */; };
+		8905E86021BE1BA1001C0BB4 /* HgSongInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8905E85F21BE1BA1001C0BB4 /* HgSongInfo.m */; };
+		8905E86321BE1BFF001C0BB4 /* HgMusicInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8905E86221BE1BFF001C0BB4 /* HgMusicInfoModel.m */; };
+		8905E86621BE3A27001C0BB4 /* NSObject+Hg.m in Sources */ = {isa = PBXBuildFile; fileRef = 8905E86421BE3A27001C0BB4 /* NSObject+Hg.m */; };
+		8905E86921BE6C24001C0BB4 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8905E86821BE6C24001C0BB4 /* AboutController.m */; };
 		89085E892191743900259A68 /* AllRecommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085E882191743900259A68 /* AllRecommentController.m */; };
 		89085E8D21917DCD00259A68 /* AllTrainingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085E8C21917DCD00259A68 /* AllTrainingController.m */; };
 		89085E9021917E4F00259A68 /* AllServiceListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89085E8F21917E4F00259A68 /* AllServiceListController.m */; };
@@ -623,6 +630,20 @@
 		8905C2B72193027300403EC2 /* CommentHeadCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentHeadCell.m; sourceTree = "<group>"; };
 		8905C2B92193029D00403EC2 /* CommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		8905C2BA2193029D00403EC2 /* CommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		8905E85521BDF9BF001C0BB4 /* SuspensionAudioView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuspensionAudioView.h; sourceTree = "<group>"; };
+		8905E85621BDF9BF001C0BB4 /* SuspensionAudioView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SuspensionAudioView.m; sourceTree = "<group>"; };
+		8905E85821BE05BC001C0BB4 /* AudioPlayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioPlayController.h; sourceTree = "<group>"; };
+		8905E85921BE05BC001C0BB4 /* AudioPlayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioPlayController.m; sourceTree = "<group>"; };
+		8905E85B21BE1478001C0BB4 /* HgMusicBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HgMusicBottomView.h; sourceTree = "<group>"; };
+		8905E85C21BE1478001C0BB4 /* HgMusicBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HgMusicBottomView.m; sourceTree = "<group>"; };
+		8905E85E21BE1BA0001C0BB4 /* HgSongInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HgSongInfo.h; sourceTree = "<group>"; };
+		8905E85F21BE1BA1001C0BB4 /* HgSongInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HgSongInfo.m; sourceTree = "<group>"; };
+		8905E86121BE1BFE001C0BB4 /* HgMusicInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HgMusicInfoModel.h; sourceTree = "<group>"; };
+		8905E86221BE1BFF001C0BB4 /* HgMusicInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HgMusicInfoModel.m; sourceTree = "<group>"; };
+		8905E86421BE3A27001C0BB4 /* NSObject+Hg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Hg.m"; sourceTree = "<group>"; };
+		8905E86521BE3A27001C0BB4 /* NSObject+Hg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Hg.h"; sourceTree = "<group>"; };
+		8905E86721BE6C24001C0BB4 /* AboutController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
+		8905E86821BE6C24001C0BB4 /* AboutController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
 		89085E872191743900259A68 /* AllRecommentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllRecommentController.h; sourceTree = "<group>"; };
 		89085E882191743900259A68 /* AllRecommentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllRecommentController.m; sourceTree = "<group>"; };
 		89085E8B21917DCD00259A68 /* AllTrainingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllTrainingController.h; sourceTree = "<group>"; };
@@ -1030,6 +1051,16 @@
 			children = (
 				5ABE840E21B3FC460064C7DE /* HgMusicPlayerManager.h */,
 				5ABE840D21B3FC460064C7DE /* HgMusicPlayerManager.m */,
+				8905E85521BDF9BF001C0BB4 /* SuspensionAudioView.h */,
+				8905E85621BDF9BF001C0BB4 /* SuspensionAudioView.m */,
+				8905E85B21BE1478001C0BB4 /* HgMusicBottomView.h */,
+				8905E85C21BE1478001C0BB4 /* HgMusicBottomView.m */,
+				8905E85E21BE1BA0001C0BB4 /* HgSongInfo.h */,
+				8905E85F21BE1BA1001C0BB4 /* HgSongInfo.m */,
+				8905E86121BE1BFE001C0BB4 /* HgMusicInfoModel.h */,
+				8905E86221BE1BFF001C0BB4 /* HgMusicInfoModel.m */,
+				8905E86521BE3A27001C0BB4 /* NSObject+Hg.h */,
+				8905E86421BE3A27001C0BB4 /* NSObject+Hg.m */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -1199,6 +1230,8 @@
 				89CDE36E2194173B00071267 /* DetailAudioController.m */,
 				891E2548219C2761009A7F72 /* DetailServiceController.h */,
 				891E2549219C2761009A7F72 /* DetailServiceController.m */,
+				8905E85821BE05BC001C0BB4 /* AudioPlayController.h */,
+				8905E85921BE05BC001C0BB4 /* AudioPlayController.m */,
 			);
 			path = dry;
 			sourceTree = "<group>";
@@ -1631,6 +1664,8 @@
 				89F03C5821AFC36B00218809 /* EnterShhController.m */,
 				89F03C6321AFE42200218809 /* ApplyForController.h */,
 				89F03C6421AFE42200218809 /* ApplyForController.m */,
+				8905E86721BE6C24001C0BB4 /* AboutController.h */,
+				8905E86821BE6C24001C0BB4 /* AboutController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2629,14 +2664,18 @@
 				8849B84B2135205100CAE299 /* UILabel+String.m in Sources */,
 				886B97942136726A0074322D /* MineFootView.m in Sources */,
 				89D7ABB621B4CAC3000D15EA /* SearchController.m in Sources */,
+				8905E86621BE3A27001C0BB4 /* NSObject+Hg.m in Sources */,
 				8921F80921B60EBE00F9FE10 /* SJFilmEditingSettings.m in Sources */,
 				89085E9321918E0F00259A68 /* CommentListRes.m in Sources */,
 				5AEA798121B273CD007C0DB7 /* CollectionBaseController.m in Sources */,
 				8905C2BB2193029D00403EC2 /* CommentCell.m in Sources */,
 				8924E36D21AE3000003A1152 /* SettingController.m in Sources */,
 				89DBCB8B2180034700E66B85 /* CourseSortRes.m in Sources */,
+				8905E85721BDF9BF001C0BB4 /* SuspensionAudioView.m in Sources */,
 				8921F82021B65FEE00F9FE10 /* PromoteQrFootView.m in Sources */,
 				8924E37321AE3A18003A1152 /* RegisterAlertView.m in Sources */,
+				8905E85A21BE05BC001C0BB4 /* AudioPlayController.m in Sources */,
+				8905E86321BE1BFF001C0BB4 /* HgMusicInfoModel.m in Sources */,
 				8921F80821B60EBE00F9FE10 /* SJFilmEditingLoader.m in Sources */,
 				8921F7E121B60EBE00F9FE10 /* SJMoreSettingsSlidersViewModel.m in Sources */,
 				89D7ABC021B5091B000D15EA /* PayViewController.m in Sources */,
@@ -2764,6 +2803,7 @@
 				88483F502137D472004CA3FA /* SortViewController.m in Sources */,
 				886DB974212EC23900CF8C64 /* BaseView.m in Sources */,
 				8824EAEB213001EF000CBA7E /* HomeHeadView.m in Sources */,
+				8905E86921BE6C24001C0BB4 /* AboutController.m in Sources */,
 				89DBCB83217FFE1400E66B85 /* ZSScrollButton.m in Sources */,
 				8824EAE4212FDB6B000CBA7E /* UIViewController+VTMagic.m in Sources */,
 				8924E36A21AE29D7003A1152 /* LoginReq.m in Sources */,
@@ -2775,6 +2815,7 @@
 				89CBE08021AD50B40086633A /* LoginAlertView.m in Sources */,
 				5AEA797621B272BA007C0DB7 /* KKClassiflcationLayout.m in Sources */,
 				8921F7F621B60EBE00F9FE10 /* SJVideoPlayerURLAsset+SJControlAdd.m in Sources */,
+				8905E86021BE1BA1001C0BB4 /* HgSongInfo.m in Sources */,
 				5AEA797A21B2730F007C0DB7 /* HistoryBaseController.m in Sources */,
 				8924E37021AE3018003A1152 /* SettingCell.m in Sources */,
 				5AEA797521B272BA007C0DB7 /* KKSliderButtonView.m in Sources */,
@@ -2893,6 +2934,7 @@
 				8921F7EC21B60EBE00F9FE10 /* SJMoreSettingControlLayer.m in Sources */,
 				8850347821394081000BDD3A /* DryNoImageCell.m in Sources */,
 				895DBF7C21798CBD00E65B16 /* FreeListReq.m in Sources */,
+				8905E85D21BE1478001C0BB4 /* HgMusicBottomView.m in Sources */,
 				886B97EF2136B7BE0074322D /* UserBaseInfoModel.m in Sources */,
 				8921F7E021B60EBE00F9FE10 /* SJControlLayerSwitcher.m in Sources */,
 				8921F7F121B60EBE00F9FE10 /* SJEdgeControlLayerAdapters.m in Sources */,

@@ -99,7 +99,8 @@
     [self.inputToolbar setMorebuttonViewDelegate:self];
     
     self.inputToolbar.sendContent = ^(NSObject *content){
-        
+        weakself.inputToolbar.isBecomeFirstResponder = NO;
+        weakself.inputToolbarY = [weakself navHeightWithHeight];
         if ([UserCacheBean share].userInfo.token.length>0) {
             [weakself addComment:(NSString*)content];
         }else{
@@ -395,10 +396,7 @@
     }];
     return headView;
 }
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
- self.inputToolbar.isBecomeFirstResponder = NO;
-   
-}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identify = @"CommentCell";
     

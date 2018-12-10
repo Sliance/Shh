@@ -26,6 +26,8 @@
 #define DSNavi  [UIColor whiteColor] //navigation的颜色
 
 #define DEFAULTColor DSColorFromHex(0xE70019)// 主题色
+// 创建一个weak变量
+#define WEAKSELF __weak typeof(self) weakSelf = self;
 // 实现一个单例
 #define Create_Singleton_Imp(cls) \
 + (instancetype)shared \

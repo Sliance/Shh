@@ -97,7 +97,7 @@
 -(void)setModel:(CommentListRes *)model{
     _model = model;
     NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,model.memberAvatarPath];
-    [self.headImage sd_setImageWithURL:[NSURL URLWithString:url]];
+    [self.headImage sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"mine"]];
     self.nameLabel.text = model.memberNickname;
     [self.contentLabel setText:model.commentContent lineSpacing:5];
     self.contentLabel.frame = CGRectMake(self.headImage.ctRight+15, self.headImage.ctBottom, SCREENWIDTH-90, [self.contentLabel getHeightLineWithString:model.commentContent withWidth:SCREENWIDTH-90 withFont:[UIFont systemFontOfSize:14]lineSpacing:5]);

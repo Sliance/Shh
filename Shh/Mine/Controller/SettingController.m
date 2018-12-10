@@ -8,6 +8,9 @@
 
 #import "SettingController.h"
 #import "UserCacheBean.h"
+#import "PersonInfoController.h"
+#import "AboutController.h"
+
 @interface SettingController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableview;
 
@@ -88,6 +91,17 @@
     cell.textLabel.font = [UIFont systemFontOfSize:14];
     cell.textLabel.textColor = DSColorFromHex(0x464646);
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row ==0) {
+        PersonInfoController *vc = [[PersonInfoController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (indexPath.row ==1) {
+        AboutController *vc = [[AboutController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 @end

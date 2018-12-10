@@ -345,9 +345,9 @@ static NSString *likecellIds = @"HomeLikeCell";
     
     if(section ==0){
         if (self.freeListArr.count > 0) {
-            return CGSizeMake(SCREENWIDTH, 310);
+            return CGSizeMake(SCREENWIDTH, 200*SCREENWIDTH/375+140);
         }else{
-            return CGSizeMake(SCREENWIDTH, 259);
+            return CGSizeMake(SCREENWIDTH, 200*SCREENWIDTH/375+90);
         }
         
     }else if (section ==5){
@@ -416,11 +416,11 @@ static NSString *likecellIds = @"HomeLikeCell";
             }
         }
         if (self.freeListArr.count > 0) {
-            validView.frame = CGRectMake(0, 0, SCREENWIDTH, 310);
+            validView.frame = CGRectMake(0, 0, SCREENWIDTH, 200*SCREENWIDTH/375+140);
             validView.bgView.hidden = NO;
         }else{
             validView.bgView.hidden = YES;
-            validView.frame = CGRectMake(0, 0, SCREENWIDTH, 259);
+            validView.frame = CGRectMake(0, 0, SCREENWIDTH, 200*SCREENWIDTH/375+90);
         }
         [validView.cycleView setImageUrlGroups:arr];
         [headerView addSubview:validView];

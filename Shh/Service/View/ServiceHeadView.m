@@ -17,7 +17,7 @@
         [self addSubview:self.memberBtn];
         [self.cycleView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.equalTo(self);
-            make.height.mas_equalTo(170);
+            make.height.mas_equalTo(200*SCREENWIDTH/375);
         }];
         [self.memberBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self).offset(15);

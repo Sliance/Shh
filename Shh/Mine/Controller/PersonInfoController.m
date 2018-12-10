@@ -97,7 +97,7 @@
     UIView * footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 44)];
     footView.backgroundColor = DSColorFromHex(0xF0F0F0);
     UIButton *loginOutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [loginOutBtn setTitle:@"保持" forState:UIControlStateNormal];
+    [loginOutBtn setTitle:@"保存" forState:UIControlStateNormal];
     loginOutBtn.frame = CGRectMake(15, 4, SCREENWIDTH-30, 40);
     [loginOutBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [loginOutBtn.layer setCornerRadius:4];

@@ -97,8 +97,12 @@
     _model = model;
     self.titleLabel.text = model.descriptions;
     self.integralLabel.text = [NSString stringWithFormat:@"%ld/%ld",model.complete,(long)model.mission];
-    double progress = model.complete/model.mission;
-    self.progress.progressValue = [NSString stringWithFormat:@"%f",progress];
+    if(model.complete==0&&model.mission ==0){
+        
+    }else{
+     double progress = model.complete/model.mission;
+     self.progress.progressValue = [NSString stringWithFormat:@"%f",progress];
+    }
     self.headImage.selected = model.finish;
     if (model.finish ==YES) {
         self.progress.progressValue = @"1";

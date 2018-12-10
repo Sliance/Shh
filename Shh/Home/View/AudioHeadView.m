@@ -153,6 +153,7 @@
         [_fouceBtn setTitle:@"关注" forState:UIControlStateNormal];
         [_fouceBtn setTitleColor:DSColorFromHex(0x969696) forState:UIControlStateSelected];
         [_fouceBtn setTitle:@"已关注" forState:UIControlStateSelected];
+      
         _fouceBtn.titleLabel.font = [UIFont systemFontOfSize:10];
         [_fouceBtn.layer setCornerRadius:3];
         [_fouceBtn addTarget:self action:@selector(pressFouce:) forControlEvents:UIControlEventTouchUpInside];
@@ -314,9 +315,10 @@
         cell = [[AudioCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
     CourseListModel*model = self.detailCourse.courseList[indexPath.row];
+    model.memberIsBuyThisCourse = self.detailCourse.memberIsBuyThisCourse;
     model.watch = self.detailCourse.watchCount;
     [cell setModel:model];
-    cell.suoBtn.selected = self.detailCourse.memberIsBuyThisCourse;
+   
     __weak typeof(self)weakself = self;
     [cell setPlayBlock:^(BOOL selected) {
         weakself.playBlock(selected);

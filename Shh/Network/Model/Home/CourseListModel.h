@@ -31,6 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong)NSString *systemVersion;
 ///
 @property(nonatomic,strong)NSString *watch;
+///
+@property(nonatomic,assign)BOOL memberIsBuyThisCourse;
+
 @end
 
 NS_ASSUME_NONNULL_END
