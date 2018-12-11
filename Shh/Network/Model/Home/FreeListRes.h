@@ -24,13 +24,13 @@ NS_ASSUME_NONNULL_BEGIN
 ///课程亮点
 @property(nonatomic,copy)NSString *courseHighlight;
 ///是否免费
-@property(nonatomic,copy)NSString *courseIsFree;
+@property(nonatomic,assign)BOOL courseIsFree;
 ///是否限时免费
-@property(nonatomic,copy)NSString *courseIsTimelimitFree;
+@property(nonatomic,assign)BOOL courseIsTimelimitFree;
 ///是否会员免费
-@property(nonatomic,copy)NSString *courseIsVipFree;
+@property(nonatomic,assign)BOOL courseIsVipFree;
 ///课程价格
-@property(nonatomic,copy)NSString *coursePrice;
+@property(nonatomic,assign)double coursePrice;
 ///课程简介
 @property(nonatomic,copy)NSString *courseIntroduction;
 ///课程app封面图

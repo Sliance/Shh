@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *searchType;
 @property(nonatomic,copy)NSString *teacherMemberId;
 @property(nonatomic,copy)NSString *orderId;
-
+@property(nonatomic,copy)NSString *courseType;
 @end
 
 NS_ASSUME_NONNULL_END

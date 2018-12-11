@@ -71,12 +71,12 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return CGSizeMake(135, 100);
+    return CGSizeMake(150, 100);
     
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     QualityCollectionCell *collectcell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QualityCollectionCell" forIndexPath:indexPath];
-    [collectcell setImageWidth:125];
+    [collectcell setImageWidth:140];
     [collectcell setImageHeight:90];
     ServiceListRes *model = self.dataArr[indexPath.row];
     [collectcell setModel:model];

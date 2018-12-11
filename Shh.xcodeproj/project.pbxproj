@@ -304,6 +304,7 @@
 		89D7ABC321B518CE000D15EA /* MemberShipController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D7ABC221B518CE000D15EA /* MemberShipController.m */; };
 		89D7ABC721B51C6D000D15EA /* MemberShipCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D7ABC621B51C6D000D15EA /* MemberShipCell.m */; };
 		89D7ABCA21B53758000D15EA /* MemberShipFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D7ABC921B53758000D15EA /* MemberShipFootView.m */; };
+		89D806B821BF948300A6A31F /* AddMemberPayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D806B721BF948300A6A31F /* AddMemberPayController.m */; };
 		89DBCB83217FFE1400E66B85 /* ZSScrollButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB80217FFE1400E66B85 /* ZSScrollButton.m */; };
 		89DBCB84217FFE1400E66B85 /* ZSSortSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB81217FFE1400E66B85 /* ZSSortSelectorView.m */; };
 		89DBCB87218002C800E66B85 /* CourseServiceApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB86218002C800E66B85 /* CourseServiceApi.m */; };
@@ -928,6 +929,8 @@
 		89D7ABC621B51C6D000D15EA /* MemberShipCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberShipCell.m; sourceTree = "<group>"; };
 		89D7ABC821B53758000D15EA /* MemberShipFootView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberShipFootView.h; sourceTree = "<group>"; };
 		89D7ABC921B53758000D15EA /* MemberShipFootView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberShipFootView.m; sourceTree = "<group>"; };
+		89D806B621BF948300A6A31F /* AddMemberPayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddMemberPayController.h; sourceTree = "<group>"; };
+		89D806B721BF948300A6A31F /* AddMemberPayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddMemberPayController.m; sourceTree = "<group>"; };
 		89DBCB7F217FFE1400E66B85 /* ZSSortSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSSortSelectorView.h; sourceTree = "<group>"; };
 		89DBCB80217FFE1400E66B85 /* ZSScrollButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSScrollButton.m; sourceTree = "<group>"; };
 		89DBCB81217FFE1400E66B85 /* ZSSortSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSSortSelectorView.m; sourceTree = "<group>"; };
@@ -2416,6 +2419,8 @@
 				89D7ABC421B51C41000D15EA /* View */,
 				89D7ABBE21B5091B000D15EA /* PayViewController.h */,
 				89D7ABBF21B5091B000D15EA /* PayViewController.m */,
+				89D806B621BF948300A6A31F /* AddMemberPayController.h */,
+				89D806B721BF948300A6A31F /* AddMemberPayController.m */,
 				89D7ABC121B518CE000D15EA /* MemberShipController.h */,
 				89D7ABC221B518CE000D15EA /* MemberShipController.m */,
 			);
@@ -2887,6 +2892,7 @@
 				886B97E32136B7BE0074322D /* BaseApi.m in Sources */,
 				8921F82321B6871E00F9FE10 /* FollowReq.m in Sources */,
 				893EF0B321BA1DF10049B529 /* IntegralRes.m in Sources */,
+				89D806B821BF948300A6A31F /* AddMemberPayController.m in Sources */,
 				886B97F92136B7BE0074322D /* ImageUtils.m in Sources */,
 				5AEA799021B28672007C0DB7 /* FinshDownController.m in Sources */,
 				886B97F32136B7BE0074322D /* ZSRequestGenerator.m in Sources */,

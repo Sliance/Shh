@@ -123,7 +123,7 @@
         _hYDate.textColor = DSColorFromHex(0x52402C);
         _hYDate.text = @"加入会员 >";
         _hYDate.numberOfLines = 1;
-        _hYDate.frame = CGRectMake(SCREENWIDTH-30-105, 0, 100, 35);
+        _hYDate.frame = CGRectMake(SCREENWIDTH-30-110, 0, 100, 35);
         _hYDate.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pressTap)];
         [_hYDate addGestureRecognizer:tap];

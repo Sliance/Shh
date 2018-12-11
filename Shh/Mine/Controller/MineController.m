@@ -25,6 +25,7 @@
 #import "PromoteQrController.h"
 #import "MineMedalController.h"
 #import "MineIntegralController.h"
+#import "AddMemberPayController.h"
 
 @interface MineController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIScrollView *bgscrollow;
@@ -53,7 +54,7 @@
 }
 -(MineFootView *)footView{
     if (!_footView) {
-        _footView = [[MineFootView alloc]initWithFrame:CGRectMake(0, 290, SCREENWIDTH, 355)];
+        _footView = [[MineFootView alloc]initWithFrame:CGRectMake(0, 290, SCREENWIDTH, 400)];
     }
     return _footView;
 }
@@ -95,7 +96,7 @@
         memberVC.hidesBottomBarWhenPushed = YES;
         [weakself.navigationController pushViewController:memberVC animated:YES];
     }];
-   
+    
     [self.footView setSelecteBlock:^(NSUInteger index) {
         
         switch (index) {
@@ -155,7 +156,24 @@
                     [weakself.navigationController pushViewController:helpVC animated:YES];
              }
                 break;
-                
+            case 100:
+            {
+                AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
+                addVC.hidesBottomBarWhenPushed = YES;
+                [addVC setType:1];
+                [addVC setCourseId:@""];
+                [weakself.navigationController pushViewController:addVC animated:YES];
+            }
+                break;
+            case 101:
+            {
+                AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
+                addVC.hidesBottomBarWhenPushed = YES;
+                [addVC setType:2];
+                [addVC setCourseId:@""];
+                [weakself.navigationController pushViewController:addVC animated:YES];
+            }
+                break;
             default:
                 break;
         }
@@ -170,9 +188,7 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     if ([UserCacheBean share].userInfo.token.length>0) {
-        [self.headView.editBtn setTitle:[UserCacheBean share].userInfo.memberName forState:UIControlStateNormal];
-        [self.headView.editBtn setImage:[UIImage imageNamed:@"edit_mine"] forState:UIControlStateNormal];
-        [self.headView.editBtn setIconInRightWithSpacing:7];
+       
         [self requestData];
     }else{
         self.headView.frame = CGRectMake(0, 0, SCREENWIDTH, 290);
@@ -198,6 +214,23 @@
         if (response) {
             weakself.result = response;
             [UserCacheBean share].userInfo.memberId = weakself.result.memberId;
+            [UserCacheBean share].userInfo.memberAvatarPath = weakself.result.memberAvatarPath;
+            [UserCacheBean share].userInfo.memberName = weakself.result.memberName;
+            [UserCacheBean share].userInfo.memberMobile = weakself.result.memberTel;
+            [weakself.headView.editBtn setTitle:[UserCacheBean share].userInfo.memberName forState:UIControlStateNormal];
+            [weakself.headView.editBtn setImage:[UIImage imageNamed:@"edit_mine"] forState:UIControlStateNormal];
+            if (weakself.result.memberName.length>0) {
+                [weakself.headView.editBtn setIconInRightWithSpacing:7];
+            }else{
+                
+            }
+           
+            [weakself.headView.headImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",DPHOST,weakself.result.memberAvatarPath]] placeholderImage:[UIImage imageNamed:@"mine"]];
+            if (weakself.result.joinMember ==YES) {
+                weakself.headView.hYDate.text = @"终身会员 >";
+            }else{
+                weakself.headView.hYDate.text = @"加入会员 >";
+            }
         }
     }];
 }

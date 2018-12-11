@@ -13,6 +13,8 @@
 #import "AgreeMentController.h"
 #import "MineServiceApi.h"
 #import "GFAddressPicker.h"
+#import "AddMemberPayController.h"
+
 @interface MemberShipController ()<UITableViewDelegate,UITableViewDataSource,HQPickerViewDelegate,GFAddressPickerDelegate>
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,strong)UIImageView *headImage;
@@ -110,8 +112,12 @@
     self.req.parentInvitationMemberId = @"";
     __weak typeof(self)weakself = self;
     [[MineServiceApi share]joinInWithParam:self.req response:^(id response) {
-        if (response) {
-            [weakself showInfo:response[@"message"]];
+        if ([response[@"code"] integerValue] ==200) {
+            AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
+            [addVC setOrderId:response[@"data"][@"orderId"]];
+            [weakself.navigationController pushViewController:addVC animated:YES];
+        }else{
+             [weakself showInfo:response[@"message"]];
         }
     }];
 }
@@ -252,6 +258,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.pickerView.hidden = YES;
     self.picker.hidden = YES;
+    [self.view endEditing:YES];
     if (indexPath.section ==1) {
         if (indexPath.row ==0) {
             [self.picker setCustomArr:self.industryArr];
@@ -306,5 +313,8 @@
     self.req.province = province;
     self.req.city = [NSString stringWithFormat:@"%@%@",city,area];
     [self.tableview reloadData];
+}
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.view endEditing:YES];
 }
 @end

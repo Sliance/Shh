@@ -163,8 +163,6 @@
     self.detailLabel.text = model.courseIntroduction;
     self.shareLabel.text = model.courseTrueClickCount;
     self.likeLabel.text = model.courseVirtualClickCount;
-    if (model.coursePrice.length>0) {
-        self.priceLabel.text = [NSString stringWithFormat:@"￥%@",model.coursePrice];
-    }
+        self.priceLabel.text = [NSString stringWithFormat:@"￥%.2f",model.coursePrice];
 }
 @end

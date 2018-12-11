@@ -85,6 +85,7 @@
     req.timestamp = @"0";
     req.platform = @"ios";
     req.token = [UserCacheBean share].userInfo.token;
+    self.result = [[MemberInfoRes alloc]init];
     __weak typeof(self)weakself = self;
     [[MineServiceApi share]getMenberInfoWithParam:req response:^(id response) {
         if (response) {
@@ -162,7 +163,6 @@
         }
             cell.titleLabel.text = @"头像";
             [cell setWidth:40];
-        
                 NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,self.result.memberAvatarPath];
                 [cell.logoImage sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"mine"]];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -283,6 +283,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.pickerView.hidden = YES;
     self.picker.hidden = YES;
+     [self.view endEditing:YES];
     if (indexPath.section ==0) {
         if (indexPath.row ==0) {
             UIActionSheet *leftAction = [[UIActionSheet alloc] initWithTitle:@"上传头像" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍摄照片", @"选择手机中的照片", nil];
@@ -334,6 +335,11 @@
     self.result.timestamp = @"0";
     self.result.platform = @"ios";
     self.result.token = [UserCacheBean share].userInfo.token;
+    self.result.wechatOpenId = @"";
+    self.result.wechatUnionId = @"";
+    if (self.result.memberAvatarId.length ==0) {
+        self.result.memberAvatarId = @"";
+    }
     __weak typeof(self)weakself = self;
     [[MineServiceApi share]changeMemberInfoWithParam:self.result response:^(id response) {
         if (response) {
@@ -402,7 +408,7 @@
     req.platform = @"ios";
     req.timestamp = @"0";
     __weak typeof(self)weakself = self;
-    NSDictionary * body = @{@"category":@"user",@"file":@"HeadImg"};
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     //ContentType设置
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"image/jpeg",@"image/png",@"application/octet-stream",@"text/json",nil];
@@ -419,14 +425,17 @@
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         //请求成功的block回调
         NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         NSArray *result = [ImageModel mj_objectArrayWithKeyValuesArray:dic[@"data"]];
         ImageModel*model = [result firstObject];
+        weakself.result.memberAvatarId = model.fileId;
         weakself.result.memberAvatarPath = model.fileOriginalPath;
         [weakself showInfo:@"上传成功"];
         [weakself.tableview reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         [weakself showInfo:@"上传失败"];
         
     }];
@@ -436,5 +445,7 @@
     
     return 0;
 }
-
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.view endEditing:YES];
+}
 @end

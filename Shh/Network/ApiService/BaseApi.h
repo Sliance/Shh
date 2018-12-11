@@ -121,6 +121,8 @@
 #define rank_Integral  @"/sihehui/member/integral/desktop/v1/rank"
 ///勋章
 #define mine_medal  @"/sihehui/member/badge/desktop/v1/list"
+///加入思和支付
+#define add_member_pay  @"/sihehui/level/desktop/v1/lifelong"
 
 typedef void(^responseModel)(id response);
 @interface BaseApi : NSObject

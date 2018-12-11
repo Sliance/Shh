@@ -122,9 +122,12 @@
     [self.headiamge sd_setImageWithURL:[NSURL URLWithString:url]];
     self.detailLabel.text = model.courseIntroduction;
     self.countLabel.text = model.courseTrueClickCount;
-    if (model.coursePrice.length>0) {
-         self.priceLabel.text = [NSString stringWithFormat:@"￥%@",model.coursePrice];
-    }
+   
+        if (model.courseIsTimelimitFree ==YES) {
+            self.priceLabel.text = @"￥0";
+        }else{
+         self.priceLabel.text = [NSString stringWithFormat:@"￥%.2f",model.coursePrice];
+        }
 }
 
 

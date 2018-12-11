@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @property(nonatomic,copy)NSString *memberTel;
 ///
-@property(nonatomic,copy)NSString *joinMember;
+@property(nonatomic,assign)BOOL joinMember;
 ///
 @property(nonatomic,copy)NSString *brandName;
 ///
@@ -55,6 +55,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *teamSize;
 ///
 @property(nonatomic,copy)NSString *signIn;
+///
+@property(nonatomic,copy)NSString *wechatOpenId;
+///
+@property(nonatomic,copy)NSString *wechatUnionId;
+///
+@property(nonatomic,copy)NSString *memberAvatarId;
 @end
 
 NS_ASSUME_NONNULL_END

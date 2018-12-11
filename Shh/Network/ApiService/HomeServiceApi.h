@@ -62,6 +62,8 @@
 -(void)getSearchListWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///课程购买
 -(void)buyCourseWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///加入思和会
+-(void)addMemberPayWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///微信支付
 -(void)getWxPayWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///支付宝支付
