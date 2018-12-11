@@ -141,14 +141,14 @@
     
     // 歌曲总时间和当前时间
     Float64 completeTime = CMTimeGetSeconds(duration);
-    Float64 currentTime = (Float64)(_bottomView.songSlider.value) * completeTime;
+    Float64 currentTime = (Float64)(_bottomView.songSlider.value);
     
 //    float current = self.second/self.audioRes.courseMediaDuration;
 //    self.bottomView.songSlider.value = current;
 //    NSInteger minute = self.second/60;
 //    NSInteger ss = self.second%60;
 //    self.bottomView.currentTimeLabel.text = [NSString stringWithFormat:@"%.2ld:%.2ld",minute,ss];
-    NSInteger current = completeTime;
+    NSInteger current = currentTime;
     self.second = current;
     NSInteger minute = self.second/60;
     NSInteger ss = self.second%60;
@@ -174,14 +174,14 @@
     
     // 歌曲总时间和当前时间
     Float64 completeTime = CMTimeGetSeconds(duration);
-    Float64 currentTime = (Float64)(_bottomView.songSlider.value) * completeTime;
+    Float64 currentTime = (Float64)(_bottomView.songSlider.value) ;
     
     //    float current = self.second/self.audioRes.courseMediaDuration;
     //    self.bottomView.songSlider.value = current;
     //    NSInteger minute = self.second/60;
     //    NSInteger ss = self.second%60;
     //    self.bottomView.currentTimeLabel.text = [NSString stringWithFormat:@"%.2ld:%.2ld",minute,ss];
-    NSInteger current = completeTime;
+    NSInteger current = currentTime;
     self.second = current;
     NSInteger minute = self.second/60;
     NSInteger ss = self.second%60;

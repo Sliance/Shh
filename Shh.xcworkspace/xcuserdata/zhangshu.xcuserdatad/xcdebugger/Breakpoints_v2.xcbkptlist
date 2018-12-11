@@ -97,53 +97,6 @@
             endingLineNumber = "180"
             landmarkName = "-addComment:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[DetailArticleController addComment:]"
-                  moduleName = "Shh"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailArticleController.m"
-                  timestampString = "565447193.009602"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "180"
-                  endingLineNumber = "180"
-                  offsetFromSymbolStart = "764">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__38-[DetailArticleController addComment:]_block_invoke"
-                  moduleName = "Shh"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailArticleController.m"
-                  timestampString = "565447193.013872"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "181"
-                  endingLineNumber = "181"
-                  offsetFromSymbolStart = "54">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.241"
-                  moduleName = "Shh"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailArticleController.m"
-                  timestampString = "565447193.01696"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "180"
-                  endingLineNumber = "180"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -248,13 +201,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Shh/Home/Controller/dry/DetailAudioController.m"
-            timestampString = "565448172.187863"
+            filePath = "Shh/Home/Controller/dry/AudioPlayController.m"
+            timestampString = "566140141.6193269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "-playbackSliderValueChanged"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -264,13 +217,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Shh/Home/Controller/dry/DetailAudioController.m"
-            timestampString = "565448172.187932"
+            filePath = "Shh/Home/Controller/dry/AudioPlayController.m"
+            timestampString = "566140141.61945"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "-playbackSliderValueChanged"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -280,13 +233,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Shh/Home/Controller/dry/DetailAudioController.m"
-            timestampString = "565448172.187993"
+            filePath = "Shh/Home/Controller/dry/AudioPlayController.m"
+            timestampString = "566140141.619522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "-playbackSliderValueChangedFinish"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
