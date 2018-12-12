@@ -27,6 +27,7 @@
 #import "MineIntegralController.h"
 #import "AddMemberPayController.h"
 
+
 @interface MineController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIScrollView *bgscrollow;
 @property(nonatomic,strong)MineHeadView *headView;
@@ -242,3 +243,4 @@
 
 
 @end
+

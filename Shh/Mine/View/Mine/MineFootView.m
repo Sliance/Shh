@@ -143,30 +143,28 @@
     }
     return _zongLabel;
 }
--(UILabel *)yanright{
+-(UIButton *)yanright{
     if (!_yanright) {
-        _yanright = [[UILabel alloc]init];
-        _yanright.textAlignment = NSTextAlignmentRight;
-        _yanright.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:12];
-        _yanright.textColor = DSColorFromHex(0x797979);
-        _yanright.text = @" >";
-        _yanright.numberOfLines = 1;
-        _yanright.frame = CGRectMake(SCREENWIDTH-30-125-30, 0, 120, 40);
-        _yanright.userInteractionEnabled = YES;
+        _yanright = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_yanright setTitleColor:DEFAULTColor forState:UIControlStateNormal];
+        _yanright.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:12];
+        [_yanright setImage:[UIImage imageNamed:@"yan_right"] forState:UIControlStateNormal];
+//        [_yanright setTitle:@"信息有待完善" forState:UIControlStateNormal];
+        _yanright.frame = CGRectMake(SCREENWIDTH-30-80-30, 0, 80, 40);
+        [_yanright setIconInRightWithSpacing:80];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pressYan)];
         [_yanright addGestureRecognizer:tap];
     }
     return _yanright;
 }
--(UILabel *)zongright{
+-(UIButton *)zongright{
     if (!_zongright) {
-        _zongright = [[UILabel alloc]init];
-        _zongright.textAlignment = NSTextAlignmentRight;
-        _zongright.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:12];
-        _zongright.textColor = DSColorFromHex(0x797979);
-        _zongright.text = @" >";
-        _zongright.numberOfLines = 1;
-        _zongright.frame = CGRectMake(SCREENWIDTH-30-125-30, 40, 120, 40);
+        _zongright =  [UIButton buttonWithType:UIButtonTypeCustom];
+        [_zongright setTitleColor:DEFAULTColor forState:UIControlStateNormal];
+        _zongright.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:12];
+        [_zongright setImage:[UIImage imageNamed:@"yan_right"] forState:UIControlStateNormal];
+        _zongright.frame = CGRectMake(SCREENWIDTH-30-80-30, 40, 80, 40);
+        [_zongright setIconInRightWithSpacing:80];
         _zongright.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pressZong)];
         [_zongright addGestureRecognizer:tap];

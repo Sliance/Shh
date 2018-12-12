@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @property(nonatomic,copy)NSString *memberIntegralId;
 ///
-@property(nonatomic,copy)NSString *content;
+@property(nonatomic,strong)NSString *content;
 ///
 @property(nonatomic,copy)NSString *memberId;
 
@@ -30,6 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *memberName;
 ///
 @property(nonatomic,copy)NSString *memberAvatarPath;
+///
+@property(nonatomic,copy)NSString *integralCategory;
+
 @end
 
 NS_ASSUME_NONNULL_END

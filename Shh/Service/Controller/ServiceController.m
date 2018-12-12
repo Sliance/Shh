@@ -20,7 +20,7 @@
 #import "DetailServiceController.h"
 #import "HistoryBaseController.h"
 #import "SearchController.h"
-#import "MemberShipController.h"
+#import "AddMemberPayController.h"
 
 @interface ServiceController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableview;
@@ -284,8 +284,9 @@
     
 }
 -(void)addMember{
-    MemberShipController *memberVC = [[MemberShipController alloc]init];
+    AddMemberPayController *memberVC = [[AddMemberPayController alloc]init];
     memberVC.hidesBottomBarWhenPushed = YES;
+    [memberVC setType:1];
     [self.navigationController pushViewController:memberVC animated:YES];
 }
 - (void)didReceiveMemoryWarning {

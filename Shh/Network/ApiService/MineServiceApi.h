@@ -69,7 +69,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)getIntegralRankWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///勋章
 -(void)getmMineMedalWithParam:(FreeListReq *) req response:(responseModel) responseModel;
-
+///我的任务
+-(void)getmMineTaskWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 
 
 

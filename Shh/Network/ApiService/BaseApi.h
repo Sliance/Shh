@@ -123,6 +123,10 @@
 #define mine_medal  @"/sihehui/member/badge/desktop/v1/list"
 ///加入思和支付
 #define add_member_pay  @"/sihehui/level/desktop/v1/lifelong"
+///我的任务
+#define mine_task  @"/sihehui/member/integral/desktop/v1/task"
+
+
 
 typedef void(^responseModel)(id response);
 @interface BaseApi : NSObject

@@ -312,6 +312,8 @@
 		89DBCB8E21804AD900E66B85 /* ServiceApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB8D21804AD900E66B85 /* ServiceApi.m */; };
 		89DBCB9221804B9600E66B85 /* ServiceListRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB9121804B9600E66B85 /* ServiceListRes.m */; };
 		89DBCB9521805DC300E66B85 /* DryHeadlinesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DBCB9421805DC300E66B85 /* DryHeadlinesController.m */; };
+		89DDD3EE21C09C4A0026BBBE /* ForgetPassWordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DDD3ED21C09C4A0026BBBE /* ForgetPassWordController.m */; };
+		89DDD4F121C0A9680026BBBE /* UIView+CTExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DDD4F021C0A9680026BBBE /* UIView+CTExtensions.m */; };
 		89E0C0E821AE672C00D18C44 /* SendCodeAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E0C0E721AE672C00D18C44 /* SendCodeAlertView.m */; };
 		89E0C0EB21AE722A00D18C44 /* UIButton+DNUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E0C0EA21AE722A00D18C44 /* UIButton+DNUtility.m */; };
 		89E0C0EE21AE772900D18C44 /* PersonInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E0C0ED21AE772900D18C44 /* PersonInfoController.m */; };
@@ -945,6 +947,10 @@
 		89DBCB9121804B9600E66B85 /* ServiceListRes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServiceListRes.m; sourceTree = "<group>"; };
 		89DBCB9321805DC300E66B85 /* DryHeadlinesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DryHeadlinesController.h; sourceTree = "<group>"; };
 		89DBCB9421805DC300E66B85 /* DryHeadlinesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DryHeadlinesController.m; sourceTree = "<group>"; };
+		89DDD3EC21C09C4A0026BBBE /* ForgetPassWordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ForgetPassWordController.h; sourceTree = "<group>"; };
+		89DDD3ED21C09C4A0026BBBE /* ForgetPassWordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetPassWordController.m; sourceTree = "<group>"; };
+		89DDD4EF21C0A9680026BBBE /* UIView+CTExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CTExtensions.h"; sourceTree = "<group>"; };
+		89DDD4F021C0A9680026BBBE /* UIView+CTExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CTExtensions.m"; sourceTree = "<group>"; };
 		89E0C0E621AE672C00D18C44 /* SendCodeAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendCodeAlertView.h; sourceTree = "<group>"; };
 		89E0C0E721AE672C00D18C44 /* SendCodeAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendCodeAlertView.m; sourceTree = "<group>"; };
 		89E0C0E921AE722A00D18C44 /* UIButton+DNUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+DNUtility.h"; sourceTree = "<group>"; };
@@ -1409,6 +1415,8 @@
 				886B98102136B7FD0074322D /* UIImage */,
 				886B981B2136B7FD0074322D /* UIView+CTExtensions.h */,
 				886B981C2136B7FD0074322D /* UIView+CTExtensions.m */,
+				89DDD4EF21C0A9680026BBBE /* UIView+CTExtensions.h */,
+				89DDD4F021C0A9680026BBBE /* UIView+CTExtensions.m */,
 				886B981D2136B7FD0074322D /* UIViewController+Loading.h */,
 				886B981E2136B7FD0074322D /* UIViewController+Loading.m */,
 				886B981F2136B7FD0074322D /* UserDefaultCashe.h */,
@@ -1669,6 +1677,8 @@
 				89F03C6421AFE42200218809 /* ApplyForController.m */,
 				8905E86721BE6C24001C0BB4 /* AboutController.h */,
 				8905E86821BE6C24001C0BB4 /* AboutController.m */,
+				89DDD3EC21C09C4A0026BBBE /* ForgetPassWordController.h */,
+				89DDD3ED21C09C4A0026BBBE /* ForgetPassWordController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2694,6 +2704,7 @@
 				89F03C5921AFC36B00218809 /* EnterShhController.m in Sources */,
 				886B978D213647430074322D /* ServiceHeadView.m in Sources */,
 				886B97F82136B7BE0074322D /* FilePathManager.m in Sources */,
+				89DDD3EE21C09C4A0026BBBE /* ForgetPassWordController.m in Sources */,
 				887E03B8212FB2AB0013472F /* HomeLikeCell.m in Sources */,
 				891E254A219C2761009A7F72 /* DetailServiceController.m in Sources */,
 				8921F7F421B60EBE00F9FE10 /* UIView+SJAnimationAdded.m in Sources */,
@@ -2746,6 +2757,7 @@
 				89D4C9B6219E8D5F00566685 /* EmojiButtonView.m in Sources */,
 				898569E521B778A50016A24A /* ImageModel.m in Sources */,
 				886B978721363B280074322D /* TrainingServicesCell.m in Sources */,
+				89DDD4F121C0A9680026BBBE /* UIView+CTExtensions.m in Sources */,
 				8819859F2178A184003C962D /* BaseModelReq.m in Sources */,
 				5AEA798A21B27777007C0DB7 /* HistoryCourseController.m in Sources */,
 				885034722139403D000BDD3A /* DrySmallImageCell.m in Sources */,

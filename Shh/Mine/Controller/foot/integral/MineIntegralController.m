@@ -21,6 +21,8 @@
 @property(nonatomic,strong)NSMutableArray* rankArr;
 @property(nonatomic,strong)NSMutableArray* taskArr;
 @property(nonatomic,strong)NSMutableArray* task1Arr;
+@property(nonatomic,strong)NSMutableArray* task2;
+@property(nonatomic,strong)NSMutableArray* task3;
 @end
 
 @implementation MineIntegralController
@@ -62,15 +64,38 @@
     self.rankArr = [[NSMutableArray alloc]init];
     [self.tableview registerClass:[IntegralCell class] forCellReuseIdentifier:NSStringFromClass([IntegralCell class])];
     [self.tableview registerClass:[IntegralRankCell class] forCellReuseIdentifier:NSStringFromClass([IntegralRankCell class])];
-    self.taskArr = [NSMutableArray arrayWithObjects:@"分享APP+1",@"分享干活+1",@"分享课程+1",@"分享服务+1", nil];
-    self.task1Arr = [NSMutableArray arrayWithObjects:@"推荐入会+50",@"注册ApPP+2",@"完善个人资料+2", nil];
+    self.taskArr = [[NSMutableArray alloc]init];
+    NSArray*arr = @[@"分享APP",@"分享干活",@"分享课程",@"分享服务"];
+    NSArray*typearr = @[@"SHARE_APP",@"SHARE_GH",@"SHARE_COURSE",@"SHARE_SERVICE"];
+    //@"分享APP+1",@"分享干活+1",@"分享课程+1",@"分享服务+1"
+    for (int i =0; i<arr.count; i++) {
+        IntegralRes*model = [[IntegralRes alloc]init];
+        model.content = arr[i];
+        model.integral = @"1";
+        model.integralCategory = typearr[i];
+        [self.taskArr addObject:model];
+    }
+    self.task1Arr = [[NSMutableArray alloc]init];
+    NSArray *arr2 = @[@"推荐入会",@"注册",@"完善个人资料"];
+    NSArray *typearr2 = @[@"RECOMMEND",@"REGISTER",@"PERSONAL_INFORMATION"];
+    NSArray *integra2 = @[@"50",@"2",@"2"];
+    //@"推荐入会+50",@"注册+2",@"完善个人资料+2"
+    
+    
+    for (int i =0; i<arr2.count; i++) {
+        IntegralRes*model = [[IntegralRes alloc]init];
+        model.content = arr2[i];
+        model.integral = integra2[i];
+        model.integralCategory = typearr2[i];
+        [self.task1Arr addObject:model];
+    }
     __weak typeof(self)weakself = self;
     [self.headView setChooseBlock:^(NSInteger index) {
         weakself.type = index;
         if (index == 0) {
             [weakself requestDetail];
         }else if (index ==1){
-            [weakself requestTask];
+            [weakself requestTask:@""];
         }else if (index ==2){
             [weakself requestRank];
         }
@@ -98,8 +123,71 @@
         }
     }];
 }
--(void)requestTask{
-    [self.tableview reloadData];
+-(void)requestTask:(NSString*)type{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.pageIndex = 1;
+    req.pageSize = @"100";
+    req.memberId = [UserCacheBean share].userInfo.memberId;
+    req.type = type;
+    self.task2= [[NSMutableArray alloc]init];
+    self.task3= [[NSMutableArray alloc]init];
+    __weak typeof(self)weakself = self;
+    [[MineServiceApi share]getmMineTaskWithParam:req response:^(id response) {
+        if (response) {
+            if ([type isEqualToString:@"special"]) {
+                [weakself.task2 removeAllObjects];
+                [weakself.task2 addObjectsFromArray:response];
+                if (weakself.task2.count>0) {
+                    [self.task1Arr enumerateObjectsUsingBlock:^(IntegralRes*model, NSUInteger idx, BOOL * _Nonnull stop) {
+                        [weakself.task2 enumerateObjectsUsingBlock:^(IntegralRes* obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            if ([model.integralCategory isEqualToString:obj.integralCategory]) {
+                                model.integral = obj.integral;
+                                model.integralCategory = obj.integralCategory;
+                                model.memberId = obj.memberId;
+                                model.memberIntegralId = obj.memberIntegralId;
+                                model.rank = obj.rank;
+                                model.systemCreateTime = obj.systemCreateTime;
+                                model.type = obj.type;
+                            }
+                        }];
+                    }];
+                }
+                
+                [weakself.tableview reloadData];
+            }else{
+                [weakself.task3 removeAllObjects];
+                [weakself.task3 addObjectsFromArray:response];
+                if (weakself.task3.count>0) {
+                    [weakself.taskArr enumerateObjectsUsingBlock:^(IntegralRes*model1, NSUInteger idx, BOOL * _Nonnull stop) {
+                        [weakself.task3 enumerateObjectsUsingBlock:^(IntegralRes* obj1, NSUInteger idx, BOOL * _Nonnull stop) {
+                            if ([model1.integralCategory isEqualToString:obj1.integralCategory]) {
+                                model1.integral = obj1.integral;
+                                model1.integralCategory = obj1.integralCategory;
+                                model1.memberId = obj1.memberId;
+                                model1.memberIntegralId = obj1.memberIntegralId;
+                                model1.rank = obj1.rank;
+                                model1.systemCreateTime = obj1.systemCreateTime;
+                                model1.type = obj1.type;
+                                
+                            }
+                        }];
+                    }];
+                }
+                
+                [weakself.tableview reloadData];
+            }
+        }
+        if ([type isEqualToString:@""]) {
+            [weakself requestTask:@"special"];
+        }
+        
+    }];
+    
+    
 }
 -(void)requestRank{
     FreeListReq *req = [[FreeListReq alloc]init];
@@ -206,11 +294,13 @@
         cell.textLabel.font = [UIFont systemFontOfSize:16];
         cell.textLabel.textColor = DSColorFromHex(0x464646);
         if (indexPath.section ==0) {
-            cell.textLabel.text = self.taskArr[indexPath.row];
+            IntegralRes *model = self.taskArr[indexPath.row];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@+%@",model.content,model.integral];
             cell.detailTextLabel.text = @"未完成";
             cell.detailTextLabel.textColor = DSColorFromHex(0x969696);
         }else if (indexPath.section ==1){
-            cell.textLabel.text = self.task1Arr[indexPath.row];
+            IntegralRes *model = self.task1Arr[indexPath.row];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@+%@",model.content,model.integral];
             if (indexPath.row ==1) {
                 cell.detailTextLabel.text = @"未完成";
                 cell.detailTextLabel.textColor = DSColorFromHex(0x969696);

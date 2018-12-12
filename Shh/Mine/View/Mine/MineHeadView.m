@@ -26,9 +26,9 @@
     [self addSubview:self.bgView];
     [self addSubview:self.headImage];
     [self.bgView addSubview:self.hYView];
-    [self.hYView addSubview:self.hYimage];
-    [self.hYView addSubview:self.hYtitle];
-    [self.hYView addSubview:self.hYDate];
+//    [self.hYView addSubview:self.hYimage];
+//    [self.hYView addSubview:self.hYtitle];
+//    [self.hYView addSubview:self.hYDate];
     [self.bgView addSubview:self.nameLabel];
     [self.bgView addSubview:self.editBtn];
     [self.bgImage addSubview:self.messageBtn];

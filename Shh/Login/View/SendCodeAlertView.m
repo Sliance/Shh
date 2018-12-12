@@ -131,7 +131,7 @@
         
         self.sendCodeBtn.enabled = YES;
         [self.sendCodeBtn setTitle:@"重新发送" forState:UIControlStateNormal];
-        [self.timer invalidate];
+        [self.timer setFireDate:[NSDate distantFuture]];
     }
     
 }

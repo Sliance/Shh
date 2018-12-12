@@ -225,9 +225,10 @@
     req.memberPassword = self.loginview.passWordField.text;
     [[MineServiceApi share]loginWithParam:req response:^(id response) {
         if ([response[@"code"]integerValue] ==200 ) {
-            NSError *error = nil;
-            UserBaseInfoModel *userInfoModel = [MTLJSONAdapter modelOfClass:UserBaseInfoModel.class fromJSONDictionary:response[@"data"] error:&error];
-            [UserCacheBean share].userInfo = userInfoModel;
+            
+            [UserCacheBean share].userInfo.token = response[@"data"][@"token"];
+            [UserCacheBean share].userInfo.memberName = response[@"data"][@"memberName"];
+             [UserCacheBean share].userInfo.memberAvatarPath = response[@"data"][@"memberAvatarPath"];
              self.tabBarController.selectedIndex =3;
             for (UIViewController *controller in self.navigationController.viewControllers) {
                 if ([controller isKindOfClass:[HomeController class]]||[controller isKindOfClass:[BaseCourseController class]]||[controller isKindOfClass:[ServiceController class]]||[controller isKindOfClass:[MineController class]]) {
@@ -273,6 +274,7 @@
     req.memberTel = self.registerView.phoneField.text;
     req.memberName = self.registerView.nameField.text;
     req.invitationCode = self.registerView.inviteField.text;
+    req.memberPassword = self.registerView.passWordField.text;
     req.smsCaptchaCode = code;
     req.token = @"";
     __weak typeof(self)weakself = self;
@@ -283,7 +285,7 @@
             [UserCacheBean share].userInfo = userInfoModel;
             weakself.tabBarController.selectedIndex =3;
             for (UIViewController *controller in weakself.navigationController.viewControllers) {
-                if ([controller isKindOfClass:[HomeController class]]||[controller isKindOfClass:[BaseCourseController class]]||[controller isKindOfClass:[ServiceController class]]) {
+                if ([controller isKindOfClass:[HomeController class]]||[controller isKindOfClass:[BaseCourseController class]]||[controller isKindOfClass:[ServiceController class]]||[controller isKindOfClass:[MineController class]]) {
                     [weakself.navigationController popToViewController:controller animated:YES];
                 }
             }

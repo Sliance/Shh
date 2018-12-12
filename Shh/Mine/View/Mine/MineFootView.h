@@ -20,8 +20,8 @@
 @property(nonatomic,strong)UIImageView *zongImage;
 @property(nonatomic,strong)UILabel *yanLabel;
 @property(nonatomic,strong)UILabel *zongLabel;
-@property(nonatomic,strong)UILabel *yanright;
-@property(nonatomic,strong)UILabel *zongright;
+@property(nonatomic,strong)UIButton *yanright;
+@property(nonatomic,strong)UIButton *zongright;
 
 
 @property(nonatomic,copy)void(^selecteBlock)(NSUInteger);

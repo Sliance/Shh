@@ -10,7 +10,7 @@
 #import "UserCacheBean.h"
 #import "PersonInfoController.h"
 #import "AboutController.h"
-
+#import "ForgetPassWordController.h"
 @interface SettingController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableview;
 
@@ -101,6 +101,9 @@
         [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row ==1) {
         AboutController *vc = [[AboutController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (indexPath.row ==2) {
+        ForgetPassWordController *vc = [[ForgetPassWordController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

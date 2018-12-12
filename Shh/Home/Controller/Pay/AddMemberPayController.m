@@ -29,6 +29,8 @@
 @property(nonatomic,strong)UILabel *huiLabel;
 @property(nonatomic,strong)UILabel *huiLine;
 @property(nonatomic,strong)NSMutableDictionary *resultDic;
+@property(nonatomic,strong)UIImageView *zongImage;
+@property(nonatomic,strong)UIImageView *bottomImage;
 
 @end
 
@@ -36,6 +38,8 @@
 -(UIScrollView *)bgScrollow{
     if (!_bgScrollow) {
         _bgScrollow = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+        _bgScrollow.delegate = self;
+        _bgScrollow.contentSize = CGSizeMake(SCREENWIDTH, SCREENHEIGHT*1.5);
     }
     return _bgScrollow;
 }
@@ -45,6 +49,20 @@
         _headImage.image = [UIImage imageNamed:@"logo"];
     }
     return _headImage;
+}
+-(UIImageView *)zongImage{
+    if (!_zongImage) {
+        _zongImage = [[UIImageView alloc]init];
+        _zongImage.image = [UIImage imageNamed:@"pay_boss_tip"];
+    }
+    return _zongImage;
+}
+-(UIImageView *)bottomImage{
+    if (!_bottomImage) {
+        _bottomImage = [[UIImageView alloc]init];
+       
+    }
+    return _bottomImage;
 }
 -(UIImageView *)wxImage{
     if (!_wxImage) {
@@ -166,20 +184,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.resultDic = [[NSMutableDictionary alloc]init];
-    [self.view addSubview:self.headImage];
-    [self.view addSubview:self.titleLabel];
-    [self.view addSubview:self.priceLabel];
-    [self.view addSubview:self.wxImage];
-    [self.view addSubview:self.wxLabel];
-    [self.view addSubview:self.wxBtn];
-    [self.view addSubview:self.alipayImage];
-    [self.view addSubview:self.alipayLabel];
-    [self.view addSubview:self.alipayBtn];
-    [self.view addSubview:self.submitBtn];
-    [self.view addSubview:self.huiBtn];
-    [self.view addSubview:self.huiLabel];
-    [self.view addSubview:self.huiLine];
-    [self setContentLauout];
+    [self.view addSubview:self.bgScrollow];
+    [self.bgScrollow addSubview:self.headImage];
+    [self.bgScrollow addSubview:self.titleLabel];
+    [self.bgScrollow addSubview:self.priceLabel];
+    [self.bgScrollow addSubview:self.wxImage];
+    [self.bgScrollow addSubview:self.wxLabel];
+    [self.bgScrollow addSubview:self.wxBtn];
+    [self.bgScrollow addSubview:self.alipayImage];
+    [self.bgScrollow addSubview:self.alipayLabel];
+    [self.bgScrollow addSubview:self.alipayBtn];
+    [self.bgScrollow addSubview:self.submitBtn];
+    [self.bgScrollow addSubview:self.huiBtn];
+    [self.bgScrollow addSubview:self.huiLabel];
+    [self.bgScrollow addSubview:self.huiLine];
+    [self.bgScrollow addSubview:self.zongImage];
+    [self.bgScrollow addSubview:self.bottomImage];
+    self.headImage.frame = CGRectMake(SCREENWIDTH/2-40, 20, 81, 114);
+    self.titleLabel.frame = CGRectMake(0, 20+self.headImage.ctBottom, SCREENWIDTH,20);
+    self.priceLabel.frame = CGRectMake(0, 20+self.titleLabel.ctBottom, SCREENWIDTH,20);
+    
     [ZSNotification addWeixinPayResultNotification:self action:@selector(weixinPay:)];
 }
 #pragma mark-支付回调通知
@@ -192,71 +216,17 @@
     [self showInfo:[userInfo objectForKey:@"strMsg"]];
 }
 -(void)setContentLauout{
-    [self.headImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).offset(30+[self navHeightWithHeight]);
-        make.centerX.equalTo(self.view);
-        
-    }];
-    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.headImage.mas_bottom).offset(20);
-        make.centerX.equalTo(self.view);
-    }];
-    [self.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.titleLabel.mas_bottom).offset(20);
-        make.centerX.equalTo(self.view);
-    }];
-    [self.wxImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).offset(15);
-        make.top.equalTo(self.priceLabel.mas_bottom).offset(30);
-        make.width.height.mas_equalTo(24);
-    }];
-    [self.wxLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.wxImage.mas_right).offset(10);
-        make.centerY.equalTo(self.wxImage);
-    }];
-    [self.wxBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.view).offset(-15);
-        make.centerY.equalTo(self.wxImage);
-        make.width.height.mas_equalTo(40);
-    }];
-    [self.alipayImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).offset(15);
-        make.top.equalTo(self.wxImage.mas_bottom).offset(20);
-        make.width.height.mas_equalTo(24);
-        
-    }];
-    [self.alipayLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.alipayImage.mas_right).offset(10);
-        make.centerY.equalTo(self.alipayImage);
-    }];
-    [self.alipayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.view).offset(-15);
-        make.centerY.equalTo(self.alipayImage);
-        make.width.height.mas_equalTo(40);
-    }];
-    [self.submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.view).offset(-15);
-        make.left.equalTo(self.view).offset(15);
-        make.top.equalTo(self.alipayImage.mas_bottom).offset(40);
-        make.height.mas_equalTo(40);
-    }];
-    [self.huiLine mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).offset(15);
-        make.top.equalTo(self.submitBtn.mas_bottom).offset(10);
-        make.height.mas_equalTo(20);
-        make.width.mas_equalTo(5);
-    }];
-    [self.huiBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.huiLine.mas_right).offset(5);
-        make.top.equalTo(self.submitBtn.mas_bottom).offset(10);
-        make.height.mas_equalTo(20);
-    }];
-    [self.huiLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.view).offset(-15);
-        make.left.equalTo(self.view).offset(15);
-        make.top.equalTo(self.huiBtn.mas_bottom).offset(15);
-        
-    }];
+    self.wxImage.frame = CGRectMake(15, self.zongImage.ctBottom+50, 24, 24);
+    self.wxLabel.frame = CGRectMake(self.wxImage.ctRight+10,self.zongImage.ctBottom+50 , 100, 24);
+    self.wxBtn.frame = CGRectMake(SCREENWIDTH-55, self.zongImage.ctBottom+42, 40, 40);
+    self.alipayImage.frame = CGRectMake(15, self.wxBtn.ctBottom+10, 24, 24);
+    self.alipayLabel.frame = CGRectMake(self.wxImage.ctRight+10,self.wxBtn.ctBottom+10 , 100, 24);
+    self.alipayBtn.frame = CGRectMake(SCREENWIDTH-55, self.wxBtn.ctBottom+2, 40, 40);
+    self.submitBtn.frame = CGRectMake(15, self.alipayImage.ctBottom+40, SCREENWIDTH-30, 40);
+    self.huiLine.frame = CGRectMake(15, self.submitBtn.bottom+30, 5, 20);
+    self.huiBtn.frame = CGRectMake(self.huiLine.ctRight+5, self.submitBtn.bottom+30, 100, 20);
+    self.bottomImage.frame = CGRectMake(15, self.huiBtn.ctBottom+10, SCREENWIDTH-30, 382*(SCREENWIDTH-30)/345);
+    self.bgScrollow.contentSize = CGSizeMake(SCREENWIDTH, self.bottomImage.ctBottom+50);
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -267,7 +237,7 @@
 }
 -(void)setCourseId:(NSString *)courseId{
     _courseId = courseId;
-    [self buyCourseData];
+   
 }
 -(void)setType:(NSInteger )type{
     _type = type;
@@ -277,41 +247,25 @@
         [_huiLabel setText:@"1.每日早晨9点准时推送行业最新资讯的思和早报\n2.每月一次的大咖分享会，与家居行业大佬进行深入交流\n3.每日干货，每日提供最新家居行业干货\n4.定期举行线下沙龙，及时了解行业动向，一起切磋，相互分享\n5.企业游学，提供家居知名企业学习机会\n6.免费加入家居私董会，把您的问题拿出来，我们一起解决\n7.免费收听每周三思和会讲师线上直播授课的家居微课堂\n8.一年6次的总裁商学院，落地实战的经营解决方案" lineSpacing:5];
     }else if (type ==1){
         _titleLabel.text = @"加入研习社";
-        [_huiLabel setText:@"每季度一主题，每周一课，层层深入，各个击破，帮助企业和经销商解决经营困惑，赋能家居建材行业从业人员。\n1、100+往期课程免费收看\n2、全年50堂顶级课程更新\n3、一年研习社学籍\n4、课程每周三上线" lineSpacing:5];
+        _bottomImage.image = [UIImage imageNamed:@"yanxi_bg"];
+        self.zongImage.frame = CGRectMake(SCREENWIDTH/2-160, self.priceLabel.ctBottom+30, 320, 0);
+        [self setContentLauout];
+        [self addMember:@"studyClub"];
     }else if (type ==2){
         _titleLabel.text = @"加入总裁班";
-        [_huiLabel setText:@"1、超过1000个家居企业接受过课程培训，数百亿业绩的增长\n2、30万余家居人直接参加过唐磊老师课程，数百万人因此受益\n3、近3000个商家实现了1000万的业绩增长\n4、近30个商家突破1亿业绩规模" lineSpacing:5];
+         _bottomImage.image = [UIImage imageNamed:@"zong_bg"];
+       self.zongImage.frame = CGRectMake(SCREENWIDTH/2-160, self.priceLabel.ctBottom+30, 320, 50);
+        [self setContentLauout];
+        [self addMember:@"presidentClasses"];
     }
 }
 -(void)setOrderId:(NSString *)orderId{
     _orderId = orderId;
-    [self addMember];
-}
--(void)buyCourseData{
-    FreeListReq *req = [[FreeListReq alloc]init];
-    req.appId = @"1041622992853962754";
-    req.token = [UserCacheBean share].userInfo.token;
-    req.timestamp = @"0";
-    req.platform = @"ios";
-    req.pageIndex = 1;
-    req.pageSize = @"100";
-    req.courseId = @"";
-    if (_type ==1) {
-        req.courseType = @"joinyx";
-    }else if (_type ==2){
-        req.courseType = @"joinzc";
-    }
-    __weak typeof(self)weakself = self;
-    [[HomeServiceApi share]buyCourseWithParam:req response:^(id response) {
-        if ([response[@"code"] integerValue] ==200) {
-            weakself.resultDic = response[@"data"];
-            weakself.priceLabel.text = [NSString stringWithFormat:@"￥%@",weakself.resultDic[@"orderRealAmount"]];
-            weakself.orderId = weakself.resultDic[@"orderId"];
-        }
-    }];
+    [self addMember:@""];
 }
 
--(void)addMember{
+
+-(void)addMember:(NSString*)types{
     FreeListReq *req = [[FreeListReq alloc]init];
     req.appId = @"1041622992853962754";
     req.token = [UserCacheBean share].userInfo.token;
@@ -320,6 +274,7 @@
     req.pageIndex = 1;
     req.pageSize = @"100";
     req.courseId = self.courseId;
+    req.type = types;
     __weak typeof(self)weakself = self;
     [[HomeServiceApi share]addMemberPayWithParam:req response:^(id response) {
         if ([response[@"code"] integerValue] ==200) {
