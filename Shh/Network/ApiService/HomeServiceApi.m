@@ -488,6 +488,31 @@
         
     }];
 }
+///加入研习社和总裁班
+-(void)addyYanXiWithParam:(FreeListReq *) req response:(responseModel) responseModel{
+    NSDictionary *dic = [req mj_keyValues];
+    [[ZSAPIProxy shareProxy] callPOSTWithUrl:add_yanxi Params:dic isShowLoading:NO successCallBack:^(ZSURLResponse *response) {
+        if ([response.content isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dicResponse = (NSDictionary *) response.content;
+            if ([dicResponse[@"code"] integerValue] == 200) {
+                if (responseModel) {
+                    
+                    responseModel(dicResponse);
+                }
+            }else {
+                if (responseModel) {
+                    responseModel(nil);
+                }
+            }
+        } else {
+            if (responseModel) {
+                responseModel(nil);
+            }
+        }
+    } faildCallBack:^(ZSURLResponse *response) {
+        
+    }];
+}
 ///关注
 -(void)followWithParam:(FollowReq *) req response:(responseModel) responseModel{
     NSDictionary *dic = [req mj_keyValues];
@@ -587,6 +612,7 @@
         
     }];
 }
+
 ///支付宝支付
 -(void)getAlipayWithParam:(FreeListReq *) req response:(responseModel) responseModel{
     NSDictionary *dic = [req mj_keyValues];

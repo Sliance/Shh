@@ -12,6 +12,7 @@
 #import "IntegralCell.h"
 #import "IntegralRankCell.h"
 #import "PromoteQrController.h"
+#import "PersonInfoController.h"
 
 @interface MineIntegralController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)IntegralHeadView* headView;
@@ -296,18 +297,28 @@
         if (indexPath.section ==0) {
             IntegralRes *model = self.taskArr[indexPath.row];
             cell.textLabel.text = [NSString stringWithFormat:@"%@+%@",model.content,model.integral];
-            cell.detailTextLabel.text = @"未完成";
-            cell.detailTextLabel.textColor = DSColorFromHex(0x969696);
+            if (model.memberId.length>0) {
+                cell.detailTextLabel.text = @"已完成";
+                cell.detailTextLabel.textColor = DSColorFromHex(0x969696);
+            }else{
+               cell.detailTextLabel.text = @"未完成";
+               cell.detailTextLabel.textColor = DSColorFromHex(0x969696);
+            }
         }else if (indexPath.section ==1){
             IntegralRes *model = self.task1Arr[indexPath.row];
             cell.textLabel.text = [NSString stringWithFormat:@"%@+%@",model.content,model.integral];
-            if (indexPath.row ==1) {
-                cell.detailTextLabel.text = @"未完成";
+            if (model.memberId.length>0) {
+                cell.detailTextLabel.text = @"已完成";
                 cell.detailTextLabel.textColor = DSColorFromHex(0x969696);
             }else{
-                cell.detailTextLabel.text = @"点击前往";
-                cell.detailTextLabel.textColor = [UIColor redColor];
-            }
+                if ([model.integralCategory isEqualToString:@"REGISTER"]) {
+                    cell.detailTextLabel.text = @"未完成";
+                    cell.detailTextLabel.textColor = DSColorFromHex(0x969696);
+                }else{
+                    cell.detailTextLabel.text = @"点击前往";
+                    cell.detailTextLabel.textColor = [UIColor redColor];
+                }
+           }
         }
         return cell;
     }
@@ -331,5 +342,19 @@
        
     }
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.type ==1) {
+        if (indexPath.section ==1) {
+            IntegralRes *model = self.task1Arr[indexPath.row];
+            if ([model.integralCategory isEqualToString:@"RECOMMEND"]) {
+                PromoteQrController *qrVC = [[PromoteQrController alloc]init];
+                [self.navigationController pushViewController:qrVC animated:YES];
+            }else if ([model.integralCategory isEqualToString:@"PERSONAL_INFORMATION"]){
+                PersonInfoController*infoVC = [[PersonInfoController alloc]init];
+                [self.navigationController pushViewController:infoVC animated:YES];
+            }
+        }
+    }
 }
 @end

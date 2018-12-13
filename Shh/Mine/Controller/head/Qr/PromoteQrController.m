@@ -9,6 +9,8 @@
 #import "PromoteQrController.h"
 #import "PromoteQrFootView.h"
 #import "UIImage+RTStyle.h"
+#import "WXApiObject.h"
+#import "WXApi.h"
 @interface PromoteQrController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIScrollView *bgscrollow;
 @property(nonatomic,strong)UILabel *titleLabel;
@@ -45,7 +47,7 @@
         // 2. 恢复滤镜的默认属性
         [filter setDefaults];
         // 3. 将字符串转换成NSData
-        NSString *urlStr = [UserCacheBean share].userInfo.memberId;
+        NSString *urlStr = [NSString stringWithFormat:@"https://v2.m.csihe.com/#/csiheLogin%@",[UserCacheBean share].userInfo.memberId];
         NSData *data = [urlStr dataUsingEncoding:NSUTF8StringEncoding];
         // 4. 通过KVO设置滤镜inputMessage数据
         [filter setValue:data forKey:@"inputMessage"];
@@ -101,5 +103,26 @@
     }
     return self;
 }
-
+-(void)didRightClick{
+    UIGraphicsBeginImageContextWithOptions(self.headImage.bounds.size, NO, 0.0f);
+    [self.headImage.layer renderInContext: UIGraphicsGetCurrentContext()];
+    UIImage* viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    NSData* imageData = UIImageJPEGRepresentation(viewImage, 0.7);
+    
+    WXImageObject *imageObject = [WXImageObject object];
+    imageObject.imageData = imageData;
+    
+    WXMediaMessage *message = [WXMediaMessage message];
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"res5"
+//                        imageData;
+    message.mediaObject = imageObject;
+    
+    SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
+    req.bText = NO;
+    req.message = message;
+    req.scene = WXSceneSession;
+    [WXApi sendReq:req];
+}
 @end

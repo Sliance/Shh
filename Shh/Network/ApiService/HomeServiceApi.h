@@ -64,8 +64,11 @@
 -(void)buyCourseWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///加入思和会
 -(void)addMemberPayWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///加入研习社和总裁班
+-(void)addyYanXiWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///微信支付
 -(void)getWxPayWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+
 ///支付宝支付
 -(void)getAlipayWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 

@@ -25,7 +25,7 @@
     [self addSubview:self.bgImage];
     [self addSubview:self.bgView];
     [self addSubview:self.headImage];
-    [self.bgView addSubview:self.hYView];
+//    [self.bgView addSubview:self.hYView];
 //    [self.hYView addSubview:self.hYimage];
 //    [self.hYView addSubview:self.hYtitle];
 //    [self.hYView addSubview:self.hYDate];

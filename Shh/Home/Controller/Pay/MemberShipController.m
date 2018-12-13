@@ -64,7 +64,7 @@
 -(UIImageView *)headImage{
     if (!_headImage) {
         _headImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 131*SCREENWIDTH/375)];
-        _headImage.image = [UIImage imageNamed:@"jion"];
+        
     }
     return _headImage;
 }
@@ -101,6 +101,7 @@
     self.req.timestamp = @"0";
     self.req.platform = @"ios";
     self.req.token = [UserCacheBean share].userInfo.token;
+    self.req.memberId = [UserCacheBean share].userInfo.memberId;
     self.req.memberAvatarId = @"";
     self.req.memberAvatarPath = @"";
     self.req.invitationCode = @"";
@@ -110,12 +111,16 @@
     self.req.wechatOpenId = @"";
     self.req.wechatUnionId = @"";
     self.req.parentInvitationMemberId = @"";
+    if (self.type ==1) {
+        self.req.type = @"studyClub";
+    }else if (self.type ==2){
+        self.req.type = @"presidentClasses";
+    }
     __weak typeof(self)weakself = self;
     [[MineServiceApi share]joinInWithParam:self.req response:^(id response) {
         if ([response[@"code"] integerValue] ==200) {
-            AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
-            [addVC setOrderId:response[@"data"][@"orderId"]];
-            [weakself.navigationController pushViewController:addVC animated:YES];
+            
+            [weakself showInfo:response[@"message"]];
         }else{
              [weakself showInfo:response[@"message"]];
         }
@@ -124,9 +129,19 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.view.backgroundColor = [UIColor whiteColor];
-        self.title = @"加入思和会会员";
+        
     }
     return self;
+}
+-(void)setType:(NSInteger)type{
+    _type = type;
+    if (type ==1) {
+        self.title = @"加入研习社";
+        _headImage.image = [UIImage imageNamed:@"yanxi_head"];
+    }else if (type ==2){
+        self.title = @"加入总裁班";
+        _headImage.image = [UIImage imageNamed:@"zongcai_bg"];
+    }
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 3;

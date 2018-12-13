@@ -7,6 +7,7 @@
 //
 
 #import "BaseModelReq.h"
+#import "LevelModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @property(nonatomic,copy)NSString *reNewPassword;
 ///
-@property(nonatomic,copy)NSString *systemVersion;
+@property(nonatomic,strong)NSArray *levelMembers;
 ///
 @property(nonatomic,copy)NSString *industryType;
 ///
@@ -31,8 +32,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *parentInvitationMemberId;
 ///
 @property(nonatomic,copy)NSString *invitationCode;
-///
-@property(nonatomic,copy)NSString *memberId;
 ///
 @property(nonatomic,copy)NSString *wechatNo;
 ///
@@ -61,6 +60,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *wechatUnionId;
 ///
 @property(nonatomic,copy)NSString *memberAvatarId;
+///
+@property(nonatomic,assign)NSInteger studyStatus;
+///
+@property(nonatomic,assign)NSInteger  presidentStatus;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -7,11 +7,12 @@
 //
 
 #import "AddMemberPayController.h"
-#import "HomeServiceApi.h"
+#import "MineServiceApi.h"
 #import "MemberShipController.h"
 #import "WXApiObject.h"
 #import "WXApi.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "HomeServiceApi.h"
 
 @interface AddMemberPayController ()<UIScrollViewDelegate>
 @property(nonatomic,strong)UIScrollView *bgScrollow;
@@ -203,8 +204,8 @@
     self.headImage.frame = CGRectMake(SCREENWIDTH/2-40, 20, 81, 114);
     self.titleLabel.frame = CGRectMake(0, 20+self.headImage.ctBottom, SCREENWIDTH,20);
     self.priceLabel.frame = CGRectMake(0, 20+self.titleLabel.ctBottom, SCREENWIDTH,20);
-    
     [ZSNotification addWeixinPayResultNotification:self action:@selector(weixinPay:)];
+    [ZSNotification addAlipayPayResultNotification:self action:@selector(AlipayPay:)];
 }
 #pragma mark-支付回调通知
 
@@ -212,8 +213,21 @@
     NSDictionary *userInfo = [notifi userInfo];
     if ([[userInfo objectForKey:@"weixinpay"] isEqualToString:@"success"]) {
         [self showInfo:@"付款成功"];
+            MemberShipController *memberVC = [[MemberShipController alloc]init];
+            [memberVC setType:self.type];
+            [self.navigationController pushViewController:memberVC animated:YES];
+        
     }
     [self showInfo:[userInfo objectForKey:@"strMsg"]];
+}
+-(void)AlipayPay:(NSNotification *)notifi{
+    NSDictionary *userInfo = [notifi userInfo];
+    [self showInfo:[userInfo objectForKey:@"strMsg"]];
+    if ([[userInfo objectForKey:@"strMsg"] isEqualToString:@"支付成功"]) {
+        MemberShipController *memberVC = [[MemberShipController alloc]init];
+        [memberVC setType:self.type];
+        [self.navigationController pushViewController:memberVC animated:YES];
+    }
 }
 -(void)setContentLauout{
     self.wxImage.frame = CGRectMake(15, self.zongImage.ctBottom+50, 24, 24);
@@ -261,7 +275,7 @@
 }
 -(void)setOrderId:(NSString *)orderId{
     _orderId = orderId;
-    [self addMember:@""];
+
 }
 
 
@@ -273,13 +287,16 @@
     req.platform = @"ios";
     req.pageIndex = 1;
     req.pageSize = @"100";
-    req.courseId = self.courseId;
     req.type = types;
+    req.memberId = [UserCacheBean share].userInfo.memberId;
     __weak typeof(self)weakself = self;
-    [[HomeServiceApi share]addMemberPayWithParam:req response:^(id response) {
+    [[HomeServiceApi share]addyYanXiWithParam:req response:^(id response) {
         if ([response[@"code"] integerValue] ==200) {
             weakself.resultDic = response[@"data"];
-            weakself.priceLabel.text = [NSString stringWithFormat:@"￥%@",weakself.resultDic[@"levelPrice"]];
+            weakself.priceLabel.text = [NSString stringWithFormat:@"￥%@",weakself.resultDic[@"orderPrice"]];
+            weakself.orderId = weakself.resultDic[@"orderId"];
+        }else{
+            [weakself showInfo:response[@"message"]];
         }
     }];
 }
@@ -304,6 +321,11 @@
     req.timestamp = @"0";
     req.platform = @"ios";
     req.orderId = self.orderId;
+    if (self.type ==1) {
+        req.type = @"studyClub";
+    }else if (self.type ==2){
+        req.type = @"presidentClasses";
+    }
     if (self.wxBtn.selected == YES) {
         [[HomeServiceApi share]getWxPayWithParam:req response:^(id response) {
             if(response){

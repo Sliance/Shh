@@ -92,8 +92,10 @@
 #define mine_follow_url  @"/sihehui/member/follow/desktop/v1/list"
 ///课程购买
 #define buy_course_url   @"/sihehui/order/desktop/v1/app/course/wx/save"
+///加入研习社/总裁班完善信息
+#define join_in_url @"/sihehui/member/desktop/v1/join/complete/information"
 ///加入思和会
-#define join_in_url     @"/sihehui/member/desktop/v1/join"
+#define join_in_hui  @"/sihehui/member/desktop/v1/join"
 ///关注
 #define follow_url   @"/sihehui/member/follow/desktop/v1/save"
 ///点赞
@@ -110,6 +112,7 @@
 #define upload_photo_url  @"/file/file/admin/v1/file/upload"
 ///微信支付
 #define wx_pay_url @"/sihehui/pay/mobile/v1/app/wxpay"
+
 ///支付宝支付
 #define alipay_pay_url @"/sihehui/pay/mobile/v1/app/alipay"
 
@@ -125,7 +128,8 @@
 #define add_member_pay  @"/sihehui/level/desktop/v1/lifelong"
 ///我的任务
 #define mine_task  @"/sihehui/member/integral/desktop/v1/task"
-
+///加入研习社和总裁班
+#define add_yanxi  @"/sihehui/member/desktop/v1/join/study"
 
 
 typedef void(^responseModel)(id response);

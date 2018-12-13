@@ -319,6 +319,7 @@
 		89E0C0EE21AE772900D18C44 /* PersonInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E0C0ED21AE772900D18C44 /* PersonInfoController.m */; };
 		89E0C0F121AE79E400D18C44 /* ForgetAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E0C0F021AE79E400D18C44 /* ForgetAlertView.m */; };
 		89E0C0F421AE838000D18C44 /* ChangePassAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89E0C0F321AE838000D18C44 /* ChangePassAlertView.m */; };
+		89EF695121C22982007F74D0 /* LevelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EF695021C22982007F74D0 /* LevelModel.m */; };
 		89F03C4D21AF827900218809 /* HelpCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F03C4C21AF827900218809 /* HelpCenterController.m */; };
 		89F03C5021AF85DC00218809 /* HelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F03C4F21AF85DC00218809 /* HelpCell.m */; };
 		89F03C5321AF921500218809 /* HelpRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F03C5221AF921500218809 /* HelpRes.m */; };
@@ -961,6 +962,8 @@
 		89E0C0F021AE79E400D18C44 /* ForgetAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetAlertView.m; sourceTree = "<group>"; };
 		89E0C0F221AE838000D18C44 /* ChangePassAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePassAlertView.h; sourceTree = "<group>"; };
 		89E0C0F321AE838000D18C44 /* ChangePassAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePassAlertView.m; sourceTree = "<group>"; };
+		89EF694F21C22982007F74D0 /* LevelModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LevelModel.h; sourceTree = "<group>"; };
+		89EF695021C22982007F74D0 /* LevelModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LevelModel.m; sourceTree = "<group>"; };
 		89F03C4B21AF827900218809 /* HelpCenterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpCenterController.h; sourceTree = "<group>"; };
 		89F03C4C21AF827900218809 /* HelpCenterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpCenterController.m; sourceTree = "<group>"; };
 		89F03C4E21AF85DC00218809 /* HelpCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpCell.h; sourceTree = "<group>"; };
@@ -2291,6 +2294,8 @@
 				893EF0B221BA1DF10049B529 /* IntegralRes.m */,
 				893EF0BD21BA727B0049B529 /* MineMedalRes.h */,
 				893EF0BE21BA727B0049B529 /* MineMedalRes.m */,
+				89EF694F21C22982007F74D0 /* LevelModel.h */,
+				89EF695021C22982007F74D0 /* LevelModel.m */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -2755,6 +2760,7 @@
 				8921F7FA21B60EBE00F9FE10 /* SJVideoPlayerDraggingProgressView.m in Sources */,
 				893EF0B921BA3F630049B529 /* IntegralRankCell.m in Sources */,
 				89D4C9B6219E8D5F00566685 /* EmojiButtonView.m in Sources */,
+				89EF695121C22982007F74D0 /* LevelModel.m in Sources */,
 				898569E521B778A50016A24A /* ImageModel.m in Sources */,
 				886B978721363B280074322D /* TrainingServicesCell.m in Sources */,
 				89DDD4F121C0A9680026BBBE /* UIView+CTExtensions.m in Sources */,

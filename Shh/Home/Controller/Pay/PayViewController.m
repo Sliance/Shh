@@ -12,6 +12,7 @@
 #import "WXApiObject.h"
 #import "WXApi.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "AddMemberPayController.h"
 
 @interface PayViewController ()
 @property(nonatomic,strong)UIImageView *headImage;
@@ -164,6 +165,7 @@
     [self.view addSubview:self.huiLabel];
     [self setContentLauout];
     [ZSNotification addWeixinPayResultNotification:self action:@selector(weixinPay:)];
+    [ZSNotification addAlipayPayResultNotification:self action:@selector(AlipayPay:)];
 }
 #pragma mark-支付回调通知
 
@@ -172,6 +174,11 @@
     if ([[userInfo objectForKey:@"weixinpay"] isEqualToString:@"success"]) {
         [self showInfo:@"付款成功"];
     }
+    [self showInfo:[userInfo objectForKey:@"strMsg"]];
+}
+-(void)AlipayPay:(NSNotification *)notifi{
+    NSDictionary *userInfo = [notifi userInfo];
+    
     [self showInfo:[userInfo objectForKey:@"strMsg"]];
 }
 -(void)setContentLauout{
@@ -315,7 +322,8 @@
     
 }
 -(void)pressHui{
-    MemberShipController*memberVC = [[MemberShipController alloc]init];
+    AddMemberPayController*memberVC = [[AddMemberPayController alloc]init];
+    [memberVC setType:1];
     [self.navigationController pushViewController:memberVC animated:YES];
 }
 @end

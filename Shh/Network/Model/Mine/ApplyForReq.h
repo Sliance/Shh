@@ -75,6 +75,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *companyType;
 ///
 @property(nonatomic,copy)NSString *parentInvitationMemberId;
+@property(nonatomic,copy)NSString *type;
+
 @end
 
 NS_ASSUME_NONNULL_END

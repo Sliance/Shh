@@ -150,7 +150,7 @@
 ///获取会员基本信息
 -(void)getMenberInfoWithParam:(LoginReq *) req response:(responseModel) responseModel{
     NSDictionary *dic = [req mj_keyValues];
-    [[ZSAPIProxy shareProxy] callPOSTWithUrl:mine_info Params:dic isShowLoading:NO successCallBack:^(ZSURLResponse *response) {
+    [[ZSAPIProxy shareProxy] callPOSTWithUrl:mine_info Params:dic isShowLoading:YES successCallBack:^(ZSURLResponse *response) {
         if ([response.content isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dicResponse = (NSDictionary *) response.content;
             if ([dicResponse[@"code"] integerValue] == 200) {
@@ -345,7 +345,7 @@
         
     }];
 }
-///加入思和会
+///加入思和会/研习社/总裁班
 -(void)joinInWithParam:(ApplyForReq *) req response:(responseModel) responseModel{
     NSDictionary *dic = [req mj_keyValues];
     [[ZSAPIProxy shareProxy] callPOSTWithUrl:join_in_url Params:dic isShowLoading:NO successCallBack:^(ZSURLResponse *response) {

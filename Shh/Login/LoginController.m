@@ -225,10 +225,9 @@
     req.memberPassword = self.loginview.passWordField.text;
     [[MineServiceApi share]loginWithParam:req response:^(id response) {
         if ([response[@"code"]integerValue] ==200 ) {
-            
-            [UserCacheBean share].userInfo.token = response[@"data"][@"token"];
-            [UserCacheBean share].userInfo.memberName = response[@"data"][@"memberName"];
-             [UserCacheBean share].userInfo.memberAvatarPath = response[@"data"][@"memberAvatarPath"];
+            NSError *error = nil;
+            UserBaseInfoModel *userInfoModel = [MTLJSONAdapter modelOfClass:UserBaseInfoModel.class fromJSONDictionary:response[@"data"] error:&error];
+            [UserCacheBean share].userInfo = userInfoModel;
              self.tabBarController.selectedIndex =3;
             for (UIViewController *controller in self.navigationController.viewControllers) {
                 if ([controller isKindOfClass:[HomeController class]]||[controller isKindOfClass:[BaseCourseController class]]||[controller isKindOfClass:[ServiceController class]]||[controller isKindOfClass:[MineController class]]) {

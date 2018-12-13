@@ -26,6 +26,7 @@
 #import "MineMedalController.h"
 #import "MineIntegralController.h"
 #import "AddMemberPayController.h"
+#import "MemberShipController.h"
 
 
 @interface MineController ()<UIScrollViewDelegate>
@@ -159,20 +160,33 @@
                 break;
             case 100:
             {
-                AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
-                addVC.hidesBottomBarWhenPushed = YES;
-                [addVC setType:1];
-                [addVC setCourseId:@""];
-                [weakself.navigationController pushViewController:addVC animated:YES];
+                if (self.result.studyStatus ==0) {
+                    AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
+                    addVC.hidesBottomBarWhenPushed = YES;
+                    [addVC setType:1];
+                    [weakself.navigationController pushViewController:addVC animated:YES];
+                }else if (self.result.studyStatus ==1){
+                    MemberShipController *addVC = [[MemberShipController alloc]init];
+                    addVC.hidesBottomBarWhenPushed = YES;
+                    [addVC setType:1];
+                    [weakself.navigationController pushViewController:addVC animated:YES];
+                }
+                
             }
                 break;
             case 101:
             {
-                AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
-                addVC.hidesBottomBarWhenPushed = YES;
-                [addVC setType:2];
-                [addVC setCourseId:@""];
-                [weakself.navigationController pushViewController:addVC animated:YES];
+                if (self.result.presidentStatus ==0) {
+                    AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
+                    addVC.hidesBottomBarWhenPushed = YES;
+                    [addVC setType:2];
+                    [weakself.navigationController pushViewController:addVC animated:YES];
+                }else if (self.result.presidentStatus ==1){
+                    MemberShipController *addVC = [[MemberShipController alloc]init];
+                    addVC.hidesBottomBarWhenPushed = YES;
+                    [addVC setType:2];
+                    [weakself.navigationController pushViewController:addVC animated:YES];
+                }
             }
                 break;
             default:
@@ -184,6 +198,7 @@
         qrVC.hidesBottomBarWhenPushed = YES;
         [weakself.navigationController pushViewController:qrVC animated:YES];
     }];
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -227,11 +242,31 @@
             }
            
             [weakself.headView.headImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",DPHOST,weakself.result.memberAvatarPath]] placeholderImage:[UIImage imageNamed:@"mine"]];
-            if (weakself.result.joinMember ==YES) {
-                weakself.headView.hYDate.text = @"终身会员 >";
-            }else{
-                weakself.headView.hYDate.text = @"加入会员 >";
-            }
+            
+            
+                    if (weakself.result.studyStatus == 1) {
+                        [weakself.footView.yanright setTitle:@"信息有待完善" forState:UIControlStateNormal];
+                        [weakself.footView.yanright setIconInRightWithSpacing:10];
+                    }else if (weakself.result.studyStatus == 2){
+                        [weakself.footView.yanright setTitle:@"        已加入" forState:UIControlStateNormal];
+                        [weakself.footView.yanright setIconInRightWithSpacing:10];
+                    }else if (weakself.result.studyStatus == 0){
+                        [weakself.footView.yanright setTitle:@"" forState:UIControlStateNormal];
+                        [weakself.footView.yanright setIconInRightWithSpacing:80];
+                    }
+                    
+            
+                    if (weakself.result.presidentStatus ==1) {
+                        [weakself.footView.zongright setTitle:@"信息有待完善" forState:UIControlStateNormal];
+                        [weakself.footView.zongright setIconInRightWithSpacing:10];
+                    }else if (weakself.result.presidentStatus ==2){
+                        [weakself.footView.zongright setTitle:@"        已加入" forState:UIControlStateNormal];
+                        [weakself.footView.zongright setIconInRightWithSpacing:10];
+                    }else if (weakself.result.presidentStatus ==0){
+                        [weakself.footView.zongright setTitle:@"" forState:UIControlStateNormal];
+                        [weakself.footView.zongright setIconInRightWithSpacing:80];
+                    }
+              
         }
     }];
 }

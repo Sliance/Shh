@@ -9,5 +9,10 @@
 #import "MemberInfoRes.h"
 
 @implementation MemberInfoRes
-
++ (NSDictionary *)mj_objectClassInArray {
+    
+    return @{
+             @"levelMembers":@"LevelModel"
+             };
+}
 @end

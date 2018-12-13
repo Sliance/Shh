@@ -55,9 +55,9 @@
  */
 + (void)loginAgain {
     //先清除本地缓存登录信息
-    UserBaseInfoModel *user = [[UserBaseInfoModel alloc] init];
-    [[UserCacheBean share] setUserInfo:user];
-    UIViewController *controller = [FunctionMethodsUtil getCurrentRootViewController];
+//    UserBaseInfoModel *user = [[UserBaseInfoModel alloc] init];
+//    [[UserCacheBean share] setUserInfo:user];
+//    UIViewController *controller = [FunctionMethodsUtil getCurrentRootViewController];
 //    if (! [[self getCurrentRootViewController] isKindOfClass:[LoginViewController class]]) {
 //        LoginViewController *loginVC = [[LoginViewController alloc]init];
 //        UINavigationController *loginNav = [[UINavigationController alloc]initWithRootViewController:loginVC];
