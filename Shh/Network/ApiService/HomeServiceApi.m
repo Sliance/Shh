@@ -438,6 +438,7 @@
         
     }];
 }
+
 ///课程购买
 -(void)buyCourseWithParam:(FreeListReq *) req response:(responseModel) responseModel{
     NSDictionary *dic = [req mj_keyValues];
