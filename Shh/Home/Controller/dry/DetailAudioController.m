@@ -481,9 +481,12 @@
             [weakself.navigationController pushViewController:loginVC animated:YES];
         }
     }];
-    [headView setCommentBlock:^(CommentListRes * model) {
+    [headView setCommentBlock:^(CommentListRes * model1) {
         if ([UserCacheBean share].userInfo.token.length>0) {
-            
+            weakself.inputToolbar.isBecomeFirstResponder = YES;
+            weakself.commentReq.beCommentId = model1.beCommentId;
+            weakself.commentReq.beCommentMemberId = model1.beCommentMemberId;
+            weakself.commentReq.beCommentMemberNickname = model1.beCommentMemberNickname;
         }else{
             LoginController *loginVC = [[LoginController alloc]init];
             loginVC.hidesBottomBarWhenPushed = YES;
@@ -503,6 +506,15 @@
     CommentListRes *model = self.commentArr[indexPath.section];
     BeCommentModel *becommentmodel = model.beCommentList[indexPath.row];
     [cell setModel:becommentmodel];
+    __weak typeof(self)weakself = self;
+    [cell setSelectedBlock:^(BeCommentModel * model) {
+        weakself.inputToolbar.isBecomeFirstResponder = YES;
+        weakself.commentReq.beCommentId = model.beCommentId;
+        weakself.commentReq.beCommentMemberId = model.beCommentMemberId;
+        weakself.commentReq.beCommentMemberNickname = model.beCommentMemberNickname;
+        weakself.commentReq.commentType = @"comment";
+        weakself.commentReq.articleOrCourseId = weakself.detailCourse.course.courseId;
+    }];
     return cell;
 }
 

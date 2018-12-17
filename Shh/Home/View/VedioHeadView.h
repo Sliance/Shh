@@ -13,6 +13,7 @@
 #import "FreeListRes.h"
 #import <SJRouter/SJRouter.h>
 #import "SJVideoPlayer.h"
+#import "SJPlayView.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -27,8 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIButton *fouceBtn;
 @property (nonatomic, strong) UILabel *lineLabel;
 @property (nonatomic, strong) UILabel *lineLabel1;
-@property (nonatomic, strong) YGPlayerView *playerView;
-@property (nonatomic, strong) SJVideoPlayer *player;
+//@property (nonatomic, strong) YGPlayerView *playerView;
+//@property (nonatomic, strong) SJVideoPlayer *player;
 @property(nonatomic,strong)DetailCourseRes *detailCourse;
 
 @property (nonatomic, strong) UILabel *introductLabel;
@@ -46,6 +47,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)void(^playblock)(void);
 @property (nonatomic, strong) UIImageView *coverImageView;
 @property (nonatomic, strong) UIButton *playButton;
+
+@property (nonatomic, strong,readonly) SJPlayView *view;
 
 @end
 

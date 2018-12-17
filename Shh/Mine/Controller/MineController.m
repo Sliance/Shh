@@ -67,9 +67,15 @@
     [self.bgscrollow addSubview:self.footView];
     __weak typeof(self)weakself = self;
     [self.headView setMessageBlock:^{
+    if ([UserCacheBean share].userInfo.token.length>0) {
         MessageController *messageVC = [[MessageController alloc]init];
         messageVC.hidesBottomBarWhenPushed = YES;
         [weakself.navigationController pushViewController:messageVC animated:YES];
+    }else{
+        LoginController *loginVC = [[LoginController alloc]init];
+        loginVC.hidesBottomBarWhenPushed = YES;
+        [weakself.navigationController pushViewController:loginVC animated:YES];
+    }
     }];
     [self.headView setEditBlock:^{
         if ([UserCacheBean share].userInfo.token.length>0) {
@@ -83,120 +89,146 @@
         }
     }];
     [self.headView setTypeBlock:^(NSInteger index) {
-        if (index ==1) {
-            HistoryBaseController *setVC = [[HistoryBaseController alloc]init];
-            setVC.hidesBottomBarWhenPushed = YES;
-            [weakself.navigationController pushViewController:setVC animated:YES];
-        }else if (index ==2){
-            DownLoadController *setVC = [[DownLoadController alloc]init];
-            setVC.hidesBottomBarWhenPushed = YES;
-            [weakself.navigationController pushViewController:setVC animated:YES];
+        if ([UserCacheBean share].userInfo.token.length>0) {
+            if (index ==1) {
+                HistoryBaseController *setVC = [[HistoryBaseController alloc]init];
+                setVC.hidesBottomBarWhenPushed = YES;
+                [weakself.navigationController pushViewController:setVC animated:YES];
+            }else if (index ==2){
+                DownLoadController *setVC = [[DownLoadController alloc]init];
+                setVC.hidesBottomBarWhenPushed = YES;
+                [weakself.navigationController pushViewController:setVC animated:YES];
+            }
+        }else{
+            LoginController *loginVC = [[LoginController alloc]init];
+            loginVC.hidesBottomBarWhenPushed = YES;
+            [weakself.navigationController pushViewController:loginVC animated:YES];
         }
+        
     }];
     [self.headView setAddBlock:^{
+     if ([UserCacheBean share].userInfo.token.length>0) {
         MemberShipController*memberVC = [[MemberShipController alloc]init];
         memberVC.hidesBottomBarWhenPushed = YES;
         [weakself.navigationController pushViewController:memberVC animated:YES];
+     }else{
+         LoginController *loginVC = [[LoginController alloc]init];
+         loginVC.hidesBottomBarWhenPushed = YES;
+         [weakself.navigationController pushViewController:loginVC animated:YES];
+     }
+         
     }];
     
     [self.footView setSelecteBlock:^(NSUInteger index) {
-        
-        switch (index) {
-            case 0:
-            {
-                MinePurchaseController *setVC = [[MinePurchaseController alloc]init];
-                setVC.hidesBottomBarWhenPushed = YES;
-                [weakself.navigationController pushViewController:setVC animated:YES];
-            }
-                break;
-            case 1:
-            {
-                MineIntegralController *setVC = [[MineIntegralController alloc]init];
-                setVC.hidesBottomBarWhenPushed = YES;
-                [weakself.navigationController pushViewController:setVC animated:YES];
-            }
-                break;
-            case 2:
-            {
-                MineMedalController *setVC = [[MineMedalController alloc]init];
-                setVC.hidesBottomBarWhenPushed = YES;
-                [weakself.navigationController pushViewController:setVC animated:YES];
-            }
-                break;
-            case 3:
-            {
-                CollectionBaseController *setVC = [[CollectionBaseController alloc]init];
-                setVC.hidesBottomBarWhenPushed = YES;
-                [weakself.navigationController pushViewController:setVC animated:YES];
-            }
-                break;
-            case 4:
-            {
-                MineFollowController *setVC = [[MineFollowController alloc]init];
-                setVC.hidesBottomBarWhenPushed = YES;
-                [weakself.navigationController pushViewController:setVC animated:YES];
-            }
-                break;
-            case 5:
-            {
-                SettingController *setVC = [[SettingController alloc]init];
-                setVC.hidesBottomBarWhenPushed = YES;
-                [weakself.navigationController pushViewController:setVC animated:YES];
-            }
-                break;
-            case 6:
-            {
-                EnterShhController *enterVC = [[EnterShhController alloc]init];
-                enterVC.hidesBottomBarWhenPushed = YES;
-                [weakself.navigationController pushViewController:enterVC animated:YES];
-            }
-                break;
-            case 7:
-            {
+        if ([UserCacheBean share].userInfo.token.length>0) {
+            switch (index) {
+                case 0:
+                {
+                    MinePurchaseController *setVC = [[MinePurchaseController alloc]init];
+                    setVC.hidesBottomBarWhenPushed = YES;
+                    [weakself.navigationController pushViewController:setVC animated:YES];
+                }
+                    break;
+                case 1:
+                {
+                    MineIntegralController *setVC = [[MineIntegralController alloc]init];
+                    setVC.hidesBottomBarWhenPushed = YES;
+                    [weakself.navigationController pushViewController:setVC animated:YES];
+                }
+                    break;
+                case 2:
+                {
+                    MineMedalController *setVC = [[MineMedalController alloc]init];
+                    setVC.hidesBottomBarWhenPushed = YES;
+                    [weakself.navigationController pushViewController:setVC animated:YES];
+                }
+                    break;
+                case 3:
+                {
+                    CollectionBaseController *setVC = [[CollectionBaseController alloc]init];
+                    setVC.hidesBottomBarWhenPushed = YES;
+                    [weakself.navigationController pushViewController:setVC animated:YES];
+                }
+                    break;
+                case 4:
+                {
+                    MineFollowController *setVC = [[MineFollowController alloc]init];
+                    setVC.hidesBottomBarWhenPushed = YES;
+                    [weakself.navigationController pushViewController:setVC animated:YES];
+                }
+                    break;
+                case 5:
+                {
+                    SettingController *setVC = [[SettingController alloc]init];
+                    setVC.hidesBottomBarWhenPushed = YES;
+                    [weakself.navigationController pushViewController:setVC animated:YES];
+                }
+                    break;
+                case 6:
+                {
+                    EnterShhController *enterVC = [[EnterShhController alloc]init];
+                    enterVC.hidesBottomBarWhenPushed = YES;
+                    [weakself.navigationController pushViewController:enterVC animated:YES];
+                }
+                    break;
+                case 7:
+                {
                     HelpCenterController *helpVC = [[HelpCenterController alloc]init];
                     helpVC.hidesBottomBarWhenPushed = YES;
                     [weakself.navigationController pushViewController:helpVC animated:YES];
-             }
-                break;
-            case 100:
-            {
-                if (self.result.studyStatus ==0) {
-                    AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
-                    addVC.hidesBottomBarWhenPushed = YES;
-                    [addVC setType:1];
-                    [weakself.navigationController pushViewController:addVC animated:YES];
-                }else if (self.result.studyStatus ==1){
-                    MemberShipController *addVC = [[MemberShipController alloc]init];
-                    addVC.hidesBottomBarWhenPushed = YES;
-                    [addVC setType:1];
-                    [weakself.navigationController pushViewController:addVC animated:YES];
                 }
-                
-            }
-                break;
-            case 101:
-            {
-                if (self.result.presidentStatus ==0) {
-                    AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
-                    addVC.hidesBottomBarWhenPushed = YES;
-                    [addVC setType:2];
-                    [weakself.navigationController pushViewController:addVC animated:YES];
-                }else if (self.result.presidentStatus ==1){
-                    MemberShipController *addVC = [[MemberShipController alloc]init];
-                    addVC.hidesBottomBarWhenPushed = YES;
-                    [addVC setType:2];
-                    [weakself.navigationController pushViewController:addVC animated:YES];
+                    break;
+                case 100:
+                {
+                        if (self.result.studyStatus ==0) {
+                            AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
+                            addVC.hidesBottomBarWhenPushed = YES;
+                            [addVC setType:1];
+                            [weakself.navigationController pushViewController:addVC animated:YES];
+                        }else if (self.result.studyStatus ==1){
+                            MemberShipController *addVC = [[MemberShipController alloc]init];
+                            addVC.hidesBottomBarWhenPushed = YES;
+                            [addVC setType:1];
+                            [weakself.navigationController pushViewController:addVC animated:YES];
+                        }
+                    
                 }
+                    break;
+                case 101:
+                {
+                    if (self.result.presidentStatus ==0) {
+                        AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
+                        addVC.hidesBottomBarWhenPushed = YES;
+                        [addVC setType:2];
+                        [weakself.navigationController pushViewController:addVC animated:YES];
+                    }else if (self.result.presidentStatus ==1){
+                        MemberShipController *addVC = [[MemberShipController alloc]init];
+                        addVC.hidesBottomBarWhenPushed = YES;
+                        [addVC setType:2];
+                        [weakself.navigationController pushViewController:addVC animated:YES];
+                    }
+                }
+                    break;
+                default:
+                    break;
             }
-                break;
-            default:
-                break;
+        }else{
+            LoginController *loginVC = [[LoginController alloc]init];
+            loginVC.hidesBottomBarWhenPushed = YES;
+            [weakself.navigationController pushViewController:loginVC animated:YES];
         }
+        
     }];
     [self.footView setTapBlock:^{
-        PromoteQrController *qrVC = [[PromoteQrController alloc]init];
-        qrVC.hidesBottomBarWhenPushed = YES;
-        [weakself.navigationController pushViewController:qrVC animated:YES];
+        if ([UserCacheBean share].userInfo.token.length>0) {
+          PromoteQrController *qrVC = [[PromoteQrController alloc]init];
+          qrVC.hidesBottomBarWhenPushed = YES;
+          [weakself.navigationController pushViewController:qrVC animated:YES];
+        }else{
+            LoginController *loginVC = [[LoginController alloc]init];
+            loginVC.hidesBottomBarWhenPushed = YES;
+            [weakself.navigationController pushViewController:loginVC animated:YES];
+        }
     }];
     
 }

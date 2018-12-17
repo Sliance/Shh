@@ -77,19 +77,19 @@
 static InputToolbar* _instance = nil;
 +(instancetype) shareInstance
 {
-    static dispatch_once_t onceToken ;
-    dispatch_once(&onceToken, ^{
+//    static dispatch_once_t onceToken ;
+//    dispatch_once(&onceToken, ^{
         _instance = [[InputToolbar alloc] init] ;
-    });
+//    });
     return _instance ;
 }
 
 + (instancetype)alloc
 {
-    static dispatch_once_t onceToken ;
-    dispatch_once(&onceToken, ^{
+//    static dispatch_once_t onceToken ;
+//    dispatch_once(&onceToken, ^{
         _instance = [[super alloc] init] ;
-    });
+//    });
     return _instance ;
 }
 
@@ -101,7 +101,7 @@ static InputToolbar* _instance = nil;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
-        
+       
         [self layoutUI];
     }
     return self;
@@ -121,7 +121,12 @@ static InputToolbar* _instance = nil;
     [UIView setAnimationBeginsFromCurrentState:YES];
     [UIView setAnimationDuration:duration];
     [UIView setAnimationCurve:7];
-    self.y = keyboardFrame.origin.y - 49;
+    if (self.type.length>0) {
+       self.y = keyboardFrame.origin.y - 49-InputToolbarHeight;
+    }else{
+      self.y = keyboardFrame.origin.y - 49;
+    }
+    
     [UIView commitAnimations];
     _inputToolbarFrameChange(self.height,self.y);
     NSLog(@"###%f",self.height);
@@ -134,14 +139,21 @@ static InputToolbar* _instance = nil;
 {
     CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     CGFloat duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    __weak typeof(self)weakself = self;
     [UIView animateWithDuration:duration animations:^{
-        self.y = keyboardFrame.origin.y - InputToolbarHeight;
+        if (weakself.type.length>0) {
+            self.y = keyboardFrame.origin.y - 2*InputToolbarHeight;
+        }else{
+           self.y = keyboardFrame.origin.y - InputToolbarHeight;
+        }
     }];
     _inputToolbarFrameChange(self.height,InputToolbarHeight);
     self.keyboardIsVisiable = NO;
     [self setShowKeyboardButton:NO];
 }
-
+-(void)setType:(NSString *)type{
+    _type = type;
+}
 - (void)layoutUI
 {
    
@@ -196,8 +208,14 @@ static InputToolbar* _instance = nil;
         self.height = _TextInputMaxHeight + 15;
     } else {
         self.textInput.height = _textInputHeight;
-        self.y = SCREEN_HEIGHT - _keyboardHeight - _textInputHeight - 5 - 8;
-        self.height = _textInputHeight + 15;
+        if (self.type.length>0) {
+        self.y = SCREEN_HEIGHT - _keyboardHeight - _textInputHeight - 20 -InputToolbarHeight;
+            self.height = _textInputHeight + 20;
+        }else{
+          self.y = SCREEN_HEIGHT - _keyboardHeight - _textInputHeight - 10;
+            self.height = _textInputHeight + 10;
+        }
+        
     }
     _inputToolbarFrameChange(self.height,self.y);
 }
@@ -276,7 +294,11 @@ static InputToolbar* _instance = nil;
     if ([text isEqualToString:@"\n"]) {
         if (_sendContent) {
             _sendContent(self.textUpload.text);
-            self.y = SCREEN_HEIGHT -InputToolbarHeight;
+            if (self.type.length>0) {
+                self.y = SCREEN_HEIGHT -InputToolbarHeight*2;
+            }else{
+               self.y = SCREEN_HEIGHT -InputToolbarHeight;
+            }
             _inputToolbarFrameChange(self.height,self.y);
         }
         textView.text = nil;
@@ -330,20 +352,7 @@ static InputToolbar* _instance = nil;
 
 - (void)clickMoreButton:(UIButton*)sender
 {
-//    self.emojiButton.selected = NO;
-//    self.showVoiceViewButton = NO;
-//    self.showKeyboardButton = NO;
-//    if (self.showMoreViewButton) {
-//        [self.textInput resignFirstResponder];
-//        self.textInput.inputView = nil;
-//        self.showMoreViewButton = NO;
-//    } else {
-//        [self.textInput resignFirstResponder];
-//        self.textInput.inputView = self.moreButtonView;
-//        self.showMoreViewButton = YES;
-//    }
-//    [self.textInput endEditing:YES];
-//    [self.textInput becomeFirstResponder];
+
     self.xinBlock(sender.selected);
 }
 

@@ -65,5 +65,5 @@
 
 @property (nonatomic,strong)UIButton *emojiButton;
 @property (nonatomic,strong)UIButton *moreButton;
-
+@property (nonatomic,strong)NSString *type;
 @end

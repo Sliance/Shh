@@ -42,7 +42,7 @@
 
 - (UIImageView *)coverImageView {
     if ( _coverImageView ) return _coverImageView;
-    _coverImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];
+    _coverImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
     _coverImageView.contentMode = UIViewContentModeScaleAspectFill;
     _coverImageView.clipsToBounds = YES;
     _coverImageView.userInteractionEnabled = YES;

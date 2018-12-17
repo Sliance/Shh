@@ -19,12 +19,7 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-//        _playerView = [[[NSBundle mainBundle] loadNibNamed:@"YGPlayerView" owner:nil options:nil] lastObject];
-//        _playerView.leftConstraint = @(0);
-//        _playerView.topConstraint = @(0);
-//        _playerView.widthConstraint = @(SCREENWIDTH);
-//        _playerView.heightConstraint = @(SCREENWIDTH * 9 / 16);
-//        [self addSubview:_playerView];
+
         self.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.headImage];
         [self addSubview:self.nameLabel];
@@ -39,47 +34,20 @@
         [self addSubview:self.lineLabel1];
         [self addSubview:self.commentLabel];
         [self addSubview:self.commentBtn];
-        [self addSubview:self.coverImageView];
-        [self.coverImageView addSubview:self.playButton];
-        [self setLayoutVer];
-        [self.player stopAndFadeOut];
         
-        // create new player
-        self.player = [SJVideoPlayer player];
-
-        self.player.URLAsset.title = @"";
-        self.player.URLAsset.alwaysShowTitle = YES;
-
+        _view = [SJPlayView new];
+        _view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        _view.frame = CGRectMake(0, -33, SCREENWIDTH, 8*SCREENWIDTH/15);
+        [self addSubview:_view];
+        [self setLayoutVer];
+       
     }
     return self;
 }
 
-- (UIImageView *)coverImageView {
-    if ( _coverImageView ) return _coverImageView;
-    _coverImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
-    _coverImageView.contentMode = UIViewContentModeScaleAspectFill;
-    _coverImageView.clipsToBounds = YES;
-    _coverImageView.userInteractionEnabled = YES;
-    _coverImageView.tag = 101;
-    return _coverImageView;
-}
 
-- (UIButton *)playButton {
-    if ( _playButton ) return _playButton;
-    _playButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_playButton setImage:[UIImage imageNamed:@"bofang_mine"] forState:UIControlStateNormal];
-    [_playButton addTarget:self action:@selector(userClickedPlayButton) forControlEvents:UIControlEventTouchUpInside];
-    return _playButton;
-}
 
-// 初始化播放器View
-- (void)setupPlayerView
-{
-    YGPlayInfo *playInfo = [self.playInfos firstObject];
-    playInfo.url = self.model.courseMediaPath;
-    [self.playerView playWithPlayInfo:playInfo];
-    
-}
+
 #pragma mark - 懒加载
 - (NSMutableArray *)playInfos
 {
@@ -198,12 +166,12 @@
 }
 -(void)setModel:(SingleCourseDrectoryRes *)model{
     _model = model;
-    [self setupPlayerView];
+    
 }
 -(void)setDetailCourse:(DetailCourseRes *)detailCourse{
     _detailCourse = detailCourse;
     NSString *url1 = [NSString stringWithFormat:@"%@%@",DPHOST,detailCourse.course.courseAppImagePath];
-    [self.coverImageView sd_setImageWithURL:[NSURL URLWithString:url1]];
+    [self.view.coverImageView sd_setImageWithURL:[NSURL URLWithString:url1]];
     NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,detailCourse.member.memberAvatarPath];
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:url]];
     self.nameLabel.text = detailCourse.member.memberName;
@@ -224,18 +192,11 @@
      self.commentBtn.frame = CGRectMake(SCREENWIDTH-60, self.lineLabel1.ctBottom+10, 50, 36);
     
     self.heightBlock(self.commentBtn.ctBottom);
-    [ZSNotification addChangeDirectionResultNotification:self action:@selector(changeDirection:)];
+   
 }
 -(void)setLayoutVer{
-    [self.coverImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.equalTo(self);
-        make.height.mas_equalTo(SCREENWIDTH * 9 / 16);
-    }];
-    [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.coverImageView);
-        make.centerY.equalTo(self.coverImageView);
-    }];
-    self.headImage.frame = CGRectMake(15, SCREENWIDTH * 9 / 16+15, 50, 50);
+
+    self.headImage.frame = CGRectMake(15, self.view.ctBottom+15, 50, 50);
     self.nameLabel.frame = CGRectMake(self.headImage.ctRight+10, self.headImage.ctTop, SCREENWIDTH-120, 16);
     self.detailLabel.frame = CGRectMake(self.headImage.ctRight+10, self.nameLabel.ctBottom+5, SCREENWIDTH-120, 40);
     self.lineLabel.frame = CGRectMake(0, self.detailLabel.ctBottom+15, SCREENWIDTH, 1);
@@ -253,14 +214,7 @@
     self.fouceBtn.frame = CGRectMake(SCREENWIDTH-55, self.headImage.ctTop, 40, 20);
     self.introductLabel.frame = CGRectMake(14, self.lineLabel.ctBottom+17, SCREENWIDTH-30, 17);
 }
--(void)changeDirection:(NSNotification *)noti{
-    NSDictionary *userInfo = [noti userInfo];
-    if ([[userInfo objectForKey:@"direction"] isEqualToString:@"landscrap"]) {
-        [self setLayoutLand];
-    }else if ([[userInfo objectForKey:@"direction"] isEqualToString:@"ver"]){
-        [self setLayoutVer];
-    }
-}
+
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
@@ -326,15 +280,14 @@
 -(void)pressFouce:(UIButton*)sender{
     self.fouceBlock(sender.selected);
 }
--(void)userClickedPlayButton{
+-(void)userClickedPlayButtons{
     if (self.detailCourse.memberIsBuyThisCourse ==YES) {
-#ifdef SJMAC
-        self.player.disablePromptWhenNetworkStatusChanges = YES;
-#endif
-        [self.coverImageView addSubview:self.player.view];
-        [self.player.view mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.offset(0);
-        }];
+         self.playblock();
+//#ifdef SJMAC
+//        self.player.disablePromptWhenNetworkStatusChanges = YES;
+//#endif
+        
+       
     }else{
         self.playblock();
     }

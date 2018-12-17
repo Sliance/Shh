@@ -17,19 +17,20 @@
 #import "InputToolbar.h"
 #import "UIView+Extension.h"
 #import "PayViewController.h"
-
-@interface DetailCourseController ()<UITableViewDelegate,UITableViewDataSource>
+#import "UIViewController+SJVideoPlayerAdd.h"
+@interface DetailCourseController ()<SJRouteHandler,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)NSMutableArray *courseArr;
 @property(nonatomic,strong)NSMutableArray *commentArr;
 @property(nonatomic,strong)DetailCourseRes *detailCourse;
-@property(nonatomic,strong)VedioHeadView *headView;
+@property(nonatomic,strong)VedioHeadView *headsView;
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,assign)CGFloat headHeight;
 @property(nonatomic,strong)UILabel *footView;
 @property (nonatomic,strong)InputToolbar *inputToolbar;
 @property (nonatomic,assign)CGFloat inputToolbarY;
 @property(nonatomic,strong)CommentReq *commentReq;
-
+@property(nonatomic,strong)SingleCourseDrectoryRes*detailModel;
+@property (nonatomic, strong) SJVideoPlayer *player;
 @end
 
 @implementation DetailCourseController
@@ -55,10 +56,60 @@
     }
     return _footView;
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.inputToolbar.isBecomeFirstResponder = NO;
+    self.inputToolbar.keyboardIsVisiable = YES;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (@available(iOS 11.0, *)) {
+        self.tableview.contentInsetAdjustmentBehavior = NO;
+    } else {
+        self.navigationController.navigationBar.translucent = NO;
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     [self.view addSubview:self.tableview];
-    self.tableview.tableHeaderView = self.headView;
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.sj_displayMode = SJPreViewDisplayMode_Origin;
+    [self.tableview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.offset(0);
+    }];
+    __weak typeof(self) _self = self;
+    self.headsView.view.clickedPlayButtonExeBlock = ^(SJPlayView * _Nonnull view) {
+        __strong typeof(_self) self = _self;
+        if ( !self ) return ;
+        if (self.detailCourse.memberIsBuyThisCourse ==YES) {
+        [self.player stopAndFadeOut];
+        self.player = [SJVideoPlayer player];
+#ifdef SJMAC
+        self.player.disablePromptWhenNetworkStatusChanges = YES;
+#endif
+        [view.coverImageView addSubview:self.player.view];
+        [self.player.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.equalTo(self.headsView.view);
+            make.height.mas_equalTo(200*SCREENWIDTH/375);
+        }];
+        
+        self.player.URLAsset = [[SJVideoPlayerURLAsset alloc] initWithURL:[NSURL URLWithString:self.detailModel.courseMediaPath] playModel:[SJPlayModel UITableViewHeaderViewPlayModelWithPlayerSuperview:self.headsView.view.coverImageView tableView:self.tableview]];
+        self.player.URLAsset.title = @"";
+        self.player.URLAsset.alwaysShowTitle = NO;
+        }else{
+            if ([UserCacheBean share].userInfo.token.length>0) {
+                [self showInfo:@"请先购买"];
+                PayViewController *payVC = [[PayViewController alloc]init];
+                [payVC setCourseId:self.detailCourse.course.courseId];
+                [self.navigationController pushViewController:payVC animated:YES];
+            }else{
+                LoginController *loginVC = [[LoginController alloc]init];
+                loginVC.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:loginVC animated:YES];
+            }
+        }
+    };
+    
+    self.tableview.tableHeaderView = self.headsView;
     self.courseArr = [NSMutableArray array];
     self.commentArr = [NSMutableArray array];
     self.commentReq = [[CommentReq alloc]init];
@@ -68,28 +119,13 @@
      self.tableview.tableFooterView = self.footView;
     
     __weak typeof(self)weakself = self;
-    [self.headView setHeightBlock:^(CGFloat height) {
+    [self.headsView setHeightBlock:^(CGFloat height) {
         weakself.headHeight = height;
-        weakself.headView.frame = CGRectMake(0, 0, SCREENWIDTH, height);
+        weakself.headsView.frame = CGRectMake(0, 0, SCREENWIDTH, height);
         [weakself.tableview reloadData];
     }];
-    [self.headView setPlayblock:^{
-        if (weakself.detailCourse.memberIsBuyThisCourse ==YES) {
-            [weakself.headView.playerView.player play];
-        }else{
-            if ([UserCacheBean share].userInfo.token.length>0) {
-                [weakself showInfo:@"请先购买"];
-                PayViewController *payVC = [[PayViewController alloc]init];
-                [payVC setCourseId:weakself.detailCourse.course.courseId];
-                [weakself.navigationController pushViewController:payVC animated:YES];
-            }else{
-                LoginController *loginVC = [[LoginController alloc]init];
-                loginVC.hidesBottomBarWhenPushed = YES;
-                [weakself.navigationController pushViewController:loginVC animated:YES];
-            }
-        }
-    }];
-    [self.headView setFouceBlock:^(BOOL selected) {
+    
+    [self.headsView setFouceBlock:^(BOOL selected) {
         if ([UserCacheBean share].userInfo.token.length>0) {
             
             [weakself getFollow];
@@ -99,34 +135,34 @@
             [weakself.navigationController pushViewController:loginVC animated:YES];
         }
     }];
-    [self.headView setListBlock:^(FreeListRes * model) {
+    [self.headsView setListBlock:^(FreeListRes * model) {
         if ([model.courseVideoOrAudio isEqualToString:@"audio"]) {
             DetailAudioController *detailVC = [[DetailAudioController alloc]init];
             [detailVC setModel:model];
-            [weakself.headView.player stop];
-            [weakself.headView.player stopAndFadeOut];
+            [weakself.player stop];
             [weakself.navigationController pushViewController:detailVC animated:YES];
         }else if ([model.courseVideoOrAudio isEqualToString:@"video"]){
             DetailCourseController *detailVC = [[DetailCourseController alloc]init];
             [detailVC setModel:model];
-            [weakself.headView.player stop];
-             [weakself.headView.player stopAndFadeOut];
+            [weakself.player stop];
             [weakself.navigationController pushViewController:detailVC animated:YES];
         }
         
     }];
-    [ZSNotification addChangeDirectionResultNotification:self action:@selector(changeDirection:)];
+    
     self.inputToolbar = [InputToolbar shareInstance];
     [self.view addSubview:self.inputToolbar];
     self.inputToolbar.textViewMaxVisibleLine = 4;
     self.inputToolbar.width = self.view.width;
     self.inputToolbar.height = [self navHeightWithHeight];
-    self.inputToolbar.y = SCREENHEIGHT - [self navHeightWithHeight];
+    [self.inputToolbar setType:@"1"];
+//    self.inputToolbar.y = SCREENHEIGHT-[self navHeightWithHeight]*2;
+    self.inputToolbar.frame = CGRectMake(0, SCREENHEIGHT-[self navHeightWithHeight]*2, SCREENWIDTH, [self navHeightWithHeight]);
     [self.inputToolbar setMorebuttonViewDelegate:self];
-    
+ 
     self.inputToolbar.sendContent = ^(NSObject *content){
         weakself.inputToolbar.isBecomeFirstResponder = NO;
-        weakself.inputToolbarY = [weakself navHeightWithHeight];
+        weakself.inputToolbar.y = SCREENHEIGHT-[self navHeightWithHeight]*2;
         if ([UserCacheBean share].userInfo.token.length>0) {
             [weakself addComment:(NSString*)content];
         }else{
@@ -137,10 +173,12 @@
     };
     
     self.inputToolbar.inputToolbarFrameChange = ^(CGFloat height,CGFloat orignY){
+       
         weakself.inputToolbarY = orignY;
         if (weakself.tableview.contentSize.height > orignY) {
             [weakself.tableview setContentOffset:CGPointMake(0, weakself.tableview.contentSize.height - orignY) animated:YES];
         }
+        
     };
     [self.inputToolbar setZanBlock:^(BOOL selected) {
         if ([UserCacheBean share].userInfo.token.length>0) {
@@ -201,36 +239,13 @@
         }
     }];
 }
--(void)changeDirection:(NSNotification *)noti{
-    NSDictionary *userInfo = [noti userInfo];
-    if ([[userInfo objectForKey:@"direction"] isEqualToString:@"landscrap"]) {
-        [self.navigationController setNavigationBarHidden:YES animated:YES];
-        self.headView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
-        self.tableview.tableHeaderView = nil;
-        [self.view addSubview:self.headView];
-    }else if ([[userInfo objectForKey:@"direction"] isEqualToString:@"ver"]){
-        if (self.headHeight>0) {
-            
-            self.headView.frame = CGRectMake(0, 0, SCREENWIDTH, self.headHeight);
-        }else{
-            self.headView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
-        }
-        for (UIView *view in self.view.subviews) {
-            if ([view isKindOfClass:[VedioHeadView class]]) {
-                [view removeFromSuperview];
-            }
-        }
-        self.tableview.tableHeaderView = self.headView;
-        [self.navigationController setNavigationBarHidden:NO animated:YES];
+
+-(VedioHeadView *)headsView{
+    if (!_headsView) {
+        _headsView = [[VedioHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, _headHeight)];
         
     }
-}
--(VedioHeadView *)headView{
-    if (!_headView) {
-        _headView = [[VedioHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
-        
-    }
-    return _headView;
+    return _headsView;
 }
 -(void)setModel:(FreeListRes *)model{
     _model = model;
@@ -251,12 +266,12 @@
         if (response) {
             [weakself showInfo:response[@"message"]];
             if ([response[@"code"]integerValue] ==200  ) {
-                if (weakself.headView.fouceBtn.selected ==NO) {
-                    weakself.headView.fouceBtn.backgroundColor = DSColorFromHex(0xF0F0F0);
-                    weakself.headView.fouceBtn.selected = YES;
+                if (weakself.headsView.fouceBtn.selected ==NO) {
+                    weakself.headsView.fouceBtn.backgroundColor = DSColorFromHex(0xF0F0F0);
+                    weakself.headsView.fouceBtn.selected = YES;
                 }else{
-                    weakself.headView.fouceBtn.backgroundColor = DSColorFromHex(0xE70019);
-                    weakself.headView.fouceBtn.selected = NO;
+                    weakself.headsView.fouceBtn.backgroundColor = DSColorFromHex(0xE70019);
+                    weakself.headsView.fouceBtn.selected = NO;
                 }
             }
         }
@@ -329,7 +344,7 @@
             weakself.detailCourse = response;
             if (weakself.detailCourse.courseList.count>0) {
                 CourseListModel *model = [weakself.detailCourse.courseList firstObject];
-                [weakself.headView setDetailCourse:weakself.detailCourse];
+                [weakself.headsView setDetailCourse:weakself.detailCourse];
                 [weakself getSingleFind:model.courseListId];
             }
             weakself.inputToolbar.emojiButton.selected = weakself.detailCourse.memberIsLike;
@@ -359,7 +374,7 @@
                     [weakself.courseArr removeObject:model];
                 }
             }
-            [weakself.headView setDataArr:weakself.courseArr];
+            [weakself.headsView setDataArr:weakself.courseArr];
         }
         [weakself getCommentList];
     }];
@@ -401,16 +416,17 @@
     req.courseCategoryId = @"";
     req.pageIndex = 1;
     req.pageSize = @"10";
+    self.detailModel = [[SingleCourseDrectoryRes alloc]init];
     __weak typeof(self)weakself = self;
     [[HomeServiceApi share]SingleCourseDirectoryWithParam:req response:^(id response) {
         if (response) {
 
-            [weakself.headView setModel:response];
-            SingleCourseDrectoryRes *model = response;
-            if (model.courseMediaPath.length>0) {
-                self.headView.player.URLAsset = [[SJVideoPlayerURLAsset alloc] initWithURL:[NSURL URLWithString:model.courseMediaPath] playModel:[SJPlayModel UITableViewHeaderViewPlayModelWithPlayerSuperview:self.headView tableView:self.tableview]];
+            [weakself.headsView setModel:response];
+            self.detailModel = response;
+            if (self.detailModel.courseMediaPath.length>0) {
+                self.player.URLAsset = [[SJVideoPlayerURLAsset alloc] initWithURL:[NSURL URLWithString:self.detailModel.courseMediaPath] playModel:[SJPlayModel UITableViewHeaderViewPlayModelWithPlayerSuperview:self.headsView tableView:self.tableview]];
             }else{
-                self.headView.playButton.hidden = YES;
+                self.headsView.playButton.hidden = YES;
             }
             
         }
@@ -494,30 +510,41 @@
     CommentListRes *model = self.commentArr[indexPath.section];
     BeCommentModel *becommentmodel = model.beCommentList[indexPath.row];
     [cell setModel:becommentmodel];
+    __weak typeof(self)weakself = self;
+    [cell setSelectedBlock:^(BeCommentModel * model) {
+        weakself.inputToolbar.isBecomeFirstResponder = YES;
+        weakself.commentReq.beCommentId = model.beCommentId;
+        weakself.commentReq.beCommentMemberId = model.beCommentMemberId;
+        weakself.commentReq.beCommentMemberNickname = model.beCommentMemberNickname;
+        weakself.commentReq.commentType = @"comment";
+        weakself.commentReq.articleOrCourseId = weakself.detailCourse.course.courseId;
+    }];
     return cell;
 }
 
+
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.headView.player vc_viewDidAppear];
+    [self.player vc_viewDidAppear];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.headView.player vc_viewWillDisappear];
+    [self.player vc_viewWillDisappear];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    [self.headView.player vc_viewDidDisappear];
+    [self.player vc_viewDidDisappear];
 }
 
 - (BOOL)prefersStatusBarHidden {
-    return [self.headView.player vc_prefersStatusBarHidden];
+    return [self.player vc_prefersStatusBarHidden];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return [self.headView.player vc_preferredStatusBarStyle];
+    return [self.player vc_preferredStatusBarStyle];
 }
 
 - (BOOL)prefersHomeIndicatorAutoHidden {

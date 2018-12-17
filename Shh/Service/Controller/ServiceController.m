@@ -21,6 +21,7 @@
 #import "HistoryBaseController.h"
 #import "SearchController.h"
 #import "AddMemberPayController.h"
+#import "LoginController.h"
 
 @interface ServiceController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableview;
@@ -284,10 +285,17 @@
     
 }
 -(void)addMember{
-    AddMemberPayController *memberVC = [[AddMemberPayController alloc]init];
-    memberVC.hidesBottomBarWhenPushed = YES;
-    [memberVC setType:1];
-    [self.navigationController pushViewController:memberVC animated:YES];
+    if ([UserCacheBean share].userInfo.token.length>0) {
+        AddMemberPayController *memberVC = [[AddMemberPayController alloc]init];
+        memberVC.hidesBottomBarWhenPushed = YES;
+        [memberVC setType:1];
+        [self.navigationController pushViewController:memberVC animated:YES];
+    }else{
+        LoginController *loginVC = [[LoginController alloc]init];
+        loginVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
