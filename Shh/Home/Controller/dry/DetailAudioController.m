@@ -148,13 +148,13 @@
     [self.view addSubview:self.inputToolbar];
     self.inputToolbar.textViewMaxVisibleLine = 4;
     self.inputToolbar.width = self.view.width;
-    self.inputToolbar.height = [self navHeightWithHeight];
-    self.inputToolbar.y = SCREENHEIGHT - [self navHeightWithHeight];
+    self.inputToolbar.height = [self tabBarHeight];
+    self.inputToolbar.y = SCREENHEIGHT - [self tabBarHeight];
     [self.inputToolbar setMorebuttonViewDelegate:self];
     
     self.inputToolbar.sendContent = ^(NSObject *content){
         weakself.inputToolbar.isBecomeFirstResponder = NO;
-        weakself.inputToolbarY = [weakself navHeightWithHeight];
+        weakself.inputToolbarY = [weakself tabBarHeight];
         weakself.susView.frame =  CGRectMake(30, SCREENHEIGHT-[self tabBarHeight]-85, SCREENWIDTH-60, 80);
         if ([UserCacheBean share].userInfo.token.length>0) {
             [weakself addComment:(NSString*)content];
@@ -264,7 +264,13 @@
     req.platform = @"ios";
     req.version = @"1.0.0";
     req.cityName = @"上海市";
-    req.beFollowMemberId = self.detailCourse.member.memberId;
+    if (self.detailCourse.member.memberId.length>0) {
+        req.beFollowId = self.detailCourse.member.memberId;
+        req.type = @"member";
+    }else{
+        req.beFollowId = self.detailCourse.course.courseId;
+        req.type = @"course";
+    }
     __weak typeof(self)weakself = self;
     [[HomeServiceApi share]followWithParam:req response:^(id response) {
         if (response) {

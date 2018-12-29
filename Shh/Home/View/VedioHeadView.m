@@ -185,8 +185,13 @@
     }
     [self.introducTDecs setText:detailCourse.course.courseIntroduction lineSpacing:5];
     self.introducTDecs.frame = CGRectMake(15, self.introductLabel.ctBottom+20, SCREENWIDTH-30, [self.introducTDecs getHeightLineWithString:detailCourse.course.courseIntroduction withWidth:SCREENWIDTH-30 withFont:[UIFont systemFontOfSize:14]lineSpacing:5]);
-    self.recommendLabel.frame = CGRectMake(14, self.introducTDecs.ctBottom+37, SCREENWIDTH-30, 17);
-    self.collectionView.frame = CGRectMake(0, self.recommendLabel.ctBottom+20, SCREENWIDTH, 140);
+    if (self.dataArr.count ==0) {
+        self.recommendLabel.frame = CGRectMake(14, self.introducTDecs.ctBottom+37, SCREENWIDTH-30, 0);
+        self.collectionView.frame = CGRectMake(0, self.recommendLabel.ctBottom+20, SCREENWIDTH, 0);
+    }else{
+        self.recommendLabel.frame = CGRectMake(14, self.introducTDecs.ctBottom+37, SCREENWIDTH-30, 17);
+        self.collectionView.frame = CGRectMake(0, self.recommendLabel.ctBottom+20, SCREENWIDTH, 140);
+    }
     self.lineLabel1.frame = CGRectMake(0, self.collectionView.ctBottom+1, SCREENWIDTH, 1);
     self.commentLabel.frame = CGRectMake(15, self.lineLabel1.ctBottom+17, SCREENWIDTH, 17);
      self.commentBtn.frame = CGRectMake(SCREENWIDTH-60, self.lineLabel1.ctBottom+10, 50, 36);

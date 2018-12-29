@@ -16,6 +16,8 @@
 #import "ArticleHeadView.h"
 #import "InputToolbar.h"
 #import "UIView+Extension.h"
+#import "ExceptionalController.h"
+
 @interface DetailArticleController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)NSMutableArray *articleArr;
 @property(nonatomic,strong)NSMutableArray *commentArr;
@@ -89,6 +91,11 @@
         DetailArticleController *detailVC = [[DetailArticleController alloc]init];
         [detailVC setModel:model];
         [weakself.navigationController pushViewController:detailVC animated:YES];
+    }];
+    [self.headView setExcBlock:^{
+        ExceptionalController*vc = [[ExceptionalController alloc]init];
+        vc.modalPresentationStyle = UIModalPresentationCustom;
+        [weakself presentViewController:vc animated:NO completion:nil];
     }];
     self.inputToolbar = [InputToolbar shareInstance];
     [self.view addSubview:self.inputToolbar];
@@ -165,7 +172,14 @@
     req.platform = @"ios";
     req.version = @"1.0.0";
     req.cityName = @"上海市";
-    req.beFollowMemberId = self.detailCourse.member.memberId;
+    if (self.detailCourse.member) {
+        req.beFollowId = self.detailCourse.member.memberId;
+        req.type = @"member";
+    }else{
+        req.beFollowId = self.detailCourse.articleId;
+        req.type = @"article";
+    }
+   
     __weak typeof(self)weakself = self;
     [[HomeServiceApi share]followWithParam:req response:^(id response) {
         if (response) {

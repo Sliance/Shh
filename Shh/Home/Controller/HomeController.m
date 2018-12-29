@@ -30,6 +30,7 @@
 #import "DetailServiceController.h"
 #import "HistoryBaseController.h"
 #import "SearchController.h"
+#import "DetailHomeController.h"
 
 @interface HomeController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -647,17 +648,36 @@ static NSString *likecellIds = @"HomeLikeCell";
         [courseVC setModel:model];
         [self.navigationController pushViewController:courseVC animated:YES];
     }else if (indexPath.section ==4){
-        DetailAudioController *courseVC = [[DetailAudioController alloc]init];
-        courseVC.hidesBottomBarWhenPushed = YES;
-        FreeListRes *model = [[FreeListRes alloc]init];
-        GuessListRes *guessmodel = self.guessListArr[indexPath.row];
-        model.courseId = guessmodel.id;
-        model.courseCategoryId = @"1044405524206198785";
-        model.columnId = guessmodel.id;
-        [courseVC setModel:model];
-        [self.navigationController pushViewController:courseVC animated:YES];
-    }else if (indexPath.section ==5){
         
+        
+       
+        GuessListRes *guessmodel = self.guessListArr[indexPath.row];
+        if ([guessmodel.type isEqualToString:@"a"]) {
+             TodayListRes *model1 = [[TodayListRes alloc]init];
+            DetailArticleController *courseVC = [[DetailArticleController alloc]init];
+            courseVC.hidesBottomBarWhenPushed = YES;
+            model1.articleId = guessmodel.id;
+            model1.columnId = @"1043064325939695618";
+            [courseVC setModel:model1];
+            [self.navigationController pushViewController:courseVC animated:YES];
+        }else{
+            FreeListRes *model = [[FreeListRes alloc]init];
+            DetailAudioController *courseVC = [[DetailAudioController alloc]init];
+            courseVC.hidesBottomBarWhenPushed = YES;
+            model.courseId = guessmodel.id;
+            model.courseCategoryId = @"1044405524206198785";
+            model.columnId = guessmodel.id;
+            [courseVC setModel:model];
+            [self.navigationController pushViewController:courseVC animated:YES];
+        }
+       
+        
+    }else if (indexPath.section ==5){
+        DetailHomeController *VC = [[DetailHomeController alloc]init];
+        VC.hidesBottomBarWhenPushed = YES;
+        ServiceListRes *model = self.homeBottomArr[indexPath.row];
+        [VC setCoumuid:model.siheserviceId];
+        [self.navigationController pushViewController:VC animated:YES];
     }
     
 }

@@ -97,7 +97,7 @@
 ///加入思和会
 #define join_in_hui  @"/sihehui/member/desktop/v1/join"
 ///关注
-#define follow_url   @"/sihehui/member/follow/desktop/v1/save"
+#define follow_url   @"/sihehui/member/follow/desktop/v1/add"
 ///点赞
 #define like_url     @"/sihehui/member/like/desktop/v1/save"
 ///收藏
@@ -130,6 +130,12 @@
 #define mine_task  @"/sihehui/member/integral/desktop/v1/task"
 ///加入研习社和总裁班
 #define add_yanxi  @"/sihehui/member/desktop/v1/join/study"
+///服务报名
+#define service_save @"/sihehui/siheservice/form/desktop/v1/save"
+///微信打赏
+#define exceptional_wechat @"/sihehui/pay/mobile/v1/app/wxpay/reward"
+///支付宝打赏
+#define exceptional_alipay @"/sihehui/pay/mobile/v1/app/reward/alipay"
 
 
 typedef void(^responseModel)(id response);

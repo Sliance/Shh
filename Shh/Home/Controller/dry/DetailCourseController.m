@@ -260,7 +260,14 @@
     req.platform = @"ios";
     req.version = @"1.0.0";
     req.cityName = @"上海市";
-    req.beFollowMemberId = self.detailCourse.member.memberId;
+    if (self.detailCourse.member.memberId.length>0) {
+        req.beFollowId = self.detailCourse.member.memberId;
+        req.type = @"member";
+    }else{
+        req.beFollowId = self.detailCourse.course.courseId;
+        req.type = @"course";
+    }
+   
     __weak typeof(self)weakself = self;
     [[HomeServiceApi share]followWithParam:req response:^(id response) {
         if (response) {

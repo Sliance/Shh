@@ -27,9 +27,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UIImageView *bgImage;
+@property (nonatomic, strong) UIButton *excBtn;
+
 @property(nonatomic,copy)void(^heightBlock)(CGFloat);
 @property(nonatomic,copy)void(^fouceBlock)(BOOL);
 @property(nonatomic,copy)void(^listBlock)(TodayListRes *);
+@property(nonatomic,copy)void(^excBlock)(void);
+
 @end
 
 NS_ASSUME_NONNULL_END

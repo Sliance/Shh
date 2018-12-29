@@ -12,8 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FollowReq : BaseModelReq
 ///
-@property(nonatomic,copy)NSString *beFollowMemberId;
-
+@property(nonatomic,copy)NSString * beFollowId;
+///
+@property(nonatomic,copy)NSString *type;
 @end
 
 NS_ASSUME_NONNULL_END

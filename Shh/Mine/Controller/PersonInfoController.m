@@ -15,7 +15,7 @@
 #import "GFAddressPicker.h"
 #import "ImageModel.h"
 #import "UIImage+Resize.h"
-@interface PersonInfoController ()<UITableViewDelegate,UITableViewDataSource,HQPickerViewDelegate,GFAddressPickerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface PersonInfoController ()<UITableViewDelegate,UITableViewDataSource,HQPickerViewDelegate,GFAddressPickerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,strong)UITextField *allName;
 @property(nonatomic,strong)UITextField *refereeName;
@@ -33,7 +33,7 @@
 @property(nonatomic,strong)NSMutableArray *teamSizeArr;
 @property(nonatomic,assign)NSInteger ImageType;
 @property(nonatomic,strong)MemberInfoRes *result;
-
+@property(nonatomic,assign)BOOL canShow;
 @end
 
 @implementation PersonInfoController
@@ -53,6 +53,10 @@
         _picker = [[HQPickerView alloc]initWithFrame:self.view.bounds];
         _picker.delegate = self;
         _picker.hidden = YES;
+        __weak typeof(self)weakself = self;
+        [_picker setCancleBlock:^{
+            weakself.picker.hidden = YES;
+        }];
     }
     return _picker;
 }
@@ -225,6 +229,8 @@
                    cell.titleLabel.text = titleArr[indexPath.row];
                    cell.contentFiled.placeholder = detailArr[indexPath.row];
                    cell.contentFiled.userInteractionEnabled = YES;
+                   cell.contentFiled.delegate = self;
+                   cell.contentFiled.tag = indexPath.row;
                    if (indexPath.row ==6) {
                        if (self.result.companyName.length>0) {
                            cell.contentFiled.text = self.result.companyName;
@@ -246,6 +252,12 @@
                        }
                        self.result.memberTel = cell.contentFiled.text;
                        
+                   }else if (indexPath.row ==4){
+                       if (self.result.jobTitle.length>0) {
+                           cell.contentFiled.text = self.result.jobTitle;
+                       }
+                       self.result.jobTitle = cell.contentFiled.text;
+                       
                    }
                     cell.accessoryType = UITableViewCellAccessoryNone;
                    return cell;
@@ -264,6 +276,8 @@
         NSArray *detailArr = @[@"请填写微信号",@"请填写QQ号"];
         cell.titleLabel.text = titleArr[indexPath.row];
         cell.contentFiled.placeholder = detailArr[indexPath.row];
+        cell.contentFiled.tag = 11+indexPath.row;
+        cell.contentFiled.delegate = self;
          cell.accessoryType = UITableViewCellAccessoryNone;
         if (indexPath.row ==0&&indexPath.section ==1) {
             if (self.result.wechatNo.length>0) {
@@ -330,7 +344,44 @@
     }
     [self.tableview reloadData];
 }
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if (textField.tag ==6) {
+        self.result.companyName = textField.text;
+    }else if (textField.tag ==1){
+        
+        self.result.memberName = textField.text;
+    }else if (textField.tag ==5){
+        
+        self.result.brandName = textField.text;
+    }else if (textField.tag ==2){
+        self.result.memberTel = textField.text;
+        
+    }else if (textField.tag ==4){
+    
+        self.result.jobTitle = textField.text;
+        
+    }else if (textField.tag ==11) {
+        
+        self.result.wechatNo = textField.text;
+    }else if (textField.tag ==12){
+        self.result.tencentNo = textField.text;
+    }
+    
+    [self.tableview reloadData];
+     self.tableview.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    if (textField.tag>10) {
+        CGFloat offSet = textField.tag*45+35 -286;
+        if (offSet>0) {
+            self.tableview.frame = CGRectMake(0, -offSet, SCREENWIDTH, SCREENHEIGHT);
+        }
+    }
+    
+}
 -(void)pressSend{
+    [self.view endEditing:YES];
     self.result.appId = @"1041622992853962754";
     self.result.timestamp = @"0";
     self.result.platform = @"ios";
@@ -446,6 +497,8 @@
     return 0;
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [self.view endEditing:YES];
+    
+      [self.view endEditing:YES];
 }
+
 @end

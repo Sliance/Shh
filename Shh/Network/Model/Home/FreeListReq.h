@@ -32,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *orderId;
 @property(nonatomic,copy)NSString *courseType;
 @property(nonatomic,copy)NSString *type;
+@property(nonatomic,copy)NSString *amount;
 
 @end
 

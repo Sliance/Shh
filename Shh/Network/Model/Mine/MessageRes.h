@@ -12,13 +12,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MessageRes : NSObject
 ///
-@property(nonatomic,copy)NSString *signIn;
+@property(nonatomic,assign)BOOL haveRead;
 ///
-@property(nonatomic,copy)NSString *message;
+@property(nonatomic,copy)NSString *systemCreateTime;
+///
+@property(nonatomic,copy)NSString *systemCreateUserId;
+///
+@property(nonatomic,copy)NSString *memberMessageId;
+///
+@property(nonatomic,copy)NSString *introduction;
+///
+@property(nonatomic,copy)NSString *content;
 ///
 @property(nonatomic,copy)NSString *title;
 ///
-@property(nonatomic,copy)NSString *detail;
+@property(nonatomic,copy)NSString *memberId;
 
 
 @end

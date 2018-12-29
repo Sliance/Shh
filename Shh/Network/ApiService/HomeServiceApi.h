@@ -68,10 +68,12 @@
 -(void)addyYanXiWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///微信支付
 -(void)getWxPayWithParam:(FreeListReq *) req response:(responseModel) responseModel;
-
 ///支付宝支付
 -(void)getAlipayWithParam:(FreeListReq *) req response:(responseModel) responseModel;
-
+///微信打赏
+-(void)exceptionalWxPayWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///支付宝打赏
+-(void)exceptionalAlipayWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///关注
 -(void)followWithParam:(FollowReq *) req response:(responseModel) responseModel;
 ///点赞

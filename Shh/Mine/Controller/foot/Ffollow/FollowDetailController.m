@@ -87,7 +87,8 @@ static NSString *freecellIds = @"HistorysCell";
     req.platform = @"ios";
     req.version = @"1.0.0";
     req.cityName = @"上海市";
-    req.beFollowMemberId = self.teacherMemberId;
+    req.beFollowId = self.teacherMemberId;
+    req.type = @"member";
     __weak typeof(self)weakself = self;
     [[HomeServiceApi share]followWithParam:req response:^(id response) {
         if (response) {

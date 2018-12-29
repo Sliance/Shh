@@ -78,13 +78,16 @@ static NSString *givecellIds = @"HomeGivingCell";
         setVC.hidesBottomBarWhenPushed = YES;
         [weakself.navigationController pushViewController:setVC animated:YES];
     }];
+    _currentIndex = 1;
+    [self getBannerList:@"wxCourse"];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
      [self.navigationController setNavigationBarHidden:YES animated:YES];
-    _currentIndex = 1;
-     [self getBannerList:@"wxCourse"];
-    
+    if (self.bannerArr.count ==0) {
+        _currentIndex = 1;
+        [self getBannerList:@"wxCourse"];
+    }
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];

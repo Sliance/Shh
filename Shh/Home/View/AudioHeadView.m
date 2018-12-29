@@ -192,9 +192,13 @@
     self.introductLabel.frame = CGRectMake(14, self.tableview.ctBottom+17, SCREENWIDTH-30, 17);
     [self.introducTDecs setText:detailCourse.course.courseIntroduction lineSpacing:5];
     self.introducTDecs.frame = CGRectMake(15, self.introductLabel.ctBottom+20, SCREENWIDTH-30, [self.introducTDecs getHeightLineWithString:detailCourse.course.courseIntroduction withWidth:SCREENWIDTH-30 withFont:[UIFont systemFontOfSize:14]lineSpacing:5]);
-   
-    self.recommendLabel.frame = CGRectMake(14, self.introducTDecs.ctBottom+37, SCREENWIDTH-30, 17);
-    self.collectionView.frame = CGRectMake(0, self.recommendLabel.ctBottom+20, SCREENWIDTH, 140);
+    if (self.dataArr.count ==0) {
+        self.recommendLabel.frame = CGRectMake(14, self.introducTDecs.ctBottom+37, SCREENWIDTH-30, 0);
+        self.collectionView.frame = CGRectMake(0, self.recommendLabel.ctBottom+20, SCREENWIDTH, 0);
+    }else{
+       self.recommendLabel.frame = CGRectMake(14, self.introducTDecs.ctBottom+37, SCREENWIDTH-30, 17);
+       self.collectionView.frame = CGRectMake(0, self.recommendLabel.ctBottom+20, SCREENWIDTH, 140);
+    }
     self.lineLabel1.frame = CGRectMake(0, self.collectionView.ctBottom+1, SCREENWIDTH, 1);
     self.commentLabel.frame = CGRectMake(15, self.lineLabel1.ctBottom+17, SCREENWIDTH, 17);
     self.commentBtn.frame = CGRectMake(SCREENWIDTH-60, self.lineLabel1.ctBottom+10, 50, 36);
@@ -205,8 +209,8 @@
 -(void)setLayoutVer{
     self.bannerImage.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENWIDTH * 9 / 16);
     self.headImage.frame = CGRectMake(15, SCREENWIDTH * 9 / 16+15, 50, 50);
-    self.nameLabel.frame = CGRectMake(self.headImage.ctRight+10, self.headImage.ctTop, SCREENWIDTH-120, 16);
-    self.detailLabel.frame = CGRectMake(self.headImage.ctRight+10, self.nameLabel.ctBottom+5, SCREENWIDTH-120, 40);
+    self.nameLabel.frame = CGRectMake(self.headImage.ctRight+10, self.headImage.ctTop+3, SCREENWIDTH-120, 16);
+    self.detailLabel.frame = CGRectMake(self.headImage.ctRight+10, self.nameLabel.ctBottom, SCREENWIDTH-120, 40);
     self.lineLabel.frame = CGRectMake(0, self.detailLabel.ctBottom+15, SCREENWIDTH, 1);
     
     self.fouceBtn.frame = CGRectMake(SCREENWIDTH-55, self.headImage.ctTop, 40, 20);

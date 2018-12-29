@@ -177,9 +177,9 @@
         _hYDate.textAlignment = NSTextAlignmentRight;
         _hYDate.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:12];
         _hYDate.textColor = DSColorFromHex(0x797979);
-        _hYDate.text = @" >";
+        _hYDate.text = @"有机会获得600积分 >";
         _hYDate.numberOfLines = 1;
-        _hYDate.frame = CGRectMake(SCREENWIDTH-30-125-30, 0, 110, 40);
+        _hYDate.frame = CGRectMake(SCREENWIDTH-30-135-30, 0, 120, 40);
         _hYDate.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pressTap)];
         [_hYDate addGestureRecognizer:tap];

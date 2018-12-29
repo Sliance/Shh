@@ -48,6 +48,10 @@
         _picker = [[HQPickerView alloc]initWithFrame:self.view.bounds];
         _picker.delegate = self;
         _picker.hidden = YES;
+        __weak typeof(self)weakself = self;
+        [_picker setCancleBlock:^{
+            weakself.picker.hidden = YES;
+        }];
     }
     return _picker;
 }

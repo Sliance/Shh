@@ -11,6 +11,7 @@
 #import "ServiceDetailView.h"
 #import "HomeServiceApi.h"
 #import "DetailArticleController.h"
+#import "LoginController.h"
 
 @interface DetailServiceController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
@@ -43,6 +44,7 @@ static NSString *nowcellIds = @"HomeNowCell";
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.collectionView];
+    
 }
 -(void)setModel:(ServiceListRes *)model{
     _model = model;
@@ -131,7 +133,44 @@ static NSString *nowcellIds = @"HomeNowCell";
     }
     ServiceDetailView* validView = [[ServiceDetailView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [ServiceDetailView getCellHeight:self.resultModel])];
     [validView setResultModel:self.resultModel];
-   
+    __weak typeof(self)weakself = self;
+    [validView setSubBlock:^(NSString * message) {
+        [self showInfo:message];
+    }];
+    __weak typeof(validView)weakvalidView = validView;
+    [validView setFouceBlock:^(BOOL selected) {
+        if ([UserCacheBean share].userInfo.token.length>0) {
+            
+            FollowReq *req = [[FollowReq alloc]init];
+            req.appId = @"1041622992853962754";
+            req.token = [UserCacheBean share].userInfo.token;
+            req.timestamp = @"0";
+            req.platform = @"ios";
+            req.version = @"1.0.0";
+            req.cityName = @"上海市";
+            req.beFollowId = self.resultModel.siheserviceId;
+            req.type = @"service";
+            
+            [[HomeServiceApi share]followWithParam:req response:^(id response) {
+                if (response) {
+                    [weakself showInfo:response[@"message"]];
+                    if ([response[@"code"]integerValue] ==200  ) {
+                        if (weakvalidView.fouceBtn.selected ==NO) {
+                            weakvalidView.fouceBtn.backgroundColor = DSColorFromHex(0xF0F0F0);
+                            weakvalidView.fouceBtn.selected = YES;
+                        }else{
+                            weakvalidView.fouceBtn.backgroundColor = DSColorFromHex(0xE70019);
+                            weakvalidView.fouceBtn.selected = NO;
+                        }
+                    }
+                }
+            }];
+        }else{
+            LoginController *loginVC = [[LoginController alloc]init];
+            loginVC.hidesBottomBarWhenPushed = YES;
+            [weakself.navigationController pushViewController:loginVC animated:YES];
+        }
+    }];
     [headerView addSubview:validView];
     return headerView;
     

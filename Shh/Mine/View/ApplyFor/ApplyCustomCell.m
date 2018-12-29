@@ -34,7 +34,6 @@
 -(UITextField *)contentFiled{
     if (!_contentFiled) {
         _contentFiled = [[UITextField alloc]init];
-        _contentFiled.delegate = self;
         _contentFiled.textAlignment = NSTextAlignmentRight;
         _contentFiled.font = [UIFont systemFontOfSize:14];
         _contentFiled.textColor = DSColorFromHex(0x464646);

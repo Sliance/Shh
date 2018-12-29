@@ -120,7 +120,8 @@
 
 #pragma mark-----取消
 - (void)cancelBtnClick{
-    [self hideAnimation];
+     [self hideAnimation];
+    self.cancleBlock();
 }
 
 #pragma mark-----取消

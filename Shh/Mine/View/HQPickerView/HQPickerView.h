@@ -19,5 +19,5 @@
 @property (nonatomic, strong) NSArray *customArr;
 @property (nonatomic, assign) NSInteger type;
 @property (nonatomic, weak) id <HQPickerViewDelegate> delegate;
-
+@property (nonatomic, copy) void (^cancleBlock)(void);
 @end

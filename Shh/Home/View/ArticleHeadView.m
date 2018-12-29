@@ -72,6 +72,18 @@ static NSString *nowcellIds = @"HomeNowCell";
     }
     return _fouceBtn;
 }
+-(UIButton *)excBtn{
+    if (!_excBtn) {
+        _excBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _excBtn.backgroundColor = DSColorFromHex(0xE70019);
+        [_excBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_excBtn setTitle:@"打赏" forState:UIControlStateNormal];
+        _excBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_excBtn.layer setCornerRadius:3];
+        [_excBtn addTarget:self action:@selector(pressExc) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _excBtn;
+}
 -(UILabel *)recommendLabel{
     if (!_recommendLabel) {
         _recommendLabel = [[UILabel alloc]init];
@@ -145,7 +157,8 @@ static NSString *nowcellIds = @"HomeNowCell";
 }
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     self.webView.frame = CGRectMake(0, self.bgImage.ctBottom+20, SCREENWIDTH, self.webView.scrollView.contentSize.height);
-    self.recommendLabel.frame = CGRectMake(15, self.webView.ctBottom, SCREENWIDTH-30, 18);
+    self.excBtn.frame = CGRectMake(SCREENWIDTH/2-60, self.webView.ctBottom, 120, 30);
+    self.recommendLabel.frame = CGRectMake(15, self.excBtn.ctBottom+20, SCREENWIDTH-30, 18);
     
     self.collectionView.frame = CGRectMake(0, self.recommendLabel.ctBottom+10, SCREENWIDTH, 115*self.dataArr.count);
     self.lineLabel.frame = CGRectMake(0, self.collectionView.ctBottom+20, SCREENWIDTH, 1);
@@ -170,6 +183,7 @@ static NSString *nowcellIds = @"HomeNowCell";
         [self addSubview:self.collectionView];
         [self addSubview:self.bgImage];
         [self addSubview:self.contentLabel];
+        [self addSubview:self.excBtn];
         self.titleLabel.frame = CGRectMake(15, 5, SCREENWIDTH-30, 60);
         self.headImage.frame = CGRectMake(15, self.titleLabel.ctBottom+20, 30, 30);
         self.nameLabel.frame = CGRectMake(self.headImage.ctRight+10, self.headImage.ctTop, SCREENWIDTH/2, 14);
@@ -215,6 +229,9 @@ static NSString *nowcellIds = @"HomeNowCell";
     
     
     self.fouceBlock(sender.selected);
+}
+-(void)pressExc{
+    self.excBlock();
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;

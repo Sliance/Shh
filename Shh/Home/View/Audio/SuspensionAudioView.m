@@ -71,6 +71,7 @@
         }];
         [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.bannerImage.mas_right).offset(10);
+            make.right.equalTo(self).offset(-70);
             make.top.equalTo(self).offset(10);
         }];
         [self.dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
