@@ -25,7 +25,7 @@
     
     NSDictionary *dic = [req mj_keyValues];
     
-    [[ZSAPIProxy shareProxy] callPOSTWithUrl:banner_list Params:dic isShowLoading:NO successCallBack:^(ZSURLResponse *response) {
+    [[ZSAPIProxy shareProxy] callPOSTWithUrl:banner_list Params:dic isShowLoading:YES successCallBack:^(ZSURLResponse *response) {
         if ([response.content isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dicResponse = (NSDictionary *) response.content;
             if ([dicResponse[@"code"] integerValue] == 200) {
@@ -52,7 +52,7 @@
 -(void)getFreeListWithParam:(FreeListReq *) req response:(responseModel) responseModel{
     NSDictionary *dic = [req mj_keyValues];
     
-    [[ZSAPIProxy shareProxy] callPOSTWithUrl:free_course_list Params:dic isShowLoading:NO successCallBack:^(ZSURLResponse *response) {
+    [[ZSAPIProxy shareProxy] callPOSTWithUrl:free_course_list Params:dic isShowLoading:YES successCallBack:^(ZSURLResponse *response) {
         if ([response.content isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dicResponse = (NSDictionary *) response.content;
             if ([dicResponse[@"code"] integerValue] == 200) {
@@ -104,7 +104,7 @@
 -(void)getFineClassWithParam:(FreeListReq *) req response:(responseModel) responseModel{
     NSDictionary *dic = [req mj_keyValues];
     
-    [[ZSAPIProxy shareProxy] callPOSTWithUrl:fine_course_list Params:dic isShowLoading:NO successCallBack:^(ZSURLResponse *response) {
+    [[ZSAPIProxy shareProxy] callPOSTWithUrl:fine_course_list Params:dic isShowLoading:YES successCallBack:^(ZSURLResponse *response) {
         if ([response.content isKindOfClass:[NSDictionary class]]) {
             NSDictionary *dicResponse = (NSDictionary *) response.content;
             if ([dicResponse[@"code"] integerValue] == 200) {

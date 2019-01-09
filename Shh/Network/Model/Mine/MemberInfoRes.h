@@ -53,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @property(nonatomic,copy)NSString *teamSize;
 ///
-@property(nonatomic,copy)NSString *signIn;
+@property(nonatomic,assign)BOOL signIn;
 ///
 @property(nonatomic,copy)NSString *wechatOpenId;
 ///

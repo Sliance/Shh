@@ -267,7 +267,7 @@
     [[HomeServiceApi share]buyCourseWithParam:req response:^(id response) {
         if ([response[@"code"] integerValue] ==200) {
             weakself.resultDic = response[@"data"];
-            weakself.priceLabel.text = [NSString stringWithFormat:@"￥%@",weakself.resultDic[@"orderRealAmount"]];
+            weakself.priceLabel.text = [NSString stringWithFormat:@"￥%.2f",[weakself.resultDic[@"orderRealAmount"] doubleValue]];
         }
     }];
 }

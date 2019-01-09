@@ -90,6 +90,7 @@
         }];
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.playBtn.mas_right).offset(10);
+            make.width.mas_equalTo(SCREENWIDTH-110);
             make.top.equalTo(self).offset(10);
         }];
         [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {

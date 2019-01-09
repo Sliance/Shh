@@ -90,7 +90,11 @@
     }];
     [self.headView setTypeBlock:^(NSInteger index) {
         if ([UserCacheBean share].userInfo.token.length>0) {
-            if (index ==1) {
+           if (index ==1) {
+               LoginController *loginVC = [[LoginController alloc]init];
+               loginVC.hidesBottomBarWhenPushed = YES;
+               [weakself.navigationController pushViewController:loginVC animated:YES];
+           }else if (index ==1) {
                 HistoryBaseController *setVC = [[HistoryBaseController alloc]init];
                 setVC.hidesBottomBarWhenPushed = YES;
                 [weakself.navigationController pushViewController:setVC animated:YES];
@@ -190,6 +194,11 @@
                             addVC.hidesBottomBarWhenPushed = YES;
                             [addVC setType:1];
                             [weakself.navigationController pushViewController:addVC animated:YES];
+                        }else if (self.result.studyStatus ==2){
+                            MemberShipController *addVC = [[MemberShipController alloc]init];
+                            addVC.hidesBottomBarWhenPushed = YES;
+                            [addVC setType:1];
+                            [weakself.navigationController pushViewController:addVC animated:YES];
                         }
                     
                 }
@@ -202,6 +211,11 @@
                         [addVC setType:2];
                         [weakself.navigationController pushViewController:addVC animated:YES];
                     }else if (self.result.presidentStatus ==1){
+                        MemberShipController *addVC = [[MemberShipController alloc]init];
+                        addVC.hidesBottomBarWhenPushed = YES;
+                        [addVC setType:2];
+                        [weakself.navigationController pushViewController:addVC animated:YES];
+                    }else if (self.result.presidentStatus ==2){
                         MemberShipController *addVC = [[MemberShipController alloc]init];
                         addVC.hidesBottomBarWhenPushed = YES;
                         [addVC setType:2];
@@ -241,6 +255,8 @@
     }else{
         self.headView.frame = CGRectMake(0, 0, SCREENWIDTH, 290);
         [self.headView.editBtn setTitle:@"未登录" forState:UIControlStateNormal];
+        self.headView.headImage.image = [UIImage imageNamed:@"mine"];
+        [self.headView setModel:nil];
         [self.headView.editBtn setImage:nil forState:UIControlStateNormal];
         self.headView.editBtn.imageView.width = 0;
         [self.headView.editBtn setIconInRightWithSpacing:0];
@@ -261,6 +277,7 @@
     [[MineServiceApi share]getMenberInfoWithParam:req response:^(id response) {
         if (response) {
             weakself.result = response;
+            [weakself.headView setModel:weakself.result];
             [UserCacheBean share].userInfo.memberId = weakself.result.memberId;
             [UserCacheBean share].userInfo.memberAvatarPath = weakself.result.memberAvatarPath;
             [UserCacheBean share].userInfo.memberName = weakself.result.memberName;
@@ -302,6 +319,7 @@
         }
     }];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -71,7 +71,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)getmMineMedalWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///我的任务
 -(void)getmMineTaskWithParam:(FreeListReq *) req response:(responseModel) responseModel;
-
+///签到
+-(void)getSignInWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 
 
 @end

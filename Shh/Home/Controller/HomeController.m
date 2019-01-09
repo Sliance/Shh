@@ -97,7 +97,7 @@ static NSString *likecellIds = @"HomeLikeCell";
     self.recommendListArr = [NSMutableArray array];
     self.guessListArr = [NSMutableArray array];
     self.homeBottomArr = [NSMutableArray array];
-    [self getBannerList:@"wxIndex"];
+   
     __weak typeof(self)weakself = self;
     [self.navView setHistoryBlock:^{
         HistoryBaseController *setVC = [[HistoryBaseController alloc]init];
@@ -113,6 +113,8 @@ static NSString *likecellIds = @"HomeLikeCell";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
      [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
+     [self getFreeList];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -140,10 +142,10 @@ static NSString *likecellIds = @"HomeLikeCell";
     [[HomeServiceApi share]getBannerWithParam:req response:^(id response) {
         if (response) {
             [weakself.bannerArr removeAllObjects];
-            [weakself.bannerArr addObjectsFromArray: response];
+            [weakself.bannerArr addObjectsFromArray:response];
             [weakself.collectionView reloadData];
         }
-        [weakself getFreeList];
+       
     }];
 }
 -(void)getFreeList{
@@ -264,7 +266,7 @@ static NSString *likecellIds = @"HomeLikeCell";
             [weakself.guessListArr addObjectsFromArray:response];
             [weakself.collectionView reloadData];
         }
-        
+        [weakself getBannerList:@"wxIndex"];
     }];
 }
 -(void)getHomeBottom{
@@ -406,11 +408,9 @@ static NSString *likecellIds = @"HomeLikeCell";
         }
     }
     
-    
-    
     if(indexPath.section ==0){
         HomeHeadView* validView = [[HomeHeadView alloc]init];
-        NSMutableArray *arr  = [NSMutableArray array];
+        NSMutableArray *arr  = [[NSMutableArray alloc]init];
         for (BannerRes *model in self.bannerArr) {
             if (model.bannerImagePath) {
                 [arr addObject:model.bannerImagePath];
@@ -648,9 +648,6 @@ static NSString *likecellIds = @"HomeLikeCell";
         [courseVC setModel:model];
         [self.navigationController pushViewController:courseVC animated:YES];
     }else if (indexPath.section ==4){
-        
-        
-       
         GuessListRes *guessmodel = self.guessListArr[indexPath.row];
         if ([guessmodel.type isEqualToString:@"a"]) {
              TodayListRes *model1 = [[TodayListRes alloc]init];

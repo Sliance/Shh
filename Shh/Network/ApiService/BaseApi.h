@@ -136,7 +136,8 @@
 #define exceptional_wechat @"/sihehui/pay/mobile/v1/app/wxpay/reward"
 ///支付宝打赏
 #define exceptional_alipay @"/sihehui/pay/mobile/v1/app/reward/alipay"
-
+///签到
+#define sign_in  @"/sihehui/member/sign/desktop/v1/save"
 
 typedef void(^responseModel)(id response);
 @interface BaseApi : NSObject

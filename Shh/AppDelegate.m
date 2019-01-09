@@ -22,7 +22,7 @@
     _mainTabController = [[ShhTabBarController alloc] init];
     self.window.rootViewController = _mainTabController;
     [self.window makeKeyAndVisible];
-     [WXApi registerApp:@"wx52bbb4330144e6d2"];
+     [WXApi registerApp:@"wx16213987534b352b"];
     return YES;
 }
 #pragma MARK - aliPay

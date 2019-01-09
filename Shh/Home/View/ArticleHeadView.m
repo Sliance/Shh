@@ -216,8 +216,7 @@ static NSString *nowcellIds = @"HomeNowCell";
     self.webView.frame = CGRectMake(0, self.bgImage.ctBottom, SCREENWIDTH, 100);
     self.fouceLabel.text = [NSString stringWithFormat:@"%@人已关注",model.beFollowCount];
    
-    NSString *html_str = [NSString stringWithFormat:@"<head><style>img{width:%fpx !important;}</style></head>%@",SCREENWIDTH-15,model.articleText];
-    
+    NSString *html_str = [model.articleText stringByReplacingOccurrencesOfString:@"height:100%" withString:@"height:auto"];
     [self.webView loadHTMLString:html_str baseURL:nil];
 }
 -(void)setDataArr:(NSMutableArray *)dataArr{

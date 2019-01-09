@@ -278,6 +278,7 @@
 		898569E821B7AC2E0016A24A /* OrderPayRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 898569E721B7AC2E0016A24A /* OrderPayRes.m */; };
 		89856B47217F1A2100688DF7 /* CourseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89856B46217F1A2100688DF7 /* CourseController.m */; };
 		89856B4A217F1AE400688DF7 /* CourseHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89856B49217F1AE400688DF7 /* CourseHeadView.m */; };
+		8991D3C621E58A11001B6A09 /* UIWebView+Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = 8991D3C521E58A11001B6A09 /* UIWebView+Setting.m */; };
 		89B775F621C8F61700F6C326 /* DetailHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89B775F521C8F61700F6C326 /* DetailHomeController.m */; };
 		89CAFFC3219164D100E4B7AE /* AllBigClassController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CAFFC2219164D100E4B7AE /* AllBigClassController.m */; };
 		89CBE08021AD50B40086633A /* LoginAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CBE07F21AD50B40086633A /* LoginAlertView.m */; };
@@ -885,6 +886,8 @@
 		89856B46217F1A2100688DF7 /* CourseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseController.m; sourceTree = "<group>"; };
 		89856B48217F1AE400688DF7 /* CourseHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseHeadView.h; sourceTree = "<group>"; };
 		89856B49217F1AE400688DF7 /* CourseHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseHeadView.m; sourceTree = "<group>"; };
+		8991D3C421E58A11001B6A09 /* UIWebView+Setting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIWebView+Setting.h"; sourceTree = "<group>"; };
+		8991D3C521E58A11001B6A09 /* UIWebView+Setting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+Setting.m"; sourceTree = "<group>"; };
 		89B775F421C8F61700F6C326 /* DetailHomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailHomeController.h; sourceTree = "<group>"; };
 		89B775F521C8F61700F6C326 /* DetailHomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailHomeController.m; sourceTree = "<group>"; };
 		89CAFFC1219164D100E4B7AE /* AllBigClassController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllBigClassController.h; sourceTree = "<group>"; };
@@ -1449,6 +1452,8 @@
 				8849B84A2135205100CAE299 /* UILabel+String.m */,
 				89E0C0E921AE722A00D18C44 /* UIButton+DNUtility.h */,
 				89E0C0EA21AE722A00D18C44 /* UIButton+DNUtility.m */,
+				8991D3C421E58A11001B6A09 /* UIWebView+Setting.h */,
+				8991D3C521E58A11001B6A09 /* UIWebView+Setting.m */,
 				886B98212136B7FD0074322D /* ViewController */,
 			);
 			path = Category;
@@ -2793,6 +2798,7 @@
 				8819859F2178A184003C962D /* BaseModelReq.m in Sources */,
 				5AEA798A21B27777007C0DB7 /* HistoryCourseController.m in Sources */,
 				885034722139403D000BDD3A /* DrySmallImageCell.m in Sources */,
+				8991D3C621E58A11001B6A09 /* UIWebView+Setting.m in Sources */,
 				8905C2B82193027300403EC2 /* CommentHeadCell.m in Sources */,
 				89B775F621C8F61700F6C326 /* DetailHomeController.m in Sources */,
 				8921F7D821B60EBE00F9FE10 /* SJLightweightLeftControlView.m in Sources */,
@@ -3189,12 +3195,13 @@
 					"\"$(SRCROOT)/Shh/Tool/Alipay/AlipaySDK.framework\"",
 				);
 				INFOPLIST_FILE = Shh/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lab.Csihebeta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lab.sihehui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3215,12 +3222,13 @@
 					"\"$(SRCROOT)/Shh/Tool/Alipay/AlipaySDK.framework\"",
 				);
 				INFOPLIST_FILE = Shh/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lab.Csihebeta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lab.sihehui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

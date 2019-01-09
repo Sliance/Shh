@@ -52,7 +52,7 @@
     [self.imageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(20);
         make.centerX.equalTo(self);
-        make.width.height.mas_equalTo(32);
+//        make.width.height.mas_equalTo(32);
     }];
     [self.typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.imageLabel.mas_bottom).offset(8);

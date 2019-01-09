@@ -8,6 +8,7 @@
 
 #import "MineHeadView.h"
 #import "MineTypeBtn.h"
+#import "MineServiceApi.h"
 
 
 @implementation MineHeadView
@@ -33,7 +34,7 @@
     [self.bgView addSubview:self.editBtn];
     [self.bgImage addSubview:self.messageBtn];
     [self.bgImage addSubview:self.serviceBtn];
-    
+    self.btnArr = [[NSMutableArray alloc]init];
     NSArray *imageArr= @[@"\U0000e916",@"\U0000e913",@"\U0000e927"];
     NSArray *dataArr = @[@"签到",@"历史",@"下载"];
     for (int i = 0; i<3; i++) {
@@ -47,6 +48,7 @@
         btn.typeLabel.textColor = DSColorFromHex(0x464646);
         [btn addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.bgView addSubview:btn];
+        [self.btnArr addObject:btn];
     }
 
     self.editBtn.frame = CGRectMake(SCREENWIDTH/2-65, 46, 100, 15);
@@ -173,11 +175,60 @@
 }
 -(void)pressBtn:(MineTypeBtn*)sender{
     if (sender.tag==0) {
-        sender.imageLabel.textColor = DSColorFromHex(0x969696);
-        sender.typeLabel.text =@"已签到";
+        if ([UserCacheBean share].userInfo.token.length>0) {
+            FreeListReq *req = [[FreeListReq alloc]init];
+            req.appId = @"1041622992853962754";
+            req.timestamp = @"0";
+            req.platform = @"ios";
+            req.token = [UserCacheBean share].userInfo.token;
+            req.memberId = [UserCacheBean share].userInfo.memberId;
+            __weak typeof(self)weakself = self;
+            [[MineServiceApi share]getSignInWithParam:req response:^(id response) {
+                if ([response[@"code"] integerValue] ==200) {
+                    sender.imageLabel.textColor = DSColorFromHex(0x969696);
+                    sender.typeLabel.textColor = DSColorFromHex(0x969696);
+                    sender.typeLabel.text =@"已签到";
+                    sender.enabled = NO;
+                }
+            }];
+        }else{
+            self.typeBlock(sender.tag);
+        }
+        
     }else{
         self.typeBlock(sender.tag);
     }
+}
+-(void)setModel:(MemberInfoRes *)model{
+    _model = model;
+    if (model.signIn == 1) {
+        [self.btnArr enumerateObjectsUsingBlock:^(MineTypeBtn *btn, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (idx == 0) {
+                if ([UserCacheBean share].userInfo.token.length>0) {
+                    btn.imageLabel.textColor = DSColorFromHex(0x969696);
+                    btn.typeLabel.textColor = DSColorFromHex(0x969696);
+                    btn.typeLabel.text =@"已签到";
+                    btn.enabled = NO;
+                }else{
+                    btn.imageLabel.textColor = DSColorFromHex(0x464646);
+                    btn.typeLabel.textColor = DSColorFromHex(0x464646);
+                    btn.typeLabel.text =@"签到";
+                    btn.enabled = YES;
+                }
+                
+            }
+        }];
+    }else{
+        [self.btnArr enumerateObjectsUsingBlock:^(MineTypeBtn *btn, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (idx == 0) {
+                btn.imageLabel.textColor = DSColorFromHex(0x464646);
+                btn.typeLabel.textColor = DSColorFromHex(0x464646);
+                btn.typeLabel.text =@"签到";
+                btn.enabled = YES;
+            }
+        }];
+    }
+    
 }
 -(void)pressMessage:(UIButton*)sender{
     self.messageBlock();

@@ -7,7 +7,7 @@
 //
 
 #import "BaseView.h"
-
+#import "MemberInfoRes.h"
 @interface MineHeadView : BaseView
 @property(nonatomic,strong)UIImageView *bgImage;
 @property(nonatomic,strong)UIView *bgView;
@@ -20,9 +20,12 @@
 @property(nonatomic,strong)UIButton *editBtn;
 @property(nonatomic,strong)UIButton *messageBtn;
 @property(nonatomic,strong)UIButton *serviceBtn;
+@property(nonatomic,strong)NSMutableArray *btnArr;
+
 @property(nonatomic,copy)void (^messageBlock)(void);
 @property(nonatomic,copy)void (^editBlock)(void);
 @property(nonatomic,copy)void (^typeBlock)(NSInteger);
 @property(nonatomic,copy)void (^addBlock)(void);
+@property(nonatomic,strong)MemberInfoRes *model;
 
 @end
