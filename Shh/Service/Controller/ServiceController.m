@@ -172,11 +172,17 @@
     if (indexPath.section ==3) {
         return 209;
     }
+    if (indexPath.section ==0&&self.goodArr.count ==0) {
+        return 0;
+    }
     return 115;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section ==0||section ==2) {
         return 1;
+    }
+    if (section ==0&&self.goodArr.count ==0) {
+        return 0;
     }
     if (section ==1) {
         return self.trainArr.count;
@@ -184,13 +190,22 @@
     return self.joinArr.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section ==0&&self.goodArr.count ==0) {
+        return 0;
+    }
     return 55;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     HomeFreeHeadView *freeview = [[HomeFreeHeadView alloc]init];
-    freeview.frame = CGRectMake(0, 0, SCREENWIDTH, 55);
+    
     if (section ==0) {
-        
+        if (self.goodArr.count ==0) {
+            freeview.frame = CGRectMake(0, 0, SCREENWIDTH, 0);
+            freeview.hidden = YES;
+        }else{
+            freeview.frame = CGRectMake(0, 0, SCREENWIDTH, 55);
+            freeview.hidden = NO;
+        }
         [freeview setTitle:@"精品服务"];
 
         [freeview setAllBlock:^{
@@ -257,6 +272,11 @@
     }
     if (indexPath.section ==0) {
         [cell setDataArr:self.goodArr];
+        if (self.goodArr.count ==0) {
+            cell.hidden = YES;
+        }else{
+            cell.hidden = NO;
+        }
     }else if (indexPath.section ==2){
         [cell setDataArr:self.activityArr];
     }

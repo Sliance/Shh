@@ -16,7 +16,7 @@
 #import "ImageModel.h"
 #import "UIImage+Resize.h"
 
-@interface ApplyForController ()<UITableViewDelegate,UITableViewDataSource,HQPickerViewDelegate,GFAddressPickerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface ApplyForController ()<UITableViewDelegate,UITableViewDataSource,HQPickerViewDelegate,GFAddressPickerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,strong)UITextField *allName;
 @property(nonatomic,strong)UITextField *refereeName;
@@ -176,6 +176,7 @@
         cell.titleLabel.text = titleArr[indexPath.row];
         cell.contentFiled.placeholder = detailArr[indexPath.row];
         if (indexPath.row ==5||indexPath.row ==6||indexPath.row ==7||indexPath.row ==8||indexPath.row ==9) {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.contentFiled.userInteractionEnabled = NO;
             if (indexPath.row ==5) {
                 if (self.req.industry.length>0) {
@@ -233,6 +234,8 @@
         NSArray *detailArr = @[@"请填写联系人",@"请填写联系电话",@"请填写固定电话（选填）"];
         cell.titleLabel.text = titleArr[indexPath.row];
         cell.contentFiled.placeholder = detailArr[indexPath.row];
+        cell.contentFiled.tag = 20+indexPath.row;
+        cell.contentFiled.delegate = self;
         if (indexPath.row ==0) {
             if (self.req.contact.length>0) {
                 cell.contentFiled.text = self.req.contact;
@@ -251,13 +254,14 @@
         }
     }
 
-    cell.accessoryType = UITableViewCellAccessoryNone;
+   
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.pickerView.hidden = YES;
     self.picker.hidden = YES;
+    [self.view endEditing:YES];
     if (indexPath.section ==0) {
         if (indexPath.row ==0) {
             UIActionSheet *leftAction = [[UIActionSheet alloc] initWithTitle:@"上传头像" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍摄照片", @"选择手机中的照片", nil];
@@ -416,5 +420,16 @@
 
     
     return 0;
+}
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    if (textField.tag>19) {
+        CGFloat offSet = -45+35 -286;
+        self.tableview.frame = CGRectMake(0, offSet, SCREENWIDTH, SCREENHEIGHT);
+    }
+    
+}
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    self.tableview.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+    [self.view endEditing:YES];
 }
 @end

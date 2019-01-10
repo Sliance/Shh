@@ -84,10 +84,10 @@ static NSString *givecellIds = @"HomeGivingCell";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
      [self.navigationController setNavigationBarHidden:YES animated:YES];
-    if (self.bannerArr.count ==0) {
+  
         _currentIndex = 1;
         [self getBannerList:@"wxCourse"];
-    }
+
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];

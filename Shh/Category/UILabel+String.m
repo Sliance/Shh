@@ -41,6 +41,12 @@
     return height;
 }
 
-
+/// 根据指定文本和字体计算宽度
+- (CGSize)sizeWithText:(NSString *)text font:(UIFont *)font
+{
+    NSMutableDictionary *attrDict = [NSMutableDictionary dictionary];
+    attrDict[NSFontAttributeName] = font;
+    return [text sizeWithAttributes:attrDict];
+}
 
 @end

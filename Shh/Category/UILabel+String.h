@@ -19,4 +19,9 @@
 
 ///计算label高度
 - (CGFloat)getHeightLineWithString:(NSString *)string withWidth:(CGFloat)width withFont:(UIFont *)font  lineSpacing:(CGFloat)lineSpacing;
+/*!
+ * 根据指定文本和字体计算宽度
+ */
+- (CGSize)sizeWithText:(NSString *)text font:(UIFont *)font;
+
 @end

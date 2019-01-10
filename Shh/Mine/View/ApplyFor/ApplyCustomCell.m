@@ -50,7 +50,7 @@
             make.centerY.equalTo(self);
         }];
         [self.contentFiled mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self).offset(-15);
+            make.right.equalTo(self).offset(-30);
             make.centerY.equalTo(self);
         }];
     }

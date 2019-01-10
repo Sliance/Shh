@@ -90,7 +90,7 @@
     }];
     [self.headView setTypeBlock:^(NSInteger index) {
         if ([UserCacheBean share].userInfo.token.length>0) {
-           if (index ==1) {
+           if (index ==0) {
                LoginController *loginVC = [[LoginController alloc]init];
                loginVC.hidesBottomBarWhenPushed = YES;
                [weakself.navigationController pushViewController:loginVC animated:YES];

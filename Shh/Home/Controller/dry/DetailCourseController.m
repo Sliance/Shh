@@ -479,7 +479,7 @@
     }
     [headView setModel:model];
     headView.backgroundColor = [UIColor whiteColor];
-    __weak typeof(headView)wealhead = headView;
+//    __weak typeof(headView)wealhead = headView;
     __weak typeof(self)wealself = self;
     [headView setZanBlock:^(BOOL selected) {
         if ([UserCacheBean share].userInfo.token.length>0) {
@@ -494,9 +494,9 @@
     [headView setCommentBlock:^(CommentListRes *model1) {
         if ([UserCacheBean share].userInfo.token.length>0) {
             wealself.inputToolbar.isBecomeFirstResponder = YES;
-            wealself.commentReq.beCommentId = model1.beCommentId;
-            wealself.commentReq.beCommentMemberId = model1.beCommentMemberId;
-            wealself.commentReq.beCommentMemberNickname = model1.beCommentMemberNickname;
+            wealself.commentReq.beCommentId = model.commentId;
+            wealself.commentReq.beCommentMemberId = model.memberId;
+            wealself.commentReq.beCommentMemberNickname = model.memberNickname;
         
         }else{
             LoginController *loginVC = [[LoginController alloc]init];

@@ -403,9 +403,9 @@
     }];
     [headView setCommentBlock:^(CommentListRes *model1) {
        weakself.inputToolbar.isBecomeFirstResponder = YES;
-        weakself.commentReq.beCommentId = model1.beCommentId;
-        weakself.commentReq.beCommentMemberId = model1.beCommentMemberId;
-        weakself.commentReq.beCommentMemberNickname = model1.beCommentMemberNickname;
+        weakself.commentReq.beCommentId = model.commentId;
+        weakself.commentReq.beCommentMemberId = model.memberId;
+        weakself.commentReq.beCommentMemberNickname = model.memberNickname;
         
     }];
     return headView;

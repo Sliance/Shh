@@ -15,7 +15,7 @@
 #import "GFAddressPicker.h"
 #import "AddMemberPayController.h"
 
-@interface MemberShipController ()<UITableViewDelegate,UITableViewDataSource,HQPickerViewDelegate,GFAddressPickerDelegate>
+@interface MemberShipController ()<UITableViewDelegate,UITableViewDataSource,HQPickerViewDelegate,GFAddressPickerDelegate,UITextFieldDelegate>
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,strong)UIImageView *headImage;
 @property(nonatomic,strong)MemberShipFootView*footView;
@@ -225,6 +225,8 @@
             cell.headImage.image = [UIImage imageNamed:imageArr2[indexPath.row]];
              cell.titleLabel.text = titleArr2[indexPath.row];
             cell.contentFiled.placeholder = detailArr2[indexPath.row];
+            cell.contentFiled.tag = 20+indexPath.row;
+            cell.contentFiled.delegate = self;
             if (indexPath.row ==0) {
                 if (self.req.wechatNo.length>0) {
                     cell.contentFiled.text = self.req.wechatNo;
@@ -268,6 +270,7 @@
         cell.imageView.image = [UIImage imageNamed:imageArr2[indexPath.row]];
         cell.textLabel.text = titleArr2[indexPath.row];
         cell.detailTextLabel.text = detailArr2[indexPath.row];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (indexPath.row ==2&&self.req.secretaryName.length>0) {
             cell.detailTextLabel.text = self.req.secretaryName;
         }
@@ -302,10 +305,12 @@
         [self.picker setCustomArr:self.secretaryArr];
         [self.picker setType:4];
         self.picker.hidden = NO;
+        self.tableview.frame = CGRectMake(0, -45+35 -286, SCREENWIDTH, SCREENHEIGHT);
     }
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectText:(NSString *)text Type:(NSInteger)type{
     self.picker.hidden = YES;
+    self.tableview.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
     if (type ==0) {
         self.req.industryType = text;
     }else if (type ==1){
@@ -335,5 +340,12 @@
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     [self.view endEditing:YES];
+}
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    if (textField.tag>19) {
+        CGFloat offSet = (textField.tag-19)*45+35 -286;
+        self.tableview.frame = CGRectMake(0, offSet, SCREENWIDTH, SCREENHEIGHT);
+    }
+    
 }
 @end

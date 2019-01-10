@@ -26,12 +26,12 @@
                   moduleName = "Shh"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/Pay/AddMemberPayController.m"
-                  timestampString = "568697868.4158829"
+                  timestampString = "568794025.592963"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "293"
                   endingLineNumber = "293"
-                  offsetFromSymbolStart = "565">
+                  offsetFromSymbolStart = "532">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -41,12 +41,12 @@
                   moduleName = "Shh"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/Pay/AddMemberPayController.m"
-                  timestampString = "568697868.41743"
+                  timestampString = "568794025.5943331"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "294"
                   endingLineNumber = "294"
-                  offsetFromSymbolStart = "54">
+                  offsetFromSymbolStart = "64">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -56,12 +56,12 @@
                   moduleName = "Shh"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/Pay/AddMemberPayController.m"
-                  timestampString = "568697868.419075"
+                  timestampString = "568794025.5956661"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "293"
                   endingLineNumber = "293"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -89,7 +89,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Home/Controller/Pay/MemberShipController.m"
-            timestampString = "567596138.736598"
+            timestampString = "568794633.728682"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
@@ -105,12 +105,12 @@
                   moduleName = "Shh"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/Pay/MemberShipController.m"
-                  timestampString = "568697868.434064"
+                  timestampString = "568794025.6029561"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "124"
                   endingLineNumber = "124"
-                  offsetFromSymbolStart = "1750">
+                  offsetFromSymbolStart = "1612">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -120,12 +120,12 @@
                   moduleName = "Shh"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/Pay/MemberShipController.m"
-                  timestampString = "568697868.43624"
+                  timestampString = "568794025.60438"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "125"
                   endingLineNumber = "125"
-                  offsetFromSymbolStart = "51">
+                  offsetFromSymbolStart = "64">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -135,12 +135,12 @@
                   moduleName = "Shh"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/Pay/MemberShipController.m"
-                  timestampString = "568697868.437728"
+                  timestampString = "568794025.605696"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "124"
                   endingLineNumber = "124"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -296,7 +296,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Home/Controller/dry/DetailCourseController.m"
-            timestampString = "567596138.736972"
+            timestampString = "568794633.728933"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "211"
@@ -312,7 +312,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Home/Controller/dry/DetailAudioController.m"
-            timestampString = "567596138.737088"
+            timestampString = "568794633.7289799"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "492"
@@ -328,7 +328,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Home/Controller/dry/DetailAudioController.m"
-            timestampString = "567596138.7371939"
+            timestampString = "568794633.729017"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "170"
@@ -344,28 +344,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Home/Controller/dry/DetailCourseController.m"
-            timestampString = "567596138.7372971"
+            timestampString = "568794633.72905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "217"
             endingLineNumber = "217"
             landmarkName = "-inputToolbar:orignY:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Shh/Tool/KeyBoard/Class/InputToolbar.m"
-            timestampString = "566788400.110857"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296"
-            landmarkName = "-textView:shouldChangeTextInRange:replacementText:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -391,24 +375,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Shh/Home/Controller/dry/DetailCourseController.m"
-            timestampString = "567596138.737466"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Shh/Home/Controller/dry/DetailAudioController.m"
-            timestampString = "567596138.737518"
+            timestampString = "568794633.729112"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
@@ -472,12 +440,12 @@
                   moduleName = "Shh"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Mine/Controller/PersonInfoController.m"
-                  timestampString = "568697868.504109"
+                  timestampString = "568794025.655951"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "395"
                   endingLineNumber = "395"
-                  offsetFromSymbolStart = "1020">
+                  offsetFromSymbolStart = "920">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -487,12 +455,12 @@
                   moduleName = "Shh"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Mine/Controller/PersonInfoController.m"
-                  timestampString = "568697868.505897"
+                  timestampString = "568794025.657287"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "396"
                   endingLineNumber = "396"
-                  offsetFromSymbolStart = "44">
+                  offsetFromSymbolStart = "48">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -502,12 +470,12 @@
                   moduleName = "Shh"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Mine/Controller/PersonInfoController.m"
-                  timestampString = "568697868.507301"
+                  timestampString = "568794025.658716"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "395"
                   endingLineNumber = "395"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -535,7 +503,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Network/ApiService/ServiceApi.m"
-            timestampString = "567596138.7378629"
+            timestampString = "568794158.054388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
@@ -551,7 +519,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Home/Controller/dry/DetailArticleController.m"
-            timestampString = "567596138.737926"
+            timestampString = "568794633.729257"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "180"
@@ -567,7 +535,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Home/Controller/dry/DetailArticleController.m"
-            timestampString = "567596138.737987"
+            timestampString = "568794633.729291"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "176"
@@ -599,7 +567,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Home/Controller/Pay/ExceptionalController.m"
-            timestampString = "567596138.738596"
+            timestampString = "568792927.199262"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "203"
@@ -615,7 +583,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Home/Controller/Pay/ExceptionalController.m"
-            timestampString = "567596138.738698"
+            timestampString = "568792927.199296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "199"
@@ -631,7 +599,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Home/Controller/Pay/ExceptionalController.m"
-            timestampString = "567596138.738773"
+            timestampString = "568792927.199329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "197"
@@ -647,7 +615,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Home/Controller/Pay/ExceptionalController.m"
-            timestampString = "567596138.738847"
+            timestampString = "568792927.19936"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "195"
@@ -663,7 +631,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Home/Controller/Pay/ExceptionalController.m"
-            timestampString = "567596138.738928"
+            timestampString = "568792927.1993901"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "193"
@@ -759,28 +727,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Home/View/ServiceDetailView.m"
-            timestampString = "568697439.2687171"
+            timestampString = "568794633.729514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "-setResultModel:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Shh/Mine/View/Mine/MineHeadView.m"
-            timestampString = "568697868.208738"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "-setModel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -807,12 +759,12 @@
                   moduleName = "Shh"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Mine/View/Mine/MineHeadView.m"
-                  timestampString = "568697868.578819"
+                  timestampString = "568794025.7006069"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "222"
                   endingLineNumber = "222"
-                  offsetFromSymbolStart = "197">
+                  offsetFromSymbolStart = "208">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -822,14 +774,252 @@
                   moduleName = "Shh"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Mine/View/Mine/MineHeadView.m"
-                  timestampString = "568697868.580204"
+                  timestampString = "568794025.7019269"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "223"
                   endingLineNumber = "223"
-                  offsetFromSymbolStart = "71">
+                  offsetFromSymbolStart = "72">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/Controller/SortViewController.m"
+            timestampString = "568780695.716864"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-setCurrentTitle:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/Controller/dry/DetailAudioController.m"
+            timestampString = "568794633.729594"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "-addComment:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DetailAudioController addComment:]"
+                  moduleName = "Shh"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailAudioController.m"
+                  timestampString = "568794025.708022"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "235"
+                  endingLineNumber = "235"
+                  offsetFromSymbolStart = "720">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__36-[DetailAudioController addComment:]_block_invoke"
+                  moduleName = "Shh"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailAudioController.m"
+                  timestampString = "568794025.709502"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "236"
+                  endingLineNumber = "236"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.327"
+                  moduleName = "Shh"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailAudioController.m"
+                  timestampString = "568794025.711464"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "235"
+                  endingLineNumber = "235"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/Controller/dry/DetailCourseController.m"
+            timestampString = "568794633.729627"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "-addComment:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DetailCourseController addComment:]"
+                  moduleName = "Shh"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailCourseController.m"
+                  timestampString = "568794025.716265"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "230"
+                  endingLineNumber = "230"
+                  offsetFromSymbolStart = "720">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__37-[DetailCourseController addComment:]_block_invoke"
+                  moduleName = "Shh"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailCourseController.m"
+                  timestampString = "568794025.717651"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "231"
+                  endingLineNumber = "231"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.336"
+                  moduleName = "Shh"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dnaer7/Documents/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailCourseController.m"
+                  timestampString = "568794025.719308"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "230"
+                  endingLineNumber = "230"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/Controller/dry/DetailCourseController.m"
+            timestampString = "568794633.729664"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "497"
+            endingLineNumber = "497"
+            landmarkName = "-tableView:viewForHeaderInSection:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/Controller/dry/DetailCourseController.m"
+            timestampString = "568794633.729701"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
+            landmarkName = "-getCommentList"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/Controller/dry/DetailCourseController.m"
+            timestampString = "568794633.729737"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "495"
+            endingLineNumber = "495"
+            landmarkName = "-tableView:viewForHeaderInSection:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/Controller/Pay/MemberShipController.m"
+            timestampString = "568794633.729774"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
+            landmarkName = "-textFieldDidBeginEditing:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Service/Controller/ServiceController.m"
+            timestampString = "568794633.72981"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "-tableView:viewForHeaderInSection:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Service/Controller/ServiceController.m"
+            timestampString = "568794633.73009"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "-tableView:heightForRowAtIndexPath:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

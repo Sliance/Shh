@@ -79,7 +79,7 @@
         [self addSubview:self.fouceBtn];
         self.headImage.frame = CGRectMake(15,15, 50, 50);
         self.nameLabel.frame = CGRectMake(self.headImage.ctRight+10, self.headImage.ctTop, SCREENWIDTH-120, 16);
-        self.detailLabel.frame = CGRectMake(self.headImage.ctRight+10, self.nameLabel.ctBottom+5, SCREENWIDTH-120, 40);
+        self.detailLabel.frame = CGRectMake(self.headImage.ctRight+10, self.nameLabel.ctBottom+5, SCREENWIDTH-145, 40);
 //        self.lineLabel.frame = CGRectMake(0, self.detailLabel.ctBottom+15, SCREENWIDTH, 1);
         
         self.fouceBtn.frame = CGRectMake(SCREENWIDTH-65, self.headImage.ctTop+10, 50, 25);

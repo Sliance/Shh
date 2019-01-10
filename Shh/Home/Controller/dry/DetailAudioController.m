@@ -490,9 +490,9 @@
     [headView setCommentBlock:^(CommentListRes * model1) {
         if ([UserCacheBean share].userInfo.token.length>0) {
             weakself.inputToolbar.isBecomeFirstResponder = YES;
-            weakself.commentReq.beCommentId = model1.beCommentId;
-            weakself.commentReq.beCommentMemberId = model1.beCommentMemberId;
-            weakself.commentReq.beCommentMemberNickname = model1.beCommentMemberNickname;
+            weakself.commentReq.beCommentId = model.commentId;
+            weakself.commentReq.beCommentMemberId = model.memberId;
+            weakself.commentReq.beCommentMemberNickname = model.memberNickname;
         }else{
             LoginController *loginVC = [[LoginController alloc]init];
             loginVC.hidesBottomBarWhenPushed = YES;

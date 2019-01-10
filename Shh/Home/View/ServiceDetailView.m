@@ -105,6 +105,7 @@
         [_phoneField.layer setBorderWidth:0.5];
         _phoneField.textColor = DSColorFromHex(0x474747);
         _phoneField.font = [UIFont systemFontOfSize:12];
+        _phoneField.keyboardType = UIKeyboardTypeNumberPad;
         _phoneField.delegate = self;
         _phoneField.tag = 2;
     }
