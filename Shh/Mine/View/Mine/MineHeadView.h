@@ -21,6 +21,10 @@
 @property(nonatomic,strong)UIButton *messageBtn;
 @property(nonatomic,strong)UIButton *serviceBtn;
 @property(nonatomic,strong)NSMutableArray *btnArr;
+@property(nonatomic,strong)UIButton *openBtn;
+@property(nonatomic,strong)UIButton *memberBtn;
+@property(nonatomic,strong)UIButton *studyBtn;
+@property(nonatomic,strong)UIButton *presidentBtn;
 
 @property(nonatomic,copy)void (^messageBlock)(void);
 @property(nonatomic,copy)void (^editBlock)(void);

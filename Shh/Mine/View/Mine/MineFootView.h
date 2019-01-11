@@ -10,21 +10,10 @@
 
 @interface MineFootView : BaseView
 @property(nonatomic,strong)UIView *bgView;
-@property(nonatomic,strong)UIView *headView;
 
-@property(nonatomic,strong)UIView *midView;
-@property(nonatomic,strong)UILabel *hYimage;
-@property(nonatomic,strong)UILabel *hYtitle;
-@property(nonatomic,strong)UILabel *hYDate;
-@property(nonatomic,strong)UIImageView *yanImage;
-@property(nonatomic,strong)UIImageView *zongImage;
-@property(nonatomic,strong)UILabel *yanLabel;
-@property(nonatomic,strong)UILabel *zongLabel;
-@property(nonatomic,strong)UIButton *yanright;
-@property(nonatomic,strong)UIButton *zongright;
 
 
 @property(nonatomic,copy)void(^selecteBlock)(NSUInteger);
-@property(nonatomic,copy)void(^tapBlock)(void);
+@property(nonatomic,copy)void(^headBlock)(NSInteger);
 
 @end

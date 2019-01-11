@@ -27,6 +27,7 @@
 #import "MineIntegralController.h"
 #import "AddMemberPayController.h"
 #import "MemberShipController.h"
+#import "OpenStatusController.h"
 
 
 @interface MineController ()<UIScrollViewDelegate>
@@ -112,7 +113,7 @@
     }];
     [self.headView setAddBlock:^{
      if ([UserCacheBean share].userInfo.token.length>0) {
-        MemberShipController*memberVC = [[MemberShipController alloc]init];
+        OpenStatusController*memberVC = [[OpenStatusController alloc]init];
         memberVC.hidesBottomBarWhenPushed = YES;
         [weakself.navigationController pushViewController:memberVC animated:YES];
      }else{
@@ -233,11 +234,38 @@
         }
         
     }];
-    [self.footView setTapBlock:^{
+    [self.footView setHeadBlock:^(NSInteger index) {
+
         if ([UserCacheBean share].userInfo.token.length>0) {
-          PromoteQrController *qrVC = [[PromoteQrController alloc]init];
-          qrVC.hidesBottomBarWhenPushed = YES;
-          [weakself.navigationController pushViewController:qrVC animated:YES];
+            switch (index) {
+                case 100:
+                {
+                    OpenStatusController *qrVC = [[OpenStatusController alloc]init];
+                    qrVC.hidesBottomBarWhenPushed = YES;
+                    [weakself.navigationController pushViewController:qrVC animated:YES];
+                }
+                    break;
+                case 101:
+                {
+                    PromoteQrController *qrVC = [[PromoteQrController alloc]init];
+                    qrVC.hidesBottomBarWhenPushed = YES;
+                    [weakself.navigationController pushViewController:qrVC animated:YES];
+                }
+                    break;
+                case 102:
+                {
+                    
+                }
+                    break;
+                case 103:
+                {
+                    
+                }
+                    break;
+                default:
+                    break;
+            }
+          
         }else{
             LoginController *loginVC = [[LoginController alloc]init];
             loginVC.hidesBottomBarWhenPushed = YES;
@@ -293,29 +321,7 @@
             [weakself.headView.headImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",DPHOST,weakself.result.memberAvatarPath]] placeholderImage:[UIImage imageNamed:@"mine"]];
             
             
-                    if (weakself.result.studyStatus == 1) {
-                        [weakself.footView.yanright setTitle:@"信息有待完善" forState:UIControlStateNormal];
-                        [weakself.footView.yanright setIconInRightWithSpacing:10];
-                    }else if (weakself.result.studyStatus == 2){
-                        [weakself.footView.yanright setTitle:@"        已加入" forState:UIControlStateNormal];
-                        [weakself.footView.yanright setIconInRightWithSpacing:10];
-                    }else if (weakself.result.studyStatus == 0){
-                        [weakself.footView.yanright setTitle:@"" forState:UIControlStateNormal];
-                        [weakself.footView.yanright setIconInRightWithSpacing:80];
-                    }
-                    
-            
-                    if (weakself.result.presidentStatus ==1) {
-                        [weakself.footView.zongright setTitle:@"信息有待完善" forState:UIControlStateNormal];
-                        [weakself.footView.zongright setIconInRightWithSpacing:10];
-                    }else if (weakself.result.presidentStatus ==2){
-                        [weakself.footView.zongright setTitle:@"        已加入" forState:UIControlStateNormal];
-                        [weakself.footView.zongright setIconInRightWithSpacing:10];
-                    }else if (weakself.result.presidentStatus ==0){
-                        [weakself.footView.zongright setTitle:@"" forState:UIControlStateNormal];
-                        [weakself.footView.zongright setIconInRightWithSpacing:80];
-                    }
-              
+                   
         }
     }];
 }

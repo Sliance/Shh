@@ -182,6 +182,7 @@
         [self addSubview:self.markTextView];
         [self addSubview:self.submitBtn];
         [self addSubview:self.fouceBtn];
+        [self addSubview:self.webView];
         self.titleLabel.frame = CGRectMake(15, 5, SCREENWIDTH-70, 60);
         self.fouceBtn.frame = CGRectMake(SCREENWIDTH-55, 15, 40, 20);
         self.req = [[SignUpService alloc]init];
@@ -197,7 +198,13 @@
     [self.contentLabel setText:resultModel.siheserviceDesc lineSpacing:5];
     self.contentLabel.frame = CGRectMake(15, self.titleLabel.ctBottom, SCREENWIDTH-30, [self.contentLabel getHeightLineWithString:resultModel.siheserviceDesc withWidth:SCREENWIDTH-30 withFont:[UIFont systemFontOfSize:16] lineSpacing:5]);
      self.headImage.frame = CGRectMake(10, self.contentLabel.ctBottom+15, SCREENWIDTH-20, (SCREENWIDTH-20)*200/345);
-    self.serviceTitle.frame = CGRectMake(15, self.headImage.ctBottom+15, SCREENWIDTH-30, 18);
+    self.webView.frame = CGRectMake(0, self.headImage.ctBottom, SCREENWIDTH, 100);
+    NSString *html_str = [resultModel.siheserviceContent stringByReplacingOccurrencesOfString:@"height:100%" withString:@"height:auto"];
+    [self.webView loadHTMLString:resultModel.siheserviceContent baseURL:nil];
+}
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    self.webView.frame = CGRectMake(0, self.headImage.ctBottom+20, SCREENWIDTH, self.webView.scrollView.contentSize.height);
+    self.serviceTitle.frame = CGRectMake(15, self.webView.ctBottom+15, SCREENWIDTH-30, 18);
     self.nameLabel.frame = CGRectMake(30, self.serviceTitle.ctBottom+20, 60, 40);
     self.phoneLabel.frame = CGRectMake(30, self.nameLabel.ctBottom, 60, 40);
     self.markLabel.frame = CGRectMake(30, self.phoneLabel.ctBottom, 60, 40);
@@ -206,8 +213,9 @@
     self.markTextView.frame = CGRectMake(self.markLabel.ctRight+10, self.markLabel.ctTop+5, SCREENWIDTH-120, 50);
     self.submitBtn.frame = CGRectMake(30, self.markTextView.ctBottom+15, SCREENWIDTH-60, 30);
     self.recommendLabel.frame = CGRectMake(15, self.submitBtn.ctBottom+20, SCREENWIDTH-30, 18);
+    self.heightBlock(self.recommendLabel.ctBottom+15);
+    NSLog(@"$$$$$$$%f",self.recommendLabel.ctBottom);
 }
-
 
 +(CGFloat)getCellHeight:(DetailServiceRes *)model{
     UILabel *label = [[UILabel alloc]init] ;

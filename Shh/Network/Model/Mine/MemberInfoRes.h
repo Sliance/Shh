@@ -64,7 +64,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,assign)NSInteger studyStatus;
 ///
 @property(nonatomic,assign)NSInteger  presidentStatus;
-
+///
+@property(nonatomic,copy)NSString *studyEndTime;
+///
+@property(nonatomic,copy)NSString *presidentEndTime;
 
 @end
 

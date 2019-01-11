@@ -91,8 +91,10 @@
             make.left.right.top.equalTo(self.headsView.view);
             make.height.mas_equalTo(200*SCREENWIDTH/375);
         }];
+            if (self.detailModel.courseMediaPath.length>0) {
+                self.player.URLAsset = [[SJVideoPlayerURLAsset alloc] initWithURL:[NSURL URLWithString:self.detailModel.courseMediaPath] playModel:[SJPlayModel UITableViewHeaderViewPlayModelWithPlayerSuperview:self.headsView.view.coverImageView tableView:self.tableview]];
+            }
         
-        self.player.URLAsset = [[SJVideoPlayerURLAsset alloc] initWithURL:[NSURL URLWithString:self.detailModel.courseMediaPath] playModel:[SJPlayModel UITableViewHeaderViewPlayModelWithPlayerSuperview:self.headsView.view.coverImageView tableView:self.tableview]];
         self.player.URLAsset.title = @"";
         self.player.URLAsset.alwaysShowTitle = NO;
         }else{

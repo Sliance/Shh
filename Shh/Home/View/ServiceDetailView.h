@@ -34,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)void (^subBlock)(NSString*);
 @property(nonatomic,copy)void(^fouceBlock)(BOOL);
 
+@property(nonatomic,copy)void(^heightBlock)(CGFloat);
+
 @end
 
 NS_ASSUME_NONNULL_END

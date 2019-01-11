@@ -342,6 +342,8 @@
 		89F1ADF7219050A9009A872A /* ArticleListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F1ADF6219050A9009A872A /* ArticleListController.m */; };
 		89F1ADFA219050BC009A872A /* CourseListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F1ADF9219050BC009A872A /* CourseListController.m */; };
 		89F1ADFD2190609E009A872A /* AllFreeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F1ADFC2190609E009A872A /* AllFreeListController.m */; };
+		89F6E63E21E864FA009FE14D /* OpenStatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F6E63D21E864FA009FE14D /* OpenStatusController.m */; };
+		89F6E64221E86E96009FE14D /* OpenStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F6E64121E86E96009FE14D /* OpenStatusCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1014,6 +1016,10 @@
 		89F1ADF9219050BC009A872A /* CourseListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseListController.m; sourceTree = "<group>"; };
 		89F1ADFB2190609E009A872A /* AllFreeListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllFreeListController.h; sourceTree = "<group>"; };
 		89F1ADFC2190609E009A872A /* AllFreeListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllFreeListController.m; sourceTree = "<group>"; };
+		89F6E63C21E864FA009FE14D /* OpenStatusController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenStatusController.h; sourceTree = "<group>"; };
+		89F6E63D21E864FA009FE14D /* OpenStatusController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenStatusController.m; sourceTree = "<group>"; };
+		89F6E64021E86E96009FE14D /* OpenStatusCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenStatusCell.h; sourceTree = "<group>"; };
+		89F6E64121E86E96009FE14D /* OpenStatusCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenStatusCell.m; sourceTree = "<group>"; };
 		CC622AFA70744F55DF7FAFC7 /* Pods-Shh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shh.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shh/Pods-Shh.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1111,6 +1117,7 @@
 		5AEA797721B272CC007C0DB7 /* head */ = {
 			isa = PBXGroup;
 			children = (
+				89F6E63F21E86E6D009FE14D /* OpenStatus */,
 				8921F81D21B65FCD00F9FE10 /* Qr */,
 				8921F81921B6594400F9FE10 /* Download */,
 				5AEA799421B28A2E007C0DB7 /* history */,
@@ -2523,6 +2530,17 @@
 			path = HQPickerView;
 			sourceTree = "<group>";
 		};
+		89F6E63F21E86E6D009FE14D /* OpenStatus */ = {
+			isa = PBXGroup;
+			children = (
+				89F6E63C21E864FA009FE14D /* OpenStatusController.h */,
+				89F6E63D21E864FA009FE14D /* OpenStatusController.m */,
+				89F6E64021E86E96009FE14D /* OpenStatusCell.h */,
+				89F6E64121E86E96009FE14D /* OpenStatusCell.m */,
+			);
+			path = OpenStatus;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2775,6 +2793,7 @@
 				89E0C0F121AE79E400D18C44 /* ForgetAlertView.m in Sources */,
 				8921F7F321B60EBE00F9FE10 /* UIView+SJControlAdd.m in Sources */,
 				89F03C5321AF921500218809 /* HelpRes.m in Sources */,
+				89F6E64221E86E96009FE14D /* OpenStatusCell.m in Sources */,
 				8921F80521B60EBE00F9FE10 /* SJFilmEditingGenerateGIFView.m in Sources */,
 				5AEA799821B28A76007C0DB7 /* CollectCourseController.m in Sources */,
 				8915D70B21B7BCEB000C9718 /* HistorysCell.m in Sources */,
@@ -2994,6 +3013,7 @@
 				8921F7EC21B60EBE00F9FE10 /* SJMoreSettingControlLayer.m in Sources */,
 				8850347821394081000BDD3A /* DryNoImageCell.m in Sources */,
 				895DBF7C21798CBD00E65B16 /* FreeListReq.m in Sources */,
+				89F6E63E21E864FA009FE14D /* OpenStatusController.m in Sources */,
 				8905E85D21BE1478001C0BB4 /* HgMusicBottomView.m in Sources */,
 				886B97EF2136B7BE0074322D /* UserBaseInfoModel.m in Sources */,
 				8921F7E021B60EBE00F9FE10 /* SJControlLayerSwitcher.m in Sources */,

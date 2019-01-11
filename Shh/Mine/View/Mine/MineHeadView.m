@@ -26,10 +26,11 @@
     [self addSubview:self.bgImage];
     [self addSubview:self.bgView];
     [self addSubview:self.headImage];
-//    [self.bgView addSubview:self.hYView];
-//    [self.hYView addSubview:self.hYimage];
-//    [self.hYView addSubview:self.hYtitle];
-//    [self.hYView addSubview:self.hYDate];
+    [self.bgView addSubview:self.hYView];
+    [self.hYView addSubview:self.openBtn];
+    [self.hYView addSubview:self.memberBtn];
+    [self.hYView addSubview:self.studyBtn];
+    [self.hYView addSubview:self.presidentBtn];
     [self.bgView addSubview:self.nameLabel];
     [self.bgView addSubview:self.editBtn];
     [self.bgImage addSubview:self.messageBtn];
@@ -90,7 +91,7 @@
     if (!_hYView) {
         _hYView = [[UIView alloc]init];
         _hYView.backgroundColor = DSColorFromHex(0xCDB59C);
-        _hYView.frame = CGRectMake(0, 165, SCREENWIDTH-30, 200);
+        _hYView.frame = CGRectMake(0, 165, SCREENWIDTH-30, 35);
         _hYView.userInteractionEnabled = YES;
     }
     return _hYView;
@@ -173,6 +174,46 @@
     }
     return _nameLabel;
 }
+-(UIButton *)openBtn{
+    if (!_openBtn) {
+        _openBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_openBtn setTitle:@"开通学籍  享受特权 >" forState:UIControlStateNormal];
+        [_openBtn setTitleColor:DSColorFromHex(0x52402C) forState:UIControlStateNormal];
+        _openBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [_openBtn addTarget:self action:@selector(pressAdd) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _openBtn;
+}
+-(UIButton *)memberBtn{
+    if (!_memberBtn) {
+        _memberBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_memberBtn setTitleColor:DSColorFromHex(0x52402C) forState:UIControlStateNormal];
+        _memberBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [_memberBtn setTitle:@"思和会会员" forState:UIControlStateNormal];
+        [_memberBtn setImage:[UIImage imageNamed:@"vip_mine"] forState:UIControlStateNormal];
+    }
+    return _memberBtn;
+}
+-(UIButton *)studyBtn{
+    if (!_studyBtn) {
+        _studyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_studyBtn setTitleColor:DSColorFromHex(0x52402C) forState:UIControlStateNormal];
+        _studyBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [_studyBtn setTitle:@"研习社" forState:UIControlStateNormal];
+        [_studyBtn setImage:[UIImage imageNamed:@"vip_mine"] forState:UIControlStateNormal];
+    }
+    return _studyBtn;
+}
+-(UIButton *)presidentBtn{
+    if (!_presidentBtn) {
+        _presidentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_presidentBtn setTitleColor:DSColorFromHex(0x52402C) forState:UIControlStateNormal];
+        _presidentBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [_presidentBtn setTitle:@"总裁班" forState:UIControlStateNormal];
+        [_presidentBtn setImage:[UIImage imageNamed:@"vip_mine"] forState:UIControlStateNormal];
+    }
+    return _presidentBtn;
+}
 -(void)pressBtn:(MineTypeBtn*)sender{
     if (sender.tag==0) {
         if ([UserCacheBean share].userInfo.token.length>0) {
@@ -182,7 +223,7 @@
             req.platform = @"ios";
             req.token = [UserCacheBean share].userInfo.token;
             req.memberId = [UserCacheBean share].userInfo.memberId;
-            __weak typeof(self)weakself = self;
+           
             [[MineServiceApi share]getSignInWithParam:req response:^(id response) {
                 if ([response[@"code"] integerValue] ==200) {
                     sender.imageLabel.textColor = DSColorFromHex(0x969696);
@@ -228,6 +269,51 @@
             }
         }];
     }
+    if (model.joinMember ==0&&model.studyStatus ==0&&model.presidentStatus ==0) {
+        self.openBtn.frame = CGRectMake(0, 0, SCREENWIDTH-30, 35);
+        self.memberBtn.frame = CGRectZero;
+        self.studyBtn.frame = CGRectZero;
+        self.presidentBtn.frame = CGRectZero;
+    }else if (model.joinMember ==1&&model.studyStatus ==0&&model.presidentStatus ==0){
+        self.memberBtn.frame = CGRectMake(0, 0, SCREENWIDTH-30, 35);
+        self.openBtn.frame = CGRectZero;
+        self.studyBtn.frame = CGRectZero;
+        self.presidentBtn.frame = CGRectZero;
+        [self.memberBtn setIconInLeftWithSpacing:10];
+    }else if (model.joinMember ==0&&model.studyStatus ==1&&model.presidentStatus ==0){
+        self.studyBtn.frame = CGRectMake(0, 0, SCREENWIDTH-30, 35);
+        self.memberBtn.frame = CGRectZero;
+        self.openBtn.frame = CGRectZero;
+        self.presidentBtn.frame = CGRectZero;
+        [self.studyBtn setIconInLeftWithSpacing:10];
+    }else if (model.joinMember ==0&&model.studyStatus ==0&&model.presidentStatus ==1){
+        self.presidentBtn.frame = CGRectMake(0, 0, SCREENWIDTH-30, 35);
+        self.memberBtn.frame = CGRectZero;
+        self.openBtn.frame = CGRectZero;
+        self.studyBtn.frame = CGRectZero;
+        [self.presidentBtn setIconInLeftWithSpacing:10];
+    }else if (model.joinMember ==1&&model.studyStatus ==1&&model.presidentStatus ==0){
+        self.memberBtn.frame = CGRectMake(0, 0, SCREENWIDTH/2-15, 35);
+        self.studyBtn.frame = CGRectMake(SCREENWIDTH/2-15, 0, SCREENWIDTH/2-15, 35);
+        self.openBtn.frame = CGRectZero;
+        self.presidentBtn.frame = CGRectZero;
+         [self.memberBtn setIconInLeftWithSpacing:10];
+         [self.studyBtn setIconInLeftWithSpacing:10];
+    }else if (model.joinMember ==1&&model.studyStatus ==0&&model.presidentStatus ==1){
+        self.memberBtn.frame = CGRectMake(0, 0, SCREENWIDTH/2-15, 35);
+        self.presidentBtn.frame = CGRectMake(SCREENWIDTH/2-15, 0, SCREENWIDTH/2-15, 35);
+        self.openBtn.frame = CGRectZero;
+        self.studyBtn.frame = CGRectZero;
+         [self.memberBtn setIconInLeftWithSpacing:10];
+         [self.presidentBtn setIconInLeftWithSpacing:10];
+    }else if (model.joinMember ==0&&model.studyStatus ==1&&model.presidentStatus ==1){
+        self.studyBtn.frame = CGRectMake(0, 0, SCREENWIDTH/2-15, 35);
+        self.presidentBtn.frame = CGRectMake(SCREENWIDTH/2-15, 0, SCREENWIDTH/2-15, 35);
+        self.openBtn.frame = CGRectZero;
+        self.memberBtn.frame = CGRectZero;
+         [self.studyBtn setIconInLeftWithSpacing:10];
+         [self.presidentBtn setIconInLeftWithSpacing:10];
+    }
     
 }
 -(void)pressMessage:(UIButton*)sender{
@@ -237,7 +323,7 @@
     self.editBlock();
 }
 
--(void)pressTap{
+-(void)pressAdd{
     self.addBlock();
 }
 @end

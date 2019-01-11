@@ -18,11 +18,62 @@
 @property (nonatomic, strong)NSMutableArray *dataArr;
 @property(nonatomic,strong)DetailServiceRes *resultModel;
 @property(nonatomic,assign)CGFloat height;
+@property(nonatomic,strong)ServiceDetailView* validView;
 
 @end
 static NSString *nowcellIds = @"HomeNowCell";
 @implementation DetailServiceController
-
+-(ServiceDetailView *)validView{
+    if (!_validView) {
+         _validView = [[ServiceDetailView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, self.height)];
+        __weak typeof(self)weakself = self;
+        [_validView setSubBlock:^(NSString * message) {
+            [weakself showInfo:message];
+        }];
+        __block typeof(_validView)weakvalidView = _validView;
+            [_validView setHeightBlock:^(CGFloat height) {
+                weakself.height = height;
+                weakvalidView.frame = CGRectMake(0, 0, SCREENWIDTH, height);
+                [weakself.collectionView reloadData];
+            }];
+        
+        [_validView setFouceBlock:^(BOOL selected) {
+            if ([UserCacheBean share].userInfo.token.length>0) {
+                
+                FollowReq *req = [[FollowReq alloc]init];
+                req.appId = @"1041622992853962754";
+                req.token = [UserCacheBean share].userInfo.token;
+                req.timestamp = @"0";
+                req.platform = @"ios";
+                req.version = @"1.0.0";
+                req.cityName = @"上海市";
+                req.beFollowId = weakself.resultModel.siheserviceId;
+                req.type = @"service";
+                
+                [[HomeServiceApi share]followWithParam:req response:^(id response) {
+                    if (response) {
+                        [weakself showInfo:response[@"message"]];
+                        if ([response[@"code"]integerValue] ==200  ) {
+                            if (weakvalidView.fouceBtn.selected ==NO) {
+                                weakvalidView.fouceBtn.backgroundColor = DSColorFromHex(0xF0F0F0);
+                                weakvalidView.fouceBtn.selected = YES;
+                            }else{
+                                weakvalidView.fouceBtn.backgroundColor = DSColorFromHex(0xE70019);
+                                weakvalidView.fouceBtn.selected = NO;
+                            }
+                        }
+                    }
+                }];
+            }else{
+                LoginController *loginVC = [[LoginController alloc]init];
+                loginVC.hidesBottomBarWhenPushed = YES;
+                [weakself.navigationController pushViewController:loginVC animated:YES];
+            }
+        }];
+        
+    }
+        return _validView;
+}
 -(UICollectionView *)collectionView{
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
@@ -34,7 +85,7 @@ static NSString *nowcellIds = @"HomeNowCell";
         [_collectionView registerClass:[HomeNowCell class] forCellWithReuseIdentifier:nowcellIds];
         
         _collectionView.backgroundColor = DSColorFromHex(0xFAFAFA);
-        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableView"];
+        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ServiceDetailView"];
         [_collectionView
          registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footreusableView"];
     }
@@ -53,6 +104,7 @@ static NSString *nowcellIds = @"HomeNowCell";
     self.title = @"服务详情";
     [self getService];
 }
+
 -(void)getService{
     FreeListReq *req = [[FreeListReq alloc]init];
     req.appId = @"1041622992853962754";
@@ -68,6 +120,7 @@ static NSString *nowcellIds = @"HomeNowCell";
         if (response) {
            
             weakself.resultModel = response;
+            [weakself.validView setResultModel:weakself.resultModel];
             [weakself.collectionView reloadData];
         }
         [weakself getArticleList:@"1043064325939695618"];
@@ -123,7 +176,7 @@ static NSString *nowcellIds = @"HomeNowCell";
         
         return footview;
     }
-    UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"reusableView" forIndexPath:indexPath];
+    UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"ServiceDetailView" forIndexPath:indexPath];
     
     
     for (UIView *view in headerView.subviews) {
@@ -131,47 +184,9 @@ static NSString *nowcellIds = @"HomeNowCell";
             [view removeFromSuperview];
         }
     }
-    ServiceDetailView* validView = [[ServiceDetailView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, [ServiceDetailView getCellHeight:self.resultModel])];
-    [validView setResultModel:self.resultModel];
-    __weak typeof(self)weakself = self;
-    [validView setSubBlock:^(NSString * message) {
-        [self showInfo:message];
-    }];
-    __weak typeof(validView)weakvalidView = validView;
-    [validView setFouceBlock:^(BOOL selected) {
-        if ([UserCacheBean share].userInfo.token.length>0) {
-            
-            FollowReq *req = [[FollowReq alloc]init];
-            req.appId = @"1041622992853962754";
-            req.token = [UserCacheBean share].userInfo.token;
-            req.timestamp = @"0";
-            req.platform = @"ios";
-            req.version = @"1.0.0";
-            req.cityName = @"上海市";
-            req.beFollowId = self.resultModel.siheserviceId;
-            req.type = @"service";
-            
-            [[HomeServiceApi share]followWithParam:req response:^(id response) {
-                if (response) {
-                    [weakself showInfo:response[@"message"]];
-                    if ([response[@"code"]integerValue] ==200  ) {
-                        if (weakvalidView.fouceBtn.selected ==NO) {
-                            weakvalidView.fouceBtn.backgroundColor = DSColorFromHex(0xF0F0F0);
-                            weakvalidView.fouceBtn.selected = YES;
-                        }else{
-                            weakvalidView.fouceBtn.backgroundColor = DSColorFromHex(0xE70019);
-                            weakvalidView.fouceBtn.selected = NO;
-                        }
-                    }
-                }
-            }];
-        }else{
-            LoginController *loginVC = [[LoginController alloc]init];
-            loginVC.hidesBottomBarWhenPushed = YES;
-            [weakself.navigationController pushViewController:loginVC animated:YES];
-        }
-    }];
-    [headerView addSubview:validView];
+    
+        [headerView addSubview:self.validView];
+   
     return headerView;
     
 }
@@ -193,7 +208,7 @@ static NSString *nowcellIds = @"HomeNowCell";
     
     
     
-    return CGSizeMake(SCREENWIDTH, [ServiceDetailView getCellHeight:self.resultModel]);
+    return CGSizeMake(SCREENWIDTH, self.height);
     
 }
 
