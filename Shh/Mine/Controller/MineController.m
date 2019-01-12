@@ -235,42 +235,32 @@
         
     }];
     [self.footView setHeadBlock:^(NSInteger index) {
-
-        if ([UserCacheBean share].userInfo.token.length>0) {
-            switch (index) {
-                case 100:
-                {
+            if ([UserCacheBean share].userInfo.token.length>0) {
+                if (index ==100) {
                     OpenStatusController *qrVC = [[OpenStatusController alloc]init];
                     qrVC.hidesBottomBarWhenPushed = YES;
                     [weakself.navigationController pushViewController:qrVC animated:YES];
-                }
-                    break;
-                case 101:
-                {
+                }else if (index ==101){
                     PromoteQrController *qrVC = [[PromoteQrController alloc]init];
                     qrVC.hidesBottomBarWhenPushed = YES;
                     [weakself.navigationController pushViewController:qrVC animated:YES];
                 }
-                    break;
-                case 102:
-                {
-                    
-                }
-                    break;
-                case 103:
-                {
-                    
-                }
-                    break;
-                default:
-                    break;
-            }
-          
-        }else{
+                
+            }else if (index ==102) {
+                    [weakself showInfo:@"正在开发中"];
+        }else if (index ==103){
+            
+                    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"tel:%@",@"18963714267"];
+                    UIWebView * callWebview = [[UIWebView alloc] init];
+                    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+                    [weakself.view addSubview:callWebview];
+    }else{
             LoginController *loginVC = [[LoginController alloc]init];
             loginVC.hidesBottomBarWhenPushed = YES;
             [weakself.navigationController pushViewController:loginVC animated:YES];
         }
+          
+        
     }];
     
 }

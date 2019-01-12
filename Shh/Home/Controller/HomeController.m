@@ -32,7 +32,7 @@
 #import "SearchController.h"
 #import "DetailHomeController.h"
 
-@interface HomeController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface HomeController ()<UICollectionViewDelegate, UICollectionViewDataSource,ZSCycleScrollViewDelegate>
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property (nonatomic, strong)HomeHeadView *headView;
 @property (nonatomic, strong)NavigationView *navView;
@@ -423,6 +423,7 @@ static NSString *likecellIds = @"HomeLikeCell";
             validView.bgView.hidden = YES;
             validView.frame = CGRectMake(0, 0, SCREENWIDTH, 200*SCREENWIDTH/375+90);
         }
+        validView.cycleView.delegate = self;
         [validView.cycleView setImageUrlGroups:arr];
         [headerView addSubview:validView];
         [validView setSelectedBlock:^(NSInteger index) {
@@ -628,18 +629,10 @@ static NSString *likecellIds = @"HomeLikeCell";
         }else if (indexPath.section ==3){
             model= self.bigClassArr[indexPath.row];
         }
-        
-        if ([model.courseVideoOrAudio isEqualToString:@"video"]) {
             DetailCourseController *courseVC = [[DetailCourseController alloc]init];
             courseVC.hidesBottomBarWhenPushed = YES;
             [courseVC setModel:model];
             [self.navigationController pushViewController:courseVC animated:YES];
-        }else{
-            DetailAudioController *courseVC = [[DetailAudioController alloc]init];
-            courseVC.hidesBottomBarWhenPushed = YES;
-            [courseVC setModel:model];
-            [self.navigationController pushViewController:courseVC animated:YES];
-        }
         
     }else if (indexPath.section==1){
         TodayListRes *model = self.todayListArr[indexPath.row];
@@ -659,7 +652,7 @@ static NSString *likecellIds = @"HomeLikeCell";
             [self.navigationController pushViewController:courseVC animated:YES];
         }else{
             FreeListRes *model = [[FreeListRes alloc]init];
-            DetailAudioController *courseVC = [[DetailAudioController alloc]init];
+            DetailCourseController *courseVC = [[DetailCourseController alloc]init];
             courseVC.hidesBottomBarWhenPushed = YES;
             model.courseId = guessmodel.id;
             model.courseCategoryId = @"1044405524206198785";
@@ -683,14 +676,16 @@ static NSString *likecellIds = @"HomeLikeCell";
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)cycleScrollView:(ZSCycleScrollView *)cycleScrollView didSelectItemAtRow:(NSInteger)row{
+    BannerRes*resmodel = self.bannerArr[row];
+    FreeListRes *model = [[FreeListRes alloc]init];
+    DetailCourseController *courseVC = [[DetailCourseController alloc]init];
+    courseVC.hidesBottomBarWhenPushed = YES;
+    model.courseId = resmodel.bannerId;
+    model.courseCategoryId = @"1044405524206198785";
+    model.columnId = resmodel.bannerId;
+    [courseVC setModel:model];
+    [self.navigationController pushViewController:courseVC animated:YES];
 }
-*/
 
 @end

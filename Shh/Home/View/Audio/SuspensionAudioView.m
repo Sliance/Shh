@@ -89,13 +89,13 @@
     _detailCourse = detailCourse;
     NSString *bannerurl = [NSString stringWithFormat:@"%@%@",DPHOST,detailCourse.course.courseAppImagePath];
     [self.bannerImage sd_setImageWithURL:[NSURL URLWithString:bannerurl]];
-    CourseListModel*model = [self.detailCourse.courseList firstObject];
-    self.nameLabel.text = model.courseTitle;
-    
     [self.nameBtn setTitle:detailCourse.member.memberName forState:UIControlStateNormal];
+}
+-(void)setModel:(CourseListModel *)model{
+    _model = model;
+    self.nameLabel.text = model.courseTitle;
     [self.nameBtn setIconInRightWithSpacing:SCREENWIDTH-230];
 }
-
 -(void)pressPlay{
     self.playBlock(self.playBtn.selected);
 }

@@ -34,10 +34,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UILabel *introductLabel;
 @property (nonatomic, strong) UILabel *recommendLabel;
+@property (nonatomic, strong) UILabel *contentLabel;
+@property (nonatomic, strong) UILabel *audioLabel;
 @property (nonatomic, strong) UILabel *introducTDecs;
-
+@property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property(nonatomic,strong)NSMutableArray*dataArr;
+
+@property(nonatomic,strong)NSMutableArray*videoArr;
+@property(nonatomic,strong)NSMutableArray*audioArr;
 
 @property (nonatomic, strong) UILabel *commentLabel;
 @property (nonatomic, strong) UIButton *commentBtn;
@@ -47,8 +52,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)void(^playblock)(void);
 @property (nonatomic, strong) UIImageView *coverImageView;
 @property (nonatomic, strong) UIButton *playButton;
-
+@property (nonatomic, assign) BOOL selected;
+@property(nonatomic,copy)void(^audioBlock)(BOOL,CourseListModel*);
+@property(nonatomic,copy)void(^videoBlock)(CourseListModel*);
 @property (nonatomic, strong,readonly) SJPlayView *view;
+@property(nonatomic,strong)UIButton *tmpBtn;
 
 @end
 

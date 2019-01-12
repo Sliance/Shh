@@ -13,6 +13,7 @@
 #import "ZSNotification.h"
 #import "HomeLikeCell.h"
 #import "SJTableHeaderView.h"
+#import "AudioCell.h"
 
 @implementation VedioHeadView
 
@@ -34,7 +35,9 @@
         [self addSubview:self.lineLabel1];
         [self addSubview:self.commentLabel];
         [self addSubview:self.commentBtn];
-        
+        [self addSubview:self.contentLabel];
+        [self addSubview:self.audioLabel];
+        [self addSubview:self.tableview];
         _view = [SJPlayView new];
         _view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         _view.frame = CGRectMake(0, -33, SCREENWIDTH, 8*SCREENWIDTH/15);
@@ -96,6 +99,26 @@
     }
     return _introductLabel;
 }
+-(UILabel *)contentLabel{
+    if (!_contentLabel) {
+        _contentLabel = [[UILabel alloc]init];
+        _contentLabel.textColor = DSColorFromHex(0x474747);
+        _contentLabel.font = [UIFont boldSystemFontOfSize:18];
+        _contentLabel.textAlignment = NSTextAlignmentLeft;
+        _contentLabel.text = @"课程内容";
+    }
+    return _contentLabel;
+}
+-(UILabel *)audioLabel{
+    if (!_audioLabel) {
+        _audioLabel = [[UILabel alloc]init];
+        _audioLabel.textColor = DSColorFromHex(0x474747);
+        _audioLabel.font = [UIFont boldSystemFontOfSize:18];
+        _audioLabel.textAlignment = NSTextAlignmentLeft;
+        _audioLabel.text = @"音频内容";
+    }
+    return _audioLabel;
+}
 -(UILabel *)introducTDecs{
     if (!_introducTDecs) {
         _introducTDecs = [[UILabel alloc]init];
@@ -154,6 +177,15 @@
     }
     return _fouceBtn;
 }
+-(UITableView *)tableview{
+    if (!_tableview) {
+        _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, SCREENHEIGHT) style:UITableViewStylePlain];
+        _tableview.delegate = self;
+        _tableview.dataSource = self;
+        _tableview.scrollEnabled = NO;
+    }
+    return _tableview;
+}
 -(UIButton *)commentBtn{
     if (!_commentBtn) {
         _commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -170,6 +202,68 @@
 }
 -(void)setDetailCourse:(DetailCourseRes *)detailCourse{
     _detailCourse = detailCourse;
+   
+    if (detailCourse.courseList.count>0) {
+        self.videoArr = [[NSMutableArray alloc]init];
+        self.audioArr = [[NSMutableArray alloc]init];
+        for (CourseListModel *model in detailCourse.courseList) {
+            if (model.courseMediaPath.length>1&&model.courseAudioPath.length>1) {
+                [self.videoArr addObject:model];
+                [self.audioArr addObject:model];
+            }else if (model.courseAudioPath.length>1){
+                [self.audioArr addObject:model];
+            }else if (model.courseMediaPath.length>1&&![model.courseMediaPath isEqualToString:@""]){
+                [self.videoArr addObject:model];
+            }
+        }
+        if (self.videoArr.count>0) {
+            self.contentLabel.frame = CGRectMake(14, self.lineLabel.ctBottom+15, SCREENWIDTH-30, 17);
+            for (int i = 0; i<self.videoArr.count; i++) {
+                UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+                btn.backgroundColor = DSColorFromHex(0xF0F0F0);
+                [btn.layer setCornerRadius:4];
+                [btn.layer setMasksToBounds:YES];
+                btn.frame = CGRectMake(15+i*50, self.contentLabel.ctBottom+10, 40, 40);
+                [btn setTitle:[NSString stringWithFormat:@"%d",i+1] forState:UIControlStateNormal];
+                [btn setTitleColor:DSColorFromHex(0x464646) forState:UIControlStateNormal];
+                [btn setTitleColor:DEFAULTColor forState:UIControlStateSelected];
+                if (i ==0) {
+                    btn.selected = YES;
+                    _tmpBtn = btn;
+                    
+                }
+                [btn addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchUpInside];
+                btn.tag = i;
+                [self addSubview:btn];
+            }
+            if (self.audioArr.count>0) {
+                self.audioLabel.frame = CGRectMake(14, self.contentLabel.ctBottom+75, SCREENWIDTH-30, 17);
+                self.tableview.frame =CGRectMake(0, self.audioLabel.ctBottom+15, SCREENWIDTH, self.audioArr.count*60);
+            }else{
+                self.audioLabel.frame = CGRectMake(14, self.contentLabel.ctBottom,0, 0);
+                self.tableview.frame =CGRectMake(0, self.audioLabel.ctBottom, 0, 0);
+            }
+            self.view.playButton.hidden = NO;
+        }else{
+            self.view.playButton.hidden = YES;
+            self.contentLabel.frame = CGRectMake(14, self.lineLabel.ctBottom, 0,0);
+            if (self.audioArr.count>0) {
+                self.audioLabel.frame = CGRectMake(14, self.contentLabel.ctBottom+15, SCREENWIDTH-30, 17);
+                self.tableview.frame =CGRectMake(0, self.audioLabel.ctBottom+15, SCREENWIDTH, self.audioArr.count*60);
+            }else{
+                self.audioLabel.frame = CGRectMake(14, self.contentLabel.ctBottom,0, 0);
+                self.tableview.frame =CGRectMake(0, self.audioLabel.ctBottom, 0, 0);
+            }
+        }
+        
+        
+    }else{
+        self.contentLabel.frame = CGRectMake(14, self.lineLabel.ctBottom, 0, 0);
+        self.audioLabel.frame = CGRectMake(14, self.contentLabel.ctBottom,0, 0);
+        self.tableview.frame =CGRectMake(0, self.audioLabel.ctBottom, 0, 0);
+    }
+    
+    self.introductLabel.frame = CGRectMake(14, self.tableview.ctBottom+17, SCREENWIDTH-30, 17);
     NSString *url1 = [NSString stringWithFormat:@"%@%@",DPHOST,detailCourse.course.courseAppImagePath];
     [self.view.coverImageView sd_setImageWithURL:[NSURL URLWithString:url1]];
     NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,detailCourse.member.memberAvatarPath];
@@ -195,7 +289,7 @@
     self.lineLabel1.frame = CGRectMake(0, self.collectionView.ctBottom+1, SCREENWIDTH, 1);
     self.commentLabel.frame = CGRectMake(15, self.lineLabel1.ctBottom+17, SCREENWIDTH, 17);
      self.commentBtn.frame = CGRectMake(SCREENWIDTH-60, self.lineLabel1.ctBottom+10, 50, 36);
-    
+     [self.tableview reloadData];
     self.heightBlock(self.commentBtn.ctBottom);
    
 }
@@ -207,7 +301,7 @@
     self.lineLabel.frame = CGRectMake(0, self.detailLabel.ctBottom+15, SCREENWIDTH, 1);
     
     self.fouceBtn.frame = CGRectMake(SCREENWIDTH-55, self.headImage.ctTop, 40, 20);
-    self.introductLabel.frame = CGRectMake(14, self.lineLabel.ctBottom+17, SCREENWIDTH-30, 17);
+    
     
 }
 -(void)setLayoutLand{
@@ -297,5 +391,50 @@
         self.playblock();
     }
 
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.audioArr.count;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 60;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *identify = @"AudioCell";
+    AudioCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    if (!cell) {
+        cell = [[AudioCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+    }
+    CourseListModel*model = self.audioArr[indexPath.row];
+    model.memberIsBuyThisCourse = self.detailCourse.memberIsBuyThisCourse;
+    model.watch = self.detailCourse.watchCount;
+    [cell setModel:model];
+    
+    __weak typeof(self)weakself = self;
+    [cell setPlayBlock:^(BOOL selected) {
+        weakself.audioBlock(selected,model);
+    }];
+    cell.playBtn.selected = self.selected;
+    return cell;
+}
+-(void)setSelected:(BOOL)selected{
+    _selected = selected;
+    [self.tableview reloadData];
+}
+-(void)pressBtn:(UIButton*)sender{
+    CourseListModel*model = self.videoArr[sender.tag];
+    if (_tmpBtn == nil){
+        sender.selected = YES;
+        _tmpBtn = sender;
+    }else if (_tmpBtn !=nil && _tmpBtn == sender){
+        sender.selected = YES;
+    }else if (_tmpBtn!= sender && _tmpBtn!=nil){
+        _tmpBtn.selected = NO;
+        sender.selected = YES;
+        _tmpBtn = sender;
+    }
+    self.videoBlock(model);
 }
 @end

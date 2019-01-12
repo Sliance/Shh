@@ -10,6 +10,7 @@
 #import "OpenStatusCell.h"
 #import "MineServiceApi.h"
 #import "AddMemberPayController.h"
+#import "MemberShipController.h"
 
 @interface OpenStatusController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableview;
@@ -81,18 +82,35 @@
             [cell.openBtn setTitle:@"开通" forState:UIControlStateNormal];
             cell.openBtn.backgroundColor = DSColorFromHex(0xE70019);
 
-        }else{
+        }else if (self.result.studyStatus ==2){
             [cell.openBtn setTitle:@"续费" forState:UIControlStateNormal];
             cell.openBtn.backgroundColor = DSColorFromHex(0xDEB279);
             NSString *date = [NSDate cStringFromTimestamp:self.result.studyEndTime Formatter:@"yyyy-mm-dd"];
             cell.dateLabel.text = [NSString stringWithFormat:@"有效期至%@",date];
+        }else if (self.result.studyStatus ==1){
+            [cell.openBtn setTitle:@"完善信息" forState:UIControlStateNormal];
+            cell.openBtn.backgroundColor = DSColorFromHex(0xE70019);
+            NSString *date = [NSDate cStringFromTimestamp:self.result.presidentEndTime Formatter:@"yyyy-mm-dd"];
+            cell.dateLabel.text = [NSString stringWithFormat:@"有效期至%@",date];
         }
         WEAKSELF;
         [cell setOpenBlock:^{
-            AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
-            addVC.hidesBottomBarWhenPushed = YES;
-            [addVC setType:1];
-            [weakSelf.navigationController pushViewController:addVC animated:YES];
+            if (self.result.studyStatus ==0) {
+                AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
+                addVC.hidesBottomBarWhenPushed = YES;
+                [addVC setType:1];
+                [weakSelf.navigationController pushViewController:addVC animated:YES];
+            }else if (self.result.studyStatus ==1){
+                MemberShipController *addVC = [[MemberShipController alloc]init];
+                addVC.hidesBottomBarWhenPushed = YES;
+                [addVC setType:1];
+                [weakSelf.navigationController pushViewController:addVC animated:YES];
+            }else if (self.result.studyStatus ==2){
+                AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
+                addVC.hidesBottomBarWhenPushed = YES;
+                [addVC setType:1];
+                [weakSelf.navigationController pushViewController:addVC animated:YES];
+            }
 
         }];
     }else if (indexPath.row ==1){
@@ -105,18 +123,35 @@
             cell.dateLabel.text = @"尚未开通";
             [cell.openBtn setTitle:@"开通" forState:UIControlStateNormal];
             cell.openBtn.backgroundColor = DSColorFromHex(0xE70019);
-        }else{
+        }else if (self.result.presidentStatus ==2){
             [cell.openBtn setTitle:@"续费" forState:UIControlStateNormal];
             cell.openBtn.backgroundColor = DSColorFromHex(0xDEB279);
+            NSString *date = [NSDate cStringFromTimestamp:self.result.presidentEndTime Formatter:@"yyyy-mm-dd"];
+            cell.dateLabel.text = [NSString stringWithFormat:@"有效期至%@",date];
+        }else if (self.result.presidentStatus ==1){
+            [cell.openBtn setTitle:@"完善信息" forState:UIControlStateNormal];
+            cell.openBtn.backgroundColor = DSColorFromHex(0xE70019);
             NSString *date = [NSDate cStringFromTimestamp:self.result.presidentEndTime Formatter:@"yyyy-mm-dd"];
             cell.dateLabel.text = [NSString stringWithFormat:@"有效期至%@",date];
         }
         WEAKSELF;
         [cell setOpenBlock:^{
-            AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
-            addVC.hidesBottomBarWhenPushed = YES;
-            [addVC setType:2];
-            [weakSelf.navigationController pushViewController:addVC animated:YES];
+            if (self.result.presidentStatus ==0) {
+                AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
+                addVC.hidesBottomBarWhenPushed = YES;
+                [addVC setType:2];
+                [weakSelf.navigationController pushViewController:addVC animated:YES];
+            }else if (self.result.presidentStatus ==1){
+                MemberShipController *addVC = [[MemberShipController alloc]init];
+                addVC.hidesBottomBarWhenPushed = YES;
+                [addVC setType:2];
+                [weakSelf.navigationController pushViewController:addVC animated:YES];
+            }else if (self.result.presidentStatus ==2){
+                AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
+                addVC.hidesBottomBarWhenPushed = YES;
+                [addVC setType:2];
+                [weakSelf.navigationController pushViewController:addVC animated:YES];
+            }
             
         }];
     }

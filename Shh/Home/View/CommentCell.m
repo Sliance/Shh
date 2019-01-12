@@ -85,7 +85,7 @@
     [self.contentLabel setText:model.commentContent lineSpacing:5];
     self.contentLabel.frame = CGRectMake(15, self.nameLabel.ctBottom+15, SCREENWIDTH-90-35, [self.contentLabel getHeightLineWithString:model.commentContent withWidth:SCREENWIDTH-125 withFont:[UIFont systemFontOfSize:14]lineSpacing:5]);
     self.dateLabel.frame = CGRectMake(15, self.contentLabel.ctBottom+15, SCREENWIDTH/2, 14);
-    self.commentBtn.frame = CGRectMake(SCREENWIDTH-90-35, self.contentLabel.ctBottom+15, 20, 20);
+    self.commentBtn.frame = CGRectMake(SCREENWIDTH-90-15, self.contentLabel.ctBottom+5, 40, 40);
     self.dateLabel.text = [NSDate cStringFromTimestamp:model.systemCreateTime Formatter:@"yyyy年MM月dd日"];
     self.bgView.frame = CGRectMake(70, 0, SCREENWIDTH-90, self.contentLabel.frame.size.height+80);
 }

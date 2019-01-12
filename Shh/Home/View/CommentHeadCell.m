@@ -102,8 +102,8 @@
     [self.contentLabel setText:model.commentContent lineSpacing:5];
     self.contentLabel.frame = CGRectMake(self.headImage.ctRight+15, self.headImage.ctBottom, SCREENWIDTH-90, [self.contentLabel getHeightLineWithString:model.commentContent withWidth:SCREENWIDTH-90 withFont:[UIFont systemFontOfSize:14]lineSpacing:5]);
     self.dateLabel.frame = CGRectMake(self.headImage.ctRight+15, self.contentLabel.ctBottom+15, SCREENWIDTH/2, 14);
-    self.zanBtn.frame = CGRectMake(SCREENWIDTH-100, self.contentLabel.ctBottom+10, 60, 20);
-    self.commentBtn.frame = CGRectMake(SCREENWIDTH-35, self.contentLabel.ctBottom+12, 20, 20);
+    self.zanBtn.frame = CGRectMake(SCREENWIDTH-100, self.contentLabel.ctBottom, 60, 40);
+    self.commentBtn.frame = CGRectMake(SCREENWIDTH-35, self.contentLabel.ctBottom+2, 20, 40);
     self.dateLabel.text = [NSDate cStringFromTimestamp:model.systemCreateTime Formatter:@"yyyy年MM月dd日"];
     [self.zanBtn setTitle:model.commentLikeCount forState:UIControlStateNormal];
     self.zanBtn.selected = model.memberIsLike;

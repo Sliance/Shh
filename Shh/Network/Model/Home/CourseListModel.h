@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 @property(nonatomic,strong)NSString *courseMediaPath;
 ///
+@property(nonatomic,strong)NSString *courseAudioPath;
+///
 @property(nonatomic,strong)NSString *courseMediaSize;
 ///
 @property(nonatomic,strong)NSString *courseNo;

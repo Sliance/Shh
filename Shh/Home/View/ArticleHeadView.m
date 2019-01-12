@@ -15,7 +15,7 @@ static NSString *nowcellIds = @"HomeNowCell";
         _headImage = [[UIImageView alloc]init];
         [_headImage.layer setCornerRadius:15];
         [_headImage.layer setMasksToBounds:YES];
-        
+        _headImage.image = [UIImage imageNamed:@"AppIcon"];
     }
     return _headImage;
 }
@@ -197,8 +197,6 @@ static NSString *nowcellIds = @"HomeNowCell";
 -(void)setModel:(DetailArticleRes *)model{
     _model = model;
     self.titleLabel.text = model.articleTitle;
-    NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,model.member.memberAvatarPath];
-    [self.headImage sd_setImageWithURL:[NSURL URLWithString:url]];
     if (model.haveFollowMember ==YES) {
         self.fouceBtn.selected = YES;
         self.fouceBtn.backgroundColor = DSColorFromHex(0xF0F0F0);
@@ -206,8 +204,8 @@ static NSString *nowcellIds = @"HomeNowCell";
         self.fouceBtn.selected = NO;
         self.fouceBtn.backgroundColor = DSColorFromHex(0xE70019);
     }
-    self.nameLabel.text = model.member.memberName;
-    self.detailLabel.text = model.member.memberDesc;
+    self.nameLabel.text = @"思和会";
+    self.detailLabel.text = @"思和会";
     NSString *url1 = [NSString stringWithFormat:@"%@%@",DPHOST,model.articleAppCoverImagePath];
     [self.bgImage sd_setImageWithURL:[NSURL URLWithString:url1]];
     [self.contentLabel setText:model.articleIntroduction lineSpacing:5];

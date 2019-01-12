@@ -8,6 +8,8 @@
 
 #import "BaseView.h"
 #import "DetailCourseRes.h"
+#import "CourseListModel.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SuspensionAudioView : BaseView
@@ -17,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIButton *playBtn;
 @property (nonatomic, strong) UIButton *nameBtn;
 @property(nonatomic,strong)DetailCourseRes *detailCourse;
+@property(nonatomic,strong)CourseListModel *model;
 @property(nonatomic,copy)void (^playBlock)(BOOL);
 @property(nonatomic,copy)void (^detailBlock)(void);
 
