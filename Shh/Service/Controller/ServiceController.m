@@ -22,8 +22,10 @@
 #import "SearchController.h"
 #import "AddMemberPayController.h"
 #import "LoginController.h"
+#import "DetailCourseController.h"
+#import "DetailArticleController.h"
 
-@interface ServiceController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ServiceController ()<UITableViewDelegate,UITableViewDataSource,ZSCycleScrollViewDelegate>
 @property(nonatomic,strong)UITableView *tableview;
 @property(nonatomic,strong)ServiceHeadView *headview;
 @property (nonatomic, strong)NavigationView *navView;
@@ -31,6 +33,7 @@
 @property(nonatomic,strong)NSMutableArray *trainArr;
 @property(nonatomic,strong)NSMutableArray *activityArr;
 @property(nonatomic,strong)NSMutableArray *joinArr;
+@property(nonatomic,strong)NSMutableArray *bannerArr;
 @end
 
 @implementation ServiceController
@@ -48,6 +51,7 @@
     if (!_headview) {
         _headview = [[ServiceHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200*SCREENWIDTH/375+65)];
         [_headview.memberBtn addTarget:self action:@selector(addMember) forControlEvents:UIControlEventTouchUpInside];
+        _headview.cycleView.delegate = self;
     }
     return _headview;
 }
@@ -72,10 +76,11 @@
     
     self.tableview.tableHeaderView = self.headview;
     [self.view addSubview:self.navView];
-     self.goodArr = [NSMutableArray array];
-     self.trainArr = [NSMutableArray array];
-     self.activityArr = [NSMutableArray array];
-     self.joinArr = [NSMutableArray array];
+     self.goodArr = [[NSMutableArray alloc]init];
+     self.trainArr = [[NSMutableArray alloc]init];
+     self.activityArr = [[NSMutableArray alloc]init];
+     self.joinArr = [[NSMutableArray alloc]init];
+    self.bannerArr = [[NSMutableArray alloc]init];
     __weak typeof(self)weakself = self;
     [self.navView setHistoryBlock:^{
         HistoryBaseController *setVC = [[HistoryBaseController alloc]init];
@@ -111,6 +116,8 @@
     [[HomeServiceApi share]getBannerWithParam:req response:^(id response) {
         if (response) {
             NSMutableArray *arr  = [NSMutableArray array];
+            [weakself.bannerArr removeAllObjects];
+            [weakself.bannerArr addObjectsFromArray:response];
             for (BannerRes *model in response) {
                 if (model.bannerImagePath) {
                     [arr addObject:model.bannerImagePath];
@@ -306,10 +313,14 @@
 }
 -(void)addMember{
     if ([UserCacheBean share].userInfo.token.length>0) {
-        AddMemberPayController *memberVC = [[AddMemberPayController alloc]init];
-        memberVC.hidesBottomBarWhenPushed = YES;
-        [memberVC setType:1];
-        [self.navigationController pushViewController:memberVC animated:YES];
+        if ([[UserCacheBean share].userInfo.memberId isEqualToString:@"23392"]) {
+            [self showInfo:@"您已是会员"];
+        }else{
+            AddMemberPayController *memberVC = [[AddMemberPayController alloc]init];
+            memberVC.hidesBottomBarWhenPushed = YES;
+            [memberVC setType:1];
+            [self.navigationController pushViewController:memberVC animated:YES];
+        }
     }else{
         LoginController *loginVC = [[LoginController alloc]init];
         loginVC.hidesBottomBarWhenPushed = YES;
@@ -317,6 +328,37 @@
     }
     
 }
+-(void)cycleScrollView:(ZSCycleScrollView *)cycleScrollView didSelectItemAtRow:(NSInteger)row{
+    BannerRes*resmodel = self.bannerArr[row];
+    if ([resmodel.bannerType isEqualToString:@"course"]) {
+        FreeListRes *model = [[FreeListRes alloc]init];
+        DetailCourseController *courseVC = [[DetailCourseController alloc]init];
+        courseVC.hidesBottomBarWhenPushed = YES;
+        model.courseId = resmodel.bannerTypeId;
+        model.courseCategoryId = @"1044405524206198785";
+        model.columnId = resmodel.bannerTypeId;
+        [courseVC setModel:model];
+        [self.navigationController pushViewController:courseVC animated:YES];
+    }else if ([resmodel.bannerType isEqualToString:@"article"]){
+        TodayListRes *model1 = [[TodayListRes alloc]init];
+        DetailArticleController *courseVC = [[DetailArticleController alloc]init];
+        courseVC.hidesBottomBarWhenPushed = YES;
+        model1.articleId = resmodel.bannerTypeId;
+        model1.columnId = @"1043064375499591682";
+        [courseVC setModel:model1];
+        [self.navigationController pushViewController:courseVC animated:YES];
+    }else if ([resmodel.bannerType isEqualToString:@"service"]){
+        DetailServiceController *serviceVC = [[DetailServiceController alloc]init];
+        ServiceListRes *model = [[ServiceListRes alloc]init];
+        model.columnId = @"1043064325939695618";
+        model.siheserviceId = resmodel.bannerTypeId;
+        serviceVC.hidesBottomBarWhenPushed = YES;
+        [serviceVC setModel:model];
+        [self.navigationController pushViewController:serviceVC animated:YES];
+    }
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

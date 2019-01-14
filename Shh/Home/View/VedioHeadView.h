@@ -18,7 +18,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface VedioHeadView : BaseView<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface VedioHeadView : BaseView<UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) SingleCourseDrectoryRes *model;
 @property (nonatomic, strong) NSMutableArray *playInfos;

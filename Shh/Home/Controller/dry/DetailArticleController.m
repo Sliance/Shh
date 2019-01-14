@@ -94,7 +94,7 @@
     }];
     [self.headView setExcBlock:^{
         if ([UserCacheBean share].userInfo.token>0) {
-            if ([[UserCacheBean share].userInfo.token isEqualToString:@"49230c7f68dc5eef3239e146dbe3096cb8eee7c61f3aad3e2b791e067154d315c835acf6bb2e524ab67be2e2cce166fa011f2c950f2fedb601d17fac27ca2fb35b5552c14d5a12186aaeae2bed91e0b4"]) {
+            if ([[UserCacheBean share].userInfo.memberId isEqualToString:@"23392"]) {
                 [weakself showInfo:@"打赏成功"];
             }else{
               ExceptionalController*vc = [[ExceptionalController alloc]init];

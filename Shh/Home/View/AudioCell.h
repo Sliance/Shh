@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong)CourseListModel*model;
 @property(nonatomic,copy)void(^playBlock)(BOOL);
+@property(nonatomic,copy)void(^audioBlock)(BOOL);
 @end
 
 NS_ASSUME_NONNULL_END

@@ -269,6 +269,7 @@
 		893EF0C321BA86760049B529 /* ZYProGressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 893EF0C221BA86760049B529 /* ZYProGressView.m */; };
 		8943E68A21D46BE9008BE5D1 /* SignUpService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8943E68921D46BE9008BE5D1 /* SignUpService.m */; };
 		8943E68D21D4A739008BE5D1 /* ExceptionalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8943E68C21D4A739008BE5D1 /* ExceptionalController.m */; };
+		894680ED21ECAC0F005877D3 /* UIView+VTUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 894680EA21ECAC0F005877D3 /* UIView+VTUtility.m */; };
 		895DBF70217980C200E65B16 /* BannersReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF6F217980C200E65B16 /* BannersReq.m */; };
 		895DBF7C21798CBD00E65B16 /* FreeListReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7B21798CBD00E65B16 /* FreeListReq.m */; };
 		895DBF7F21798E3500E65B16 /* BannerRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 895DBF7E21798E3500E65B16 /* BannerRes.m */; };
@@ -870,6 +871,8 @@
 		8943E68921D46BE9008BE5D1 /* SignUpService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpService.m; sourceTree = "<group>"; };
 		8943E68B21D4A739008BE5D1 /* ExceptionalController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExceptionalController.h; sourceTree = "<group>"; };
 		8943E68C21D4A739008BE5D1 /* ExceptionalController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExceptionalController.m; sourceTree = "<group>"; };
+		894680EA21ECAC0F005877D3 /* UIView+VTUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+VTUtility.m"; path = "Shh/Category/UIView+VTUtility.m"; sourceTree = SOURCE_ROOT; };
+		894680EB21ECAC0F005877D3 /* UIView+VTUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+VTUtility.h"; path = "Shh/Category/UIView+VTUtility.h"; sourceTree = SOURCE_ROOT; };
 		895DBF6E217980C200E65B16 /* BannersReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannersReq.h; sourceTree = "<group>"; };
 		895DBF6F217980C200E65B16 /* BannersReq.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannersReq.m; sourceTree = "<group>"; };
 		895DBF7A21798CBD00E65B16 /* FreeListReq.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeListReq.h; sourceTree = "<group>"; };
@@ -1436,6 +1439,7 @@
 		886B97FD2136B7FD0074322D /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				894680E821ECABF7005877D3 /* UIView */,
 				886B97FE2136B7FD0074322D /* BarCode */,
 				886B98012136B7FD0074322D /* Date */,
 				886B98042136B7FD0074322D /* NSObject */,
@@ -2367,6 +2371,15 @@
 			path = ZYProGressView;
 			sourceTree = "<group>";
 		};
+		894680E821ECABF7005877D3 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				894680EB21ECAC0F005877D3 /* UIView+VTUtility.h */,
+				894680EA21ECAC0F005877D3 /* UIView+VTUtility.m */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
 		895DBF6A21797F5900E65B16 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -2876,6 +2889,7 @@
 				895DBF7F21798E3500E65B16 /* BannerRes.m in Sources */,
 				886B978421363AFF0074322D /* QualityServiceCell.m in Sources */,
 				89F03C6B21AFEFFB00218809 /* ApplyImageCell.m in Sources */,
+				894680ED21ECAC0F005877D3 /* UIView+VTUtility.m in Sources */,
 				88483F502137D472004CA3FA /* SortViewController.m in Sources */,
 				886DB974212EC23900CF8C64 /* BaseView.m in Sources */,
 				8824EAEB213001EF000CBA7E /* HomeHeadView.m in Sources */,

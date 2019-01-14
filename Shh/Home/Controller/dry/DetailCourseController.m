@@ -35,7 +35,7 @@
 @property(nonatomic,strong)CommentReq *commentReq;
 @property(nonatomic,strong)SingleCourseDrectoryRes*detailModel;
 @property (nonatomic, strong) SJVideoPlayer *player;
-@property(nonatomic,strong)SuspensionAudioView *susView;
+//@property(nonatomic,strong)SuspensionAudioView *susView;
 @property (nonatomic,strong)NSTimer *timer;
 @property(nonatomic,assign)NSInteger second;
 
@@ -53,19 +53,19 @@
     }
     return _tableview;
 }
--(SuspensionAudioView *)susView{
-    if (!_susView) {
-        _susView = [[SuspensionAudioView alloc]initWithFrame:CGRectMake(30, SCREENHEIGHT-[self tabBarHeight]-85-[self navHeightWithHeight], SCREENWIDTH-60, 80)];
-        [_susView.layer setCornerRadius:4];
-        [_susView.layer setMasksToBounds:YES];
-        _susView.hidden = YES;
-        _susView.backgroundColor = [UIColor whiteColor];
-        [_susView.layer setBorderColor:DSColorFromHex(0x969696).CGColor];
-        [_susView.layer setBorderWidth:0.5];
-        
-    }
-    return _susView;
-}
+//-(SuspensionAudioView *)susView{
+//    if (!_susView) {
+//        _susView = [[SuspensionAudioView alloc]initWithFrame:CGRectMake(30, SCREENHEIGHT-[self tabBarHeight]-85-[self navHeightWithHeight], SCREENWIDTH-60, 80)];
+//        [_susView.layer setCornerRadius:4];
+//        [_susView.layer setMasksToBounds:YES];
+//        _susView.hidden = YES;
+//        _susView.backgroundColor = [UIColor whiteColor];
+//        [_susView.layer setBorderColor:DSColorFromHex(0x969696).CGColor];
+//        [_susView.layer setBorderWidth:0.5];
+//
+//    }
+//    return _susView;
+//}
 -(UILabel *)footView{
     if (!_footView) {
         _footView = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 140)];
@@ -144,7 +144,7 @@
     self.commentReq.beCommentMemberId = @"";
     self.commentReq.beCommentMemberNickname = @"";
      self.tableview.tableFooterView = self.footView;
-    [self.view addSubview:self.susView];
+//    [self.view addSubview:self.susView];
     
     __weak typeof(self)weakself = self;
     [self.headsView setHeightBlock:^(CGFloat height) {
@@ -154,9 +154,11 @@
     }];
     [self.headsView setAudioBlock:^(BOOL selected, CourseListModel * model) {
         if (self.detailCourse.memberIsBuyThisCourse ==YES  ) {
-            weakself.susView.hidden = NO;
-            [weakself.susView setModel:model];
-            [weakself.player pause];
+             [weakself.player pause];
+            AudioPlayController*audioVC = [[AudioPlayController alloc]init];
+            [audioVC setAudioRes:model];
+            [weakself.navigationController pushViewController:audioVC animated:YES];
+           
         }else{
             if ([UserCacheBean share].userInfo.token.length>0) {
                 [weakself showInfo:@"请先购买"];
@@ -170,25 +172,25 @@
             }
         }
     }];
-    [self.susView setPlayBlock:^(BOOL selected) {
-        if (selected ==NO) {
-            weakself.susView.playBtn.selected = YES;
-            [[HgMusicPlayerManager shared]play:weakself.susView.model.courseMediaPath];
-            [weakself.timer setFireDate:[NSDate distantPast]]; //很远的过去
-        }else{
-            weakself.susView.playBtn.selected = NO;
-            [[HgMusicPlayerManager shared]stopPlay];
-            [weakself.timer setFireDate:[NSDate distantFuture]];  //很远的将来
-            
-        }
-    }];
-    [self.susView setDetailBlock:^{
-        weakself.susView.playBtn.selected = NO;
-        [[HgMusicPlayerManager shared]stopPlay];
-        AudioPlayController*audioVC = [[AudioPlayController alloc]init];
-        [audioVC setAudioRes:weakself.susView.model];
-        [weakself.navigationController pushViewController:audioVC animated:YES];
-    }];
+//    [self.susView setPlayBlock:^(BOOL selected) {
+//        if (selected ==NO) {
+//            weakself.susView.playBtn.selected = YES;
+//            [[HgMusicPlayerManager shared]play:weakself.susView.model.courseMediaPath];
+//            [weakself.timer setFireDate:[NSDate distantPast]]; //很远的过去
+//        }else{
+//            weakself.susView.playBtn.selected = NO;
+//            [[HgMusicPlayerManager shared]stopPlay];
+//            [weakself.timer setFireDate:[NSDate distantFuture]];  //很远的将来
+//
+//        }
+//    }];
+//    [self.susView setDetailBlock:^{
+//        weakself.susView.playBtn.selected = NO;
+//        [[HgMusicPlayerManager shared]stopPlay];
+//        AudioPlayController*audioVC = [[AudioPlayController alloc]init];
+//        [audioVC setAudioRes:weakself.susView.model];
+//        [weakself.navigationController pushViewController:audioVC animated:YES];
+//    }];
 
     [self.headsView setFouceBlock:^(BOOL selected) {
         if ([UserCacheBean share].userInfo.token.length>0) {
@@ -228,7 +230,7 @@
     self.inputToolbar.sendContent = ^(NSObject *content){
         weakself.inputToolbar.isBecomeFirstResponder = NO;
         weakself.inputToolbar.y = SCREENHEIGHT-[self navHeightWithHeight]*2;
-        weakself.susView.frame =  CGRectMake(30, SCREENHEIGHT-[self tabBarHeight]-85, SCREENWIDTH-60, 80);
+//        weakself.susView.frame =  CGRectMake(30, SCREENHEIGHT-[self tabBarHeight]-85, SCREENWIDTH-60, 80);
         if ([UserCacheBean share].userInfo.token.length>0) {
             [weakself addComment:(NSString*)content];
         }else{
@@ -241,7 +243,7 @@
     self.inputToolbar.inputToolbarFrameChange = ^(CGFloat height,CGFloat orignY){
        
         weakself.inputToolbarY = orignY;
-        weakself.susView.frame =  CGRectMake(30, orignY-90, SCREENWIDTH-60, 80);
+//        weakself.susView.frame =  CGRectMake(30, orignY-90, SCREENWIDTH-60, 80);
         if (weakself.tableview.contentSize.height > orignY) {
             [weakself.tableview setContentOffset:CGPointMake(0, weakself.tableview.contentSize.height - orignY) animated:YES];
         }
@@ -421,7 +423,7 @@
                 [weakself.headsView setDetailCourse:weakself.detailCourse];
                 [weakself getSingleFind:model.courseListId];
             }
-            [weakself.susView setDetailCourse:weakself.detailCourse];
+//            [weakself.susView setDetailCourse:weakself.detailCourse];
             weakself.inputToolbar.emojiButton.selected = weakself.detailCourse.memberIsLike;
             weakself.inputToolbar.moreButton.selected = weakself.detailCourse.memberIsBook;
         }else{
@@ -635,6 +637,6 @@
     self.second +=1;
     NSInteger minute = self.second/60;
     NSInteger ss = self.second%60;
-    self.susView.dateLabel.text = [NSString stringWithFormat:@"%.2ld:%.2ld",minute,ss];
+//    self.susView.dateLabel.text = [NSString stringWithFormat:@"%.2ld:%.2ld",minute,ss];
 }
 @end

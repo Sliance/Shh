@@ -17,7 +17,10 @@
 #import "DetailAudioController.h"
 #import "HistoryBaseController.h"
 #import "SearchController.h"
-@interface CourseController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+#import "DetailArticleController.h"
+#import "DetailServiceController.h"
+
+@interface CourseController ()<UICollectionViewDelegate, UICollectionViewDataSource,ZSCycleScrollViewDelegate>
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property (nonatomic, strong)NavigationView *navView;
 @property (nonatomic, strong)NSMutableArray *sortArr;
@@ -107,11 +110,8 @@ static NSString *givecellIds = @"HomeGivingCell";
     [[HomeServiceApi share]getBannerWithParam:req response:^(id response) {
         if (response) {
             [weakself.bannerArr removeAllObjects];
-            for (BannerRes *model in response) {
-                if (model.bannerImagePath) {
-                    [weakself.bannerArr addObject:model.bannerImagePath];
-                }
-            }
+            [weakself.bannerArr addObjectsFromArray:response];
+            
             [weakself.collectionView reloadData];
         }
          [self getCourseSort];
@@ -225,7 +225,14 @@ static NSString *givecellIds = @"HomeGivingCell";
     }
     [courseView.selectorView setDataArr:arr];
     [courseView.selectorView setCurrentPage:self.currentIndex];
-    [courseView.cycleView  setImageUrlGroups:self.bannerArr];
+    NSMutableArray *imageArr = [[NSMutableArray alloc]init];
+    for (BannerRes *model in self.bannerArr) {
+        if (model.bannerImagePath) {
+            [imageArr addObject:model.bannerImagePath];
+        }
+    }
+    [courseView.cycleView  setImageUrlGroups:imageArr];
+    courseView.cycleView.delegate = self;
     __weak typeof(self)weakself = self;
     [courseView setSelectedBlock:^(NSInteger index) {
         weakself.currentIndex = index;
@@ -266,14 +273,35 @@ static NSString *givecellIds = @"HomeGivingCell";
     }
     
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)cycleScrollView:(ZSCycleScrollView *)cycleScrollView didSelectItemAtRow:(NSInteger)row{
+    BannerRes*resmodel = self.bannerArr[row];
+    if ([resmodel.bannerType isEqualToString:@"course"]) {
+        FreeListRes *model = [[FreeListRes alloc]init];
+        DetailCourseController *courseVC = [[DetailCourseController alloc]init];
+        courseVC.hidesBottomBarWhenPushed = YES;
+        model.courseId = resmodel.bannerTypeId;
+        model.courseCategoryId = @"1044405524206198785";
+        model.columnId = resmodel.bannerTypeId;
+        [courseVC setModel:model];
+        [self.navigationController pushViewController:courseVC animated:YES];
+    }else if ([resmodel.bannerType isEqualToString:@"article"]){
+        TodayListRes *model1 = [[TodayListRes alloc]init];
+        DetailArticleController *courseVC = [[DetailArticleController alloc]init];
+        courseVC.hidesBottomBarWhenPushed = YES;
+        model1.articleId = resmodel.bannerTypeId;
+        model1.columnId = @"1043064375499591682";
+        [courseVC setModel:model1];
+        [self.navigationController pushViewController:courseVC animated:YES];
+    }else if ([resmodel.bannerType isEqualToString:@"service"]){
+        DetailServiceController *serviceVC = [[DetailServiceController alloc]init];
+        ServiceListRes *model = [[ServiceListRes alloc]init];
+        model.columnId = @"1043064325939695618";
+        model.siheserviceId = resmodel.bannerTypeId;
+        serviceVC.hidesBottomBarWhenPushed = YES;
+        [serviceVC setModel:model];
+        [self.navigationController pushViewController:serviceVC animated:YES];
+    }
+    
 }
-*/
 
 @end

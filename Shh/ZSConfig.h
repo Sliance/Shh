@@ -57,5 +57,5 @@ return _gs_cls; \
 #import "UserCacheBean.h"
 #import "ZSNotification.h"
 #import "UIWebView+Setting.h"
-
+#import "UIView+VTUtility.h"
 #endif /* ZSConfig_h */

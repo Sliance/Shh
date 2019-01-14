@@ -9,7 +9,8 @@
 #import "BaseViewController.h"
 #import "HgMusicBottomView.h"
 #import "HgMusicPlayerManager.h"
-#import "SingleCourseDrectoryRes.h"
+#import "CourseListModel.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) HgMusicBottomView *bottomView;
 -(void) playStateRecover ;
 @property(nonatomic,strong)NSString*url;
-@property(nonatomic,strong)SingleCourseDrectoryRes *audioRes;
+@property(nonatomic,strong)CourseListModel *audioRes;
 @end
 
 NS_ASSUME_NONNULL_END

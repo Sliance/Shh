@@ -204,63 +204,13 @@
     _detailCourse = detailCourse;
    
     if (detailCourse.courseList.count>0) {
-        self.videoArr = [[NSMutableArray alloc]init];
-        self.audioArr = [[NSMutableArray alloc]init];
-        for (CourseListModel *model in detailCourse.courseList) {
-            if (model.courseMediaPath.length>1&&model.courseAudioPath.length>1) {
-                [self.videoArr addObject:model];
-                [self.audioArr addObject:model];
-            }else if (model.courseAudioPath.length>1){
-                [self.audioArr addObject:model];
-            }else if (model.courseMediaPath.length>1&&![model.courseMediaPath isEqualToString:@""]){
-                [self.videoArr addObject:model];
-            }
-        }
-        if (self.videoArr.count>0) {
-            self.contentLabel.frame = CGRectMake(14, self.lineLabel.ctBottom+15, SCREENWIDTH-30, 17);
-            for (int i = 0; i<self.videoArr.count; i++) {
-                UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-                btn.backgroundColor = DSColorFromHex(0xF0F0F0);
-                [btn.layer setCornerRadius:4];
-                [btn.layer setMasksToBounds:YES];
-                btn.frame = CGRectMake(15+i*50, self.contentLabel.ctBottom+10, 40, 40);
-                [btn setTitle:[NSString stringWithFormat:@"%d",i+1] forState:UIControlStateNormal];
-                [btn setTitleColor:DSColorFromHex(0x464646) forState:UIControlStateNormal];
-                [btn setTitleColor:DEFAULTColor forState:UIControlStateSelected];
-                if (i ==0) {
-                    btn.selected = YES;
-                    _tmpBtn = btn;
-                    
-                }
-                [btn addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchUpInside];
-                btn.tag = i;
-                [self addSubview:btn];
-            }
-            if (self.audioArr.count>0) {
-                self.audioLabel.frame = CGRectMake(14, self.contentLabel.ctBottom+75, SCREENWIDTH-30, 17);
-                self.tableview.frame =CGRectMake(0, self.audioLabel.ctBottom+15, SCREENWIDTH, self.audioArr.count*60);
-            }else{
-                self.audioLabel.frame = CGRectMake(14, self.contentLabel.ctBottom,0, 0);
-                self.tableview.frame =CGRectMake(0, self.audioLabel.ctBottom, 0, 0);
-            }
-            self.view.playButton.hidden = NO;
-        }else{
-            self.view.playButton.hidden = YES;
-            self.contentLabel.frame = CGRectMake(14, self.lineLabel.ctBottom, 0,0);
-            if (self.audioArr.count>0) {
-                self.audioLabel.frame = CGRectMake(14, self.contentLabel.ctBottom+15, SCREENWIDTH-30, 17);
-                self.tableview.frame =CGRectMake(0, self.audioLabel.ctBottom+15, SCREENWIDTH, self.audioArr.count*60);
-            }else{
-                self.audioLabel.frame = CGRectMake(14, self.contentLabel.ctBottom,0, 0);
-                self.tableview.frame =CGRectMake(0, self.audioLabel.ctBottom, 0, 0);
-            }
-        }
-        
-        
+       
+        self.contentLabel.frame = CGRectMake(14, self.lineLabel.ctBottom+15, SCREENWIDTH-30, 17);
+        self.tableview.frame =CGRectMake(0, self.contentLabel.ctBottom+15, SCREENWIDTH, self.detailCourse.courseList.count*60);
+          [self.tableview reloadData];
     }else{
         self.contentLabel.frame = CGRectMake(14, self.lineLabel.ctBottom, 0, 0);
-        self.audioLabel.frame = CGRectMake(14, self.contentLabel.ctBottom,0, 0);
-        self.tableview.frame =CGRectMake(0, self.audioLabel.ctBottom, 0, 0);
+        self.tableview.frame =CGRectMake(0, self.contentLabel.ctBottom, 0, 0);
     }
     
     self.introductLabel.frame = CGRectMake(14, self.tableview.ctBottom+17, SCREENWIDTH-30, 17);
@@ -289,7 +239,7 @@
     self.lineLabel1.frame = CGRectMake(0, self.collectionView.ctBottom+1, SCREENWIDTH, 1);
     self.commentLabel.frame = CGRectMake(15, self.lineLabel1.ctBottom+17, SCREENWIDTH, 17);
      self.commentBtn.frame = CGRectMake(SCREENWIDTH-60, self.lineLabel1.ctBottom+10, 50, 36);
-     [self.tableview reloadData];
+   
     self.heightBlock(self.commentBtn.ctBottom);
    
 }
@@ -396,7 +346,7 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.audioArr.count;
+    return self.detailCourse.courseList.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60;
@@ -407,7 +357,7 @@
     if (!cell) {
         cell = [[AudioCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
-    CourseListModel*model = self.audioArr[indexPath.row];
+    CourseListModel*model = self.detailCourse.courseList[indexPath.row];
     model.memberIsBuyThisCourse = self.detailCourse.memberIsBuyThisCourse;
     model.watch = self.detailCourse.watchCount;
     [cell setModel:model];
@@ -416,6 +366,10 @@
     [cell setPlayBlock:^(BOOL selected) {
         weakself.audioBlock(selected,model);
     }];
+    [cell setAudioBlock:^(BOOL selected) {
+        weakself.audioBlock(selected, model);
+    }];
+    
     cell.playBtn.selected = self.selected;
     return cell;
 }

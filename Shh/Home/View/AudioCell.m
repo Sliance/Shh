@@ -30,8 +30,10 @@
 -(UIButton *)playBtn{
     if (!_playBtn) {
         _playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_playBtn setImage:[UIImage imageNamed:@"bofang"] forState:UIControlStateNormal];
-        [_playBtn setImage:[UIImage imageNamed:@"bofang"] forState:UIControlStateSelected];
+        [_playBtn setTitle:@"视频" forState:UIControlStateNormal];
+        _playBtn.titleLabel.font = [UIFont systemFontOfSize:10];
+        _playBtn.backgroundColor = DSColorFromHex(0xDCDCDC);
+        
         [_playBtn addTarget:self action:@selector(pressPlay) forControlEvents:UIControlEventTouchUpInside];
     }
     return _playBtn;
@@ -39,13 +41,10 @@
 -(UIButton *)suoBtn{
     if (!_suoBtn) {
         _suoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//         [_suoBtn setTitle:@"" forState:UIControlStateNormal];
-//        [_suoBtn setImage:[UIImage imageNamed:@"suo"] forState:UIControlStateNormal];
-        [_suoBtn setTitle:@"已购买" forState:UIControlStateSelected];
-        [_suoBtn setImage:[UIImage imageNamed:@"111"] forState:UIControlStateSelected];
-        [_suoBtn setTitleColor:DSColorFromHex(0x969696) forState:UIControlStateSelected];
-        _suoBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-        _suoBtn.selected = NO;
+        [_suoBtn setTitle:@"音频" forState:UIControlStateSelected];
+        _suoBtn.backgroundColor = DSColorFromHex(0xDCDCDC);
+        _suoBtn.titleLabel.font = [UIFont systemFontOfSize:10];
+        [_suoBtn addTarget:self action:@selector(pressAudio) forControlEvents:UIControlEventTouchUpInside];
     }
     return _suoBtn;
 }
@@ -75,28 +74,33 @@
         [self addSubview:self.titleLabel];
         [self addSubview:self.contentLabel];
         [self addSubview:self.lineLabel];
-        [self.playBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self).offset(15);
-            make.centerY.equalTo(self);
-        }];
-        [self.suoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(self).offset(-15);
-            make.centerY.equalTo(self);
-        }];
         [self.lineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.equalTo(self);
             make.bottom.equalTo(self);
             make.height.mas_equalTo(1);
         }];
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.playBtn.mas_right).offset(10);
+            make.left.equalTo(self).offset(15);
             make.width.mas_equalTo(SCREENWIDTH-110);
             make.top.equalTo(self).offset(10);
         }];
         [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.playBtn.mas_right).offset(10);
+            make.left.equalTo(self).offset(15);
             make.top.equalTo(self.titleLabel.mas_bottom).offset(2);
         }];
+
+        self.suoBtn.frame = CGRectMake(SCREENWIDTH-55, 20, 40, 20);
+        self.playBtn.frame = CGRectMake(SCREENWIDTH-96, 20, 40, 20);
+        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_playBtn.bounds      byRoundingCorners:UIRectCornerTopLeft | UIRectCornerBottomLeft    cornerRadii:CGSizeMake(10, 10)];
+        CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+        maskLayer.frame = _playBtn.bounds;
+        maskLayer.path = maskPath.CGPath;
+        _playBtn.layer.mask = maskLayer;
+        UIBezierPath *maskPath1 = [UIBezierPath bezierPathWithRoundedRect:_suoBtn.bounds      byRoundingCorners:UIRectCornerTopRight | UIRectCornerBottomRight    cornerRadii:CGSizeMake(10, 10)];
+        CAShapeLayer *maskLayer1 = [[CAShapeLayer alloc] init];
+        maskLayer1.frame = _suoBtn.bounds;
+        maskLayer1.path = maskPath1.CGPath;
+        _suoBtn.layer.mask = maskLayer1;
     }
     return self;
 }
@@ -107,15 +111,25 @@
                       /60,model.courseMediaDuration%60];
     self.contentLabel.text = [NSString stringWithFormat:@"%@/%@人学过",time,model.watch];
     self.suoBtn.selected = model.memberIsBuyThisCourse;
-    if (_suoBtn.selected ==YES) {
-        [_suoBtn setImage:[UIImage imageNamed:@"111"] forState:UIControlStateSelected];
-         [_suoBtn setTitle:@"已购买" forState:UIControlStateSelected];
+    if (model.courseMediaPath.length>0) {
+        self.playBtn.backgroundColor = DEFAULTColor;
+        self.playBtn.enabled = YES;
     }else{
-        [_suoBtn setTitle:@"" forState:UIControlStateNormal];
-        [_suoBtn setImage:[UIImage imageNamed:@"suo"] forState:UIControlStateNormal];
+        self.playBtn.enabled = NO;
+        self.playBtn.backgroundColor = DSColorFromHex(0xDCDCDC);
+    }
+    if (model.courseAudioPath.length>0) {
+        self.suoBtn.backgroundColor = DEFAULTColor;
+        self.suoBtn.enabled = YES;
+    }else{
+        self.suoBtn.enabled = NO;
+        self.suoBtn.backgroundColor = DSColorFromHex(0xDCDCDC);
     }
 }
 -(void)pressPlay{
     self.playBlock(self.playBtn.selected);
+}
+-(void)pressAudio{
+    self.audioBlock(self.suoBtn.selected);
 }
 @end

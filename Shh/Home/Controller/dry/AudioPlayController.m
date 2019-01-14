@@ -58,7 +58,7 @@
     [self.timer invalidate];
     self.timer = nil;
 }
--(void)setAudioRes:(SingleCourseDrectoryRes *)audioRes{
+-(void)setAudioRes:(CourseListModel *)audioRes{
     _audioRes = audioRes;
     [[HgMusicPlayerManager shared] play:audioRes.courseMediaPath];
     CMTime duration = HgMusicPlayerManager.shared.play.currentItem.asset.duration;
