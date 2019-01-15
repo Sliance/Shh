@@ -258,12 +258,25 @@
         }
     }];
 }
+-(NSString*)deleteSpecialStr:(NSString*)str{
+    NSString*content;
+    content= [str stringByReplacingOccurrencesOfString:@"➋" withString:@""];
+    content= [content stringByReplacingOccurrencesOfString:@"➌" withString:@""];
+    content= [content stringByReplacingOccurrencesOfString:@"➍" withString:@""];
+    content= [content stringByReplacingOccurrencesOfString:@"➎" withString:@""];
+    content= [content stringByReplacingOccurrencesOfString:@"➏" withString:@""];
+    content= [content stringByReplacingOccurrencesOfString:@"➐" withString:@""];
+    content= [content stringByReplacingOccurrencesOfString:@"➑" withString:@""];
+    content= [content stringByReplacingOccurrencesOfString:@"➒" withString:@""];
+    return content;
+}
 -(void)addComment:(NSString*)content{
     
     self.commentReq.appId = @"1041622992853962754";
     self.commentReq.token = [UserCacheBean share].userInfo.token;
     self.commentReq.timestamp = @"0";
     self.commentReq.platform = @"ios";
+    content = [self deleteSpecialStr:content];
     self.commentReq.commentContent = content;
     self.commentReq.commentType = @"comment";
     self.commentReq.articleOrCourseId = self.detailCourse.articleId;

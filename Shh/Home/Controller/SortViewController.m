@@ -12,7 +12,7 @@
 #import "HomeLikeCell.h"
 #import "HomeServiceApi.h"
 #import "DetailCourseController.h"
-#import "DetailAudioController.h"
+
 @interface SortViewController ()<UICollectionViewDelegate, UICollectionViewDataSource,SortLeftScrollowDelegate>
 
 @property(nonatomic,strong)SortLeftScrollow *sortLeftView;
@@ -192,17 +192,12 @@ static NSString *cellId = @"HomeLikeCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     FreeListRes *model = self.courseArr[indexPath.row];
-    if ([model.courseVideoOrAudio isEqualToString:@"video"]) {
+    
         DetailCourseController *courseVC = [[DetailCourseController alloc]init];
         courseVC.hidesBottomBarWhenPushed = YES;
         [courseVC setModel:model];
         [self.navigationController pushViewController:courseVC animated:YES];
-    }else{
-        DetailAudioController *courseVC = [[DetailAudioController alloc]init];
-        courseVC.hidesBottomBarWhenPushed = YES;
-        [courseVC setModel:model];
-        [self.navigationController pushViewController:courseVC animated:YES];
-    }
+    
 }
 
 #pragma mark--SortLeftScrollowDelegate

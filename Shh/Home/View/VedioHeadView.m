@@ -364,7 +364,7 @@
     
     __weak typeof(self)weakself = self;
     [cell setPlayBlock:^(BOOL selected) {
-        weakself.audioBlock(selected,model);
+        weakself.videoBlock(model);
     }];
     [cell setAudioBlock:^(BOOL selected) {
         weakself.audioBlock(selected, model);

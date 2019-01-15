@@ -12,7 +12,6 @@
 #import "DetailArticleController.h"
 #import "HomeFreeCell.h"
 #import "DetailCourseController.h"
-#import "DetailAudioController.h"
 #import "ZSSortSelectorView.h"
 @interface SearchController ()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate, UICollectionViewDataSource,ZSSortSelectorViewDelegate>
 @property(nonatomic,strong)SearchHeadView *searchView;
@@ -236,17 +235,12 @@ static NSString *freecellIds = @"HomeFreeCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     FreeListRes *model = self.searchArr[indexPath.row];
-    if ([model.courseVideoOrAudio isEqualToString:@"video"]) {
+    
         DetailCourseController *courseVC = [[DetailCourseController alloc]init];
         courseVC.hidesBottomBarWhenPushed = YES;
         [courseVC setModel:model];
         [self.navigationController pushViewController:courseVC animated:YES];
-    }else{
-        DetailAudioController *courseVC = [[DetailAudioController alloc]init];
-        courseVC.hidesBottomBarWhenPushed = YES;
-        [courseVC setModel:model];
-        [self.navigationController pushViewController:courseVC animated:YES];
-    }
+    
 }
 
 @end

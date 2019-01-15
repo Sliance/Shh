@@ -10,7 +10,7 @@
 #import "HistorysCell.h"
 #import "MineServiceApi.h"
 #import "DetailCourseController.h"
-#import "DetailAudioController.h"
+
 @interface MinePurchaseController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property(nonatomic,strong)NSMutableArray *dataArr;
@@ -125,17 +125,11 @@ static NSString *freecellIds = @"HistorysCell";
     OrderRes *model1 = self.dataArr[indexPath.row];
     FreeListRes *model = [[FreeListRes alloc]init];
     model.courseId = model1.orderId;
-    if ([model.courseVideoOrAudio isEqualToString:@"video"]) {
         DetailCourseController *courseVC = [[DetailCourseController alloc]init];
         courseVC.hidesBottomBarWhenPushed = YES;
         [courseVC setModel:model];
         [self.navigationController pushViewController:courseVC animated:YES];
-    }else{
-        DetailAudioController *courseVC = [[DetailAudioController alloc]init];
-        courseVC.hidesBottomBarWhenPushed = YES;
-        [courseVC setModel:model];
-        [self.navigationController pushViewController:courseVC animated:YES];
-    }
+    
 }
 
 @end

@@ -31,6 +31,8 @@
     if (!_playBtn) {
         _playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_playBtn setTitle:@"视频" forState:UIControlStateNormal];
+        [_playBtn setTitle:@"视频" forState:UIControlStateSelected];
+        [_playBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _playBtn.titleLabel.font = [UIFont systemFontOfSize:10];
         _playBtn.backgroundColor = DSColorFromHex(0xDCDCDC);
         
@@ -41,7 +43,9 @@
 -(UIButton *)suoBtn{
     if (!_suoBtn) {
         _suoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_suoBtn setTitle:@"音频" forState:UIControlStateSelected];
+        [_suoBtn setTitle:@"音频" forState:UIControlStateNormal];
+         [_suoBtn setTitle:@"音频" forState:UIControlStateSelected];
+        [_suoBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _suoBtn.backgroundColor = DSColorFromHex(0xDCDCDC);
         _suoBtn.titleLabel.font = [UIFont systemFontOfSize:10];
         [_suoBtn addTarget:self action:@selector(pressAudio) forControlEvents:UIControlEventTouchUpInside];
@@ -113,16 +117,16 @@
     self.suoBtn.selected = model.memberIsBuyThisCourse;
     if (model.courseMediaPath.length>0) {
         self.playBtn.backgroundColor = DEFAULTColor;
-        self.playBtn.enabled = YES;
+        
     }else{
-        self.playBtn.enabled = NO;
+        
         self.playBtn.backgroundColor = DSColorFromHex(0xDCDCDC);
     }
     if (model.courseAudioPath.length>0) {
         self.suoBtn.backgroundColor = DEFAULTColor;
-        self.suoBtn.enabled = YES;
+        
     }else{
-        self.suoBtn.enabled = NO;
+       
         self.suoBtn.backgroundColor = DSColorFromHex(0xDCDCDC);
     }
 }

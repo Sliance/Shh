@@ -10,7 +10,7 @@
 #import "HomeFreeCell.h"
 #import "HomeServiceApi.h"
 #import "DetailCourseController.h"
-#import "DetailAudioController.h"
+
 @interface AllFreeListController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property(nonatomic,strong)NSMutableArray *dataArr;
@@ -123,17 +123,12 @@ static NSString *freecellIds = @"HomeFreeCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     FreeListRes *model = self.dataArr[indexPath.row];
-    if ([model.courseVideoOrAudio isEqualToString:@"video"]) {
+    
         DetailCourseController *courseVC = [[DetailCourseController alloc]init];
         courseVC.hidesBottomBarWhenPushed = YES;
         [courseVC setModel:model];
         [self.navigationController pushViewController:courseVC animated:YES];
-    }else{
-        DetailAudioController *courseVC = [[DetailAudioController alloc]init];
-        courseVC.hidesBottomBarWhenPushed = YES;
-        [courseVC setModel:model];
-        [self.navigationController pushViewController:courseVC animated:YES];
-    }
+    
 }
 
 /*

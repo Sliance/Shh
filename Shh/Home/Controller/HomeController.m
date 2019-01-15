@@ -26,7 +26,7 @@
 #import "AllRecommentController.h"
 #import "DetailCourseController.h"
 #import "DetailArticleController.h"
-#import "DetailAudioController.h"
+
 #import "DetailServiceController.h"
 #import "HistoryBaseController.h"
 #import "SearchController.h"

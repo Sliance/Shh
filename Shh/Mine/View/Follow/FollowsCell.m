@@ -94,4 +94,7 @@
     _fouceBtn.selected = YES;
     _fouceBtn.backgroundColor = DSColorFromHex(0xE6E6E6);
 }
+-(void)pressFouce:(UIButton*)sender{
+    
+}
 @end

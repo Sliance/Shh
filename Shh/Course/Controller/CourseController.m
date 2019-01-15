@@ -14,7 +14,7 @@
 #import "NavigationView.h"
 #import "SortViewController.h"
 #import "DetailCourseController.h"
-#import "DetailAudioController.h"
+
 #import "HistoryBaseController.h"
 #import "SearchController.h"
 #import "DetailArticleController.h"
@@ -88,7 +88,7 @@ static NSString *givecellIds = @"HomeGivingCell";
     [super viewWillAppear:animated];
      [self.navigationController setNavigationBarHidden:YES animated:YES];
   
-        _currentIndex = 1;
+    
         [self getBannerList:@"wxCourse"];
 
 }
@@ -235,7 +235,12 @@ static NSString *givecellIds = @"HomeGivingCell";
     courseView.cycleView.delegate = self;
     __weak typeof(self)weakself = self;
     [courseView setSelectedBlock:^(NSInteger index) {
-        weakself.currentIndex = index;
+        if (index ==0) {
+            
+        }else{
+             weakself.currentIndex = index;
+        }
+       
         if (index ==0) {
             SortViewController *sortVC = [[SortViewController alloc]init];
             sortVC.hidesBottomBarWhenPushed = YES;
@@ -260,17 +265,11 @@ static NSString *givecellIds = @"HomeGivingCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     FreeListRes *model = self.courseArr[indexPath.row];
-    if ([model.courseVideoOrAudio isEqualToString:@"video"]) {
+    
         DetailCourseController *courseVC = [[DetailCourseController alloc]init];
         courseVC.hidesBottomBarWhenPushed = YES;
         [courseVC setModel:model];
         [self.navigationController pushViewController:courseVC animated:YES];
-    }else{
-        DetailAudioController *courseVC = [[DetailAudioController alloc]init];
-        courseVC.hidesBottomBarWhenPushed = YES;
-        [courseVC setModel:model];
-        [self.navigationController pushViewController:courseVC animated:YES];
-    }
     
 }
 -(void)cycleScrollView:(ZSCycleScrollView *)cycleScrollView didSelectItemAtRow:(NSInteger)row{

@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FollowDetailController : BaseViewController
 @property(nonatomic,strong)NSString* teacherMemberId;
+@property(nonatomic,assign)NSInteger index;
 @end
 
 NS_ASSUME_NONNULL_END

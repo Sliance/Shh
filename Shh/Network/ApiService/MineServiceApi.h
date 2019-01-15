@@ -20,6 +20,7 @@
 #import "TodayListRes.h"
 #import "IntegralRes.h"
 #import "MineMedalRes.h"
+#import "ServiceListRes.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -62,6 +63,10 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)getTeacherArticleWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///我关注的授课师的课程
 -(void)getTeacherCourseWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///我关注的公司的服务
+-(void)getCompanyServiceWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///我关注的公司
+-(void)getCompanyInfoWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 
 ///积分明细
 -(void)getIntegralDetailWithParam:(FreeListReq *) req response:(responseModel) responseModel;

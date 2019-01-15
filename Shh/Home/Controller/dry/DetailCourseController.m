@@ -13,7 +13,7 @@
 #import "CommentCell.h"
 #import "CommentHeadCell.h"
 #import "LoginController.h"
-#import "DetailAudioController.h"
+
 #import "InputToolbar.h"
 #import "UIView+Extension.h"
 #import "PayViewController.h"
@@ -99,8 +99,13 @@
     }];
     __weak typeof(self) _self = self;
     [self.headsView setVideoBlock:^(CourseListModel * model) {
-        [_self.player pause];
-        _self.player.URLAsset = [[SJVideoPlayerURLAsset alloc] initWithURL:[NSURL URLWithString:model.courseMediaPath] playModel:[SJPlayModel UITableViewHeaderViewPlayModelWithPlayerSuperview:_self.headsView.view.coverImageView tableView:_self.tableview]];
+        if (model.courseMediaPath.length>0) {
+            [_self.player pause];
+            _self.player.URLAsset = [[SJVideoPlayerURLAsset alloc] initWithURL:[NSURL URLWithString:model.courseMediaPath] playModel:[SJPlayModel UITableViewHeaderViewPlayModelWithPlayerSuperview:_self.headsView.view.coverImageView tableView:_self.tableview]];
+        }else{
+            [_self showInfo:@"该节课程暂无视频！"];
+        }
+       
     }];
     self.headsView.view.clickedPlayButtonExeBlock = ^(SJPlayView * _Nonnull view) {
         __strong typeof(_self) self = _self;
@@ -154,11 +159,15 @@
     }];
     [self.headsView setAudioBlock:^(BOOL selected, CourseListModel * model) {
         if (self.detailCourse.memberIsBuyThisCourse ==YES  ) {
-             [weakself.player pause];
-            AudioPlayController*audioVC = [[AudioPlayController alloc]init];
-            [audioVC setAudioRes:model];
-            [weakself.navigationController pushViewController:audioVC animated:YES];
-           
+            if (model.courseAudioPath.length>0) {
+                [weakself.player pause];
+                AudioPlayController*audioVC = [[AudioPlayController alloc]init];
+                [audioVC setAudioRes:model];
+                [weakself.navigationController pushViewController:audioVC animated:YES];
+            }else{
+                [_self showInfo:@"该节课程暂无音频！"];
+            }
+            
         }else{
             if ([UserCacheBean share].userInfo.token.length>0) {
                 [weakself showInfo:@"请先购买"];
@@ -203,17 +212,12 @@
         }
     }];
     [self.headsView setListBlock:^(FreeListRes * model) {
-        if ([model.courseVideoOrAudio isEqualToString:@"audio"]) {
-            DetailAudioController *detailVC = [[DetailAudioController alloc]init];
-            [detailVC setModel:model];
-            [weakself.player stop];
-            [weakself.navigationController pushViewController:detailVC animated:YES];
-        }else if ([model.courseVideoOrAudio isEqualToString:@"video"]){
+        
             DetailCourseController *detailVC = [[DetailCourseController alloc]init];
             [detailVC setModel:model];
             [weakself.player stop];
             [weakself.navigationController pushViewController:detailVC animated:YES];
-        }
+       
         
     }];
     
@@ -285,12 +289,27 @@
 {
     _inputToolbarY = orignY;
 }
+-(NSString*)deleteSpecialStr:(NSString*)str{
+    NSString*content;
+   content= [str stringByReplacingOccurrencesOfString:@"➋" withString:@""];
+   content= [content stringByReplacingOccurrencesOfString:@"➌" withString:@""];
+   content= [content stringByReplacingOccurrencesOfString:@"➍" withString:@""];
+   content= [content stringByReplacingOccurrencesOfString:@"➎" withString:@""];
+   content= [content stringByReplacingOccurrencesOfString:@"➏" withString:@""];
+   content= [content stringByReplacingOccurrencesOfString:@"➐" withString:@""];
+   content= [content stringByReplacingOccurrencesOfString:@"➑" withString:@""];
+   content= [content stringByReplacingOccurrencesOfString:@"➒" withString:@""];
+    return content;
+}
+
 -(void)addComment:(NSString*)content{
     
     self.commentReq.appId = @"1041622992853962754";
     self.commentReq.token = [UserCacheBean share].userInfo.token;
     self.commentReq.timestamp = @"0";
     self.commentReq.platform = @"ios";
+    
+    content = [self deleteSpecialStr:content];
     self.commentReq.commentContent = content;
     self.commentReq.commentType = @"comment";
      CourseListModel *model = [self.detailCourse.courseList firstObject];
@@ -421,9 +440,20 @@
             if (weakself.detailCourse.courseList.count>0) {
                 CourseListModel *model = [weakself.detailCourse.courseList firstObject];
                 [weakself.headsView setDetailCourse:weakself.detailCourse];
-                [weakself getSingleFind:model.courseListId];
+               
+                NSMutableArray *arr = [[NSMutableArray alloc]init];
+                for (CourseListModel*model in weakself.detailCourse.courseList) {
+                    if (model.courseMediaPath.length>0) {
+                        [arr addObject:model];
+                    }
+                }
+                if (arr.count>0) {
+                    weakself.headsView.view.playButton.hidden = NO;
+                    [weakself getSingleFind:model.courseListId];
+                }else{
+                    weakself.headsView.view.playButton.hidden = YES;
+                }
             }
-//            [weakself.susView setDetailCourse:weakself.detailCourse];
             weakself.inputToolbar.emojiButton.selected = weakself.detailCourse.memberIsLike;
             weakself.inputToolbar.moreButton.selected = weakself.detailCourse.memberIsBook;
         }else{

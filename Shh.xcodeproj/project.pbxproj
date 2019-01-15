@@ -285,7 +285,6 @@
 		89CBE08021AD50B40086633A /* LoginAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CBE07F21AD50B40086633A /* LoginAlertView.m */; };
 		89CDE3672193E56D00071267 /* BeCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CDE3662193E56D00071267 /* BeCommentModel.m */; };
 		89CDE36C21940D6C00071267 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CDE36B21940D6C00071267 /* LoginController.m */; };
-		89CDE36F2194173B00071267 /* DetailAudioController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CDE36E2194173B00071267 /* DetailAudioController.m */; };
 		89CDE37221942C4B00071267 /* ArticleHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CDE37121942C4B00071267 /* ArticleHeadView.m */; };
 		89CDE3752194327800071267 /* DetailArticleRes.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CDE3742194327800071267 /* DetailArticleRes.m */; };
 		89D0DF9F219281350038DBC0 /* AudioHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D0DF9E219281350038DBC0 /* AudioHeadView.m */; };
@@ -903,8 +902,6 @@
 		89CDE3662193E56D00071267 /* BeCommentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeCommentModel.m; sourceTree = "<group>"; };
 		89CDE36A21940D6C00071267 /* LoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		89CDE36B21940D6C00071267 /* LoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
-		89CDE36D2194173B00071267 /* DetailAudioController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailAudioController.h; sourceTree = "<group>"; };
-		89CDE36E2194173B00071267 /* DetailAudioController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailAudioController.m; sourceTree = "<group>"; };
 		89CDE37021942C4B00071267 /* ArticleHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleHeadView.h; sourceTree = "<group>"; };
 		89CDE37121942C4B00071267 /* ArticleHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleHeadView.m; sourceTree = "<group>"; };
 		89CDE3732194327800071267 /* DetailArticleRes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailArticleRes.h; sourceTree = "<group>"; };
@@ -1266,8 +1263,6 @@
 				89085E982191914800259A68 /* DetailCourseController.m */,
 				89085E9A2191915B00259A68 /* DetailArticleController.h */,
 				89085E9B2191915B00259A68 /* DetailArticleController.m */,
-				89CDE36D2194173B00071267 /* DetailAudioController.h */,
-				89CDE36E2194173B00071267 /* DetailAudioController.m */,
 				891E2548219C2761009A7F72 /* DetailServiceController.h */,
 				891E2549219C2761009A7F72 /* DetailServiceController.m */,
 				89B775F421C8F61700F6C326 /* DetailHomeController.h */,
@@ -2836,7 +2831,6 @@
 				8921F7D821B60EBE00F9FE10 /* SJLightweightLeftControlView.m in Sources */,
 				890D55A9217F0404009B33B2 /* DetailFreeController.m in Sources */,
 				5AEA798D21B2778B007C0DB7 /* HistoryArticleController.m in Sources */,
-				89CDE36F2194173B00071267 /* DetailAudioController.m in Sources */,
 				88483F562137D4F0004CA3FA /* SortLeftScrollow.m in Sources */,
 				8905C2A6219282A700403EC2 /* YGPlayInfo.m in Sources */,
 				886B98302136B7FD0074322D /* UIView+CTExtensions.m in Sources */,

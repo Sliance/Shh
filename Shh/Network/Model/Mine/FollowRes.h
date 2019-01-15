@@ -25,7 +25,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,copy)NSString *courseAndArticleCount;
 ///
 @property(nonatomic,copy)NSString *memberAvatarId;
-
+@property(nonatomic,strong)NSString *followCategory;
+@property(nonatomic,strong)NSString *brandName;
+@property(nonatomic,strong)NSString *telephoneNumber;
+@property(nonatomic,strong)NSString *companyNameAbbr;
+@property(nonatomic,strong)NSString *companyName;
+@property(nonatomic,strong)NSString *companyLogoPath;
+@property(nonatomic,strong)NSString *typeid;
+@property(nonatomic,strong)NSString *beFollowCount;
+@property(nonatomic,strong)NSString * companySettledId;
 @end
 
 NS_ASSUME_NONNULL_END

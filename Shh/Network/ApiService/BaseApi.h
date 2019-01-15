@@ -107,9 +107,9 @@
 ///关注的人的文章
 #define teacher_article_url  @"/sihehui/article/desktop/v1/home/list"
 ///关注的公司
-#define company_article_url @" /sihehui/company/settled/desktop/v1/find"
+#define company_url  @"/sihehui/company/settled/desktop/v1/find"
 ///关注的公司的服务
-#define company_service_url @"/sihehui/siheservice/desktop/v1/app/home/list"
+#define company_service_url @"/sihehui/siheservice/desktop/v1/app/follow/list"
 
 ///获取关注的人的课程列表
 #define teacher_course_list          @"/sihehui/course/desktop/v1/home/list"

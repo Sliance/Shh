@@ -10,7 +10,7 @@
 #import "DetailFollowHeadView.h"
 #import "MineServiceApi.h"
 #import "DetailCourseController.h"
-#import "DetailAudioController.h"
+#import "DetailServiceController.h"
 #import "DetailArticleController.h"
 #import "HistorysCell.h"
 #import "HomeServiceApi.h"
@@ -65,10 +65,14 @@ static NSString *freecellIds = @"HistorysCell";
     __weak typeof(self)weakself = self;
     [self.headView setChooseBlock:^(NSInteger type) {
         weakself.type = type;
-        if (type ==0) {
-            [weakself getArticle];
-        }else if (type ==1){
+        if (weakself.index ==0) {
             [weakself getCourse];
+        }else{
+            if (type ==0) {
+                [weakself getArticle];
+            }else if (type ==1){
+                [weakself getService];
+            }
         }
     }];
     [self.headView setFouceBlock:^{
@@ -77,7 +81,17 @@ static NSString *freecellIds = @"HistorysCell";
 }
 -(void)setTeacherMemberId:(NSString *)teacherMemberId{
     _teacherMemberId = teacherMemberId;
-    [self requestData];
+   
+}
+-(void)setIndex:(NSInteger)index{
+    _index = index;
+    if (index ==0) {
+        [self.headView.selectorView setDataArr:@[@"课程"]];
+         [self requestData];
+    }else if (index ==1){
+        [self.headView.selectorView setDataArr:@[@"文章",@"服务"]];
+        [self requestCompany];
+    }
 }
 -(void)getFollow{
     FollowReq *req = [[FollowReq alloc]init];
@@ -105,6 +119,39 @@ static NSString *freecellIds = @"HistorysCell";
         }
     }];
 }
+-(void)requestCompany{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.companySettledId = self.teacherMemberId;
+    __weak typeof(self)weakself = self;
+    [[MineServiceApi share]getCompanyInfoWithParam:req response:^(id response) {
+        if (response) {
+            [weakself.headView setModel:response];
+        }
+        [weakself getArticle];
+    }];
+}
+-(void)getService{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.pageIndex = 1;
+    req.pageSize = @"100";
+    req.teacherMemberId = self.teacherMemberId;
+    __weak typeof(self)weakself = self;
+    [[MineServiceApi share]getCompanyServiceWithParam:req response:^(id response) {
+        if (response) {
+            [weakself.dataArr removeAllObjects];
+            [weakself.dataArr addObjectsFromArray:response];
+            [weakself.collectionView reloadData];
+        }
+    }];
+}
 -(void)requestData{
     FreeListReq *req = [[FreeListReq alloc]init];
     req.appId = @"1041622992853962754";
@@ -119,7 +166,8 @@ static NSString *freecellIds = @"HistorysCell";
         if (response) {
             [weakself.headView setModel:response];
         }
-        [weakself getArticle];
+        [weakself getCourse];
+       
     }];
 }
 -(void)getArticle{
@@ -202,10 +250,13 @@ static NSString *freecellIds = @"HistorysCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     HistorysCell *freecell = [collectionView dequeueReusableCellWithReuseIdentifier:freecellIds forIndexPath:indexPath];
-    if (self.type ==0) {
+    if (self.type ==0&&self.index ==1) {
          TodayListRes *model = self.dataArr[indexPath.row];
         [freecell setArticleModel:model];
-    }else if (self.type ==1){
+    }else if (self.type ==0&&self.index ==0){
+        FreeListRes*model = self.dataArr[indexPath.row];
+        [freecell setCoursemodel:model];
+    }else if (self.type ==1&&self.index ==1){
         FreeListRes*model = self.dataArr[indexPath.row];
         [freecell setCoursemodel:model];
     }
@@ -234,25 +285,25 @@ static NSString *freecellIds = @"HistorysCell";
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (self.type ==0) {
+    if (self.type ==0&&self.index ==1) {
         TodayListRes *model = self.dataArr[indexPath.row];
         DetailArticleController *detailVC = [[DetailArticleController alloc]init];
         [detailVC setModel:model];
         [self.navigationController pushViewController:detailVC animated:YES];
-    }else if (self.type ==1){
+    }else if (self.type ==0&&self.index ==0 ){
         FreeListRes *model  = self.dataArr[indexPath.row];
-      
-        if ([model.courseVideoOrAudio isEqualToString:@"video"]) {
-            DetailCourseController *courseVC = [[DetailCourseController alloc]init];
-            courseVC.hidesBottomBarWhenPushed = YES;
-            [courseVC setModel:model];
-            [self.navigationController pushViewController:courseVC animated:YES];
-        }else{
-            DetailAudioController *courseVC = [[DetailAudioController alloc]init];
-            courseVC.hidesBottomBarWhenPushed = YES;
-            [courseVC setModel:model];
-            [self.navigationController pushViewController:courseVC animated:YES];
-        }
+        DetailCourseController *courseVC = [[DetailCourseController alloc]init];
+        courseVC.hidesBottomBarWhenPushed = YES;
+        [courseVC setModel:model];
+        [self.navigationController pushViewController:courseVC animated:YES];
+        
+    }else if (self.type ==1&&self.index ==1 ){
+        ServiceListRes *model  = self.dataArr[indexPath.row];
+        DetailServiceController *courseVC = [[DetailServiceController alloc]init];
+        courseVC.hidesBottomBarWhenPushed = YES;
+        [courseVC setModel:model];
+        [self.navigationController pushViewController:courseVC animated:YES];
+        
     }
    
    

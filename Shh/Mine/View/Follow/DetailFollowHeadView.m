@@ -91,7 +91,7 @@
         [self addSubview:self.fouceLabel];
         [self addSubview:self.selectorView];
         [self setContentLayout];
-        [self.selectorView setDataArr:@[@"文章",@"课程"]];
+        
         [self.selectorView setCurrentPage:0];
     }
     return self;
@@ -128,12 +128,19 @@
 }
 
 -(void)setModel:(FollowRes *)model{
+    if (model.companyName.length>0) {
+        self.nameLabel.text = model.companyName;
+        self.detailLabel.text = model.companyNameAbbr;
+        NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,model.companyLogoPath];
+        [self.headImage sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"icon_write"]];
+        self.fouceLabel.text = [NSString stringWithFormat:@"%@粉丝",model.beFollowCount];
+    }else{
     self.nameLabel.text = model.memberName;
     self.detailLabel.text = model.memberDesc;
     NSString *url = [NSString stringWithFormat:@"%@%@",DPHOST,model.memberAvatarPath];
     [self.headImage sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"icon_write"]];
     self.fouceLabel.text = [NSString stringWithFormat:@"%@ 动态  |  %@粉丝",model.courseAndArticleCount,model.followCount];
-    
+    }
 }
 -(void)pressFouce{
     self.fouceBlock();
