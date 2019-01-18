@@ -94,9 +94,9 @@
     }];
     [self.headView setExcBlock:^{
         if ([UserCacheBean share].userInfo.token>0) {
-            if ([[UserCacheBean share].userInfo.memberId isEqualToString:@"23392"]) {
+            if ([UserCacheBean share].userInfo.isShow ==NO) {
                 [weakself showInfo:@"打赏成功"];
-            }else{
+            }else if([UserCacheBean share].userInfo.isShow ==YES){
               ExceptionalController*vc = [[ExceptionalController alloc]init];
               vc.modalPresentationStyle = UIModalPresentationCustom;
               [weakself presentViewController:vc animated:NO completion:nil];

@@ -50,8 +50,9 @@
 -(ServiceHeadView *)headview{
     if (!_headview) {
         _headview = [[ServiceHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200*SCREENWIDTH/375+65)];
-        [_headview.memberBtn addTarget:self action:@selector(addMember) forControlEvents:UIControlEventTouchUpInside];
+        
         _headview.cycleView.delegate = self;
+        
     }
     return _headview;
 }
@@ -96,6 +97,12 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    if ([UserCacheBean share].userInfo.isShow ==NO) {
+        [_headview.memberBtn setTitle:@"100+往期课程免费收看" forState:UIControlStateNormal];
+    }else if ([UserCacheBean share].userInfo.isShow ==YES){
+        [_headview.memberBtn setTitle:@"加入思和研习社，100+往期课程免费收看" forState:UIControlStateNormal];
+        [_headview.memberBtn addTarget:self action:@selector(addMember) forControlEvents:UIControlEventTouchUpInside];
+    }
      [self getBannerList:@"wxService"];
 }
 -(void)viewWillDisappear:(BOOL)animated{
@@ -313,9 +320,7 @@
 }
 -(void)addMember{
     if ([UserCacheBean share].userInfo.token.length>0) {
-        if ([[UserCacheBean share].userInfo.memberId isEqualToString:@"23392"]) {
-            [self showInfo:@"您已是会员"];
-        }else{
+         if ([UserCacheBean share].userInfo.isShow ==YES) {
             AddMemberPayController *memberVC = [[AddMemberPayController alloc]init];
             memberVC.hidesBottomBarWhenPushed = YES;
             [memberVC setType:1];

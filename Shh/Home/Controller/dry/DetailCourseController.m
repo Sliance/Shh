@@ -129,10 +129,13 @@
         self.player.URLAsset.alwaysShowTitle = NO;
         }else{
             if ([UserCacheBean share].userInfo.token.length>0) {
-                [self showInfo:@"请先购买"];
-                PayViewController *payVC = [[PayViewController alloc]init];
-                [payVC setCourseId:self.detailCourse.course.courseId];
-                [self.navigationController pushViewController:payVC animated:YES];
+                if ([UserCacheBean share].userInfo.isShow == YES) {
+                    [self showInfo:@"请先购买"];
+                    PayViewController *payVC = [[PayViewController alloc]init];
+                    [payVC setCourseId:self.detailCourse.course.courseId];
+                    [self.navigationController pushViewController:payVC animated:YES];
+                }
+               
             }else{
                 LoginController *loginVC = [[LoginController alloc]init];
                 loginVC.hidesBottomBarWhenPushed = YES;
@@ -170,10 +173,12 @@
             
         }else{
             if ([UserCacheBean share].userInfo.token.length>0) {
+            if ([UserCacheBean share].userInfo.isShow == YES) {
                 [weakself showInfo:@"请先购买"];
                 PayViewController *payVC = [[PayViewController alloc]init];
                 [payVC setCourseId:weakself.detailCourse.course.courseId];
                 [weakself.navigationController pushViewController:payVC animated:YES];
+             }
             }else{
                 LoginController *loginVC = [[LoginController alloc]init];
                 loginVC.hidesBottomBarWhenPushed = YES;

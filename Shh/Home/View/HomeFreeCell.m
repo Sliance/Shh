@@ -126,7 +126,12 @@
         if (model.courseIsTimelimitFree ==YES) {
             self.priceLabel.text = @"￥0";
         }else{
-         self.priceLabel.text = [NSString stringWithFormat:@"￥%.2f",model.coursePrice];
+            if ([UserCacheBean share].userInfo.isShow ==NO) {
+                self.priceLabel.text = @"￥0";
+            }else{
+                self.priceLabel.text = [NSString stringWithFormat:@"￥%.2f",model.coursePrice];
+            }
+         
         }
 }
 

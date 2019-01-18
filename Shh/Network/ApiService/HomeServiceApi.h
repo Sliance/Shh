@@ -80,4 +80,6 @@
 -(void)likeWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 ///收藏
 -(void)bookWithParam:(FreeListReq *) req response:(responseModel) responseModel;
+///展示
+-(void)isShowWithParam:(FreeListReq *) req response:(responseModel) responseModel;
 @end

@@ -143,6 +143,9 @@
 #define exceptional_alipay @"/sihehui/pay/mobile/v1/app/reward/alipay"
 ///签到
 #define sign_in  @"/sihehui/member/sign/desktop/v1/save"
+///展示
+#define show_buy @"/sihehui/config/desktop/v1/find"
+
 
 typedef void(^responseModel)(id response);
 @interface BaseApi : NSObject

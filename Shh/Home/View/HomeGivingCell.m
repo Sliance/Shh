@@ -163,6 +163,11 @@
     self.detailLabel.text = model.courseIntroduction;
     self.shareLabel.text = model.courseTrueClickCount;
     self.likeLabel.text = model.courseVirtualClickCount;
+    if ([UserCacheBean share].userInfo.isShow ==NO) {
+        self.priceLabel.text = @"￥0";
+    }else{
         self.priceLabel.text = [NSString stringWithFormat:@"￥%.2f",model.coursePrice];
+    }
+    
 }
 @end

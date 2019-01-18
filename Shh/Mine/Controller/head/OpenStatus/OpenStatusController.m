@@ -96,20 +96,25 @@
         WEAKSELF;
         [cell setOpenBlock:^{
             if (self.result.studyStatus ==0) {
-                AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
-                addVC.hidesBottomBarWhenPushed = YES;
-                [addVC setType:1];
-                [weakSelf.navigationController pushViewController:addVC animated:YES];
+                if ([UserCacheBean share].userInfo.isShow ==YES) {
+                    AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
+                    addVC.hidesBottomBarWhenPushed = YES;
+                    [addVC setType:1];
+                    [weakSelf.navigationController pushViewController:addVC animated:YES];
+                }
+                
             }else if (self.result.studyStatus ==1){
                 MemberShipController *addVC = [[MemberShipController alloc]init];
                 addVC.hidesBottomBarWhenPushed = YES;
                 [addVC setType:1];
                 [weakSelf.navigationController pushViewController:addVC animated:YES];
             }else if (self.result.studyStatus ==2){
+             if ([UserCacheBean share].userInfo.isShow ==YES) {
                 AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
                 addVC.hidesBottomBarWhenPushed = YES;
                 [addVC setType:1];
                 [weakSelf.navigationController pushViewController:addVC animated:YES];
+                 }
             }
 
         }];
@@ -137,20 +142,24 @@
         WEAKSELF;
         [cell setOpenBlock:^{
             if (self.result.presidentStatus ==0) {
+             if ([UserCacheBean share].userInfo.isShow ==YES) {
                 AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
                 addVC.hidesBottomBarWhenPushed = YES;
                 [addVC setType:2];
                 [weakSelf.navigationController pushViewController:addVC animated:YES];
+             }
             }else if (self.result.presidentStatus ==1){
                 MemberShipController *addVC = [[MemberShipController alloc]init];
                 addVC.hidesBottomBarWhenPushed = YES;
                 [addVC setType:2];
                 [weakSelf.navigationController pushViewController:addVC animated:YES];
             }else if (self.result.presidentStatus ==2){
+             if ([UserCacheBean share].userInfo.isShow ==YES) {
                 AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
                 addVC.hidesBottomBarWhenPushed = YES;
                 [addVC setType:2];
                 [weakSelf.navigationController pushViewController:addVC animated:YES];
+             }
             }
             
         }];

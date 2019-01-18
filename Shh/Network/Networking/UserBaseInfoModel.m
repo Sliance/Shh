@@ -32,6 +32,7 @@
               @"thoroughfare":@"thoroughfare",
               @"address":@"address",
              @"memberId":@"memberId",
+             @"isShow":@"isShow",
              };
 }
 
@@ -52,6 +53,7 @@
                           @"area" : self.area == nil?@"":self.area,
                           @"thoroughfare" : self.thoroughfare == nil?@"":self.thoroughfare,
                           @"address" : self.address == nil?@"":self.address,
+                          
                           };
     return dic;
 }
@@ -70,6 +72,7 @@
     self.area = dic[@"area"];
     self.thoroughfare = dic[@"thoroughfare"];
     self.address = dic[@"address"];
+    self.isShow = dic[@"isShow"];
 }
 
 - (void)updateUserInfoModelWithDic:(NSDictionary *) dic {
@@ -85,6 +88,7 @@
     self.city = dic[@"city"];
     self.area = dic[@"area"];
     self.thoroughfare = dic[@"thoroughfare"];
+    self.address = dic[@"address"];
     self.address = dic[@"address"];
 }
 

@@ -186,10 +186,12 @@
                 case 100:
                 {
                         if (self.result.studyStatus ==0) {
+                         if ([UserCacheBean share].userInfo.isShow ==YES) {
                             AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
                             addVC.hidesBottomBarWhenPushed = YES;
                             [addVC setType:1];
                             [weakself.navigationController pushViewController:addVC animated:YES];
+                         }
                         }else if (self.result.studyStatus ==1){
                             MemberShipController *addVC = [[MemberShipController alloc]init];
                             addVC.hidesBottomBarWhenPushed = YES;
@@ -207,10 +209,12 @@
                 case 101:
                 {
                     if (self.result.presidentStatus ==0) {
+                         if ([UserCacheBean share].userInfo.isShow ==YES) {
                         AddMemberPayController *addVC = [[AddMemberPayController alloc]init];
                         addVC.hidesBottomBarWhenPushed = YES;
                         [addVC setType:2];
                         [weakself.navigationController pushViewController:addVC animated:YES];
+                         }
                     }else if (self.result.presidentStatus ==1){
                         MemberShipController *addVC = [[MemberShipController alloc]init];
                         addVC.hidesBottomBarWhenPushed = YES;

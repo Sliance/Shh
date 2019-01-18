@@ -19,6 +19,7 @@
 #import "SendCodeAlertView.h"
 #import "ForgetAlertView.h"
 #import "ChangePassAlertView.h"
+#import "HomeServiceApi.h"
 
 @interface LoginController ()
 @property(nonatomic,strong)UILabel *titleLabel;
@@ -228,20 +229,36 @@
             NSError *error = nil;
             UserBaseInfoModel *userInfoModel = [MTLJSONAdapter modelOfClass:UserBaseInfoModel.class fromJSONDictionary:response[@"data"] error:&error];
             [UserCacheBean share].userInfo = userInfoModel;
-             self.tabBarController.selectedIndex =3;
-            for (UIViewController *controller in self.navigationController.viewControllers) {
-                if ([controller isKindOfClass:[HomeController class]]||[controller isKindOfClass:[BaseCourseController class]]||[controller isKindOfClass:[ServiceController class]]||[controller isKindOfClass:[MineController class]]) {
-                    [self.navigationController popToViewController:controller animated:YES];
-                }
-            }
-           
+            [self isShow];
             
         }else{
             [self showToast:response[@"message"]];
         }
     }];
 }
-
+-(void)isShow{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.code = @"ios_show_buy";
+    req.columnId = @"";
+    req.courseCategoryId = @"";
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share]isShowWithParam:req response:^(id response) {
+        if (response) {
+            [UserCacheBean share].userInfo.isShow = [response[@"data"][@"value"] boolValue];
+            self.tabBarController.selectedIndex =3;
+            for (UIViewController *controller in weakself.navigationController.viewControllers) {
+                if ([controller isKindOfClass:[HomeController class]]||[controller isKindOfClass:[BaseCourseController class]]||[controller isKindOfClass:[ServiceController class]]||[controller isKindOfClass:[MineController class]]) {
+                    [weakself.navigationController popToViewController:controller animated:YES];
+                }
+            }
+        }
+        
+    }];
+}
 -(void)sendCode{
     LoginReq *req = [[LoginReq alloc]init];
     req.appId = @"1041622992853962754";
@@ -282,13 +299,7 @@
             NSError *error = nil;
             UserBaseInfoModel *userInfoModel = [MTLJSONAdapter modelOfClass:UserBaseInfoModel.class fromJSONDictionary:response[@"data"] error:&error];
             [UserCacheBean share].userInfo = userInfoModel;
-            weakself.tabBarController.selectedIndex =3;
-            for (UIViewController *controller in weakself.navigationController.viewControllers) {
-                if ([controller isKindOfClass:[HomeController class]]||[controller isKindOfClass:[BaseCourseController class]]||[controller isKindOfClass:[ServiceController class]]||[controller isKindOfClass:[MineController class]]) {
-                    [weakself.navigationController popToViewController:controller animated:YES];
-                }
-            }
-            
+            [self isShow];
             
         }else{
             [weakself showToast:response[@"message"]];

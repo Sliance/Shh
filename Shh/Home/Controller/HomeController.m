@@ -113,8 +113,8 @@ static NSString *likecellIds = @"HomeLikeCell";
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
      [self.navigationController setNavigationBarHidden:YES animated:YES];
-    
-     [self getFreeList];
+    [self isShow];
+   
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -146,6 +146,23 @@ static NSString *likecellIds = @"HomeLikeCell";
             [weakself.collectionView reloadData];
         }
        
+    }];
+}
+-(void)isShow{
+    FreeListReq *req = [[FreeListReq alloc]init];
+    req.appId = @"1041622992853962754";
+    req.token = [UserCacheBean share].userInfo.token;
+    req.timestamp = @"0";
+    req.platform = @"ios";
+    req.code = @"ios_show_buy";
+    req.columnId = @"";
+    req.courseCategoryId = @"";
+    __weak typeof(self)weakself = self;
+    [[HomeServiceApi share]isShowWithParam:req response:^(id response) {
+        if (response) {
+            [UserCacheBean share].userInfo.isShow = [response[@"data"][@"value"] boolValue];
+        }
+          [self getFreeList];
     }];
 }
 -(void)getFreeList{

@@ -215,6 +215,7 @@ static NSString *givecellIds = @"HomeGivingCell";
         }
     }
     CourseHeadView *courseView = [[CourseHeadView alloc]init];
+    
     courseView.frame = CGRectMake(0, 0, SCREENWIDTH, 200*SCREENWIDTH/375+40);
     NSMutableArray *arr = [NSMutableArray array];
     [arr addObject:@"分类"];

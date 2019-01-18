@@ -25,4 +25,6 @@
 @property(nonatomic,copy)NSString *systemVersion;
 @property(nonatomic,copy)NSString *cityName;
 @property(nonatomic,copy)NSString *memberId;
+@property(nonatomic,copy)NSString *code;
+
 @end
