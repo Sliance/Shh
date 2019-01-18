@@ -74,6 +74,7 @@
         _footView.textAlignment = NSTextAlignmentCenter;
         _footView.textColor = DSColorFromHex(0x464646);
         _footView.font = [UIFont systemFontOfSize:14];
+        _footView.hidden = YES;
     }
     return _footView;
 }
@@ -151,7 +152,7 @@
     self.commentReq.beCommentId = @"";
     self.commentReq.beCommentMemberId = @"";
     self.commentReq.beCommentMemberNickname = @"";
-     self.tableview.tableFooterView = self.footView;
+    
 //    [self.view addSubview:self.susView];
     
     __weak typeof(self)weakself = self;
@@ -513,8 +514,11 @@
             [weakself.commentArr addObjectsFromArray:response];
             
             if (weakself.commentArr.count ==0) {
+                self.tableview.tableFooterView = self.footView;
+                
                 weakself.footView.text = @"暂无评论！赶紧抢个沙发！";
             }else{
+                
                 weakself.footView.text = @"";
             }
             [weakself.tableview reloadData];
@@ -548,7 +552,7 @@
         }else{
             [self showInfo:response[@"message"]];
         }
-            
+         self.footView.hidden = NO;
     }];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
