@@ -68,7 +68,7 @@ static NSString *freecellIds = @"QualityCollectionCell";
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.view.backgroundColor = [UIColor whiteColor];
-        self.title = @"会员大课";
+        self.title = @"精品课程";
     }
     return self;
 }

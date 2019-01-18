@@ -518,13 +518,13 @@ static NSString *likecellIds = @"HomeLikeCell";
                 }else{
                     freeview.frame = CGRectMake(0, 0, SCREENWIDTH, 0);
                 }
-                 [freeview setTitle:@"精品微课"];
+                 [freeview setTitle:@"最新课程"];
                 [freeview setAllBlock:^{
                     CourseListController *courseVC = [[CourseListController alloc]init];
                     courseVC.hidesBottomBarWhenPushed = YES;
                     CourseSortRes *model = [[CourseSortRes alloc]init];
                     model.columnId = @"1045258743325130753";
-                    model.columnName = @"精品微课";
+                    model.columnName = @"最新课程";
                     [courseVC setModel:model];
                     [self.navigationController pushViewController:courseVC animated:YES];
                 }];
@@ -538,7 +538,7 @@ static NSString *likecellIds = @"HomeLikeCell";
                 }else{
                     freeview.frame = CGRectMake(0, 0, SCREENWIDTH, 0);
                 }
-                [freeview setTitle:@"会员大课"];
+                [freeview setTitle:@"精品课程"];
                 [freeview setAllBlock:^{
                     AllBigClassController *courseVC = [[AllBigClassController alloc]init];
                     courseVC.hidesBottomBarWhenPushed = YES;

@@ -54,7 +54,7 @@
         _shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _shareBtn.titleLabel.font = [UIFont fontWithName:@"icomoon"size:14];
 
-        [_shareBtn setTitle:@"\U0000e92d" forState:UIControlStateNormal];
+        [_shareBtn setTitle:@"\U0000e92c" forState:UIControlStateNormal];
         [_shareBtn setTitleColor:DSColorFromHex(0x787878) forState:UIControlStateNormal];
         
     }
@@ -63,9 +63,9 @@
 -(UIButton *)likeBtn{
     if(!_likeBtn){
         _likeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _likeBtn.titleLabel.font = [UIFont fontWithName:@"icomoon"size:14];
+        _likeBtn.titleLabel.font = [UIFont fontWithName:@"icomoon"size:10];
         [_likeBtn setTitleColor:DSColorFromHex(0x787878) forState:UIControlStateNormal];
-        [_likeBtn setTitle:@"\U0000e924" forState:UIControlStateNormal];
+        [_likeBtn setTitle:@"\U0000e92b" forState:UIControlStateNormal];
     }
     return _likeBtn;
 }
@@ -138,8 +138,8 @@
     }];
     [self.likeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.likeLabel.mas_left).offset(-5);
-        make.top.equalTo(self.detailLabel.mas_bottom).offset(15);
-        make.width.height.mas_equalTo(14);
+        make.top.equalTo(self.detailLabel.mas_bottom).offset(13);
+        make.width.height.mas_equalTo(20);
     }];
     [self.shareLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.likeBtn.mas_left).offset(-15);
