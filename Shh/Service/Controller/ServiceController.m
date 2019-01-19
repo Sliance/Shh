@@ -98,7 +98,7 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     if ([UserCacheBean share].userInfo.isShow ==NO) {
-        [_headview.memberBtn setTitle:@"100+往期课程免费收看" forState:UIControlStateNormal];
+        [_headview.memberBtn setTitle:@"100+往期课程" forState:UIControlStateNormal];
     }else if ([UserCacheBean share].userInfo.isShow ==YES){
         [_headview.memberBtn setTitle:@"加入思和研习社，100+往期课程免费收看" forState:UIControlStateNormal];
         [_headview.memberBtn addTarget:self action:@selector(addMember) forControlEvents:UIControlEventTouchUpInside];

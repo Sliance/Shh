@@ -61,7 +61,7 @@
         _priceLabel.textAlignment = NSTextAlignmentRight;
         _priceLabel.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:14];
         _priceLabel.textColor = DSColorFromHex(0x474747);
-        _priceLabel.text = @"￥0";
+        _priceLabel.text = @"";
     }
     return _priceLabel;
 }
@@ -124,10 +124,10 @@
     self.countLabel.text = model.courseTrueClickCount;
    
         if (model.courseIsTimelimitFree ==YES) {
-            self.priceLabel.text = @"￥0";
+            self.priceLabel.text = @"";
         }else{
             if ([UserCacheBean share].userInfo.isShow ==NO) {
-                self.priceLabel.text = @"￥0";
+                self.priceLabel.text = @"";
             }else{
                 self.priceLabel.text = [NSString stringWithFormat:@"￥%.2f",model.coursePrice];
             }

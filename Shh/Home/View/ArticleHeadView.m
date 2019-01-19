@@ -77,7 +77,12 @@ static NSString *nowcellIds = @"HomeNowCell";
         _excBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _excBtn.backgroundColor = DSColorFromHex(0xE70019);
         [_excBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_excBtn setTitle:@"打赏" forState:UIControlStateNormal];
+        if ([UserCacheBean share].userInfo.isShow ==NO) {
+            [_excBtn setTitle:@"赞赏" forState:UIControlStateNormal];
+        }else{
+            [_excBtn setTitle:@"打赏" forState:UIControlStateNormal];
+        }
+        
         _excBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [_excBtn.layer setCornerRadius:3];
         [_excBtn addTarget:self action:@selector(pressExc) forControlEvents:UIControlEventTouchUpInside];

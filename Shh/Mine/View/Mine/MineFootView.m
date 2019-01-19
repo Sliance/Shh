@@ -22,7 +22,13 @@
     [self addSubview:self.bgView];
     
     NSArray *leftArr = @[@"xueye_mine",@"invite_mine",@"service_mine",@"phone_mine"];
-    NSArray *titleArr = @[@"开通学籍",@"邀请好友加入",@"在线咨询",@"电话咨询     "];
+    NSArray *titleArr;
+    if ([UserCacheBean share].userInfo.isShow ==NO) {
+        titleArr= @[@"学籍",@"邀请好友加入",@"在线咨询",@"电话咨询     "];
+    }else{
+        titleArr= @[@"开通学籍",@"邀请好友加入",@"在线咨询",@"电话咨询     "];
+    }
+    
     for (int i = 0; i<leftArr.count; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(15+i%2*((SCREENWIDTH-75)/2+15), 10+i/2*50, (SCREENWIDTH-75)/2, 40);
@@ -40,7 +46,13 @@
     }
     NSArray *imageArr= @[@"\U0000e908",@"\U0000e90c",@"\U0000e92a",@"\U0000e924",@"\U0000e922",@"\U0000e919",@"\U0000e917",@"\U0000e900"];
     //@"\U0000e907"
-    NSArray *dataArr = @[@"我的购买",@"我的积分",@"我的勋章",@"我的收藏",@"我的关注",@"设置",@"入驻思和会",@"帮助中心"];
+    NSArray *dataArr;
+    if ([UserCacheBean share].userInfo.isShow ==NO) {
+       dataArr= @[@"我的课程",@"我的积分",@"我的勋章",@"我的收藏",@"我的关注",@"设置",@"入驻思和会",@"帮助中心"];
+    }else{
+        dataArr= @[@"我的购买",@"我的积分",@"我的勋章",@"我的收藏",@"我的关注",@"设置",@"入驻思和会",@"帮助中心"];
+    }
+    
 
     for (int i = 0; i<imageArr.count; i++) {
         MineTypeBtn *btn = [[MineTypeBtn alloc]initWithFrame:CGRectMake(i%3*(SCREENWIDTH/3-10), 120+i/3*88, SCREENWIDTH/3-10, 88)];

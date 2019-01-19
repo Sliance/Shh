@@ -95,7 +95,7 @@
     [self.headView setExcBlock:^{
         if ([UserCacheBean share].userInfo.token>0) {
             if ([UserCacheBean share].userInfo.isShow ==NO) {
-                [weakself showInfo:@"打赏成功"];
+                [weakself showInfo:@"赞赏成功"];
             }else if([UserCacheBean share].userInfo.isShow ==YES){
               ExceptionalController*vc = [[ExceptionalController alloc]init];
               vc.modalPresentationStyle = UIModalPresentationCustom;
