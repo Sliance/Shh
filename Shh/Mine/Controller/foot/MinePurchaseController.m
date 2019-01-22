@@ -23,7 +23,12 @@ static NSString *freecellIds = @"HistorysCell";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.view.backgroundColor = DSColorFromHex(0xF0F0F0);
-        [self setTitle:@"我的购买"];
+        if ([UserCacheBean share].userInfo.isShow ==NO) {
+           [self setTitle:@"我的课程"];
+        }else{
+           [self setTitle:@"我的购买"];
+        }
+        
         
     }
     return self;

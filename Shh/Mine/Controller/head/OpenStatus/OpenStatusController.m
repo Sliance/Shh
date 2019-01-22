@@ -23,7 +23,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.view.backgroundColor = DSColorFromHex(0xF0F0F0);
-        [self setTitle:@"开通学籍"];
+        if ([UserCacheBean share].userInfo.isShow ==NO) {
+             [self setTitle:@"学籍"];
+        }else{
+             [self setTitle:@"开通学籍"];
+        }
+       
         
     }
     return self;

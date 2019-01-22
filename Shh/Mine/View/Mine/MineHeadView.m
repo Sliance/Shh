@@ -177,7 +177,12 @@
 -(UIButton *)openBtn{
     if (!_openBtn) {
         _openBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_openBtn setTitle:@"开通学籍  享受特权 >" forState:UIControlStateNormal];
+        if ([UserCacheBean share].userInfo.isShow ==NO) {
+            [_openBtn setTitle:@"学籍 >" forState:UIControlStateNormal];
+        }else{
+            [_openBtn setTitle:@"开通学籍  享受特权 >" forState:UIControlStateNormal];
+        }
+        
         [_openBtn setTitleColor:DSColorFromHex(0x52402C) forState:UIControlStateNormal];
         _openBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         [_openBtn addTarget:self action:@selector(pressAdd) forControlEvents:UIControlEventTouchUpInside];

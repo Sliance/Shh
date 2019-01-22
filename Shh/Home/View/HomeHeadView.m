@@ -72,7 +72,12 @@
         _titleLabel.textAlignment = NSTextAlignmentLeft;
         _titleLabel.font = [UIFont boldSystemFontOfSize:18];
         _titleLabel.textColor = DSColorFromHex(0x474747);
-        _titleLabel.text = @"限时免费";
+        if ([UserCacheBean share].userInfo.isShow ==NO) {
+            _titleLabel.text = @"推荐";
+        }else{
+            _titleLabel.text = @"限时免费";
+        }
+        
     }
     return _titleLabel;
 }

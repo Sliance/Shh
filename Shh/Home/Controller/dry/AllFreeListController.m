@@ -68,7 +68,12 @@ static NSString *freecellIds = @"HomeFreeCell";
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.view.backgroundColor = [UIColor whiteColor];
-        self.title = @"限时免费";
+        if ([UserCacheBean share].userInfo.isShow ==NO) {
+            self.title = @"推荐";
+        }else{
+            self.title = @"限时免费";
+        }
+        
     }
     return self;
 }
