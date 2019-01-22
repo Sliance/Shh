@@ -130,7 +130,7 @@
 -(UIButton *)huiBtn{
     if (!_huiBtn) {
         _huiBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_huiBtn setTitle:@"点击入会" forState:UIControlStateNormal];
+        [_huiBtn setTitle:@"加入研习社" forState:UIControlStateNormal];
         [_huiBtn setTitleColor:DEFAULTColor forState:UIControlStateNormal];
         _huiBtn.titleLabel.font = [UIFont systemFontOfSize:14];
        
@@ -141,7 +141,7 @@
 -(UILabel *)huiLabel{
     if (!_huiLabel) {
         _huiLabel = [[UILabel alloc]init];
-        _huiLabel.text = @"在线会员免费观看";
+        _huiLabel.text = @"海量精品课程免费观看";
         _huiLabel.font = [UIFont systemFontOfSize:14];
         _huiLabel.textAlignment = NSTextAlignmentCenter;
         _huiLabel.textColor = DSColorFromHex(0x969696);

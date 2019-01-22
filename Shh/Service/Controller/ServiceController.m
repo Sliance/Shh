@@ -39,7 +39,7 @@
 @implementation ServiceController
 -(UITableView *)tableview{
     if (!_tableview) {
-        _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, [self navHeightWithHeight], SCREENWIDTH, SCREENHEIGHT-[self tabBarHeight]) style:UITableViewStylePlain];
+        _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, [self navHeightWithHeight], SCREENWIDTH, SCREENHEIGHT-[self tabBarHeight]) style:UITableViewStyleGrouped];
         _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableview.delegate = self;
         _tableview.dataSource = self;

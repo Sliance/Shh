@@ -47,7 +47,7 @@
         _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) style:UITableViewStyleGrouped];
         _tableview.delegate = self;
         _tableview.dataSource = self;
-//        _tableview.backgroundColor = [UIColor whiteColor];
+        _tableview.backgroundColor = [UIColor whiteColor];
         _tableview.tableFooterView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 60)];
         _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
@@ -337,7 +337,7 @@
 -(VedioHeadView *)headsView{
     if (!_headsView) {
         _headsView = [[VedioHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, _headHeight)];
-        
+        [_headsView.commentBtn addTarget:self action:@selector(pressComment) forControlEvents:UIControlEventTouchUpInside];
     }
     return _headsView;
 }
@@ -677,5 +677,18 @@
     NSInteger minute = self.second/60;
     NSInteger ss = self.second%60;
 //    self.susView.dateLabel.text = [NSString stringWithFormat:@"%.2ld:%.2ld",minute,ss];
+}
+-(void)pressComment{
+    if ([UserCacheBean share].userInfo.token.length>0) {
+        self.inputToolbar.isBecomeFirstResponder = YES;
+        self.commentReq.beCommentId = @"";
+        self.commentReq.beCommentMemberId = @"";
+        self.commentReq.beCommentMemberNickname =@"";
+        
+    }else{
+        LoginController *loginVC = [[LoginController alloc]init];
+        loginVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }
 }
 @end
