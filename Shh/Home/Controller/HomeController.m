@@ -26,6 +26,7 @@
 #import "AllRecommentController.h"
 #import "DetailCourseController.h"
 #import "DetailArticleController.h"
+#import "CollectionBaseController.h"
 
 #import "DetailServiceController.h"
 #import "HistoryBaseController.h"
@@ -74,7 +75,7 @@ static NSString *likecellIds = @"HomeLikeCell";
     if (!_navView) {
         _navView = [[NavigationView alloc]init];
         _navView.frame = CGRectMake(0, 0, SCREENWIDTH, [self navHeightWithHeight]);
-        [_navView setLeftWidth:15];
+        [_navView setLeftWidth:45];
     }
     return _navView;
 }
@@ -106,6 +107,11 @@ static NSString *likecellIds = @"HomeLikeCell";
     }];
     [self.navView setSearchBlock:^{
         SearchController *setVC = [[SearchController alloc]init];
+        setVC.hidesBottomBarWhenPushed = YES;
+        [weakself.navigationController pushViewController:setVC animated:YES];
+    }];
+    [self.navView setLeftBlock:^{
+        CollectionBaseController *setVC = [[CollectionBaseController alloc]init];
         setVC.hidesBottomBarWhenPushed = YES;
         [weakself.navigationController pushViewController:setVC animated:YES];
     }];

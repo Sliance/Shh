@@ -129,6 +129,7 @@
             switch (index) {
                 case 0:
                 {
+                    
                     MinePurchaseController *setVC = [[MinePurchaseController alloc]init];
                     setVC.hidesBottomBarWhenPushed = YES;
                     [weakself.navigationController pushViewController:setVC animated:YES];

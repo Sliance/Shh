@@ -19,7 +19,7 @@
 #import "SearchController.h"
 #import "DetailArticleController.h"
 #import "DetailServiceController.h"
-
+#import "CollectionBaseController.h"
 @interface CourseController ()<UICollectionViewDelegate, UICollectionViewDataSource,ZSCycleScrollViewDelegate>
 @property (nonatomic, strong)UICollectionView *collectionView;
 @property (nonatomic, strong)NavigationView *navView;
@@ -52,7 +52,7 @@ static NSString *givecellIds = @"HomeGivingCell";
     if (!_navView) {
         _navView = [[NavigationView alloc]init];
         _navView.frame = CGRectMake(0, 0, SCREENWIDTH, [self navHeightWithHeight]);
-        [_navView setLeftWidth:15];
+        [_navView setLeftWidth:45];
     }
     return _navView;
 }

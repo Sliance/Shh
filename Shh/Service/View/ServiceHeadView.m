@@ -48,7 +48,7 @@
     if (!_memberBtn) {
         _memberBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _memberBtn.backgroundColor = DSColorFromHex(0xE70019);
-        [_memberBtn setTitle:@"加入思和研习社，100+往期课程免费收看" forState:UIControlStateNormal];
+        [_memberBtn setTitle:@"加入研习社" forState:UIControlStateNormal];
         [_memberBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _memberBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         [_memberBtn.layer setCornerRadius:2];

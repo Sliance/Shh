@@ -24,7 +24,7 @@
     NSArray *leftArr = @[@"xueye_mine",@"invite_mine",@"service_mine",@"phone_mine"];
     NSArray *titleArr;
     if ([UserCacheBean share].userInfo.isShow ==NO) {
-        titleArr= @[@"学籍",@"邀请好友加入",@"在线咨询",@"电话咨询     "];
+        titleArr= @[@"我的学籍",@"邀请好友加入",@"在线咨询",@"电话咨询     "];
     }else{
         titleArr= @[@"开通学籍",@"邀请好友加入",@"在线咨询",@"电话咨询     "];
     }

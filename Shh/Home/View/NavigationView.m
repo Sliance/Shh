@@ -83,7 +83,7 @@
 -(UIButton *)leftBtn{
     if (!_leftBtn) {
         _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_leftBtn setTitle:@"\U0000e904" forState:UIControlStateNormal];
+        [_leftBtn setTitle:@"\U0000e924" forState:UIControlStateNormal];
         _leftBtn.titleLabel.font = [UIFont fontWithName:@"icomoon"size:22];
         [_leftBtn setTitleColor:DSColorFromHex(0x464646) forState:UIControlStateNormal];
         [_leftBtn addTarget:self action:@selector(pressLeft) forControlEvents:UIControlEventTouchUpInside];

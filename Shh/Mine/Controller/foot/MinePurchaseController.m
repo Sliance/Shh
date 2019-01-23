@@ -71,7 +71,9 @@ static NSString *freecellIds = @"HistorysCell";
     [[MineServiceApi share]getOrderListWithParam:req response:^(id response) {
         if (response) {
             [weakself.dataArr removeAllObjects];
-            [weakself.dataArr addObjectsFromArray:response];
+            if ([UserCacheBean share].userInfo.isShow ==YES) {
+                [weakself.dataArr addObjectsFromArray:response];
+            }
             [weakself.collectionView reloadData];
         }
     }];

@@ -16,6 +16,7 @@
 #import "HomeServiceApi.h"
 #import "DetailArticleController.h"
 #import "HistoryBaseController.h"
+#import "CollectionBaseController.h"
 #import "SearchController.h"
 
 @interface DryHeadlinesController ()<UITableViewDelegate,UITableViewDataSource,ZSSortSelectorViewDelegate>
@@ -31,14 +32,14 @@
 -(NavigationView *)navView{
     if (!_navView) {
         _navView = [[NavigationView alloc]init];
-        _navView.frame = CGRectMake(0, 0, SCREENWIDTH, [self navHeightWithHeight]);
+        _navView.frame = CGRectMake(0, [self navHeightWithHeight], SCREENWIDTH,44);
         [_navView setLeftWidth:45];
     }
     return _navView;
 }
 -(ZSSortSelectorView *)selectorView{
     if (!_selectorView) {
-        _selectorView = [[ZSSortSelectorView alloc]initWithFrame:CGRectMake(0, [self navHeightWithHeight], SCREENWIDTH, 40)];
+        _selectorView = [[ZSSortSelectorView alloc]initWithFrame:CGRectMake(0, [self navHeightWithHeight]+44, SCREENWIDTH, 40)];
         _selectorView.delegate = self;
         
     }
@@ -46,8 +47,9 @@
 }
 -(UITableView *)tableview{
     if (!_tableview) {
-        _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0,[self navHeightWithHeight]+40, SCREENWIDTH, SCREENHEIGHT-[self navHeightWithHeight]) style:UITableViewStylePlain];
-        _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableview = [[UITableView alloc]initWithFrame:CGRectMake(0,[self navHeightWithHeight]+40+44, SCREENWIDTH, SCREENHEIGHT-[self navHeightWithHeight]-44) style:UITableViewStylePlain];
+//        _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableview.tableFooterView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 60)];
         _tableview.delegate = self;
         _tableview.dataSource = self;
     }
@@ -55,16 +57,16 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         self.view.backgroundColor = [UIColor whiteColor];
-        
+        self.title = @"思和会";
     }
     return self;
 }
@@ -87,6 +89,11 @@
     }];
     [self.navView setSearchBlock:^{
         SearchController *setVC = [[SearchController alloc]init];
+        setVC.hidesBottomBarWhenPushed = YES;
+        [weakself.navigationController pushViewController:setVC animated:YES];
+    }];
+    [self.navView setLeftBlock:^{
+        CollectionBaseController *setVC = [[CollectionBaseController alloc]init];
         setVC.hidesBottomBarWhenPushed = YES;
         [weakself.navigationController pushViewController:setVC animated:YES];
     }];
