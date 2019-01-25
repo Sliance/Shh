@@ -274,6 +274,11 @@
             }
         }];
     }
+    if ([UserCacheBean share].userInfo.isShow ==NO) {
+        self.memberBtn.frame = CGRectZero;
+        self.studyBtn.frame = CGRectZero;
+        self.presidentBtn.frame = CGRectZero;
+    }else{
     if (model.joinMember ==0&&model.studyStatus ==0&&model.presidentStatus ==0) {
         self.openBtn.frame = CGRectMake(0, 0, SCREENWIDTH-30, 35);
         self.memberBtn.frame = CGRectZero;
@@ -319,6 +324,7 @@
          [self.studyBtn setIconInLeftWithSpacing:10];
          [self.presidentBtn setIconInLeftWithSpacing:10];
     }
+ }
     
 }
 -(void)pressMessage:(UIButton*)sender{

@@ -21,12 +21,14 @@
 -(void)setLayout{
     [self addSubview:self.bgView];
     
-    NSArray *leftArr = @[@"xueye_mine",@"invite_mine",@"service_mine",@"phone_mine"];
+    NSArray *leftArr;
     NSArray *titleArr;
     if ([UserCacheBean share].userInfo.isShow ==NO) {
-        titleArr= @[@"我的学籍",@"邀请好友加入",@"在线咨询",@"电话咨询     "];
+        titleArr= @[@"邀请好友加入",@"在线咨询",@"电话咨询     "];
+        leftArr = @[@"invite_mine",@"service_mine",@"phone_mine"];
     }else{
         titleArr= @[@"开通学籍",@"邀请好友加入",@"在线咨询",@"电话咨询     "];
+        leftArr = @[@"xueye_mine",@"invite_mine",@"service_mine",@"phone_mine"];
     }
     
     for (int i = 0; i<leftArr.count; i++) {
@@ -44,13 +46,15 @@
         [btn addTarget:self action:@selector(pressHead:) forControlEvents:UIControlEventTouchUpInside];
         [self.bgView addSubview:btn];
     }
-    NSArray *imageArr= @[@"\U0000e908",@"\U0000e90c",@"\U0000e92a",@"\U0000e924",@"\U0000e922",@"\U0000e919",@"\U0000e917",@"\U0000e900"];
+    NSArray *imageArr ;
     //@"\U0000e907"
     NSArray *dataArr;
     if ([UserCacheBean share].userInfo.isShow ==NO) {
-       dataArr= @[@"我的课程",@"我的积分",@"我的勋章",@"我的收藏",@"我的关注",@"设置",@"入驻思和会",@"帮助中心"];
+       dataArr= @[@"我的积分",@"我的收藏",@"我的关注",@"设置",@"入驻思和会",@"帮助中心"];
+        imageArr = @[@"\U0000e90c",@"\U0000e924",@"\U0000e922",@"\U0000e919",@"\U0000e917",@"\U0000e900"];
     }else{
         dataArr= @[@"我的购买",@"我的积分",@"我的勋章",@"我的收藏",@"我的关注",@"设置",@"入驻思和会",@"帮助中心"];
+        imageArr = @[@"\U0000e908",@"\U0000e90c",@"\U0000e92a",@"\U0000e924",@"\U0000e922",@"\U0000e919",@"\U0000e917",@"\U0000e900"];
     }
     
 
