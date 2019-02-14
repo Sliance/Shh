@@ -14,11 +14,13 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        [self setLayout];
+        
     }
     return self;
 }
--(void)setLayout{
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    [self removeAllSubviews];
     [self addSubview:self.bgView];
     
     NSArray *leftArr;

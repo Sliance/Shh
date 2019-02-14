@@ -10,9 +10,6 @@
 
 @interface MineFootView : BaseView
 @property(nonatomic,strong)UIView *bgView;
-
-
-
 @property(nonatomic,copy)void(^selecteBlock)(NSUInteger);
 @property(nonatomic,copy)void(^headBlock)(NSInteger);
 

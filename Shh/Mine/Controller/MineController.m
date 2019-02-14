@@ -316,7 +316,7 @@
             [weakself.headView.headImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",DPHOST,weakself.result.memberAvatarPath]] placeholderImage:[UIImage imageNamed:@"mine"]];
             
             
-                   
+            [weakself.footView layoutSubviews];
         }
     }];
 }
