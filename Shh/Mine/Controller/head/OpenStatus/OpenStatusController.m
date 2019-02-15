@@ -79,6 +79,8 @@
     OpenStatusCell*cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([OpenStatusCell class])];
     if (indexPath.row ==0) {
         cell.titleLabel.text = @"研习社";
+        cell.titleLabel.textColor = DSColorFromHex(0x464646);
+        cell.dateLabel.textColor = DSColorFromHex(0x464646);
         cell.contentLabel.text = @"·100+往期课程免费看   ·全年50堂顶级课程更新";
         cell.detailLabel.text = @"·1年研习社学籍              ·APP每周三上线";
         cell.bgImage.image = [UIImage imageNamed:@"study_bg"];
@@ -125,6 +127,8 @@
         }];
     }else if (indexPath.row ==1){
         cell.titleLabel.text = @"总裁班";
+        cell.titleLabel.textColor = [UIColor whiteColor];
+        cell.dateLabel.textColor = [UIColor whiteColor];
         cell.contentLabel.text = @"·超过千个家居企业的选择 ·30万余家居人参加过";
         cell.detailLabel.text = @"·近3千商家实现千万业绩增长  ·近30商家突破1亿业绩规模";
         cell.detailLabel.font = [UIFont systemFontOfSize:12];
