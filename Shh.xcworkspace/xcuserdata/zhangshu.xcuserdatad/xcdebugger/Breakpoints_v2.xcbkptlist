@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Home/Controller/dry/AudioPlayController.m"
-            timestampString = "568970426.694288"
+            timestampString = "573398243.889163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Home/Controller/dry/AudioPlayController.m"
-            timestampString = "568970426.694384"
+            timestampString = "573398243.89162"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "155"
@@ -234,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Shh/Home/Controller/dry/AudioPlayController.m"
-            timestampString = "568970426.694458"
+            timestampString = "573398243.8922139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "188"
@@ -367,7 +367,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "251"
             endingLineNumber = "251"
-            landmarkName = "-setDetailCourse:"
+            landmarkName = "-setLayoutVer"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -383,7 +383,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "254"
             endingLineNumber = "254"
-            landmarkName = "-setDetailCourse:"
+            landmarkName = "-setLayoutVer"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -417,6 +417,38 @@
             endingLineNumber = "109"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__37-[DetailCourseController viewDidLoad]_block_invoke_2"
+                  moduleName = "Shh"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailCourseController.m"
+                  timestampString = "573398244.742403"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "960">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_"
+                  moduleName = "Shh"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailCourseController.m"
+                  timestampString = "573398244.7473249"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -449,53 +481,6 @@
             endingLineNumber = "115"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__37-[DetailCourseController viewDidLoad]_block_invoke.121"
-                  moduleName = "Shh"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailCourseController.m"
-                  timestampString = "568985833.712024"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "581">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__37-[DetailCourseController viewDidLoad]_block_invoke_2.133"
-                  moduleName = "Shh"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailCourseController.m"
-                  timestampString = "568985833.71487"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "19">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.146"
-                  moduleName = "Shh"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailCourseController.m"
-                  timestampString = "568985833.717662"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -621,9 +606,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "428"
-            endingLineNumber = "428"
-            landmarkName = "-pressBtn:"
-            landmarkType = "7">
+            endingLineNumber = "428">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -638,8 +621,55 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "512"
             endingLineNumber = "512"
-            landmarkName = "-getSingleFind:"
+            landmarkName = "-getCommentList"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DetailCourseController getCommentList]"
+                  moduleName = "Shh"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailCourseController.m"
+                  timestampString = "573398244.818261"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "512"
+                  endingLineNumber = "512"
+                  offsetFromSymbolStart = "462">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__40-[DetailCourseController getCommentList]_block_invoke"
+                  moduleName = "Shh"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailCourseController.m"
+                  timestampString = "573398244.821978"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "513"
+                  endingLineNumber = "513"
+                  offsetFromSymbolStart = "47">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.519"
+                  moduleName = "Shh"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangshu/%E5%85%AC%E5%8F%B8/Shh/Shh/Home/Controller/dry/DetailCourseController.m"
+                  timestampString = "573398244.8250591"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "512"
+                  endingLineNumber = "512"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -654,7 +684,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "501"
             endingLineNumber = "501"
-            landmarkName = "-getSingleFind:"
+            landmarkName = "-getCommentList"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -670,7 +700,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "428"
             endingLineNumber = "428"
-            landmarkName = "-getSingleCourse"
+            landmarkName = "-getCollect"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -686,7 +716,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "416"
             endingLineNumber = "416"
-            landmarkName = "-getSingleCourse"
+            landmarkName = "-getCollect"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -703,6 +733,38 @@
             startingLineNumber = "96"
             endingLineNumber = "96"
             landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/Controller/dry/DetailCourseController.m"
+            timestampString = "573398148.4572459"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Shh/Home/Controller/dry/AudioPlayController.m"
+            timestampString = "573398243.8932379"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-setAudioRes:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

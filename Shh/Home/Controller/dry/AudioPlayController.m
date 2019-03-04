@@ -60,7 +60,7 @@
 }
 -(void)setAudioRes:(CourseListModel *)audioRes{
     _audioRes = audioRes;
-    [[HgMusicPlayerManager shared] play:audioRes.courseMediaPath];
+    [[HgMusicPlayerManager shared] play:audioRes.courseAudioPath];
     CMTime duration = HgMusicPlayerManager.shared.play.currentItem.asset.duration;
     // 歌曲总时间和当前时间
     NSInteger completeTime = CMTimeGetSeconds(duration);
