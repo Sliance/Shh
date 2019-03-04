@@ -166,6 +166,7 @@
             if (model.courseAudioPath.length>0) {
                 [weakself.player pause];
                 AudioPlayController*audioVC = [[AudioPlayController alloc]init];
+                model.courseAudioPath =   [model.courseAudioPath stringByReplacingOccurrencesOfString:@"http" withString:@"https"];
                 [audioVC setAudioRes:model];
                 [weakself.navigationController pushViewController:audioVC animated:YES];
             }else{

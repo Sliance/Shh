@@ -105,8 +105,9 @@
      ];
    
     self.timer =  [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
-    [self.timer setFireDate:[NSDate distantFuture]];  //很远的将来
+    [self.timer setFireDate:[NSDate distantPast]];  //很远的将来
 }
+
 -(void)nextButtonAction{
     
 }
@@ -131,7 +132,7 @@
         [_bottomView.playOrPauseButton setImage:[UIImage imageNamed:@"播放"] forState:UIControlStateNormal];
         [_bottomView.playOrPauseButton setImage:[UIImage imageNamed:@"播放（高亮）"] forState:UIControlStateHighlighted];
     }
-    
+     [self.timer setFireDate:[NSDate distantPast]];
 }
 #pragma - mark 进度条改变值时触发
 //拖动进度条改变值时触发
@@ -216,7 +217,6 @@
         [_bottomView.playOrPauseButton setImage:[UIImage imageNamed:@"播放（高亮）"] forState:UIControlStateHighlighted];
         [HgMusicPlayerManager.shared stopPlay];
         //关闭定时器
-        
          [self.timer setFireDate:[NSDate distantFuture]];  //很远的将来
        
     }
@@ -238,7 +238,7 @@
     self.bottomView.currentTimeLabel.text = [NSString stringWithFormat:@"%.2ld:%.2ld",minute,ss];
         //播放器定位到对应的位置
         CMTime targetTime = CMTimeMake((int64_t)(currentTime), 1);
-//        [HgMusicPlayerManager.shared.play seekToTim e:targetTime];
+//        [HgMusicPlayerManager.shared.play seekToTime:targetTime];
 
    
 }
